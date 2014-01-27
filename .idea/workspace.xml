@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="" />
+    <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/masterthesis/processProtein.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/__init__.py" afterPath="$PROJECT_DIR$/masterthesis/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="MasterThesis2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,63 +32,16 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.68373495" vertical-offset="163" max-vertical-offset="495">
+            <state line="26" column="3" selection-start="794" selection-end="794" vertical-scroll-proportion="0.8253638" vertical-offset="71" max-vertical-offset="594">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ahoCorasick.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/ahoCorasick.py">
+      <file leaf-file-name="tree_file.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/reader/tree_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="4" selection-start="1965" selection-end="2362" vertical-scroll-proportion="0.0" vertical-offset="805" max-vertical-offset="1395">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="13" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="doQuant.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/doQuant.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="39" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="555">
-              <folding>
-                <marker date="1390647272328" expanded="true" signature="63:691" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__builtin__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/348993582/__builtin__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3243" column="8" selection-start="111965" selection-end="111965" vertical-scroll-proportion="0.0" vertical-offset="48527" max-vertical-offset="76485">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setUp.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/setUp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="16" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/reader/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="23" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+            <state line="11" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
               <folding />
             </state>
           </provider>
@@ -91,18 +50,25 @@
       <file leaf-file-name="kmer_file.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="4" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="855">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state line="23" column="13" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="954">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pickle_file.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/writer/pickle_file.py">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+            <state line="5" column="31" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processProtein.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="53" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
@@ -115,10 +81,17 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/masterthesis/setUp.py" />
         <option value="$PROJECT_DIR$/masterthesis/reader/kmer_files.py" />
         <option value="$PROJECT_DIR$/masterthesis/reader/pickle_files.py" />
         <option value="$PROJECT_DIR$/masterthesis/reader/tree_file.py" />
@@ -128,20 +101,22 @@
         <option value="$PROJECT_DIR$/masterthesis/reader/pickle_file.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/pickle_file.py" />
         <option value="$PROJECT_DIR$/masterthesis/checkOrder.py" />
-        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
         <option value="$PROJECT_DIR$/masterthesis/doQuant.py" />
         <option value="$PROJECT_DIR$/masterthesis/ahoCorasick.py" />
         <option value="$PROJECT_DIR$/masterthesis/reader/kmer_file.py" />
+        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
+        <option value="$PROJECT_DIR$/masterthesis/reader/processProtein.py" />
+        <option value="$PROJECT_DIR$/masterthesis/processProtein.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="951" />
+    <option name="x" value="640" />
+    <option name="width" value="640" />
+    <option name="height" value="695" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -241,8 +216,23 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/masterthesis" />
     <property name="FullScreen" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/masterthesis" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.ahoCorasick">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -414,6 +404,23 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="" />
@@ -423,14 +430,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="951" extended-state="4" />
-    <editor active="false" />
+    <frame x="640" y="0" width="640" height="695" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34310532" sideWeight="0.46396965" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3422713" sideWeight="0.46396965" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -459,25 +466,14 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="33" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/pickle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="840" column="0" selection-start="29098" selection-end="29098" vertical-scroll-proportion="0.28846154" vertical-offset="12285" max-vertical-offset="20865">
-          <folding />
-        </state>
+        <state line="840" column="0" selection-start="29098" selection-end="29098" vertical-scroll-proportion="0.28846154" vertical-offset="12285" max-vertical-offset="20865" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/reader/pickle_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="18" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="1" column="18" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/setUp.py">
@@ -489,21 +485,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/checkOrder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <folding />
-        </state>
+        <state line="6" column="19" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/writer/pickle_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="4" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/tree_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.46348315" vertical-offset="0" max-vertical-offset="356">
           <folding />
         </state>
       </provider>
@@ -525,40 +512,18 @@
     <entry file="file://$PROJECT_DIR$/masterthesis/doQuant.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="39" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="555">
-          <folding>
-            <marker date="1390647272328" expanded="true" signature="63:691" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/reader/result_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="4" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
+        <state line="5" column="4" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330" />
       </provider>
     </entry>
     <entry file="file:///usr/lib/python2.7/collections.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="20" selection-start="4964" selection-end="4971" vertical-scroll-proportion="4.6334662" vertical-offset="697" max-vertical-offset="10500">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="855">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="125" column="20" selection-start="4964" selection-end="4971" vertical-scroll-proportion="4.6334662" vertical-offset="697" max-vertical-offset="10500" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/ahoCorasick.py">
@@ -568,9 +533,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="954">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="31" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="53" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/reader/tree_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.68373495" vertical-offset="163" max-vertical-offset="495">
+        <state line="26" column="3" selection-start="794" selection-end="794" vertical-scroll-proportion="0.8253638" vertical-offset="71" max-vertical-offset="594">
           <folding />
         </state>
       </provider>

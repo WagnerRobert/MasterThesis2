@@ -1,0 +1,89 @@
+import re
+__author__ = 'delur'
+
+def match_kmers(kmerlisting, msa):
+    if len(kmerlisting) == 0:
+        return {}
+    pattern = ""
+    matches = {}
+
+    for kmer_tuple in kmerlisting:
+        kmer = kmer_tuple[0]
+        for letter in kmer:
+            pattern += letter + "[-]*"
+        pattern = pattern[0:len(pattern)-4]
+        pattern = pattern + "|"
+    pattern = pattern[0:len(pattern)-1]
+    regex = re.compile(pattern)
+
+    for name, sequence in msa:
+        i = 0
+        while True:
+            match = regex.search(sequence, i)
+            if  match:
+                if name in matches:
+                    pass
+                else:
+                    matches[name] = []
+                matches[name].append(match.span())
+                i = match.start()+1
+            else:
+                break
+
+    return matches
+
+
+def do_mapping(sequence, gapped_sequence):
+    gaps = 0
+    mapping = []
+    for i in range(len(gapped_sequence)):
+        if gapped_sequence[i] is '-':
+            gaps += 1
+            mapping.append(-1)
+        else:
+            mapping.append(i-gaps)
+
+    for i in range(len(mapping)):
+        if mapping[i] == -1:
+            pass
+        elif sequence[mapping[i]] is not gapped_sequence[i]:
+            print sequence[mapping[i]] + " fail!! " + gapped_sequence[i]
+    return mapping
+
+
+
+def match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlisting):
+    if len(kmerlisting) == 0:
+        return {}
+    pattern = ""
+    matches = {}
+
+    for kmer_tuple in kmerlisting:
+        kmer = kmer_tuple[0]
+        for letter in kmer:
+            pattern += letter + "[-]*"
+        pattern = pattern[0:len(pattern)-4]
+        pattern = pattern + "|"
+    pattern = pattern[0:len(pattern)-1]
+    regex = re.compile(pattern)
+
+    for first, second in pairwise_alignments:
+        mapping = do_mapping(sequence, pairwise_alignments[first,second][0])
+        i = 0
+        while True:
+            match = regex.search(pairwise_alignments[first,second][1], i)
+            if  match:
+                if second in matches:
+                    pass
+                else:
+                    matches[second] = []
+                span = match.span()
+                start = mapping[span[0]-1]
+                end = mapping[span[1]-1]
+
+                matches[second].append( (start,end) )
+                i = match.start()+1
+            else:
+                break
+
+    return matches

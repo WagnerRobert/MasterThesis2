@@ -11,7 +11,7 @@ def kmer_file(kmer_file_path, quant):
     kmer_list = []
     f = open(kmer_file_path,'r')
     for line in f:
-        tmp = line.rstrip().split(' ')
+        tmp = line.rstrip().split(':')
         if len(tmp) > 1:
             kmer_list.append( (tmp[0], float(tmp[1])) )
         else:

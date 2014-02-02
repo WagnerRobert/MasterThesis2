@@ -19,7 +19,7 @@ constants["num_cores"] = "1"
 constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
-constants["qsub"] = ["qsub", "-b"]
+constants["qsub"] = ['qsub', '-b']
 quant = 0.1
 
 # sets up the directory in which all calculations will be done

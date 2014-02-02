@@ -72,5 +72,5 @@ def queue_uniqueprot():
 
 
 #queue_blast()
-get_fasta_files()
-#queue_uniqueprot()
+#get_fasta_files()
+queue_uniqueprot()

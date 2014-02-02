@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/__init__.py" afterPath="$PROJECT_DIR$/masterthesis/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" afterPath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queue_main.py" afterPath="$PROJECT_DIR$/queue_main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" afterPath="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MasterThesis2.iws" />
@@ -40,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queue_main.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="queue_main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queue_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="57" selection-start="155" selection-end="155" vertical-scroll-proportion="0.11568123" vertical-offset="0" max-vertical-offset="1215">
+            <state line="58" column="19" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1215">
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -51,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wget_fasta.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="wget_fasta.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="48" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+            <state line="9" column="143" selection-start="370" selection-end="370" vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="778">
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -158,9 +156,9 @@
         <option value="$PROJECT_DIR$/masterthesis/processProtein.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/build_mfasta.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
-        <option value="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
         <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
         <option value="$PROJECT_DIR$/queue_main.py" />
+        <option value="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
       </list>
     </option>
   </component>
@@ -542,7 +540,11 @@
       <created>1391353288061</created>
       <updated>1391353288061</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="updating the queue submit stuff">
+      <created>1391366863131</created>
+      <updated>1391366863131</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -682,20 +684,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
+    <entry file="file://$PROJECT_DIR$/queue_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="48" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+        <state line="58" column="19" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1215">
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queue_main.py">
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="57" selection-start="155" selection-end="155" vertical-scroll-proportion="0.11568123" vertical-offset="0" max-vertical-offset="1215">
+        <state line="9" column="143" selection-start="370" selection-end="370" vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="778">
           <folding>
-            <element signature="e#22#31#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,7 +1,7 @@
-__author__ = 'wagnerr'
-
 from masterthesis import *
 import os
+
+__author__ = 'wagnerr'
 
 constants = {}
 constants["working_dir"] = "/mnt/home/wagnerr/master/Archaea"

@@ -40,7 +40,7 @@
       <file leaf-file-name="queue_main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queue_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="95" selection-start="2758" selection-end="2758" vertical-scroll-proportion="0.8899204" vertical-offset="214" max-vertical-offset="1020">
+            <state line="59" column="87" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.8899204" vertical-offset="214" max-vertical-offset="1020">
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -529,7 +529,11 @@
       <created>1391353145131</created>
       <updated>1391353145131</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updating the queue submit stuff">
+      <created>1391353259939</created>
+      <updated>1391353259939</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -676,7 +680,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queue_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="95" selection-start="2758" selection-end="2758" vertical-scroll-proportion="0.8899204" vertical-offset="214" max-vertical-offset="1020">
+        <state line="59" column="87" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.8899204" vertical-offset="214" max-vertical-offset="1020">
           <folding>
             <element signature="e#22#31#0" expanded="true" />
           </folding>

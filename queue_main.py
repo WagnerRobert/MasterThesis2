@@ -4,7 +4,7 @@ from masterthesis import *
 __author__ = 'wagnerr'
 
 constants = {}
-constants["working_dir"] = "/mnt/home/wagnerr/master/Archaea"
+constants["working_dir"] = "/mnt/home/wagnerr/master/Bact"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -45,7 +45,18 @@ def queue_blast():
             blastProtein(clean_name, constants, overwrite, queue)
             #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
 
-#queue_blast()
+
+def get_fasta_files():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            profileProteines = blastProtein(clean_name, constants, overwrite, queue)
+            print "\t\tcollecting fasta sequences to build mfasta file from"
+            wget_fasta(profileProteines, constants, overwrite)
 
 def queue_uniqueprot():
     for svm in sorted(kmerlist):
@@ -56,8 +67,10 @@ def queue_uniqueprot():
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)
             profileProteines = blastProtein(clean_name, constants, overwrite, queue)
-            print "\t\tcollecting fasta sequences to build mfasta file from and clean it with uniqueprot"
-            print "\t\tthis can take some time if the sequences aren't saved to disk already"
+            print "\t\tbuild mfasta file and clean it with uniqueprot"
             build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
 
-queue_uniqueprot()
+
+queue_blast()
+#get_fasta_files()
+#queue_uniqueprot()

@@ -43,7 +43,7 @@ def blastProtein(protein, constants, overwrite, queue):
                 if tmp[1].split('|')[1] not in ProfileProteines:
                     ProfileProteines.append(tmp[1].split('|')[1])
             else:
-                print "\t\t\tignoring pdb entry " + tmp[1]
+                print "\t\t\tignoring pdb entry " + tmp[1].rstrip()
         f.close()
 
     #tab_blast()

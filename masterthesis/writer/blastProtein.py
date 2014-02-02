@@ -32,7 +32,7 @@ def blastProtein(protein, constants, overwrite, queue):
                 if line.startswith(">tr") or line.startswith(">sp"):
                     ProfileProteines.append(line.split('|')[1])
                 elif line.startswith(">"):
-                    print "\t\t\tignoring entry " + line
+                    print "\t\t\tignoring entry " + line.rstrip()
         f.close()
 
     def tab_blast():

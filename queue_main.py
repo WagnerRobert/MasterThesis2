@@ -31,9 +31,15 @@ tree = reader.read_treefile(constants)
 kmerlist = reader.read_picklefile("kmers", constants)
 #checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfiles
 
+overwrite = False
+queue = True
 
 for svm in sorted(kmerlist):
     print svm
     for protein in sorted(kmerlist[svm]):
         print "\t" + protein
-        processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
+        clean_name = protein.split('#')[0]
+        foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+        sequence = get_fasta(clean_name, entry, constants, overwrite)
+        blastProtein(clean_name, constants, overwrite, queue)
+        #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)

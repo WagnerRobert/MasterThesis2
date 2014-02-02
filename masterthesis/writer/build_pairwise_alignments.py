@@ -23,12 +23,12 @@ def build_pairwise_alignments(protein, constants, overwrite):
     for line in f:
         if line.startswith("# 1: "):
             first = line.split(':')[1].strip()
-            print first
+            #print first
         elif line == "\n" or line.startswith(' '):
             pass
         elif line.startswith("# 2: "):
             second = line.split(':')[1].strip()
-            print second
+            #print second
             if first is not second:
                 pairwise[(first,second)] = ["",""]
         elif first is not second:

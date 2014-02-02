@@ -3,27 +3,32 @@ import subprocess
 
 __author__ = 'delur'
 
-def blastProtein(protein, constants, overwrite):
+def blastProtein(protein, constants, overwrite, queue):
+    blast_call = [constants["blast_tool"], '-F', 'F', '-a', '1', '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat']
     if not os.path.exists(constants["blast_dir"]):
         os.makedirs(constants["blast_dir"])
     if os.path.isfile(os.path.join(constants["blast_dir"], protein + ".blast")):
         if overwrite:
-            subprocess.call([constants["blast_tool"], '-F', 'F', '-a', '1', '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])
+            subprocess.call(["qsub"]+blast_call if queue else blast_call)
+            if queue:
+                return
             #subprocess.call([constants["blast_tool"], '-F', 'F', '-a', constants["num_cores"], '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-m', '8', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])
     else:
-        subprocess.call([constants["blast_tool"], '-F', 'F', '-a', '1', '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])
+        subprocess.call(["qsub"]+blast_call if queue else blast_call)
+        if queue:
+            return
         #subprocess.call([constants["blast_tool"], '-F', 'F', '-a', constants["num_cores"], '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-m', '8', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])
 
     ProfileProteines = []
 
     def text_blast():
         f = open (os.path.join(constants["blast_dir"], protein + ".blast"), 'r')
-        run3 = False
+        run = False
 
         for line in f:
-            if "round 3" in line:
-                run3 = True
-            if run3:
+            if "round 3" in line or "CONVERGED!" in line:
+                run = True
+            if run:
                 if line.startswith(">tr") or line.startswith(">sp"):
                     ProfileProteines.append(line.split('|')[1])
                 elif line.startswith(">"):

@@ -78,9 +78,19 @@ def match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlisting)
                 else:
                     matches[second] = []
                 span = match.span()
-                start = mapping[span[0]-1]
-                end = mapping[span[1]-1]
-
+                text = match.group()
+                start, end = span
+                end = end -1
+                for j in range(span[0],span[1]):
+                    if mapping[start] == -1:
+                        start += 1
+                for j in range(start,span[1]):
+                    if mapping[end] == -1:
+                        end -= 1
+                if start > end or mapping[end] == -1:
+                    break
+                start = mapping[start]
+                end = mapping[end]
                 matches[second].append( (start,end) )
                 i = match.start()+1
             else:

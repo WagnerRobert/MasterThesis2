@@ -48,14 +48,21 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     pos_count = [0] * len(sequence)
     for protein in pos_matches:
         for start,end in pos_matches[protein]:
+            if start == -1:
+                print "start = " + str(start)
+                sys.exit()
+            if end == -1:
+                print "end = " + str(end)
+                sys.exit()
+
             for j in range(start, end):
                 pos_count[j] += 1
 
     neg_count = [0] * len(sequence)
-    print neg_matches
-    for start,end in neg_matches:
-        for j in range(start, end):
-            neg_count[j] += 1
+    for protein in neg_matches:
+        for start,end in neg_matches[protein]:
+            for j in range(start, end):
+                neg_count[j] += 1
 
     pos_count_noGaps = []
     neg_count_noGaps = []
@@ -204,6 +211,7 @@ def processProtein(name, kmerlists, result_info, tree, constants):
 
     clean_name = name.split('#')[0]
     overwrite = False
+    queue = True
     print "\t\tgetting Uniprot entry..."
     foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
     print "\t\tfinished"
@@ -212,7 +220,7 @@ def processProtein(name, kmerlists, result_info, tree, constants):
         return
     sequence = get_fasta(clean_name, entry, constants, overwrite)
     print "\t\tblasting Protein against Big_80..." + str(datetime.datetime.now().time())
-    profileProteines = blastProtein(clean_name, constants, overwrite)
+    profileProteines = blastProtein(clean_name, constants, overwrite, queue)
     print "\t\tfinished "  + str(datetime.datetime.now().time())
     print "\t\tloading fasta Files from Uniprot, building mfasta file, then cleaning it with uniqueprot"
     build_mfasta(clean_name, sequence, profileProteines, constants, overwrite)

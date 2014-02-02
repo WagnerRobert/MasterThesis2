@@ -1,6 +1,7 @@
 __author__ = 'delur'
 
 def checkOrder(svm_dict, result):
+#    print svm_dict
     sum_list = []
 
     for protein in svm_dict:

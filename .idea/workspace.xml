@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" afterPath="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MasterThesis2.iws" />
@@ -28,10 +29,8 @@
       <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="690">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,10 +38,8 @@
       <file leaf-file-name="queue_main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queue_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="19" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1215">
-              <folding>
-                <element signature="e#22#31#0" expanded="true" />
-              </folding>
+            <state line="74" column="7" selection-start="3309" selection-end="3309" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1200">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -50,7 +47,7 @@
       <file leaf-file-name="wget_fasta.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="143" selection-start="370" selection-end="370" vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="778">
+            <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17307693" vertical-offset="0" max-vertical-offset="780">
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -61,7 +58,7 @@
       <file leaf-file-name="kmer_file.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+            <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="885">
               <folding />
             </state>
           </provider>
@@ -70,7 +67,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="40" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+            <state line="10" column="40" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300">
               <folding />
             </state>
           </provider>
@@ -80,9 +77,7 @@
         <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="225" column="8" selection-start="7261" selection-end="7261" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,7 +85,7 @@
       <file leaf-file-name="build_mfasta.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_mfasta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="19" selection-start="145" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
+            <state line="9" column="19" selection-start="145" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="990">
               <folding />
             </state>
           </provider>
@@ -99,7 +94,7 @@
       <file leaf-file-name="build_pairwise_alignments.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_pairwise_alignments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="31" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="840">
+            <state line="31" column="31" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="855">
               <folding />
             </state>
           </provider>
@@ -117,7 +112,7 @@
       <file leaf-file-name="blastProtein.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="12" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="975">
+            <state line="10" column="21" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
               <folding />
             </state>
           </provider>
@@ -270,12 +265,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -546,14 +541,17 @@
       <created>1391367893351</created>
       <updated>1391367893351</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="updating the queue submit stuff">
+      <created>1391368360177</created>
+      <updated>1391368360177</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="953" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -568,6 +566,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -647,19 +646,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="12" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="225" column="8" selection-start="7261" selection-end="7261" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -673,9 +663,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -688,16 +676,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/queue_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="19" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="1215">
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
+        <state line="74" column="7" selection-start="3309" selection-end="3309" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="21" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="143" selection-start="370" selection-end="370" vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="778">
+        <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.17307693" vertical-offset="0" max-vertical-offset="780">
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

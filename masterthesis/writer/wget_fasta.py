@@ -7,7 +7,7 @@ def wget_fasta(profileProteins, constants, overwrite):
     if not os.path.exists(constants["mfasta"]):
         os.makedirs(constants["mfasta"])
     def grabFasta(prot, paths):
-            subprocess.Popen(["wget", "http://www.uniprot.org/uniprot/" + prot + ".fasta", "-O", os.path.join(constants["fasta"], prot+".fa")])
+            subprocess.Popen(["wget", "--no-verbose", "http://www.uniprot.org/uniprot/" + prot + ".fasta", "-O", os.path.join(constants["fasta"], prot+".fa")])
 
     for prot in profileProteins:
         fasta = ""

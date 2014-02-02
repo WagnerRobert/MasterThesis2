@@ -1,6 +1,6 @@
-from masterthesis import *
+#!/usr/bin/env python
 import os
-
+from masterthesis import *
 __author__ = 'wagnerr'
 
 constants = {}

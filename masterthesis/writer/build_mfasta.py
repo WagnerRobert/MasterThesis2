@@ -4,7 +4,8 @@ import subprocess
 
 __author__ = 'delur'
 
-def build_mfasta(protein, sequence, profileProteins, paths, overwrite):
+def build_mfasta(protein, sequence, profileProteins, paths, overwrite, queue):
+    uniqueprot_call = [paths["uniqueprot"], '-i' ,os.path.join(paths["mfasta"], protein + ".mfasta"),'-o',os.path.join(paths["mfasta"], protein + ".clean"), '-t', '20']
     if not os.path.exists(paths["mfasta"]):
         os.makedirs(paths["mfasta"])
     def grabAndWriteFasta(prot, paths):
@@ -46,7 +47,7 @@ def build_mfasta(protein, sequence, profileProteins, paths, overwrite):
         loadFasta(protein, profileProteins, paths)
 
     def clean_mfasta(protein, paths):
-        subprocess.call([paths["uniqueprot"], '-i' ,os.path.join(paths["mfasta"], protein + ".mfasta"),'-o',os.path.join(paths["mfasta"], protein + ".clean"), '-t', '20'])
+        subprocess.call(paths["qsub"]+uniqueprot_call if queue else uniqueprot_call)
         # with open(os.path.join(paths["mfasta"], protein + ".clean"), "r+") as f:
         #         old = f.read()
         #         f.seek(0)

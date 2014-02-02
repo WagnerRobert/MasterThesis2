@@ -34,13 +34,28 @@ kmerlist = reader.read_picklefile("kmers", constants)
 
 overwrite = False
 queue = True
+def queue_blast():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            blastProtein(clean_name, constants, overwrite, queue)
+            #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
 
-for svm in sorted(kmerlist):
-    print svm
-    for protein in sorted(kmerlist[svm]):
-        print "\t" + protein
-        clean_name = protein.split('#')[0]
-        foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
-        sequence = get_fasta(clean_name, entry, constants, overwrite)
-        blastProtein(clean_name, constants, overwrite, queue)
-        #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
+#queue_blast()
+
+def queue_uniqueprot():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            profileProteines = blastProtein(clean_name, constants, overwrite, queue)
+            build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
+
+queue_uniqueprot()

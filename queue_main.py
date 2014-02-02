@@ -56,7 +56,8 @@ def queue_uniqueprot():
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)
             profileProteines = blastProtein(clean_name, constants, overwrite, queue)
-            print "\t\tcollectingfasta sequences to build mfasta file from and clean it with uniqueprot"
+            print "\t\tcollecting fasta sequences to build mfasta file from and clean it with uniqueprot"
+            print "\t\tthis can take some thime if the sequences aren't saved to disk allready"
             build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
 
 queue_uniqueprot()

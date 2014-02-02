@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" afterPath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queue_main.py" afterPath="$PROJECT_DIR$/queue_main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MasterThesis2.iws" />
@@ -25,11 +27,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-              <folding />
+            <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.42525774" vertical-offset="0" max-vertical-offset="776">
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,10 +41,19 @@
       <file leaf-file-name="queue_main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queue_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="35" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
+            <state line="21" column="33" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
               <folding>
-                <element signature="e#24#50#0" expanded="true" />
+                <element signature="e#22#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kmer_file.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="processProtein.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="processProtein.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="222" column="74" selection-start="7029" selection-end="7082" vertical-scroll-proportion="0.6958763" vertical-offset="2790" max-vertical-offset="3630">
+            <state line="218" column="44" selection-start="6830" selection-end="6830" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -92,15 +105,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_mfasta.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_mfasta.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="32" selection-start="2116" selection-end="2116" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="975">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="match_kmers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/match_kmers.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -113,7 +117,7 @@
       <file leaf-file-name="blastProtein.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="16" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="975">
+            <state line="16" column="46" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
               <folding />
             </state>
           </provider>
@@ -149,9 +153,9 @@
         <option value="$PROJECT_DIR$/masterthesis/writer/build_pairwise_alignments.py" />
         <option value="$PROJECT_DIR$/masterthesis/match_kmers.py" />
         <option value="$PROJECT_DIR$/masterthesis/processProtein.py" />
+        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/queue_main.py" />
-        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
       </list>
     </option>
@@ -485,19 +489,35 @@
       <created>1391347059550</created>
       <updated>1391347059550</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updating the queue submit stuff">
+      <created>1391347222890</created>
+      <updated>1391347222890</updated>
+    </task>
+    <task id="LOCAL-00004" summary="updating the queue submit stuff">
+      <created>1391347780124</created>
+      <updated>1391347780124</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updating the queue submit stuff">
+      <created>1391348203887</created>
+      <updated>1391348203887</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updating the queue submit stuff">
+      <created>1391349274587</created>
+      <updated>1391349274587</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="951" extended-state="4" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960339" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15547329" sideWeight="0.51425034" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15547329" sideWeight="0.51425034" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48698884" sideWeight="0.5002636" order="1" side_tool="true" content_ui="tabs" />
@@ -542,11 +562,6 @@
     <entry file="file://$PROJECT_DIR$/masterthesis/reader/pickle_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_mfasta.py">
@@ -596,13 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="44" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
@@ -610,25 +618,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
+    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="16" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="975">
+        <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queue_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="35" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="222" column="74" selection-start="7029" selection-end="7082" vertical-scroll-proportion="0.6958763" vertical-offset="2790" max-vertical-offset="3630">
+        <state line="218" column="44" selection-start="6830" selection-end="6830" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queue_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="33" selection-start="1025" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="46" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.42525774" vertical-offset="0" max-vertical-offset="776">
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

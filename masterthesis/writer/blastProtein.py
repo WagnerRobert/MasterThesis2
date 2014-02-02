@@ -9,12 +9,12 @@ def blastProtein(protein, constants, overwrite, queue):
         os.makedirs(constants["blast_dir"])
     if os.path.isfile(os.path.join(constants["blast_dir"], protein + ".blast")):
         if overwrite:
-            subprocess.call(["qsub"]+blast_call if queue else blast_call)
+            subprocess.call(constants["qsub"]+blast_call if queue else blast_call)
             if queue:
                 return
             #subprocess.call([constants["blast_tool"], '-F', 'F', '-a', constants["num_cores"], '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-m', '8', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])
     else:
-        subprocess.call(["qsub"]+blast_call if queue else blast_call)
+        subprocess.call(constants["qsub"]+blast_call if queue else blast_call)
         if queue:
             return
         #subprocess.call([constants["blast_tool"], '-F', 'F', '-a', constants["num_cores"], '-j', '3', '-b', '3000', '-e', '1', '-h', '1e-3', '-m', '8', '-d', constants["big_80"], '-i', os.path.join(constants["fasta"], protein + ".fa"), '-o', os.path.join(constants["blast_dir"], protein + ".blast"), '-C', 'tmpfile.chk', '-Q', 'tmpfile.blastPsiMat'])

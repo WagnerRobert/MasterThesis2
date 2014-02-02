@@ -19,7 +19,7 @@ constants["num_cores"] = "1"
 constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
-constants["qsub"] = ['qsub', '-b', 'y']
+constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 quant = 0.1
 
 # sets up the directory in which all calculations will be done
@@ -34,13 +34,28 @@ kmerlist = reader.read_picklefile("kmers", constants)
 
 overwrite = False
 queue = True
+def queue_blast():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            blastProtein(clean_name, constants, overwrite, queue)
+            #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
 
-for svm in sorted(kmerlist):
-    print svm
-    for protein in sorted(kmerlist[svm]):
-        print "\t" + protein
-        clean_name = protein.split('#')[0]
-        foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
-        sequence = get_fasta(clean_name, entry, constants, overwrite)
-        blastProtein(clean_name, constants, overwrite, queue)
-        #processProtein(protein, kmerlist[svm][protein], result[protein], tree[svm], constants)
+#queue_blast()
+
+def queue_uniqueprot():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            profileProteines = blastProtein(clean_name, constants, overwrite, queue)
+            build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
+
+queue_uniqueprot()

@@ -223,7 +223,7 @@ def processProtein(name, kmerlists, result_info, tree, constants):
     profileProteines = blastProtein(clean_name, constants, overwrite, queue)
     print "\t\tfinished "  + str(datetime.datetime.now().time())
     print "\t\tloading fasta Files from Uniprot, building mfasta file, then cleaning it with uniqueprot"
-    build_mfasta(clean_name, sequence, profileProteines, constants, overwrite)
+    build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
     print "\t\tfinished " + str(datetime.datetime.now().time())
     print "\t\tcalculating pairwise sequence alignments between query and profile protein sequences with needle"
     #msa = build_msa(clean_name, constants, overwrite)

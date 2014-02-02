@@ -26,7 +26,7 @@ quant = 0.1
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -71,6 +71,6 @@ def queue_uniqueprot():
             build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
 
 
-queue_blast()
-#get_fasta_files()
+#queue_blast()
+get_fasta_files()
 #queue_uniqueprot()

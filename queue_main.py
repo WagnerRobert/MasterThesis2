@@ -71,6 +71,6 @@ def queue_uniqueprot():
             build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
 
 
-queue_blast()
-#get_fasta_files()
+#queue_blast()
+get_fasta_files()
 #queue_uniqueprot()

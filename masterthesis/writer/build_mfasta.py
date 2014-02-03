@@ -8,13 +8,13 @@ def build_mfasta(protein, sequence, profileProteins, paths, overwrite, queue):
     uniqueprot_call = [paths["uniqueprot"], '-i' ,os.path.join(paths["mfasta"], protein + ".mfasta"),'-o',os.path.join(paths["mfasta"], protein + ".clean"), '-t', '20']
     if not os.path.exists(paths["mfasta"]):
         os.makedirs(paths["mfasta"])
-    def grabAndWriteFasta(prot, paths):
+    def grabAndWriteFasta(prot, target_dir):
             response = urllib2.urlopen("http://www.uniprot.org/uniprot/" + prot + ".fasta")
             fasta = response.read()
             if str(fasta) == "":
                 print "\t\t\tDid not find uniprot entry for ProfileProtein: " + prot + " !"
             else:
-                fastafile = open(os.path.join(paths["fasta"], prot+".fa"), 'w')
+                fastafile = open(os.path.join(target_dir, prot+".fa"), 'w')
                 fastafile.write(fasta)
                 fastafile.close()
                 return fasta
@@ -27,15 +27,17 @@ def build_mfasta(protein, sequence, profileProteins, paths, overwrite, queue):
         mfastafile = open(os.path.join(paths["mfasta"], protein+".mfasta"), 'a')
         for prot in profileProteins:
             fasta = ""
-            if os.path.isfile(os.path.join(paths["fasta"], prot + ".fa")):
+            tmp = prot[0]
+            target_dir = os.path.join(paths["fasta"], tmp)
+            if os.path.isfile(os.path.join(target_dir, prot + ".fa")):
                 if overwrite:
-                    fasta = grabAndWriteFasta(prot, paths)
+                    fasta = grabAndWriteFasta(prot, target_dir)
                 else:
-                    fastafile = open(os.path.join(paths["fasta"], prot+".fa"), 'r')
+                    fastafile = open(os.path.join(target_dir, prot+".fa"), 'r')
                     fasta = fastafile.read()
                     fastafile.close()
             else:
-                fasta = grabAndWriteFasta(prot, paths)
+                fasta = grabAndWriteFasta(prot, target_dir)
             if fasta is not None:
                 mfastafile.write(str(fasta))
         mfastafile.close()

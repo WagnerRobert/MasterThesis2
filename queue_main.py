@@ -70,7 +70,13 @@ def queue_uniqueprot():
             print "\t\tbuild mfasta file and clean it with uniqueprot"
             build_mfasta(clean_name, sequence, profileProteines, constants, overwrite, queue)
 
-
+def pairwise():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
 #queue_blast()
 #get_fasta_files()
-queue_uniqueprot()
+#queue_uniqueprot()

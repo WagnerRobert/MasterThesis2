@@ -9,6 +9,7 @@ from writer.getFasta import get_fasta
 from writer.blastProtein import blastProtein
 from writer.build_mfasta import build_mfasta
 from writer.wget_fasta import wget_fasta
+from writer.build_pairwise_alignments import build_pairwise_alignments
 
 import reader
 import writer

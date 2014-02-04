@@ -86,6 +86,10 @@ def doPlots():
         for protein in sorted(kmerlist[svm]):
             print "\t" + protein
             clean_name = protein.split('#')[0]
+            if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
+                pass
+            else:
+                break
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 

@@ -93,7 +93,6 @@ def doPlots():
             kmerlists = kmerlist[svm][protein]
             pro_kmerlist = []
             con_kmerlist = []
-            print result
             if result[protein][0] in tree[svm][0]:
                 pro_kmerlist = kmerlists[1]
                 con_kmerlist = kmerlists[0]

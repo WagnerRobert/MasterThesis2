@@ -1,4 +1,6 @@
 import re
+import sys
+
 __author__ = 'delur'
 
 def match_kmers(kmerlisting, msa):
@@ -47,7 +49,10 @@ def do_mapping(sequence, gapped_sequence):
         if mapping[i] == -1:
             pass
         elif sequence[mapping[i]] is not gapped_sequence[i]:
-            print sequence[mapping[i]] + " fail!! " + gapped_sequence[i]
+            print "Fail!!!"
+            print sequence
+            print gapped_sequence
+            sys.exit()
     return mapping
 
 

@@ -55,7 +55,7 @@ def do_mapping(sequence, gapped_sequence):
         print mapping[i]
         if mapping[i] == -1:
             pass
-        elif sequence[mapping[i]] is not gapped_sequence[i]:
+        elif sequence[mapping[i]] is not gapped_sequence[i] and gapped_sequence[i] is not '-':
             print "Fail!!!"
             print sequence
             print gapped_sequence

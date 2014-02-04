@@ -50,7 +50,7 @@ def do_mapping(sequence, gapped_sequence):
 
     print sequence
     print gapped_sequence
-    for i in range(len(mapping)):
+    for i in range(len(sequence)):
         print i
         print mapping[i]
         if mapping[i] == -1:

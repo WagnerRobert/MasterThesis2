@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import os
 from masterthesis import *
+from masterthesis.writer import create_plot
+
 __author__ = 'wagnerr'
 
 constants = {}
@@ -77,7 +79,32 @@ def pairwise():
             print "\t" + protein
             clean_name = protein.split('#')[0]
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+
+def doPlots():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+            kmerlists = kmerlist[svm][protein]
+            pro_kmerlist = []
+            con_kmerlist = []
+            if result[0] in tree[0]:
+                pro_kmerlist = kmerlists[1]
+                con_kmerlist = kmerlists[0]
+            elif result[0] in tree[1]:
+                pro_kmerlist = kmerlists[0]
+                con_kmerlist = kmerlists[1]
+            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+            create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
 #queue_blast()
 #get_fasta_files()
 #queue_uniqueprot()
-pairwise()
+#pairwise()
+
+doPlots()
+

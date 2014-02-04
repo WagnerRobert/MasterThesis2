@@ -6,3 +6,5 @@ from getFasta import get_fasta
 from blastProtein import blastProtein
 from build_mfasta import build_mfasta
 from build_msa import build_msa
+from createPlot import create_plot
+from createPlot import getFeatures

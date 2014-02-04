@@ -1,4 +1,5 @@
 import os
+import sys
 
 __author__ = 'delur'
 def getFeatures(entry):

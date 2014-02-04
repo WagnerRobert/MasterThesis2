@@ -77,11 +77,38 @@ def match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlisting)
     pattern = pattern[0:len(pattern)-1]
     regex = re.compile(pattern)
 
+
     for first, second in pairwise_alignments:
         mapping = do_mapping(sequence, pairwise_alignments[first,second][0])
         i = 0
         while True:
             match = regex.search(pairwise_alignments[first,second][1], i)
+            if  match:
+                if second in matches:
+                    pass
+                else:
+                    matches[second] = []
+                span = match.span()
+                text = match.group()
+                start, end = span
+                end = end -1
+                for j in range(span[0],span[1]):
+                    if mapping[start] == -1:
+                        start += 1
+                for j in range(start,span[1]):
+                    if mapping[end] == -1:
+                        end -= 1
+                if start > end or mapping[end] == -1:
+                    break
+                start = mapping[start]
+                end = mapping[end]
+                matches[second].append( (start,end) )
+                i = match.start()+1
+            else:
+                break
+
+        while True:
+            match = regex.search(sequence, i)
             if  match:
                 if second in matches:
                     pass

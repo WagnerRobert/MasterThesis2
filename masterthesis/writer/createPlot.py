@@ -125,8 +125,8 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
 
 
 
-    ax.set_yticks( [0,50,100,150,200])
-    ax.set_yticklabels(["0", "50", "100", "150", "200"])
+    ax.set_yticks( [0,50,100])
+    ax.set_yticklabels(["0", "50", "100"])
     ax.yaxis.grid(True)
     #ax.xaxis.grid(True)
 
@@ -190,4 +190,6 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     plt.xlim( plt.xlim()[0], len(seq_noGap)+1)
     #plt.xlim( (i*200,i*200 + 200))
     plt.tight_layout()
-    plt.savefig(os.path.join(paths["pdf"], name + ".pdf"))
+    if not os.path.exists(os.paths.join(paths["pdf"], location)):
+        os.makedirs(os.paths.join(paths["pdf"], location))
+    plt.savefig(os.path.join(os.paths.join(paths["pdf"], location), name + ".pdf"))

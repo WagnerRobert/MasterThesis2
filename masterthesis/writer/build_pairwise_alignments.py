@@ -8,7 +8,8 @@ def build_pairwise_alignments(protein, constants, overwrite):
         os.makedirs(constants["needle_dir"])
 
     def runNeedle(protein, paths):
-        subprocess.call([paths["needle"], '-asequence' ,os.path.join(paths["fasta"], protein + ".fa"),'-bsequence',os.path.join(paths["mfasta"], protein + ".clean"), '-outfile', os.path.join(paths["needle_dir"], protein + ".needle"), '-gapopen', '10.0', '-gapextend', '0.5'])
+        if os.path.isfile(os.path.join(constants["mfasta"], protein + ".clean")):
+            subprocess.call([paths["needle"], '-asequence' ,os.path.join(paths["fasta"], protein + ".fa"),'-bsequence',os.path.join(paths["mfasta"], protein + ".clean"), '-outfile', os.path.join(paths["needle_dir"], protein + ".needle"), '-gapopen', '10.0', '-gapextend', '0.5'])
 
     if os.path.isfile(os.path.join(constants["needle_dir"], protein + ".needle")):
         if overwrite:

@@ -20,9 +20,10 @@ def build_pairwise_alignments(protein, constants, overwrite):
     else:
         runNeedle(protein, constants)
 
+    pairwise = {}
     if os.path.isfile(os.path.join(constants["needle_dir"], protein + ".needle")):
         f = open(os.path.join(constants["needle_dir"], protein + ".needle"), 'r')
-        pairwise = {}
+
         first = "-"
         second = "-"
         for line in f:

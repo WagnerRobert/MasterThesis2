@@ -1,4 +1,5 @@
 import os
+import sys
 
 __author__ = 'delur'
 def getFeatures(entry):
@@ -42,8 +43,11 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
             if end == -1:
                 print "end = " + str(end)
                 sys.exit()
-
-            for j in range(start, end):
+            if end >= len(pos_count):
+                print sequence
+                print len(pos_count)
+                print end
+                for j in range(start, end):
                 pos_count[j] += 1
 
     neg_count = [0] * len(sequence)

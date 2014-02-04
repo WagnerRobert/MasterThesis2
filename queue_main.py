@@ -86,8 +86,9 @@ def doPlots():
         for protein in sorted(kmerlist[svm]):
             print "\t" + protein
             clean_name = protein.split('#')[0]
-            sequence = get_fasta(clean_name, entry, constants, overwrite)
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
             kmerlists = kmerlist[svm][protein]
             pro_kmerlist = []

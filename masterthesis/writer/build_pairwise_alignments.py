@@ -9,10 +9,7 @@ def build_pairwise_alignments(protein, constants, overwrite):
 
     def runNeedle(protein, paths):
         if os.path.isfile(os.path.join(constants["mfasta"], protein + ".clean")):
-            f = open(os.path.join(constants["mfasta"], protein + ".clean"), 'r')
-            text = f.read()
-            print text
-            if text == "":
+            if os.stat(constants["mfasta"], protein + ".clean").st_size == 0:
                 return
             else:
                 subprocess.call([paths["needle"], '-asequence' ,os.path.join(paths["fasta"], protein + ".fa"),'-bsequence',os.path.join(paths["mfasta"], protein + ".clean"), '-outfile', os.path.join(paths["needle_dir"], protein + ".needle"), '-gapopen', '10.0', '-gapextend', '0.5'])
@@ -23,29 +20,30 @@ def build_pairwise_alignments(protein, constants, overwrite):
     else:
         runNeedle(protein, constants)
 
-    f = open(os.path.join(constants["needle_dir"], protein + ".needle"), 'r')
-    pairwise = {}
-    first = "-"
-    second = "-"
-    for line in f:
-        if line.startswith("# 1: "):
-            first = line.split(':')[1].strip()
-            #print first
-        elif line == "\n" or line.startswith(' '):
-            pass
-        elif line.startswith("# 2: "):
-            second = line.split(':')[1].strip()
-            #print second
-            if first is not second:
-                pairwise[(first,second)] = ["",""]
-        elif first is not second:
-            if line[0:13].rstrip() in first:
-                tmp = line.split()
-                pairwise[(first,second)][0] += tmp[2]
-            if line[0:13].rstrip() in second:
-                tmp = line.split()
-                pairwise[(first,second)][1] += tmp[2]
-    f.close()
+    if os.path.isfile(os.path.join(constants["needle_dir"], protein + ".needle")):
+        f = open(os.path.join(constants["needle_dir"], protein + ".needle"), 'r')
+        pairwise = {}
+        first = "-"
+        second = "-"
+        for line in f:
+            if line.startswith("# 1: "):
+                first = line.split(':')[1].strip()
+                #print first
+            elif line == "\n" or line.startswith(' '):
+                pass
+            elif line.startswith("# 2: "):
+                second = line.split(':')[1].strip()
+                #print second
+                if first is not second:
+                    pairwise[(first,second)] = ["",""]
+            elif first is not second:
+                if line[0:13].rstrip() in first:
+                    tmp = line.split()
+                    pairwise[(first,second)][0] += tmp[2]
+                if line[0:13].rstrip() in second:
+                    tmp = line.split()
+                    pairwise[(first,second)][1] += tmp[2]
+        f.close()
 
     # for first,second in pairwise:
         # print first

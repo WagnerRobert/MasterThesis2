@@ -11,6 +11,7 @@ def build_pairwise_alignments(protein, constants, overwrite):
         if os.path.isfile(os.path.join(constants["mfasta"], protein + ".clean")):
             f = open(os.path.join(constants["mfasta"], protein + ".clean"), 'r')
             text = f.read()
+            print text
             if text == "":
                 return
             else:

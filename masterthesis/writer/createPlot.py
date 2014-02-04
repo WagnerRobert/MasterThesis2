@@ -125,8 +125,8 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
 
 
 
-    ax.set_yticks( [0,50,100,150,200])
-    ax.set_yticklabels(["0", "50", "100", "150", "200"])
+    ax.set_yticks( [0,50,100])
+    ax.set_yticklabels(["0", "50", "100"])
     ax.yaxis.grid(True)
     #ax.xaxis.grid(True)
 

@@ -44,13 +44,15 @@ def do_mapping(sequence, gapped_sequence):
             mapping.append(-1)
         else:
             mapping.append(i-gaps)
-    print len(mapping)
-    print len(sequence)
-    print len(gapped_sequence)
+    print "Len Mapping: " + str(len(mapping))
+    print "Len sequence: " + str(len(sequence))
+    print "Len gapped_sequence: " + str(len(gapped_sequence))
+
     print sequence
     print gapped_sequence
     for i in range(len(mapping)):
         print i
+        print mapping[i]
         if mapping[i] == -1:
             pass
         elif sequence[mapping[i]] is not gapped_sequence[i]:

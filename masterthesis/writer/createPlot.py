@@ -186,7 +186,7 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     #for i in range (0,6):
     fig = plt.gcf()
     fig.set_size_inches(2+ (len(x)/10),4)
-    plt.ylim( -10 +ypos, 200)
+    plt.ylim( -10 +ypos, 100)
     plt.xlim( plt.xlim()[0], len(seq_noGap)+1)
     #plt.xlim( (i*200,i*200 + 200))
     plt.tight_layout()

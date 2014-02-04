@@ -47,7 +47,7 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
                 print sequence
                 print len(pos_count)
                 print end
-                for j in range(start, end):
+            for j in range(start, end):
                 pos_count[j] += 1
 
     neg_count = [0] * len(sequence)

@@ -49,7 +49,7 @@ def build_mfasta(protein, sequence, profileProteins, paths, overwrite, queue):
         loadFasta(protein, profileProteins, paths)
 
     def clean_mfasta(protein, paths):
-        subprocess.call(paths["qsub"]+uniqueprot_call if queue else uniqueprot_call)
+        subprocess.call(paths["qsub"] + ["-l", "long=TRUE"] + uniqueprot_call if queue else uniqueprot_call)
         # with open(os.path.join(paths["mfasta"], protein + ".clean"), "r+") as f:
         #         old = f.read()
         #         f.seek(0)

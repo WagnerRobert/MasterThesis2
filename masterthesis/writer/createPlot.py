@@ -48,13 +48,15 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
                 print len(pos_count)
                 print end
             for j in range(start, end):
-                pos_count[j] += 1
+                if j < len(sequence):
+                    pos_count[j] += 1
 
     neg_count = [0] * len(sequence)
     for protein in neg_matches:
         for start,end in neg_matches[protein]:
             for j in range(start, end):
-                neg_count[j] += 1
+                if j < len(sequence):
+                    neg_count[j] += 1
 
     pos_count_noGaps = []
     neg_count_noGaps = []

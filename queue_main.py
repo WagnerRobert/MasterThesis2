@@ -94,10 +94,10 @@ def doPlots():
             pro_kmerlist = []
             con_kmerlist = []
             print result
-            if result[0] in tree[svm][0]:
+            if result[protein][0] in tree[svm][0]:
                 pro_kmerlist = kmerlists[1]
                 con_kmerlist = kmerlists[0]
-            elif result[0] in tree[svm][1]:
+            elif result[protein][0] in tree[svm][1]:
                 pro_kmerlist = kmerlists[0]
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)

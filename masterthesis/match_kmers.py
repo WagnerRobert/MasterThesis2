@@ -52,6 +52,9 @@ def do_mapping(sequence, gapped_sequence):
             print "Fail!!!"
             print sequence
             print gapped_sequence
+            print i
+            print sequence[mapping[i]]
+            print gapped_sequence[i]
             sys.exit()
     return mapping
 

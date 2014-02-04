@@ -12,7 +12,7 @@ def build_pairwise_alignments(protein, constants, overwrite):
             f = open(os.path.join(constants["mfasta"], protein + ".clean"), 'r')
             text = f.read()
             if text == "":
-                pass
+                return
             else:
                 subprocess.call([paths["needle"], '-asequence' ,os.path.join(paths["fasta"], protein + ".fa"),'-bsequence',os.path.join(paths["mfasta"], protein + ".clean"), '-outfile', os.path.join(paths["needle_dir"], protein + ".needle"), '-gapopen', '10.0', '-gapextend', '0.5'])
 

@@ -49,13 +49,14 @@ def do_mapping(sequence, gapped_sequence):
         if mapping[i] == -1:
             pass
         elif sequence[mapping[i]] is not gapped_sequence[i]:
-            print "Fail!!!"
-            print sequence
-            print gapped_sequence
-            print i
-            print sequence[mapping[i]]
-            print gapped_sequence[i]
-            sys.exit()
+            # print "Fail!!!"
+            # print sequence
+            # print gapped_sequence
+            # print i
+            # print sequence[mapping[i]]
+            # print gapped_sequence[i]
+            # sys.exit()
+            pass
     return mapping
 
 

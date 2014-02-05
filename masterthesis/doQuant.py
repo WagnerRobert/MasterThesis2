@@ -20,7 +20,7 @@ def doQuant(kmerlist, quant):
     print posquant
     print total
 
-    while total > posquant and len(posquant) > 0:
+    while total > posquant and len(positive_list) > 0:
         total -= positive_list.pop()[1]
 
     total = 0.0
@@ -31,7 +31,7 @@ def doQuant(kmerlist, quant):
     print negquant
     print total
 
-    while total < negquant and len(negquant) > 0:
+    while total < negquant and len(negative_list) > 0:
         total -= negative_list.pop()[1]
 
     return (positive_list, negative_list)

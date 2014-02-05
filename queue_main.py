@@ -119,7 +119,7 @@ def doQuantCountPlots():
             path = os.path.join(os.path.join(os.path.join(constants["kmer_dir"], "kmerweights"), svm), protein + ".kmerweights.txt")
             for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
                 kmersPerQuant[svm][protein][i] = None
-                kmerlisting = reader.kmer_file(path, quant)
+                kmerlisting = reader.kmer_file(path, i)
                 kmersPerQuant[svm][protein][i] =  len(kmerlisting[0]), len(kmerlisting[1])
                 print str(i) + "\t" + str(len(kmerlisting[0])) + "\t" + str(len(kmerlisting[1]))
 

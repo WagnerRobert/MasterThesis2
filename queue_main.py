@@ -6,7 +6,7 @@ from masterthesis.writer import create_plot
 __author__ = 'wagnerr'
 
 constants = {}
-constants["working_dir"] = "/mnt/home/wagnerr/master/Bact"
+constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/Bact/"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -106,10 +106,27 @@ def doPlots():
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
             create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
+
+def doQuantCountPlots():
+    kmersPerQuant = {}
+    for svm in sorted(kmerlist):
+        kmersPerQuant[svm] = {}
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            kmersPerQuant[svm][protein] = {}
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            path = os.path.join(os.path.join(os.path.join(constants["kmer_dir"], "kmerweights"), svm), protein + ".kmerweights.txt")
+            for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                kmersPerQuant[svm][protein][i] = None
+                kmerlisting = reader.kmer_file(path, quant)
+                print kmerlisting
+                kmersPerQuant[svm][protein][i] =  len(kmerlisting[0]), len(kmerlisting[1])
+
 #queue_blast()
 #get_fasta_files()
 #queue_uniqueprot()
 #pairwise()
 
-doPlots()
+#doPlots()
 

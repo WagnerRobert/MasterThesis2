@@ -129,4 +129,5 @@ def doQuantCountPlots():
 #pairwise()
 
 #doPlots()
+doQuantCountPlots()
 

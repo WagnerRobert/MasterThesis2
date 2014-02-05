@@ -14,9 +14,11 @@ def doQuant(kmerlist, quant):
     positive_list.reverse()
 
     total = 0.0
-    for kmer, value in positive_list:
+    for kmer, value in positive_list :
         total += value
     posquant = quant * total
+    print posquant
+    print total
 
     while total > posquant:
         total -= positive_list.pop()[1]
@@ -25,6 +27,9 @@ def doQuant(kmerlist, quant):
     for kmer, value in negative_list:
         total += value
     negquant = quant * total
+
+    print negquant
+    print total
 
     while total < negquant:
         total -= negative_list.pop()[1]

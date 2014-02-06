@@ -109,9 +109,10 @@ def doPlots():
 
 def doQuantCountPlots():
     kmersPerQuant = {}
+    kmersPerQuantLocationBased = {}
     for svm in sorted(kmerlist):
         kmersPerQuant[svm] = {}
-        print svm
+        #print svm
         for protein in sorted(kmerlist[svm]):
             kmersPerQuant[svm][protein] = {}
             print "\t" + protein
@@ -121,7 +122,50 @@ def doQuantCountPlots():
                 kmersPerQuant[svm][protein][i] = None
                 kmerlisting = reader.kmer_file(path, i)
                 kmersPerQuant[svm][protein][i] =  len(kmerlisting[0]), len(kmerlisting[1])
-                print str(i) + "\t" + str(len(kmerlisting[0])) + "\t" + str(len(kmerlisting[1]))
+                #print str(i) + "\t" + str(len(kmerlisting[0])) + "\t" + str(len(kmerlisting[1]))
+
+    for svm in kmersPerQuant:
+        kmersPerQuantLocationBased[svm] = {}
+        for location in tree[svm]:
+            kmersPerQuantLocationBased[svm][location] = {}
+        for protein in kmersPerQuant[svm]:
+            kmersPerQuantLocationBased[svm][result[protein][0]][protein] = {}
+            if result[protein][0] in tree[svm][0]:
+                for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                    kmersPerQuantLocationBased[svm][result[protein][0]][protein][i] = kmersPerQuant[svm][protein][i][1], kmersPerQuant[svm][protein][i][0]
+            elif result[protein][0] in tree[svm][1]:
+                for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                    kmersPerQuantLocationBased[svm][result[protein][0]][protein][i] = kmersPerQuant[svm][protein][i][0], kmersPerQuant[svm][protein][i][1]
+
+    svm_location_dict = {}
+    for svm in kmersPerQuantLocationBased:
+        svm_location_dict[svm] = {}
+        for location in kmersPerQuantLocationBased[svm]:
+            svm_location_dict[location] = None
+            pos_count = []
+            neg_count = []
+            for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                    pos_count.append(0)
+                    neg_count.append(0)
+            for protein in kmersPerQuantLocationBased[svm][location]:
+                j = 0
+                for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                    pos_count[j] += kmersPerQuantLocationBased[svm][location][protein][i][0]
+                    neg_count[j] += kmersPerQuantLocationBased[svm][location][protein][i][1]
+                    j += 1
+            for i in range(len(pos_count)):
+                pos_count[i] = pos_count[i] / float(len(kmersPerQuantLocationBased[svm][location]) )
+                neg_count[i] = neg_count[i] / float(len(kmersPerQuantLocationBased[svm][location]) )
+
+            svm_location_dict[location] = pos_count, neg_count
+
+    for svm in svm_location_dict:
+        print svm
+        for location in svm_location_dict[svm]:
+            print location
+            print svm_location_dict[svm][location][0]
+            print svm_location_dict[svm][location][1]
+
 
 
 

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eba3685-cf5e-4f26-a578-1c3d3caefdb7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" afterPath="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MasterThesis2.iml" afterPath="$PROJECT_DIR$/.idea/MasterThesis2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/masterthesis/__init__.py" afterPath="$PROJECT_DIR$/masterthesis/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queue_main.py" afterPath="$PROJECT_DIR$/queue_main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MasterThesis2.iws" />
@@ -29,16 +32,36 @@
       <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="690">
+            <state line="22" column="74" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queue_main.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="queue_main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/queue_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="7" selection-start="3309" selection-end="3309" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1200">
+            <state line="210" column="1" selection-start="9635" selection-end="9635" vertical-scroll-proportion="0.83189124" vertical-offset="2897" max-vertical-offset="3706">
+              <folding>
+                <element signature="e#22#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pickle_file.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/reader/pickle_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createPlot.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/writer/createPlot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="96" column="23" selection-start="3121" selection-end="3121" vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="3400">
               <folding />
             </state>
           </provider>
@@ -47,10 +70,8 @@
       <file leaf-file-name="wget_fasta.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="459">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,7 +79,16 @@
       <file leaf-file-name="kmer_file.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="885">
+            <state line="52" column="34" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="935">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pickle_file.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/masterthesis/writer/pickle_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="4" selection-start="116" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
               <folding />
             </state>
           </provider>
@@ -67,16 +97,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="40" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processProtein.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="225" column="8" selection-start="7261" selection-end="7261" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
+            <state line="18" column="46" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
@@ -85,16 +106,7 @@
       <file leaf-file-name="build_mfasta.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_mfasta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="19" selection-start="145" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="990">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build_pairwise_alignments.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_pairwise_alignments.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="31" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="855">
+            <state line="9" column="19" selection-start="145" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
@@ -103,16 +115,7 @@
       <file leaf-file-name="match_kmers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/masterthesis/match_kmers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="0" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1560">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blastProtein.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="64" selection-start="2100" selection-end="2100" vertical-scroll-proportion="0.64705884" vertical-offset="0" max-vertical-offset="975">
+            <state line="50" column="0" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="2380">
               <folding />
             </state>
           </provider>
@@ -148,17 +151,18 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/masterthesis/processProtein.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/build_mfasta.py" />
-        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
-        <option value="$PROJECT_DIR$/queue_main.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/wget_fasta.py" />
         <option value="$PROJECT_DIR$/masterthesis/writer/blastProtein.py" />
+        <option value="$PROJECT_DIR$/masterthesis/__init__.py" />
+        <option value="$PROJECT_DIR$/queue_main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="width" value="1926" />
-    <option name="height" value="953" />
+    <option name="x" value="677" />
+    <option name="y" value="-1200" />
+    <option name="width" value="960" />
+    <option name="height" value="1200" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -186,16 +190,13 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="MasterThesis2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -260,7 +261,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,6 +281,119 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/masterthesis" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/masterthesis/doQuant.py</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/queue_main.py</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -553,24 +666,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="0" width="1926" height="953" extended-state="6" />
+    <frame x="677" y="-1200" width="960" height="1200" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960339" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15498155" sideWeight="0.51425034" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1546875" sideWeight="0.6705298" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48698884" sideWeight="0.5002636" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4857497" sideWeight="0.49973643" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18632959" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -593,35 +706,14 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/result_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/pickle_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/subprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1307" column="0" selection-start="47709" selection-end="47709" vertical-scroll-proportion="0.0" vertical-offset="19605" max-vertical-offset="24120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_msa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="16" selection-start="97" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
-          <folding />
-        </state>
+        <state line="7" column="16" selection-start="97" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/setUp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="36" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
+        <state line="7" column="36" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd_breakpoints.py">
@@ -629,30 +721,16 @@
         <state line="128" column="0" selection-start="4021" selection-end="4021" vertical-scroll-proportion="0.39175257" vertical-offset="1723" max-vertical-offset="2955" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/match_kmers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1410">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="4" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/writer/build_pairwise_alignments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="31" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="855">
+        <state line="31" column="28" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1071">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/processProtein.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="225" column="8" selection-start="7261" selection-end="7261" vertical-scroll-proportion="0.0" vertical-offset="2854" max-vertical-offset="3630">
+        <state line="52" column="8" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="986">
           <folding />
         </state>
       </provider>
@@ -671,33 +749,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="64" selection-start="2100" selection-end="2100" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/match_kmers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2397">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/createPlot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="23" selection-start="3121" selection-end="3121" vertical-scroll-proportion="0.0" vertical-offset="3021" max-vertical-offset="3400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/reader/kmer_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="34" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/writer/pickle_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="4" selection-start="116" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/masterthesis/reader/pickle_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/masterthesis/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="40" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+        <state line="18" column="46" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queue_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="7" selection-start="3309" selection-end="3309" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1200">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/wget_fasta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="53" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+        <state line="210" column="1" selection-start="9635" selection-end="9635" vertical-scroll-proportion="0.83189124" vertical-offset="2897" max-vertical-offset="3706">
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/masterthesis/writer/blastProtein.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="64" selection-start="2100" selection-end="2100" vertical-scroll-proportion="0.64705884" vertical-offset="0" max-vertical-offset="975">
-          <folding />
         </state>
       </provider>
     </entry>

@@ -112,7 +112,7 @@ def doQuantCountPlots():
     kmersPerQuantLocationBased = {}
     for svm in sorted(kmerlist):
         kmersPerQuant[svm] = {}
-        #print svm
+        print svm
         for protein in sorted(kmerlist[svm]):
             kmersPerQuant[svm][protein] = {}
             print "\t" + protein

@@ -231,7 +231,7 @@ def countNumProfProteines():
 
     numProfProtPerLoc = {}
     for protein in numProfProt:
-        print protein
+        #print protein
         if result[protein][0] not in numProfProtPerLoc:
             numProfProtPerLoc[result[protein][0]] = []
         numProfProtPerLoc[result[protein][0]].append( numProfProt[protein])
@@ -245,7 +245,7 @@ def countNumProfProteines():
         maximum = max(numProfProtPerLoc[location])
         minimum = min(numProfProtPerLoc[location])
         L = maximum - minimum
-        plt.hist(numProfProtPerLoc[location], L)
+        plt.hist(numProfProtPerLoc[location], L/5)
 
         # plt.hist(numProfProtPerLoc[location], [0, 10, 100, 250, 500, 750, 1000, 1250, 1500])
         # plt.xticks([0, 10, 100, 250, 500, 750, 1000, 1250, 1500])

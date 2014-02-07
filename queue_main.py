@@ -232,8 +232,8 @@ def countNumProfProteines():
     numProfProtPerLoc = {}
     for protein in numProfProt:
         if result[protein][0] not in numProfProt:
-            numProfProt[result[protein][0]] = []
-        numProfProt[result[protein][0]].append( numProfProt[protein])
+            numProfProtPerLoc[result[protein][0]] = []
+        numProfProtPerLoc[result[protein][0]].append( numProfProt[protein])
 
     for location in numProfProtPerLoc:
         import matplotlib.pyplot as plt

@@ -81,10 +81,11 @@ def pairwise():
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
 
 def doPlots():
+    i = 0
     for svm in sorted(kmerlist):
         print svm
         for protein in sorted(kmerlist[svm]):
-            print "\t" + protein
+            print "\t" + protein + "\t" + str(i)
             clean_name = protein.split('#')[0]
             if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
                 pass
@@ -94,7 +95,6 @@ def doPlots():
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
-            print len(pairwise_alignments.keys())
             kmerlists = kmerlist[svm][protein]
             pro_kmerlist = []
             con_kmerlist = []

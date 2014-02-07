@@ -242,8 +242,8 @@ def countNumProfProteines():
         import matplotlib.pyplot as plt
         plt.clf()
         plt.cla()
-        plt.hist(numProfProtPerLoc[location], [10, 100, 250, 500, 750, 1000, 1250, 1500])
-        plt.xticks([10, 100, 250, 500, 750, 1000, 1250, 1500])
+        plt.hist(numProfProtPerLoc[location], [0, 10, 100, 250, 500, 750, 1000, 1250, 1500])
+        plt.xticks([0, 10, 100, 250, 500, 750, 1000, 1250, 1500])
 
         plt.savefig(os.path.join(constants["pdf"], location+".pdf"))
 

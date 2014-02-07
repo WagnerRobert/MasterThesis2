@@ -146,6 +146,7 @@ def doQuantCountPlots():
                     kmersPerQuantLocationBased[svm][result[protein][0]][protein][i] = kmersPerQuant[svm][protein][i][0], kmersPerQuant[svm][protein][i][1]
 
     svm_location_dict = {}
+    print kmersPerQuantLocationBased.keys()
     for svm in kmersPerQuantLocationBased:
         svm_location_dict[svm] = {}
         for location in kmersPerQuantLocationBased[svm]:

@@ -165,7 +165,7 @@ def doQuantCountPlots():
                 pos_count[i] = pos_count[i] / float(len(kmersPerQuantLocationBased[svm][location]) )
                 neg_count[i] = neg_count[i] / float(len(kmersPerQuantLocationBased[svm][location]) )
 
-            svm_location_dict[location] = pos_count, neg_count
+            svm_location_dict[location] = (pos_count, neg_count)
 
 
     for svm in svm_location_dict:

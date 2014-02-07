@@ -85,6 +85,7 @@ def doPlots():
     for svm in sorted(kmerlist):
         print svm
         for protein in sorted(kmerlist[svm]):
+
             print "\t" + protein + "\t" + str(i)
             clean_name = protein.split('#')[0]
             if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
@@ -107,6 +108,7 @@ def doPlots():
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
             #create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
+            i += 1
 
 def doQuantCountPlots():
     kmersPerQuant = {}

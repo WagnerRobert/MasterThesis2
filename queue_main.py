@@ -167,7 +167,7 @@ def doQuantCountPlots():
 
             svm_location_dict[location] = (pos_count, neg_count)
 
-    print svm_location_dict.keys
+    print svm_location_dict.keys()
     for svm in svm_location_dict:
         print svm
         for location in svm_location_dict[svm]:

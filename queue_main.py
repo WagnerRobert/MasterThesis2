@@ -110,19 +110,24 @@ def doPlots():
 def doQuantCountPlots():
     kmersPerQuant = {}
     kmersPerQuantLocationBased = {}
-    for svm in sorted(kmerlist):
-        kmersPerQuant[svm] = {}
-        print svm
-        for protein in sorted(kmerlist[svm]):
-            kmersPerQuant[svm][protein] = {}
-            print "\t" + protein
-            clean_name = protein.split('#')[0]
-            path = os.path.join(os.path.join(os.path.join(constants["kmer_dir"], "kmerweights"), svm), protein + ".kmerweights.txt")
-            for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
-                kmersPerQuant[svm][protein][i] = None
-                kmerlisting = reader.kmer_file(path, i)
-                kmersPerQuant[svm][protein][i] =  len(kmerlisting[0]), len(kmerlisting[1])
-                #print str(i) + "\t" + str(len(kmerlisting[0])) + "\t" + str(len(kmerlisting[1]))
+
+    if os.path.exists(os.path.join(os.path.join(constants["working_dir"] , "pickles"), "kmercount")):
+        kmersPerQuant = read_picklefile("kmercount", constants)
+    else:
+        for svm in sorted(kmerlist):
+            kmersPerQuant[svm] = {}
+            print svm
+            for protein in sorted(kmerlist[svm]):
+                kmersPerQuant[svm][protein] = {}
+                print "\t" + protein
+                clean_name = protein.split('#')[0]
+                path = os.path.join(os.path.join(os.path.join(constants["kmer_dir"], "kmerweights"), svm), protein + ".kmerweights.txt")
+                for i in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
+                    kmersPerQuant[svm][protein][i] = None
+                    kmerlisting = reader.kmer_file(path, i)
+                    kmersPerQuant[svm][protein][i] =  len(kmerlisting[0]), len(kmerlisting[1])
+                    #print str(i) + "\t" + str(len(kmerlisting[0])) + "\t" + str(len(kmerlisting[1]))
+        write_picklefile(kmersPerQuant, "kmercount", constants)
 
     for svm in kmersPerQuant:
         kmersPerQuantLocationBased[svm] = {}
@@ -159,6 +164,7 @@ def doQuantCountPlots():
 
             svm_location_dict[location] = pos_count, neg_count
 
+
     for svm in svm_location_dict:
         print svm
         for location in svm_location_dict[svm]:
@@ -166,6 +172,32 @@ def doQuantCountPlots():
             print svm_location_dict[svm][location][0]
             print svm_location_dict[svm][location][1]
 
+def calcHitWidth():
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
+                pass
+            else:
+                break
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+
+            pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+            kmerlists = kmerlist[svm][protein]
+            pro_kmerlist = []
+            con_kmerlist = []
+            if result[protein][0] in tree[svm][0]:
+                pro_kmerlist = kmerlists[1]
+                con_kmerlist = kmerlists[0]
+            elif result[protein][0] in tree[svm][1]:
+                pro_kmerlist = kmerlists[0]
+                con_kmerlist = kmerlists[1]
+            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+            print pro_matches
 
 
 
@@ -176,4 +208,5 @@ def doQuantCountPlots():
 
 #doPlots()
 doQuantCountPlots()
+#calcHitWidth()
 

@@ -175,6 +175,11 @@ def doQuantCountPlots():
             print svm_location_dict[svm][location][0]
             print svm_location_dict[svm][location][1]
 
+            x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+            import matplotlib.pyplot as plt
+            plt.plot(x, svm_location_dict[svm][location][0], x, svm_location_dict[svm][location][1])
+            plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
+
 def calcHitWidth():
     for svm in sorted(kmerlist):
         print svm

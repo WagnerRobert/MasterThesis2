@@ -94,7 +94,7 @@ def doPlots():
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
-            print pairwise_alignments
+            print pairwise_alignments.keys()
             kmerlists = kmerlist[svm][protein]
             pro_kmerlist = []
             con_kmerlist = []
@@ -263,4 +263,4 @@ def countNumProfProteines():
 doPlots()
 #doQuantCountPlots()
 #calcHitWidth()
-countNumProfProteines()
+#countNumProfProteines()

@@ -94,6 +94,7 @@ def doPlots():
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+            print pairwise_alignments
             kmerlists = kmerlist[svm][protein]
             pro_kmerlist = []
             con_kmerlist = []
@@ -105,7 +106,7 @@ def doPlots():
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
+            #create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
 
 def doQuantCountPlots():
     kmersPerQuant = {}
@@ -250,6 +251,8 @@ def countNumProfProteines():
         plt.hist(numProfProtPerLoc[location], [0, 10, 100, 250, 500, 750, 1000, 1250, 1500])
         plt.xticks([0, 10, 100, 250, 500, 750, 1000, 1250, 1500])
         plt.title(location + " Total: " + str(len(numProfProtPerLoc[location])))
+        plt.ylabel('Number of Query Proteins')
+        plt.xlabel('Number of ProfileProteins')
         plt.savefig(os.path.join(constants["pdf"], location+".pdf"))
 
 #queue_blast()

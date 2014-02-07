@@ -236,6 +236,7 @@ def countNumProfProteines():
         numProfProtPerLoc[result[protein][0]].append( numProfProt[protein])
 
     for location in numProfProtPerLoc:
+        print numProfProtPerLoc[location]
         import matplotlib.pyplot as plt
         plt.clf()
         plt.cla()

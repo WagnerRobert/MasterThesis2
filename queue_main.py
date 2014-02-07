@@ -179,7 +179,7 @@ def doQuantCountPlots():
             import matplotlib.pyplot as plt
             plt.clf()
             plt.cla()
-            plt.hist(x, svm_location_dict[svm][location][0], x, svm_location_dict[svm][location][1])
+            plt.hist(x, svm_location_dict[svm][location][0],'bo', x, svm_location_dict[svm][location][1], 'ro')
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():

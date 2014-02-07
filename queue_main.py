@@ -179,7 +179,8 @@ def doQuantCountPlots():
             import matplotlib.pyplot as plt
             plt.clf()
             plt.cla()
-            plt.plot(x, svm_location_dict[svm][location][0],'o', color=(0.0, 0.0, 1.0), x, svm_location_dict[svm][location][1], 'o', color=(1.0, 0.0, 0.0))
+            plt.plot(x, svm_location_dict[svm][location][0],'o', color=(0.0, 0.0, 1.0))
+            plt.plot(x, svm_location_dict[svm][location][1], 'o', color=(1.0, 0.0, 0.0))
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():

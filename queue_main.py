@@ -114,6 +114,7 @@ def doQuantCountPlots():
     if os.path.exists(os.path.join(os.path.join(constants["working_dir"] , "pickles"), "kmercount.pkl")):
         kmersPerQuant = read_picklefile("kmercount", constants)
     else:
+        print "fail"
         for svm in sorted(kmerlist):
             kmersPerQuant[svm] = {}
             print svm

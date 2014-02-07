@@ -183,8 +183,9 @@ def doQuantCountPlots():
             ax0.plot(x, svm_location_dict[svm][location][0],'o', color=(0.0, 0.0, 1.0))
             ax0.plot(x, svm_location_dict[svm][location][1], 'o', color=(1.0, 0.0, 0.0))
 
-            ax1.plot(x[0:4], svm_location_dict[svm][location][0][0:4],'o', color=(0.0, 0.0, 1.0))
-            ax1.plot(x[0:4], svm_location_dict[svm][location][1][0:4], 'o', color=(1.0, 0.0, 0.0))
+            ax1.plot(x[0:6], svm_location_dict[svm][location][0][0:6],'o', color=(0.0, 0.0, 1.0))
+            ax1.plot(x[0:6], svm_location_dict[svm][location][1][0:6], 'o', color=(1.0, 0.0, 0.0))
+            ax1.xlim(0.0, 0.5)
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():

@@ -179,7 +179,7 @@ def doQuantCountPlots():
             import matplotlib.pyplot as plt
             plt.clf()
             plt.cla()
-            fig, (ax0, ax1) = plt.subplots(nrows=2, sharex=True)
+            fig, (ax0, ax1) = plt.subplots(nrows=2)
             ax0.plot(x, svm_location_dict[svm][location][0], 'o', color=(0.0, 0.0, 1.0))
             ax0.plot(x, svm_location_dict[svm][location][1], 'o', color=(1.0, 0.0, 0.0))
             ax0.set_xlim(0.0, 1.0)

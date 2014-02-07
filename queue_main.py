@@ -187,6 +187,11 @@ def doQuantCountPlots():
             ax1.plot(x[0:6], svm_location_dict[svm][location][0][0:6],'o', color=(0.0, 0.0, 1.0))
             ax1.plot(x[0:6], svm_location_dict[svm][location][1][0:6], 'o', color=(1.0, 0.0, 0.0))
             ax1.set_xlim(0.0, 0.5)
+
+            ax = plt.gca()
+            ax.yaxis.grid(True)
+            ax.xaxis.grid(True)
+
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():

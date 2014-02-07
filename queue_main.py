@@ -221,7 +221,28 @@ def calcHitWidth():
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
             print pro_matches
 
+def countNumProfProteines():
+    f = open(os.path.join(constants["working_dir"],"numProfProts.txt" ) , 'r')
+    numProfProt = {}
+    for line in f:
+        tmp = line.split(':')
+        numProfProt[tmp[0].split('.')[0]] = int(tmp[1])
+    f.close()
 
+    numProfProtPerLoc = {}
+    for protein in numProfProt:
+        if result[protein][0] not in numProfProt:
+            numProfProt[result[protein][0]] = []
+        numProfProt[result[protein][0]].append( numProfProt[protein])
+
+    for location in numProfProtPerLoc:
+        import matplotlib.pyplot as plt
+        plt.clf()
+        plt.cla()
+
+        plt.hist(numProfProtPerLoc[location])
+
+        plt.savefig(os.path.join(constants["pdf"], location+".pdf"))
 
 #queue_blast()
 #get_fasta_files()
@@ -229,6 +250,6 @@ def calcHitWidth():
 #pairwise()
 
 #doPlots()
-doQuantCountPlots()
+#doQuantCountPlots()
 #calcHitWidth()
-
+countNumProfProteines()

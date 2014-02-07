@@ -133,8 +133,9 @@ def doQuantCountPlots():
     for svm in kmersPerQuant:
         kmersPerQuantLocationBased[svm] = {}
         for location in tree[svm]:
-            print location
-            kmersPerQuantLocationBased[svm][location] = {}
+            tmp = location.split(',')
+            for split_location in tmp:
+                kmersPerQuantLocationBased[svm][location] = {}
         for protein in kmersPerQuant[svm]:
             kmersPerQuantLocationBased[svm][result[protein][0]][protein] = {}
             if result[protein][0] in tree[svm][0]:

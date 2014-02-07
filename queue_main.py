@@ -171,7 +171,7 @@ def doQuantCountPlots():
     for svm in svm_location_dict:
         print svm
         for location in svm_location_dict[svm]:
-            print location
+            print "\t" + location
             print svm_location_dict[svm][location]
             print svm_location_dict[svm][location][0]
             print svm_location_dict[svm][location][1]

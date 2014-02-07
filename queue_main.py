@@ -241,8 +241,9 @@ def countNumProfProteines():
         import matplotlib.pyplot as plt
         plt.clf()
         plt.cla()
-
-        plt.hist(numProfProtPerLoc[location])
+        minimum = min(numProfProtPerLoc[location])
+        maximum = max(numProfProtPerLoc[location])
+        plt.hist(numProfProtPerLoc[location], 20)
 
         plt.savefig(os.path.join(constants["pdf"], location+".pdf"))
 

@@ -238,7 +238,7 @@ def countNumProfProteines():
 
     for location in numProfProtPerLoc:
         print location
-        print numProfProtPerLoc[location]
+        print sorted(numProfProtPerLoc[location])
         import matplotlib.pyplot as plt
         plt.clf()
         plt.cla()

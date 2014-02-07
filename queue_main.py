@@ -232,7 +232,7 @@ def countNumProfProteines():
     numProfProtPerLoc = {}
     for protein in numProfProt:
         print protein
-        if result[protein][0] not in numProfProt:
+        if result[protein][0] not in numProfProtPerLoc:
             numProfProtPerLoc[result[protein][0]] = []
         numProfProtPerLoc[result[protein][0]].append( numProfProt[protein])
 

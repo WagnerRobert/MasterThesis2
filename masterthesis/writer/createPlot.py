@@ -72,8 +72,8 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
             seq_noGap += sequence[i]
 
     for i in range(len(pos_count_noGaps)):
-        pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
-        neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
+        pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / float(numProfileProteins)
+        neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / float(numProfileProteins)
 
     # positions_above_50 = []
     # for i in range(len(pos_count_noGaps)):

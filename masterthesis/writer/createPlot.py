@@ -188,4 +188,5 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     plt.tight_layout()
     if not os.path.exists(os.path.join(svm,(os.path.join(paths["pdf"], location)))):
         os.makedirs(os.path.join(svm,(os.path.join(paths["pdf"], location))))
+    print os.path.join(os.path.join(svm,(os.path.join(paths["pdf"], location))), name + ".pdf")
     plt.savefig(os.path.join(os.path.join(svm,(os.path.join(paths["pdf"], location))), name + ".pdf"))

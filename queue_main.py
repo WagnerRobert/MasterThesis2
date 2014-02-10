@@ -228,35 +228,39 @@ def calcHitWidth():
             #print pro_matches
 
             pos_count = None
-            pos_count_noGaps = []
+            pos_count_noGaps = [0] * len(sequence)
             neg_count = None
-            neg_count_noGaps = []
+            neg_count_noGaps = [0] * len(sequence)
 
             print pro_matches
 
             for prot in pro_matches:
-                match_seq , start, end = pro_matches[prot]
-                pos_count = [0] * len(match_seq)
-                for j in range(start, end):
-                    if j < len(match_seq):
-                        pos_count[j] += 1
-                for i in range(len(match_seq)):
-                    if match_seq[i] == '-':
-                        pass
-                    else:
-                        pos_count_noGaps.append(pos_count[i])
+                for match_seq , start, end in pro_matches[prot]:
+                    pos_count = [0] * len(match_seq)
+                    for j in range(start, end):
+                        if j < len(match_seq):
+                            pos_count[j] += 1
+                    x = 0
+                    for i in range(len(match_seq)):
+                        if match_seq[i] == '-':
+                            pass
+                        else:
+                            pos_count_noGaps[x] += pos_count[i]
+                            x += 1
 
             for prot in con_matches:
-                match_seq , start, end = pro_matches[prot]
-                neg_count = [0] * len(match_seq)
-                for j in range(start, end):
-                    if j < len(match_seq):
-                        neg_count[j] += 1
-                for i in range(len(match_seq)):
-                    if match_seq[i] == '-':
-                        pass
-                    else:
-                        neg_count_noGaps.append(neg_count[i])
+                for match_seq , start, end in con_matches[prot]:
+                    neg_count = [0] * len(match_seq)
+                    for j in range(start, end):
+                        if j < len(match_seq):
+                            neg_count[j] += 1
+                    x = 0
+                    for i in range(len(match_seq)):
+                        if match_seq[i] == '-':
+                            pass
+                        else:
+                            neg_count_noGaps[x] += neg_count[i]
+                            x += 1
 
             numProfileProteins =  float(len(pairwise_alignments))
             print numProfileProteins

@@ -189,5 +189,5 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     pdfpath = os.path.join(os.path.join(paths["pdf"], svm), location)
     if not os.path.exists(pdfpath):
         os.makedirs(pdfpath)
-    print os.path.join(pdfpath, name + ".pdf")
+    #print os.path.join(pdfpath, name + ".pdf")
     plt.savefig(os.path.join(pdfpath, name + ".pdf"))

@@ -108,7 +108,7 @@ def doPlots():
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
+            create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants, svm)
             i += 1
 
 def doQuantCountPlots():
@@ -239,6 +239,7 @@ def calcHitWidth():
                             neg_count[j] += 1
 
             numProfileProteins =  float(len(pairwise_alignments))
+            print numProfileProteins
             for i in range(len(pos_count)):
                 pos_count[i] = pos_count[i] * 100 / numProfileProteins
                 pos_count[i] = pos_count[i] * 100 / numProfileProteins

@@ -232,7 +232,6 @@ def calcHitWidth():
             neg_count = None
             neg_count_noGaps = [0] * len(sequence)
 
-            print pro_matches
 
             for prot in pro_matches:
                 for match_seq , start, end in pro_matches[prot]:
@@ -247,8 +246,6 @@ def calcHitWidth():
                         if match_seq[i] == '-':
                             pass
                         else:
-                            print x
-                            print len(sequence)
                             pos_count_noGaps[x] += pos_count[i]
                             x += 1
 
@@ -269,7 +266,6 @@ def calcHitWidth():
                             x += 1
 
             numProfileProteins =  float(len(pairwise_alignments))
-            print numProfileProteins
             for i in range(len(sequence)):
                 pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
                 neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins

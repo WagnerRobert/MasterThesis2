@@ -232,6 +232,8 @@ def calcHitWidth():
             neg_count = None
             neg_count_noGaps = []
 
+            print pro_matches
+
             for prot in pro_matches:
                 match_seq , start, end = pro_matches[prot]
                 pos_count = [0] * len(match_seq)

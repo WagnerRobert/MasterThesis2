@@ -208,7 +208,7 @@ def calcHitWidth():
             if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
                 pass
             else:
-                break
+                continue
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 

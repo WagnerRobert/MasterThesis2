@@ -15,7 +15,7 @@ from writer.createPlot import getFeatures
 #from match_kmers import match_kmers_pairwise
 #from match_kmers import do_mapping
 #from match_kmers import match_kmers
-#from writer.pickle_file import write_picklefile
+from writer.pickle_file import write_picklefile
 from reader.pickle_file import read_picklefile
 
 from new_match_kmers import match_kmers_pairwise

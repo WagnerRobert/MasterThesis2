@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 from masterthesis import *
 from masterthesis.writer import create_plot
 
@@ -107,7 +108,7 @@ def doPlots():
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            #create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
+            create_plot((clean_name,sequence), pro_matches, con_matches, entry, len(pairwise_alignments), result, constants)
             i += 1
 
 def doQuantCountPlots():
@@ -223,6 +224,27 @@ def calcHitWidth():
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
             print pro_matches
+
+            pos_count = [0] * len(sequence)
+            for prot in pro_matches:
+                for start,end in pro_matches[prot]:
+                    for j in range(start, end):
+                        if j < len(sequence):
+                            pos_count[j] += 1
+            neg_count = [0] * len(sequence)
+            for prot in con_matches:
+                for start,end in con_matches[prot]:
+                    for j in range(start, end):
+                        if j < len(sequence):
+                            neg_count[j] += 1
+
+            numProfileProteins =  len(pairwise_alignments)
+            for i in range(len(pos_count)):
+                pos_count[i] = pos_count[i] * 100 / numProfileProteins
+                pos_count[i] = pos_count[i] * 100 / numProfileProteins
+
+            print pos_count
+            sys.exit()
 
 def countNumProfProteines():
     f = open(os.path.join(constants["working_dir"],"numProfProts.txt" ) , 'r')

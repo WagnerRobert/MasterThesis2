@@ -264,5 +264,5 @@ def countNumProfProteines():
 
 #doPlots()
 #doQuantCountPlots()
-#calcHitWidth()
-countNumProfProteines()
+calcHitWidth()
+#countNumProfProteines()

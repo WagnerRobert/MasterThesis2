@@ -310,7 +310,7 @@ def countNumProfProteines():
 #queue_uniqueprot()
 #pairwise()
 
-#doPlots()
+doPlots()
 #doQuantCountPlots()
-calcHitWidth()
+#calcHitWidth()
 #countNumProfProteines()

@@ -223,8 +223,8 @@ def calcHitWidth():
                 pro_kmerlist = kmerlists[0]
                 con_kmerlist = kmerlists[1]
             #pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            pro_matches = new_match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            con_matches = new_match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
             #print pro_matches
 
             pos_count = None

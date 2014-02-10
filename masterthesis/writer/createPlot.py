@@ -28,48 +28,90 @@ def getFeatures(entry):
 
     return features
 
-def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProfileProteins, resultfile_info, paths, svm):
+def create_plot(query_protein_sequence, pro_matches, con_matches, entry, numProfileProteins, resultfile_info, paths, svm):
     name = query_protein_sequence[0]
     print name
     sequence = query_protein_sequence[1]
     #print sequence
 
-    pos_count = [0] * len(sequence)
-    for protein in pos_matches:
-        for start,end in pos_matches[protein]:
-            if start == -1:
-                print "start = " + str(start)
-                sys.exit()
-            if end == -1:
-                print "end = " + str(end)
-                sys.exit()
+    pos_count = None
+    pos_count_noGaps = [0] * len(sequence)
+    neg_count = None
+    neg_count_noGaps = [0] * len(sequence)
+
+
+    for prot in pro_matches:
+        for match_seq , start, end in pro_matches[prot]:
+            pos_count = [0] * len(match_seq)
             for j in range(start, end):
-                if j < len(sequence):
+                if j < len(match_seq):
                     pos_count[j] += 1
+            x = 0
+            for i in range(len(match_seq)):
+                if x == len(sequence):
+                    break
+                if match_seq[i] == '-':
+                    pass
+                else:
+                    pos_count_noGaps[x] += pos_count[i]
+                    x += 1
 
-    neg_count = [0] * len(sequence)
-    for protein in neg_matches:
-        for start,end in neg_matches[protein]:
+    for prot in con_matches:
+        for match_seq , start, end in con_matches[prot]:
+            neg_count = [0] * len(match_seq)
             for j in range(start, end):
-                if j < len(sequence):
+                if j < len(match_seq):
                     neg_count[j] += 1
+            x = 0
+            for i in range(len(match_seq)):
+                if x == len(sequence):
+                    break
+                if match_seq[i] == '-':
+                    pass
+                else:
+                    neg_count_noGaps[x] += neg_count[i]
+                    x += 1
 
-    pos_count_noGaps = []
-    neg_count_noGaps = []
-    seq_noGap = ""
-    text = ""
     for i in range(len(sequence)):
-        if sequence[i] == '-':
-            pass
-        else:
-            text += str(pos_count[i])
-            pos_count_noGaps += [pos_count[i]]
-            neg_count_noGaps += [neg_count[i]]
-            seq_noGap += sequence[i]
+        pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
+        neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
 
-    for i in range(len(pos_count_noGaps)):
-        pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / float(numProfileProteins)
-        neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / float(numProfileProteins)
+    # pos_count = [0] * len(sequence)
+    # for protein in pos_matches:
+    #     for start,end in pos_matches[protein]:
+    #         if start == -1:
+    #             print "start = " + str(start)
+    #             sys.exit()
+    #         if end == -1:
+    #             print "end = " + str(end)
+    #             sys.exit()
+    #         for j in range(start, end):
+    #             if j < len(sequence):
+    #                 pos_count[j] += 1
+    #
+    # neg_count = [0] * len(sequence)
+    # for protein in neg_matches:
+    #     for start,end in neg_matches[protein]:
+    #         for j in range(start, end):
+    #             if j < len(sequence):
+    #                 neg_count[j] += 1
+    #
+    # pos_count_noGaps = []
+    # neg_count_noGaps = []
+    # seq_noGap = ""
+    # text = ""
+    # for i in range(len(sequence)):
+    #     if sequence[i] == '-':
+    #         pass
+    #     else:
+    #         text += str(pos_count[i])
+    #         pos_count_noGaps += [pos_count[i]]
+    #         neg_count_noGaps += [neg_count[i]]
+    #         seq_noGap += sequence[i]
+    #
+    # for i in range(len(pos_count_noGaps)):
+    #     pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / float(numProfileProteins)
+    #     neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / float(numProfileProteins)
 
     # positions_above_50 = []
     # for i in range(len(pos_count_noGaps)):
@@ -95,7 +137,7 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
 
     import matplotlib.pyplot as plt
 
-    x = range(1, len(seq_noGap)+1)
+    x = range(1, len(sequence)+1)
     plt.clf()
     plt.cla()
     #print len(x)
@@ -116,7 +158,7 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     ax = plt.gca()
 
 
-    plt.xticks(x, seq_noGap)
+    plt.xticks(x, sequence)
 
 
 
@@ -183,7 +225,7 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     fig = plt.gcf()
     fig.set_size_inches(2+ (len(x)/10),4)
     plt.ylim( -10 +ypos, 100)
-    plt.xlim( plt.xlim()[0], len(seq_noGap)+1)
+    plt.xlim( plt.xlim()[0], len(sequence)+1)
     #plt.xlim( (i*200,i*200 + 200))
     plt.tight_layout()
     pdfpath = os.path.join(os.path.join(paths["pdf"], svm), location)

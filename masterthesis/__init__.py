@@ -12,11 +12,13 @@ from writer.wget_fasta import wget_fasta
 from writer.build_pairwise_alignments import build_pairwise_alignments
 from writer.createPlot import create_plot
 from writer.createPlot import getFeatures
-from match_kmers import match_kmers_pairwise
-from match_kmers import do_mapping
-from match_kmers import match_kmers
-from writer.pickle_file import write_picklefile
+#from match_kmers import match_kmers_pairwise
+#from match_kmers import do_mapping
+#from match_kmers import match_kmers
+#from writer.pickle_file import write_picklefile
 from reader.pickle_file import read_picklefile
+
+from new_match_kmers import match_kmers_pairwise
 
 import reader
 import writer

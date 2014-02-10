@@ -222,30 +222,47 @@ def calcHitWidth():
             elif result[protein][0] in tree[svm][1]:
                 pro_kmerlist = kmerlists[0]
                 con_kmerlist = kmerlists[1]
-            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            print pro_matches
+            #pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            pro_matches = new_match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            con_matches = new_match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+            #print pro_matches
 
-            pos_count = [0] * len(sequence)
+            pos_count = None
+            pos_count_noGaps = []
+            neg_count = None
+            neg_count_noGaps = []
+
             for prot in pro_matches:
-                for start,end in pro_matches[prot]:
-                    for j in range(start, end):
-                        if j < len(sequence):
-                            pos_count[j] += 1
-            neg_count = [0] * len(sequence)
+                match_seq , start, end = pro_matches[prot]
+                pos_count = [0] * len(match_seq)
+                for j in range(start, end):
+                    if j < len(match_seq):
+                        pos_count[j] += 1
+                for i in range(len(match_seq)):
+                    if match_seq[i] == '-':
+                        pass
+                    else:
+                        pos_count_noGaps.append(pos_count[i])
+
             for prot in con_matches:
-                for start,end in con_matches[prot]:
-                    for j in range(start, end):
-                        if j < len(sequence):
-                            neg_count[j] += 1
+                match_seq , start, end = pro_matches[prot]
+                neg_count = [0] * len(match_seq)
+                for j in range(start, end):
+                    if j < len(match_seq):
+                        neg_count[j] += 1
+                for i in range(len(match_seq)):
+                    if match_seq[i] == '-':
+                        pass
+                    else:
+                        neg_count_noGaps.append(neg_count[i])
 
             numProfileProteins =  float(len(pairwise_alignments))
             print numProfileProteins
-            for i in range(len(pos_count)):
-                pos_count[i] = pos_count[i] * 100 / numProfileProteins
-                pos_count[i] = pos_count[i] * 100 / numProfileProteins
+            for i in range(len(sequence)):
+                pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
+                neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
 
-            print pos_count
+            print pos_count_noGaps[i]
             sys.exit()
 
 def countNumProfProteines():

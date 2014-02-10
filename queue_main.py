@@ -242,6 +242,8 @@ def calcHitWidth():
                             pos_count[j] += 1
                     x = 0
                     for i in range(len(match_seq)):
+                        if x > len(sequence):
+                            break
                         if match_seq[i] == '-':
                             pass
                         else:

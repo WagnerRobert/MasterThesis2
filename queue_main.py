@@ -33,7 +33,7 @@ tree = reader.read_treefile(constants)
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
-#checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfiles
+#checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfile
 
 overwrite = False
 queue = True
@@ -286,7 +286,7 @@ def countNumProfProteines():
 #queue_uniqueprot()
 #pairwise()
 
-doPlots()
+#doPlots()
 #doQuantCountPlots()
-#calcHitWidth()
+calcHitWidth()
 #countNumProfProteines()

@@ -238,7 +238,7 @@ def calcHitWidth():
                         if j < len(sequence):
                             neg_count[j] += 1
 
-            numProfileProteins =  len(pairwise_alignments)
+            numProfileProteins =  float(len(pairwise_alignments))
             for i in range(len(pos_count)):
                 pos_count[i] = pos_count[i] * 100 / numProfileProteins
                 pos_count[i] = pos_count[i] * 100 / numProfileProteins

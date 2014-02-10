@@ -247,6 +247,8 @@ def calcHitWidth():
                         if match_seq[i] == '-':
                             pass
                         else:
+                            print x
+                            print len(sequence)
                             pos_count_noGaps[x] += pos_count[i]
                             x += 1
 

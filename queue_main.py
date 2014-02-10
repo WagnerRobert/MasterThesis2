@@ -82,8 +82,6 @@ def pairwise():
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
 
 def doPlots():
-    print kmerlist["SVM_0"].keys()
-    sys.exit()
     i = 0
     for svm in sorted(kmerlist):
         print svm
@@ -94,6 +92,7 @@ def doPlots():
             if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
                 pass
             else:
+                print "no needle file for " + protein
                 break
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)

@@ -82,6 +82,8 @@ def pairwise():
             pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
 
 def doPlots():
+    print kmerlist["SVM_0"]
+    sys.exit()
     i = 0
     for svm in sorted(kmerlist):
         print svm

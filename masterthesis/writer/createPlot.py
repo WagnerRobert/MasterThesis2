@@ -7,7 +7,7 @@ def getFeatures(entry):
 
     for line in entry:
         if line.startswith("FT   "):
-            print line
+            #print line
             tmp = line.rstrip().split()
             if len(tmp) > 3 :
                 if tmp[1] in features:
@@ -28,11 +28,11 @@ def getFeatures(entry):
 
     return features
 
-def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProfileProteins, resultfile_info, paths):
+def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProfileProteins, resultfile_info, paths, svm):
     name = query_protein_sequence[0]
     print name
     sequence = query_protein_sequence[1]
-    print sequence
+    #print sequence
 
     pos_count = [0] * len(sequence)
     for protein in pos_matches:
@@ -186,6 +186,6 @@ def create_plot(query_protein_sequence, pos_matches, neg_matches, entry, numProf
     plt.xlim( plt.xlim()[0], len(seq_noGap)+1)
     #plt.xlim( (i*200,i*200 + 200))
     plt.tight_layout()
-    if not os.path.exists(os.path.join(paths["pdf"], location)):
-        os.makedirs(os.path.join(paths["pdf"], location))
-    plt.savefig(os.path.join(os.path.join(paths["pdf"], location), name + ".pdf"))
+    if not os.path.exists(os.path.join(svm,(os.path.join(paths["pdf"], location)))):
+        os.makedirs(os.path.join(svm,(os.path.join(paths["pdf"], location))))
+    plt.savefig(os.path.join(os.path.join(svm,(os.path.join(paths["pdf"], location))), name + ".pdf"))

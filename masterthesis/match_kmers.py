@@ -89,6 +89,7 @@ def match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlisting)
                 else:
                     matches[second] = []
 
+                print second
                 print match.span()
                 print match.group()
 

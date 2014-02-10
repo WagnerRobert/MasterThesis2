@@ -93,7 +93,7 @@ def doPlots():
                 pass
             else:
                 print "no needle file for " + protein
-                break
+                continue
             foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
             sequence = get_fasta(clean_name, entry, constants, overwrite)
 

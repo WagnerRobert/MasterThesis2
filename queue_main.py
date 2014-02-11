@@ -200,6 +200,7 @@ def doQuantCountPlots():
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():
+    import matplotlib.pyplot as plt
     svmProteinWdth = { }
 
     if os.path.exists(os.path.join(os.path.join(constants["working_dir"] , "pickles"), "svmProteinWdth.pkl")):
@@ -357,8 +358,15 @@ def calcHitWidth():
             for i in range(len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])):
                 posSumList[i] = posSumList[i] / float(len(svmLocList[svm][location]))
                 negSumList[i] = negSumList[i] / float(len(svmLocList[svm][location]))
-            print posSumList
-            print negSumList
+
+
+            plt.clf()
+            plt.cla()
+            x = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+            plt.plot(x, posSumList, 'o', color=(0.0, 0.0, 1.0))
+            plt.plot(x, negSumList, 'o', color=(1.0, 0.0, 0.0))
+
+            plt.savefig(os.path.join(constants["pdf"], "width"+svm+location+".pdf"))
 
 def countNumProfProteines():
     f = open(os.path.join(constants["working_dir"],"numProfProts.txt" ) , 'r')

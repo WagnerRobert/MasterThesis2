@@ -201,130 +201,135 @@ def doQuantCountPlots():
 
 def calcHitWidth():
     svmProteinWdth = { }
-    for svm in sorted(kmerlist):
-        svmProteinWdth[svm] = {}
-        print svm
-        for protein in sorted(kmerlist[svm]):
-            print "\t" + protein
-            clean_name = protein.split('#')[0]
-            if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
-                pass
-            else:
-                continue
-            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
-            sequence = get_fasta(clean_name, entry, constants, overwrite)
 
-            pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
-            kmerlists = kmerlist[svm][protein]
-            pro_kmerlist = []
-            con_kmerlist = []
-            if result[protein][0] in tree[svm][0]:
-                pro_kmerlist = kmerlists[1]
-                con_kmerlist = kmerlists[0]
-            elif result[protein][0] in tree[svm][1]:
-                pro_kmerlist = kmerlists[0]
-                con_kmerlist = kmerlists[1]
-            #pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            #print pro_matches
+    if os.path.exists(os.path.join(os.path.join(constants["working_dir"] , "pickles"), "svmProteinWdth.pkl")):
+        svmProteinWdth = read_picklefile("svmProteinWdth", constants)
+    else:
+        for svm in sorted(kmerlist):
+            svmProteinWdth[svm] = {}
+            print svm
+            for protein in sorted(kmerlist[svm]):
+                print "\t" + protein
+                clean_name = protein.split('#')[0]
+                if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
+                    pass
+                else:
+                    continue
+                foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+                sequence = get_fasta(clean_name, entry, constants, overwrite)
 
-            pos_count = None
-            pos_count_noGaps = [0] * len(sequence)
-            neg_count = None
-            neg_count_noGaps = [0] * len(sequence)
+                pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+                kmerlists = kmerlist[svm][protein]
+                pro_kmerlist = []
+                con_kmerlist = []
+                if result[protein][0] in tree[svm][0]:
+                    pro_kmerlist = kmerlists[1]
+                    con_kmerlist = kmerlists[0]
+                elif result[protein][0] in tree[svm][1]:
+                    pro_kmerlist = kmerlists[0]
+                    con_kmerlist = kmerlists[1]
+                #pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+                pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+                con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+                #print pro_matches
+
+                pos_count = None
+                pos_count_noGaps = [0] * len(sequence)
+                neg_count = None
+                neg_count_noGaps = [0] * len(sequence)
 
 
-            for prot in pro_matches:
-                for match_seq , start, end in pro_matches[prot]:
-                    pos_count = [0] * len(match_seq)
-                    for j in range(start, end):
-                        if j < len(match_seq):
-                            pos_count[j] += 1
+                for prot in pro_matches:
+                    for match_seq , start, end in pro_matches[prot]:
+                        pos_count = [0] * len(match_seq)
+                        for j in range(start, end):
+                            if j < len(match_seq):
+                                pos_count[j] += 1
+                        x = 0
+                        for i in range(len(match_seq)):
+                            if x == len(sequence):
+                                break
+                            if match_seq[i] == '-':
+                                pass
+                            else:
+                                pos_count_noGaps[x] += pos_count[i]
+                                x += 1
+
+                for prot in con_matches:
+                    for match_seq , start, end in con_matches[prot]:
+                        neg_count = [0] * len(match_seq)
+                        for j in range(start, end):
+                            if j < len(match_seq):
+                                neg_count[j] += 1
+                        x = 0
+                        for i in range(len(match_seq)):
+                            if x == len(sequence):
+                                break
+                            if match_seq[i] == '-':
+                                pass
+                            else:
+                                neg_count_noGaps[x] += neg_count[i]
+                                x += 1
+
+                numProfileProteins =  float(len(pairwise_alignments))
+                for i in range(len(sequence)):
+                    pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
+                    neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
+
+                posHitLen = {}
+                for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+                    posHitLen[i] = []
                     x = 0
-                    for i in range(len(match_seq)):
-                        if x == len(sequence):
-                            break
-                        if match_seq[i] == '-':
+                    for j in range(len(sequence)):
+                        if pos_count_noGaps[j] > i:
+                            x += 1
+                        elif x == 0:
                             pass
                         else:
-                            pos_count_noGaps[x] += pos_count[i]
-                            x += 1
+                            posHitLen[i].append(x)
+                            x = 0
 
-            for prot in con_matches:
-                for match_seq , start, end in con_matches[prot]:
-                    neg_count = [0] * len(match_seq)
-                    for j in range(start, end):
-                        if j < len(match_seq):
-                            neg_count[j] += 1
+                negHitLen = {}
+                for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+                    negHitLen[i] = []
                     x = 0
-                    for i in range(len(match_seq)):
-                        if x == len(sequence):
-                            break
-                        if match_seq[i] == '-':
+                    for j in range(len(sequence)):
+                        if neg_count_noGaps[j] > i:
+                            x += 1
+                        elif x == 0:
                             pass
                         else:
-                            neg_count_noGaps[x] += neg_count[i]
-                            x += 1
+                            negHitLen[i].append(x)
+                            x = 0
 
-            numProfileProteins =  float(len(pairwise_alignments))
-            for i in range(len(sequence)):
-                pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
-                neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
-
-            posHitLen = {}
-            for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
-                posHitLen[i] = []
-                x = 0
-                for j in range(len(sequence)):
-                    if pos_count_noGaps[j] > i:
-                        x += 1
-                    elif x == 0:
-                        pass
-                    else:
-                        posHitLen[i].append(x)
-                        x = 0
-
-            negHitLen = {}
-            for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
-                negHitLen[i] = []
-                x = 0
-                for j in range(len(sequence)):
-                    if neg_count_noGaps[j] > i:
-                        x += 1
-                    elif x == 0:
-                        pass
-                    else:
-                        negHitLen[i].append(x)
-                        x = 0
-
-            avgPosHitLen = {}
-            for percentage in posHitLen:
-                avgPosHitLen[percentage] = 0
-                for value in posHitLen[percentage]:
-                    avgPosHitLen[percentage] += value
-                if len(posHitLen[percentage]) == 0:
+                avgPosHitLen = {}
+                for percentage in posHitLen:
                     avgPosHitLen[percentage] = 0
-                else:
-                    avgPosHitLen[percentage] = avgPosHitLen[percentage] / float(len(posHitLen[percentage]))
+                    for value in posHitLen[percentage]:
+                        avgPosHitLen[percentage] += value
+                    if len(posHitLen[percentage]) == 0:
+                        avgPosHitLen[percentage] = 0
+                    else:
+                        avgPosHitLen[percentage] = avgPosHitLen[percentage] / float(len(posHitLen[percentage]))
 
-            avgNegHitLen = {}
-            for percentage in negHitLen:
-                avgNegHitLen[percentage] = 0
-                for value in negHitLen[percentage]:
-                    avgNegHitLen[percentage] += value
-                if len(negHitLen[percentage]) == 0:
+                avgNegHitLen = {}
+                for percentage in negHitLen:
                     avgNegHitLen[percentage] = 0
-                else:
-                    avgNegHitLen[percentage] = avgNegHitLen[percentage] / float(len(negHitLen[percentage]))
+                    for value in negHitLen[percentage]:
+                        avgNegHitLen[percentage] += value
+                    if len(negHitLen[percentage]) == 0:
+                        avgNegHitLen[percentage] = 0
+                    else:
+                        avgNegHitLen[percentage] = avgNegHitLen[percentage] / float(len(negHitLen[percentage]))
 
-            svmProteinWdth[svm][protein] = (avgPosHitLen, avgNegHitLen)
+                svmProteinWdth[svm][protein] = (avgPosHitLen, avgNegHitLen)
 
+    write_picklefile(svmProteinWdth, "svmProteinWdth", constants)
 
     svmLocList = {}
     for svm in svmProteinWdth:
         svmLocList[svm] = {}
-        for protein in svmProteinWdth[protein]:
+        for protein in svmProteinWdth[svm]:
             if result[protein][0] not in svmLocList[svm]:
                svmLocList[svm][result[protein][0]] = [] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:

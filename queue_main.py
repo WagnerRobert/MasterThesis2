@@ -330,11 +330,11 @@ def calcHitWidth():
     for svm in svmProteinWdth:
         svmLocList[svm] = {}
         for protein in svmProteinWdth[svm]:
-            print protein
-            print result[protein][0]
+            #print protein
+            #print result[protein][0]
             if result[protein][0] not in svmLocList[svm]:
                 svmLocList[svm][result[protein][0]] = []
-            print svmProteinWdth[svm][protein]
+            #print svmProteinWdth[svm][protein]
             proAvgList = []
             negAvgList = []
 

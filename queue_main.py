@@ -349,7 +349,8 @@ def calcHitWidth():
         for location in svmLocList[svm]:
             print "\t" + location
             for entry in svmLocList[svm][location]:
-                print entry
+                #print entry
+                pass
 
 
 def countNumProfProteines():

@@ -348,10 +348,17 @@ def calcHitWidth():
         print svm
         for location in svmLocList[svm]:
             print "\t" + location
-            for entry in svmLocList[svm][location]:
-                #print entry
-                pass
-
+            posSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+            negSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+            for posList, negList in svmLocList[svm][location]:
+                for i in range(len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])):
+                    posSumList[i] += posList[i]
+                    negSumList[i] += negList[i]
+            for i in range(len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])):
+                posSumList[i] = posSumList[i] / float(len(svmLocList[svm][location]))
+                negSumList[i] = negSumList[i] / float(len(svmLocList[svm][location]))
+            print posSumList
+            print negSumList
 
 def countNumProfProteines():
     f = open(os.path.join(constants["working_dir"],"numProfProts.txt" ) , 'r')

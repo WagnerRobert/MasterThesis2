@@ -270,8 +270,25 @@ def calcHitWidth():
                 pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
                 neg_count_noGaps[i] = neg_count_noGaps[i] * 100 / numProfileProteins
 
-            print pos_count_noGaps
+            posHitLen = {}
+            for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+                posHitLen[i] = []
+                x = 0
+                for j in range(len(sequence)):
+                    if pos_count_noGaps[j] > i:
+                        x += 1
+                    elif x == 0:
+                        pass
+                    else:
+                        posHitLen[i].append(x)
+                        x = 0
+
+
+
+            print posHitLen
             sys.exit()
+
+
 
 def countNumProfProteines():
     f = open(os.path.join(constants["working_dir"],"numProfProts.txt" ) , 'r')

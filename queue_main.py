@@ -200,7 +200,9 @@ def doQuantCountPlots():
             plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
 
 def calcHitWidth():
+    svmProteinWdth = { }
     for svm in sorted(kmerlist):
+        svmProteinWdth[svm] = {}
         print svm
         for protein in sorted(kmerlist[svm]):
             print "\t" + protein
@@ -283,20 +285,57 @@ def calcHitWidth():
                         posHitLen[i].append(x)
                         x = 0
 
-            avgHitLen = {}
+            negHitLen = {}
+            for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+                negHitLen[i] = []
+                x = 0
+                for j in range(len(sequence)):
+                    if neg_count_noGaps[j] > i:
+                        x += 1
+                    elif x == 0:
+                        pass
+                    else:
+                        negHitLen[i].append(x)
+                        x = 0
+
+            avgPosHitLen = {}
             for percentage in posHitLen:
-                avgHitLen[percentage] = 0
+                avgPosHitLen[percentage] = 0
                 for value in posHitLen[percentage]:
-                    avgHitLen[percentage] += value
+                    avgPosHitLen[percentage] += value
                 if len(posHitLen[percentage]) == 0:
-                    avgHitLen[percentage] = 0
+                    avgPosHitLen[percentage] = 0
                 else:
-                    avgHitLen[percentage] = avgHitLen[percentage] / float(len(posHitLen[percentage]))
+                    avgPosHitLen[percentage] = avgPosHitLen[percentage] / float(len(posHitLen[percentage]))
+
+            avgNegHitLen = {}
+            for percentage in negHitLen:
+                avgNegHitLen[percentage] = 0
+                for value in negHitLen[percentage]:
+                    avgNegHitLen[percentage] += value
+                if len(negHitLen[percentage]) == 0:
+                    avgNegHitLen[percentage] = 0
+                else:
+                    avgNegHitLen[percentage] = avgNegHitLen[percentage] / float(len(negHitLen[percentage]))
+
+            svmProteinWdth[svm][protein] = (avgPosHitLen, avgNegHitLen)
 
 
-            print avgHitLen
-            sys.exit()
+    svmLocList = {}
+    for svm in svmProteinWdth:
+        svmLocList[svm] = {}
+        for protein in svmProteinWdth[protein]:
+            if result[protein][0] not in svmLocList[svm]:
+               svmLocList[svm][result[protein][0]] = [] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+            for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+                svmLocList[svm][result[protein][0]][[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].index(i)].append(  svmProteinWdth[svm][protein][i])
 
+    for svm in svmLocList:
+        print svm
+        for location in svmLocList[location]:
+            print "\t" + location
+            for entry in svmLocList[location][location]:
+                print entry
 
 
 def countNumProfProteines():

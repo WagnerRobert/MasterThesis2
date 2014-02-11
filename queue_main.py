@@ -333,7 +333,8 @@ def calcHitWidth():
             if result[protein][0] not in svmLocList[svm]:
                svmLocList[svm][result[protein][0]] = [] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
-                svmLocList[svm][result[protein][0]][[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].index(i)].append(  svmProteinWdth[svm][protein][i])
+                x = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].index(i)
+                svmLocList[svm][result[protein][0]][x].append(  svmProteinWdth[svm][protein][i])
 
     for svm in svmLocList:
         print svm

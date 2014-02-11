@@ -347,7 +347,7 @@ def calcHitWidth():
     for svm in svmLocList:
         print svm
         for location in svmLocList[svm]:
-            print "\t" + location + str(len(svmLocList[svm][location]))
+            print "\t" + location + " " + str(len(svmLocList[svm][location]))
             posSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             negSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             for posList, negList in svmLocList[svm][location]:

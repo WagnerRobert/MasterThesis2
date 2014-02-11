@@ -288,7 +288,10 @@ def calcHitWidth():
                 avgHitLen[percentage] = 0
                 for value in posHitLen[percentage]:
                     avgHitLen[percentage] += value
-                avgHitLen[percentage] = avgHitLen[percentage] / float(len(posHitLen[percentage]))
+                if len(posHitLen[percentage]) == 0:
+                    avgHitLen[percentage] = 0
+                else:
+                    avgHitLen[percentage] = avgHitLen[percentage] / float(len(posHitLen[percentage]))
 
 
             print avgHitLen

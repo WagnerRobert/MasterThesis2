@@ -335,7 +335,8 @@ def calcHitWidth():
             for i in [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
                 x = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].index(i)
                 print x
-                svmLocList[svm][result[protein][0]][x].append(svmProteinWdth[svm][protein][i])
+                value = svmProteinWdth[svm][protein][i]
+                svmLocList[svm][result[protein][0]][x].append(value)
 
     for svm in svmLocList:
         print svm

@@ -342,7 +342,7 @@ def calcHitWidth():
                 proAvgList.append(svmProteinWdth[svm][protein][0][i])
                 negAvgList.append(svmProteinWdth[svm][protein][1][i])
 
-            svmProteinWdth[svm][result[protein][0]].append( (proAvgList, negAvgList))
+            svmLocList[svm][result[protein][0]].append( (proAvgList, negAvgList))
 
     for svm in svmLocList:
         print svm

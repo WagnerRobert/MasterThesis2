@@ -466,9 +466,13 @@ def doZPlot():
             ax0.set_ylabel('ZScore')
             ax0.set_xlabel('Proteins in ' + str(location))
             ax0.set_xlim(0, len(svmLocList[svm][location]) + 1)
-            ax = plt.gca()
-            ax.yaxis.grid(True)
-            ax.margins(0.04)
+            ax0.set_yaxis.grid(True)
+            ax0.set_margins(0.04)
+
+            # ax = plt.gca()
+            # ax.yaxis.grid(True)
+            # ax.margins(0.04)
+
             ax1.hist(zscores_location, orientation='horizontal')
             plt.show()
 

@@ -349,10 +349,12 @@ def calcHitWidth():
         print svm
         plt.clf()
         plt.cla()
-        labels = []
+        ax0labels = []
+        ax1labels = []
+        fig, (ax0, ax1) = plt.subplots(nrows=2)
         for location in svmLocList[svm]:
-            labels.append(location + "+")
-            labels.append(location + "-")
+            ax0labels.append(location + "+")
+            ax1labels.append(location + "-")
             print "\t" + location + " " + str(len(svmLocList[svm][location]))
             posSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             negSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
@@ -367,13 +369,14 @@ def calcHitWidth():
 
 
             x = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-            plt.plot(x, posSumList)
-            plt.plot(x, negSumList)
+            ax0.plot(x, posSumList)
+            ax1.plot(x, negSumList)
 
-        plt.ylabel("Match width")
-        plt.xlabel("Match coverage")
+        fig.ylabel("Match width")
+        fig.xlabel("Match coverage")
 
-        plt.legend(labels)
+        ax0.legent(ax0labels)
+        ax1.legend(ax1labels)
 
         plt.savefig(os.path.join(constants["pdf"], "width"+svm+".pdf"))
 

@@ -186,6 +186,8 @@ def doQuantCountPlots():
             print svm_location_dict[svm][location][0]
             print svm_location_dict[svm][location][1]
             ax0labels.append(location + "+")
+            ax0labels.append(location + "-")
+            ax1labels.append(location + "+")
             ax1labels.append(location + "-")
 
             x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]

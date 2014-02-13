@@ -462,9 +462,9 @@ def doZPlot():
             fig, (ax0, ax1) = plt.subplots(nrows=2)
 
             ax0.plot(x,zscores_location, '_')
-            ax0.title("ZScore Distribution for proteins in " + location)
+            ax0.title("ZScore Distribution for proteins in " + str(location))
             ax0.ylabel('ZScore')
-            ax0.xlabel('Proteins in ' + location)
+            ax0.xlabel('Proteins in ' + str(location))
             ax0.xlim(0, len(svmLocList[svm][location]) + 1)
             ax = ax0.gca()
             ax.yaxis.grid(True)

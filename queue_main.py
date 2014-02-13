@@ -468,7 +468,7 @@ def doZPlot():
             ax0.set_xlim(0, len(svmLocList[svm][location]) + 1)
             ax0.yaxis.grid(True)
             ax0.margins(0.04)
-            xticks = ax0.xticks()
+            xticks = ax0.get_xticks()
             ax = plt.gca()
             # ax.yaxis.grid(True)
             # ax.margins(0.04)

@@ -203,8 +203,8 @@ def doQuantCountPlots():
             ax1.yaxis.grid(True)
             ax1.xaxis.grid(True)
 
-        ax0.legend(ax0labels, loc = 'upper left')
-        ax1.legend(ax1labels, loc = 'upper left')
+        ax0.legend(ax0labels, loc = 'upper left', prop={'size':6})
+        ax1.legend(ax1labels, loc = 'upper left', prop={'size':6})
         fig.suptitle(svm)
         plt.ylabel("Number of Kmers")
         plt.xlabel("Quantile")

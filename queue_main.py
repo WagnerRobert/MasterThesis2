@@ -466,7 +466,8 @@ def doZPlot():
             plt.ylabel('ZScore')
             plt.xlabel('Proteins in ' + location)
             plt.xlim(-1, len(svmLocList[svm][location]) + 1)
-            plt.set_yaxis.grid(True)
+            ax = plt.gca()
+            ax.yaxis.grid(True)
             plt.show()
 
             #sys.exit()

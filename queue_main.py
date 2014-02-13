@@ -432,7 +432,7 @@ def doZPlot():
         for protein in sorted(kmerlist[svm]):
             print "\t" + protein
             clean_name = protein.split('#')[0]
-            print kmerlist[svm][protein]
+            print kmerlist[svm][protein][0]
             sys.exit()
 
 

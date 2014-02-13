@@ -450,7 +450,7 @@ def doZPlot():
             x = []
             zscores_location = np.array([])
             for protein in svmLocList[svm][location]:
-                x += 1
+                index += 1
                 values = []
                 for kmer,value in kmerlist[svm][protein][0]:
                     values.append(value)

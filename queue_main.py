@@ -367,8 +367,8 @@ def calcHitWidth():
 
 
             x = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-            plt.plot(x, posSumList, 'o', color=(0.0, 0.0, 1.0))
-            plt.plot(x, negSumList, 'o', color=(1.0, 0.0, 0.0))
+            plt.plot(x, posSumList)
+            plt.plot(x, negSumList)
 
         plt.ylabel("Match width")
         plt.xlabel("Match coverage")

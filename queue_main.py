@@ -438,7 +438,7 @@ def doZPlot():
             for kmer,value in kmerlist[svm][protein][0]:
                 values.append(value)
             print str(np.mean(values))
-            print values
+            print np.array(values)
             print stats.zscore(values)
             sys.exit()
 

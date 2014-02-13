@@ -445,7 +445,7 @@ def doZPlot():
             import matplotlib.pyplot as plt
             x = [1] * len (zscores)
             x.extend([2] * len (zscores))
-            zscores += zscores
+            zscores.extend(zscores)
 
 
             plt.plot(x,zscores, 'o')

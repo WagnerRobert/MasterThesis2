@@ -459,18 +459,17 @@ def doZPlot():
                 x.extend([index] * len (zscores_protein))
                 zscores_location = np.append(zscores_location, zscores_protein)
 
+            fig, (ax0, ax1) = plt.subplots(nrows=2)
 
-
-            plt.plot(x,zscores_location, '_')
-            plt.title("ZScore Distribution for proteins in " + location)
-            plt.ylabel('ZScore')
-            plt.xlabel('Proteins in ' + location)
-            plt.xlim(0, len(svmLocList[svm][location]) + 1)
-            ax = plt.gca()
+            ax0.plot(x,zscores_location, '_')
+            ax0.title("ZScore Distribution for proteins in " + location)
+            ax0.ylabel('ZScore')
+            ax0.xlabel('Proteins in ' + location)
+            ax0.xlim(0, len(svmLocList[svm][location]) + 1)
+            ax = ax0.gca()
             ax.yaxis.grid(True)
             ax.margins(0.04)
-            plt.show()
-            plt.hist(zscores_location)
+            ax1.hist(zscores_location)
             plt.show()
 
             #sys.exit()

@@ -372,8 +372,7 @@ def calcHitWidth():
             ax0.plot(x, posSumList)
             ax1.plot(x, negSumList)
 
-
-        ax0.title(svm)
+        fig.set_title(svm)
         plt.ylabel("Match width")
         plt.xlabel("Match coverage")
 

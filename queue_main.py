@@ -464,7 +464,7 @@ def doZPlot():
             plt.plot(x,zscores_location, 'o')
             plt.show()
 
-            sys.exit()
+            #sys.exit()
 
 
 #queue_blast()

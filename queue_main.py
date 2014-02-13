@@ -439,7 +439,15 @@ def doZPlot():
                 values.append(value)
             print str(np.mean(values))
             print np.array(values)
-            print stats.zscore(values)
+            zscores = stats.zscore(values)
+            print zscores
+
+            import matplotlib.pyplot as plt
+            x = [1] * len (zscores)
+
+            plt.plot(x,zscores)
+            plt.show()
+
             sys.exit()
 
 

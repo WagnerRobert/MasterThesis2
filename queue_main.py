@@ -468,10 +468,13 @@ def doZPlot():
             ax0.set_xlim(0, len(svmLocList[svm][location]) + 1)
             ax0.yaxis.grid(True)
             ax0.margins(0.04)
+            xticks = ax0.xticks()
             ax = plt.gca()
             # ax.yaxis.grid(True)
             # ax.margins(0.04)
-            ax1.hist(zscores_location, orientation='horizontal')
+
+            ax1.hist(zscores_location,xticks, orientation='horizontal')
+
             ax1.xaxis.grid(True)
             ax1.margins(0.04)
             plt.show()

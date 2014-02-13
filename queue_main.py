@@ -448,7 +448,7 @@ def doZPlot():
             print "\t" + location
             index = 0
             x = []
-            zscores_location = np.array()
+            zscores_location = np.array([])
             for protein in svmLocList[svm][location]:
                 x += 1
                 values = []

@@ -175,29 +175,35 @@ def doQuantCountPlots():
     print svm_location_dict.keys()
     for svm in svm_location_dict:
         print svm
+        import matplotlib.pyplot as plt
+        plt.clf()
+        plt.cla()
+        ax0labels = []
+        ax1labels = []
+        fig, (ax0, ax1) = plt.subplots(nrows=2)
         for location in svm_location_dict[svm]:
             print "\t" + str(location)
             print svm_location_dict[svm][location][0]
             print svm_location_dict[svm][location][1]
+            ax0labels.append(location + "+")
+            ax1labels.append(location + "-")
 
             x = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-            import matplotlib.pyplot as plt
-            plt.clf()
-            plt.cla()
-            fig, (ax0, ax1) = plt.subplots(nrows=2)
-            ax0.plot(x, svm_location_dict[svm][location][0], 'o', color=(0.0, 0.0, 1.0))
-            ax0.plot(x, svm_location_dict[svm][location][1], 'o', color=(1.0, 0.0, 0.0))
+            ax0.plot(x, svm_location_dict[svm][location][0])
+            ax0.plot(x, svm_location_dict[svm][location][1])
             ax0.set_xlim(0.0, 1.0)
             ax0.yaxis.grid(True)
             ax0.xaxis.grid(True)
 
-            ax1.plot(x[0:6], svm_location_dict[svm][location][0][0:6],'o', color=(0.0, 0.0, 1.0))
-            ax1.plot(x[0:6], svm_location_dict[svm][location][1][0:6], 'o', color=(1.0, 0.0, 0.0))
+            ax1.plot(x[0:6], svm_location_dict[svm][location][0][0:6])
+            ax1.plot(x[0:6], svm_location_dict[svm][location][1][0:6])
             ax1.set_xlim(0.0, 0.5)
             ax1.yaxis.grid(True)
             ax1.xaxis.grid(True)
 
-            plt.savefig(os.path.join(constants["pdf"], svm+location+".pdf"))
+        ax0.legend(ax0labels)
+        ax1.legend(ax1labels)
+        plt.savefig(os.path.join(constants["pdf"], "numKmers"+svm+".pdf"))
 
 def calcHitWidth():
     import matplotlib.pyplot as plt
@@ -420,6 +426,6 @@ def countNumProfProteines():
 #pairwise()
 
 #doPlots()
-#doQuantCountPlots()
-calcHitWidth()
+doQuantCountPlots()
+#calcHitWidth()
 #countNumProfProteines()

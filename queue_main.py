@@ -452,8 +452,8 @@ def doZPlot():
             for protein in svmLocList[svm][location]:
                 index += 1
                 values = []
-                print svmLocList[svm][protein][0]
-                for kmer,value in svmLocList[svm][protein]:
+                print svmLocList[svm][location][protein]
+                for kmer,value in svmLocList[svm][location][protein]:
                     values.append(value)
                 zscores_protein = stats.zscore(values)
 

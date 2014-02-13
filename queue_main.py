@@ -425,12 +425,25 @@ def countNumProfProteines():
         plt.xlabel('Number of ProfileProteins')
         plt.savefig(os.path.join(constants["pdf"], location+".pdf"))
 
+def doZPlot():
+    import numpy as np
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            print "\t" + protein
+            clean_name = protein.split('#')[0]
+            print kmerlist[svm][protein]
+            sys.exit()
+
+
 #queue_blast()
 #get_fasta_files()
 #queue_uniqueprot()
 #pairwise()
 
 #doPlots()
-doQuantCountPlots()
+#doQuantCountPlots()
 #calcHitWidth()
 #countNumProfProteines()
+
+doZPlot()

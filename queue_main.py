@@ -201,8 +201,8 @@ def doQuantCountPlots():
             ax1.yaxis.grid(True)
             ax1.xaxis.grid(True)
 
-        ax0.legend(ax0labels)
-        ax1.legend(ax1labels)
+        ax0.legend(ax0labels, loc = 'upper left')
+        ax1.legend(ax1labels, loc = 'upper left')
         plt.savefig(os.path.join(constants["pdf"], "numKmers"+svm+".pdf"))
 
 def calcHitWidth():

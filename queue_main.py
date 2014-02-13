@@ -480,10 +480,10 @@ def doZPlot():
             # ax.margins(0.04)
 
             ax1.hist(zscores_location,yticks, orientation='horizontal')
-
+            ax1.xticks(rotation=45)
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
-            plt.savefig(os.path.join(constants["pdf"], "zscore" + location+".pdf"))
+            plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 
 
             #sys.exit()

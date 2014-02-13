@@ -428,29 +428,40 @@ def countNumProfProteines():
 def doZPlot():
     import numpy as np
     from  scipy import stats
+    import matplotlib.pyplot as plt
+
+    svmLocList = {}
     for svm in sorted(kmerlist):
+        svmLocList[svm] = {}
+        for protein in kmerlist[svm]:
+            if result[protein][0] not in svmLocList[svm]:
+                svmLocList[svm][result[protein][0]] = []
+
+            # values = []
+            # for kmer,value in kmerlist[svm][protein][0]:
+            #     values.append(value)
+
+            svmLocList[svm][result[protein][0]].append( kmerlist[svm][protein][0])
+    for svm in sorted(svmLocList):
         print svm
-        for protein in sorted(kmerlist[svm]):
-            print "\t" + protein
-            clean_name = protein.split('#')[0]
-            #print kmerlist[svm][protein][0]
-            values = []
-            for kmer,value in kmerlist[svm][protein][0]:
-                values.append(value)
-            print str(np.mean(values))
-            print np.array(values)
-            zscores = stats.zscore(values)
-            print zscores
+        for location in sorted(svmLocList[svm]):
+            print "\t" + location
+            index = 0
+            x = []
+            zscores_location = np.array()
+            for protein in svmLocList[svm][location]:
+                x += 1
+                values = []
+                for kmer,value in kmerlist[svm][protein][0]:
+                    values.append(value)
+                zscores_protein = stats.zscore(values)
 
-            import matplotlib.pyplot as plt
-            x = [1] * len (zscores)
-            x.extend([2] * len (zscores))
-            zscores = np.append(zscores, zscores)
+                x.extend([index] * len (zscores_protein))
+                zscores_location = np.append(zscores_location, zscores_protein)
 
-            print len(x)
-            print len(zscores)
 
-            plt.plot(x,zscores, 'o')
+
+            plt.plot(x,zscores_location, 'o')
             plt.show()
 
             sys.exit()

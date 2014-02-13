@@ -469,6 +469,11 @@ def doZPlot():
             ax0.yaxis.grid(True)
             # ax0.margins(0.04)
             yticks = ax0.get_yticks()
+            if -1 not in yticks:
+                yticks.append(-1)
+            if 1 not in yticks:
+                yticks.append(1)
+            yticks = sorted(yticks)
             ax = plt.gca()
             # ax.yaxis.grid(True)
             # ax.margins(0.04)

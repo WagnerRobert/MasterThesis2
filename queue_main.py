@@ -375,7 +375,7 @@ def calcHitWidth():
         plt.ylabel("Match width")
         plt.xlabel("Match coverage")
 
-        ax0.legent(ax0labels)
+        ax0.legend(ax0labels)
         ax1.legend(ax1labels)
 
         plt.savefig(os.path.join(constants["pdf"], "width"+svm+".pdf"))

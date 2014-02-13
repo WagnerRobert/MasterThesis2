@@ -470,6 +470,8 @@ def doZPlot():
             ax.yaxis.grid(True)
             ax.margins(0.04)
             plt.show()
+            plt.hist(x)
+            plt.show()
 
             #sys.exit()
 

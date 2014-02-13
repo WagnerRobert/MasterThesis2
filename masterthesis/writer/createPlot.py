@@ -30,7 +30,7 @@ def getFeatures(entry):
 
 def create_plot(query_protein_sequence, pro_matches, con_matches, entry, numProfileProteins, resultfile_info, paths, svm):
     name = query_protein_sequence[0]
-    print name
+    #print name
     sequence = query_protein_sequence[1]
     #print sequence
 

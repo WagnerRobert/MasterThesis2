@@ -472,7 +472,7 @@ def doZPlot():
             # ax.yaxis.grid(True)
             # ax.margins(0.04)
             ax1.hist(zscores_location, orientation='horizontal')
-            ax0.xaxis.grid(True)
+            ax1.xaxis.grid(True)
             ax1.margins(0.04)
             plt.show()
 

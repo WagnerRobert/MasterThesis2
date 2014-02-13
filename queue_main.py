@@ -477,7 +477,8 @@ def doZPlot():
 
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
-            plt.show()
+            plt.savefig(os.path.join(constants["pdf"], "zscore" + location+".pdf"))
+
 
             #sys.exit()
 

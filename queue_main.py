@@ -461,7 +461,7 @@ def doZPlot():
 
 
 
-            plt.plot(x,zscores_location, '-')
+            plt.plot(x,zscores_location, 'o')
             plt.title("ZScore Distribution for proteins in " + location)
             plt.ylabel('ZScore')
             plt.xlabel('Proteins in ' + location)

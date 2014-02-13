@@ -452,7 +452,7 @@ def doZPlot():
             for protein in svmLocList[svm][location]:
                 index += 1
                 values = []
-                print svmLocList[svm][location]
+                print len(svmLocList[svm][location])
                 print svmLocList[svm][location][protein]
                 for kmer,value in svmLocList[svm][location][protein]:
                     values.append(value)

@@ -205,6 +205,9 @@ def doQuantCountPlots():
 
         ax0.legend(ax0labels, loc = 'upper left')
         ax1.legend(ax1labels, loc = 'upper left')
+        fig.suptitle(svm)
+        plt.ylabel("Number of Kmers")
+        plt.xlabel("Quantile")
         plt.savefig(os.path.join(constants["pdf"], "numKmers"+svm+".pdf"))
 
 def calcHitWidth():

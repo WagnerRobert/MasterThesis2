@@ -353,8 +353,8 @@ def calcHitWidth():
         ax1labels = []
         fig, (ax0, ax1) = plt.subplots(nrows=2)
         for location in svmLocList[svm]:
-            ax0labels.append(location + "+")
-            ax1labels.append(location + "-")
+            ax0labels.append(location + "+ (" + str(len(svmLocList[svm][location])) +")")
+            ax1labels.append(location + "- (" + str(len(svmLocList[svm][location])) +")")
             print "\t" + location + " " + str(len(svmLocList[svm][location]))
             posSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
             negSumList = [0] * len([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])

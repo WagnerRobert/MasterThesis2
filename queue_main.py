@@ -433,6 +433,10 @@ def doZPlot():
             print "\t" + protein
             clean_name = protein.split('#')[0]
             print kmerlist[svm][protein][0]
+            values = []
+            for kmer,value in kmerlist[svm][protein][0]:
+                values.append(value)
+            print str(np.mean(values))
             sys.exit()
 
 

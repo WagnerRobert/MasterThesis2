@@ -427,6 +427,7 @@ def countNumProfProteines():
 
 def doZPlot():
     import numpy as np
+    import scipy as sp
     for svm in sorted(kmerlist):
         print svm
         for protein in sorted(kmerlist[svm]):
@@ -437,6 +438,7 @@ def doZPlot():
             for kmer,value in kmerlist[svm][protein][0]:
                 values.append(value)
             print str(np.mean(values))
+            print sp.stats.mstats.zscore(values)
             sys.exit()
 
 

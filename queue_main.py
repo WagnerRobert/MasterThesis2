@@ -30,7 +30,7 @@ quant = 0.05
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -465,7 +465,7 @@ def doZPlot():
 
             kmers_count = {}
             zscore = 2
-            for i in len(zscores_location):
+            for i in range(len(zscores_location)):
                 if zscores_location[i] > zscore:
                     if kmers_location[i] not in kmers_count:
                         kmers_count[kmers_location[i]] = 1

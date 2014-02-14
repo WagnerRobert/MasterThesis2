@@ -505,7 +505,7 @@ def doZPlot():
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
 
-            ax2.bar(kmernumbers)
+            ax2.bar(range(len(kmernumbers)), kmernumbers)
             ax2.set_xticks(range(len(kmernumbers)), kmernames, rotation=30)
             plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 

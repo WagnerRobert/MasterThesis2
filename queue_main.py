@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+import operator
 from masterthesis import *
 from masterthesis.writer import create_plot
 
@@ -449,15 +450,32 @@ def doZPlot():
             index = 0
             x = []
             zscores_location = np.array([])
+            kmers_location = []
             for protein in svmLocList[svm][location]:
                 index += 1
                 values = []
+
                 for kmer,value in protein:
                     values.append(value)
+                    kmers_location.append(kmer)
                 zscores_protein = stats.zscore(values)
 
                 x.extend([index] * len (zscores_protein))
                 zscores_location = np.append(zscores_location, zscores_protein)
+
+            kmers_count = {}
+            zscore = 2
+            for i in len(zscores_location):
+                if zscores_location[i] > zscore:
+                    if kmers_location[i] not in kmers_count:
+                        kmers_count[kmers_location[i]] = 1
+                    else:
+                        kmers_count[kmers_location[i]] += 1
+
+            sorted_kmers_count = sorted(kmers_count.iteritems(), key=operator.itemgetter(1))
+
+            for kmer, freqeuency in sorted_kmers_count:
+                print kmer + "\t" + str(freqeuency)
 
             fig, (ax0, ax1) = plt.subplots(ncols=2)
 
@@ -485,7 +503,7 @@ def doZPlot():
             plt.setp(plt.xticks()[1], rotation=30)
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
-            plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".png"))
+            plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 
 
             #sys.exit()

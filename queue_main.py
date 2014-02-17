@@ -511,7 +511,7 @@ def doZPlot():
             plt.clf()
             plt.cla()
             plt.bar(range(len(kmernumbers)), kmernumbers)
-            plt.xticks(range(len(kmernumbers)), kmernames, rotation=45)
+            plt.xticks(range(len(kmernumbers)), kmernames, rotation=90)
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()
             fig.set_size_inches(2+ (len(kmernumbers)/8),4)

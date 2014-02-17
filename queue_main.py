@@ -515,6 +515,8 @@ def doZPlot():
             plt.xlabel("Frequency")
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()
+            ax = plt.gca()
+            ax.yaxis.grid(True)
             size = fig.get_size_inches()
 
             fig.set_size_inches(size[0], len(kmernames)/5)

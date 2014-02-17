@@ -471,7 +471,7 @@ def doZPlot():
 
             zscoreLocList = zscores_location.tolist()
 
-            print zscoreLocList
+            #print zscoreLocList
 
             for i in range(30):
                 max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))

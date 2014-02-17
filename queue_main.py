@@ -478,7 +478,7 @@ def doZPlot():
             #for kmer, freqeuency in sorted_kmers_count:
             #    print kmer + "\t" + str(freqeuency)
 
-            fig, (ax0, ax1, ax2) = plt.subplots(ncols=3)
+            fig, (ax0, ax1) = plt.subplots(ncols=2)
 
             ax0.plot(x,zscores_location, '_')
             ax0.set_title('ZScore Distribution for proteins in ' + str(location))
@@ -505,8 +505,9 @@ def doZPlot():
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
 
-            ax2.bar(range(len(kmernumbers)), kmernumbers)
-            ax2.set_xticks(range(len(kmernumbers)), kmernames)
+            # ax2.bar(range(len(kmernumbers)), kmernumbers)
+            # ax2.set_xticks(range(len(kmernumbers)))
+            # ax2.set_xticklabels(kmernames, rotation=30)
             plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 
 

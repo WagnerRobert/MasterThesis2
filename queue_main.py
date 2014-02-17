@@ -509,8 +509,8 @@ def doZPlot():
             plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 
             plt.bar(range(len(kmernumbers)), kmernumbers)
-            plt.set_xticks(range(len(kmernumbers)))
-            plt.set_xticklabels(kmernames, rotation=30)
+            plt.xticks(range(len(kmernumbers)))
+            plt.xticklabels(kmernames, rotation=30)
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers" + location+".pdf"))
             #sys.exit()
 

@@ -511,7 +511,7 @@ def doZPlot():
             plt.clf()
             plt.cla()
             plt.barh(np.arange(len(kmernames)), kmernumbers)
-            plt.yticks(np.arange(len(kmernames)), kmernames)
+            plt.yticks(np.arange(len(kmernames)+0.4), kmernames)
             plt.xlabel("Frequency")
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()
@@ -522,6 +522,7 @@ def doZPlot():
             #plt.tight_layout()
 
             fig.set_size_inches(size[0], 3 + len(kmernames)/6)
+            plt.tight_layout()
 
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers_" + location+".pdf"))
             #sys.exit()

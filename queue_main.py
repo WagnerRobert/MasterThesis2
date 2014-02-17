@@ -471,6 +471,8 @@ def doZPlot():
 
             zscoreLocList = zscores_location.tolist()
 
+            print zscoreLocList
+
             for i in range(30):
                 max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))
                 print kmers_location[max_index] + "\t" + str(max_value)

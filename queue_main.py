@@ -467,6 +467,7 @@ def doZPlot():
             zscore = 2
 
             print zscores_location
+            print kmers_location
             sys.exit()
 
             for i in range(len(zscores_location)):

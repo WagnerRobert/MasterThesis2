@@ -510,7 +510,7 @@ def doZPlot():
 
             plt.clf()
             plt.cla()
-            plt.bar(range(len(kmernumbers)), kmernumbers, orientation='horizontal')
+            plt.barh(range(len(kmernumbers)), kmernumbers)
             plt.xticks(range(len(kmernumbers)), kmernames, rotation=90)
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()

@@ -513,6 +513,8 @@ def doZPlot():
             plt.bar(range(len(kmernumbers)), kmernumbers)
             plt.xticks(range(len(kmernumbers)), kmernames, rotation=30)
             #plt.set_xticklabels(kmernames, rotation=30)
+            fig = plt.gcf()
+            fig.set_size_inches(2+ (len(kmernumbers)/10),4)
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers_" + location+".pdf"))
             #sys.exit()
 

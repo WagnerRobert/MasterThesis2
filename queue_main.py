@@ -24,7 +24,7 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.05
+quant = 0.1
 
 # sets up the directory in which all calculations will be done
 setUp(constants)
@@ -510,7 +510,7 @@ def doZPlot():
 
             plt.clf()
             plt.cla()
-            plt.bar(range(len(kmernumbers)), kmernumbers)
+            plt.bar(range(len(kmernumbers)), kmernumbers, orientation='horizontal')
             plt.xticks(range(len(kmernumbers)), kmernames, rotation=90)
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()

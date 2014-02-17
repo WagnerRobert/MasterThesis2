@@ -519,7 +519,7 @@ def doZPlot():
             ax.xaxis.grid(True)
             size = fig.get_size_inches()
 
-            plt.tight_layout()
+            #plt.tight_layout()
 
             fig.set_size_inches(size[0], len(kmernames)/5)
 

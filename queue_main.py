@@ -481,7 +481,7 @@ def doZPlot():
             fig, (ax0, ax1) = plt.subplots(ncols=2)
 
             ax0.plot(x,zscores_location, '_')
-            ax0.set_title('ZScore Distribution for proteins in ' + str(location))
+            ax0.set_title('ZScore Distribution for proteins in ' + str(location) + ' ' + svm)
             ax0.set_ylabel('ZScore')
             ax0.set_xlabel('Proteins in ' + str(location))
             ax0.set_xlim(0, len(svmLocList[svm][location]) + 1)
@@ -505,12 +505,13 @@ def doZPlot():
             ax1.xaxis.grid(True)
             # ax1.margins(0.04)
 
-            # ax2.bar(range(len(kmernumbers)), kmernumbers)
-            # ax2.set_xticks(range(len(kmernumbers)))
-            # ax2.set_xticklabels(kmernames, rotation=30)
+
             plt.savefig(os.path.join(constants["pdf"], "zscore_" + location+".pdf"))
 
-
+            plt.bar(range(len(kmernumbers)), kmernumbers)
+            plt.set_xticks(range(len(kmernumbers)))
+            plt.set_xticklabels(kmernames, rotation=30)
+            plt.savefig(os.path.join(constants["pdf"], "zscore_outliers" + location+".pdf"))
             #sys.exit()
 
 

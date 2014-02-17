@@ -510,8 +510,9 @@ def doZPlot():
 
             plt.clf()
             plt.cla()
-            plt.barh(range(len(kmernumbers)), kmernumbers)
-            plt.xticks(range(len(kmernumbers)), kmernames, rotation=90)
+            plt.barh(np.arange(len(kmernames)), kmernumbers)
+            plt.yticks(np.arange(len(kmernames)), kmernames)
+            plt.xlabel("Frequency")
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()
             fig.set_size_inches(2+ (len(kmernumbers)/8),4)

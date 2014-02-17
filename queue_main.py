@@ -472,12 +472,15 @@ def doZPlot():
             zscoreLocList = zscores_location.tolist()
 
             #print zscoreLocList
-
-            for i in range(30):
+            dict_with_zscores = {}
+            while len(dict_with_zscores) < 30:
                 max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))
-                print kmers_location[max_index] + "\t" + str(max_value)
+                if kmers_location[max_index] not in dict_with_zscores:
+                    dict_with_zscores[kmers_location[max_index]] = max_value
                 kmers_location.pop(max_index)
                 zscoreLocList.pop(max_index)
+            for key, value in sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1)):
+                print key + "\t" + str(value)
             continue
 
             for i in range(len(zscores_location)):

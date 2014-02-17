@@ -30,7 +30,7 @@ quant = 0.1
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -475,6 +475,14 @@ def doZPlot():
             sorted_kmers_count = sorted(kmers_count.iteritems(), key=operator.itemgetter(1), reverse=True)
             kmernames = map(operator.itemgetter(0), sorted_kmers_count)
             kmernumbers = map(operator.itemgetter(1), sorted_kmers_count)
+
+            kmernames_shortened = []
+            kmernumbers_shortened = []
+
+            for i in range(len(kmernumbers)):
+                if kmernumbers[i] > 1:
+                    kmernames_shortened.append(kmernames[i])
+                    kmernumbers_shortened.append(kmernumbers[i])
             #for kmer, freqeuency in sorted_kmers_count:
             #    print kmer + "\t" + str(freqeuency)
 
@@ -510,8 +518,8 @@ def doZPlot():
 
             plt.clf()
             plt.cla()
-            plt.barh(np.arange(len(kmernames)), kmernumbers)
-            plt.yticks(np.arange(len(kmernames))+0.4, kmernames)
+            plt.barh(np.arange(len(kmernames_shortened)), kmernumbers_shortened)
+            plt.yticks(np.arange(len(kmernames_shortened))+0.4, kmernames_shortened)
             plt.xlabel("Frequency")
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()
@@ -521,7 +529,7 @@ def doZPlot():
 
             #plt.tight_layout()
 
-            fig.set_size_inches(size[0], 3 + len(kmernames)/6)
+            fig.set_size_inches(size[0], 3 + len(kmernames_shortened)/6)
             plt.tight_layout()
 
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers_" + location+".pdf"))

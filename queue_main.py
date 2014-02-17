@@ -517,7 +517,7 @@ def doZPlot():
             fig = plt.gcf()
             size = fig.get_size_inches()
 
-            fig.set_size_inches(size[0], len(kmernames))
+            fig.set_size_inches(size[0], len(kmernames)/5)
             plt.tight_layout()
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers_" + location+".pdf"))
             #sys.exit()

@@ -511,7 +511,7 @@ def doZPlot():
             plt.clf()
             plt.cla()
             plt.barh(np.arange(len(kmernames)), kmernumbers)
-            plt.yticks(np.arange(len(kmernames))+0.4, kmernames)
+            plt.yticks(np.arange(len(kmernames)), kmernames)
             plt.xlabel("Frequency")
             #plt.set_xticklabels(kmernames, rotation=30)
             fig = plt.gcf()

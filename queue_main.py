@@ -24,13 +24,13 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.5
+quant = 0.1
 
 # sets up the directory in which all calculations will be done
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -465,6 +465,10 @@ def doZPlot():
 
             kmers_count = {}
             zscore = 2
+
+            print zscores_location
+            sys.exit()
+
             for i in range(len(zscores_location)):
                 if zscores_location[i] > zscore:
                     if kmers_location[i] not in kmers_count:

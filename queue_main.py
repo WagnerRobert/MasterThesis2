@@ -24,13 +24,13 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.1
+quant = 0.5
 
 # sets up the directory in which all calculations will be done
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -489,7 +489,7 @@ def doZPlot():
             fig, (ax0, ax1) = plt.subplots(ncols=2)
 
             ax0.plot(x,zscores_location, '_')
-            ax0.set_title('ZScore Distribution for proteins in ' + str(location) + ' ' + svm)
+            ax0.set_title('ZScore Distribution for proteins in ' + str(location) + ' ' + svm + 'with quant ' + str(quant))
             ax0.set_ylabel('ZScore')
             ax0.set_xlabel('Proteins in ' + str(location))
             ax0.set_xlim(0, len(svmLocList[svm][location]) + 1)

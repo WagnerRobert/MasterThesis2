@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import copy
 import os
 import sys
 import operator
@@ -631,8 +632,20 @@ def doZScoreText():
                 for index1, element1 in enumerate(location_dict_with_zscores[location1]):
                     for index2, element2 in enumerate(location_dict_with_zscores[location2]):
                         if element1[0] == element2[0]:
-                            print element1[0] + "found in " + location1 + " and " + location2
+                            print element1[0] + " found in " + location1 + " and " + location2
                             removelist.append(element1[0])
+
+    clean_location_dict_with_zscores =  copy.deepcopy(location_dict_with_zscores)
+    for location in location_dict_with_zscores:
+        for index, element in enumerate(location_dict_with_zscores[location]):
+            if element1[0] in removelist:
+                del clean_location_dict_with_zscores[location][element1[0]]
+
+    print "!!Cleared List!!"
+    for location in clean_location_dict_with_zscores:
+        print location
+        for key, value_tuple in location_dict_with_zscores[location]:
+                print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
 
 

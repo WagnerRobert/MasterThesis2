@@ -655,7 +655,7 @@ def doZScoreText():
     print "!!fasta List!!"
     for location in clean_location_dict_with_zscores:
         for key, value_tuple in sorted(clean_location_dict_with_zscores[location].iteritems(), key=operator.itemgetter(1), reverse=True):
-                print ">" + key + "\t" + location + " " + str(len(clean_location_dict_with_zscores[location])) + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+                print ">" + key + "|" + location
                 print key
 
 

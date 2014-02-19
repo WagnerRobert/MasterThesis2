@@ -616,7 +616,8 @@ def doZScoreText():
                 kmers_location.pop(max_index)
                 zscoreLocList.pop(max_index)
 
-            location_dict_with_zscores[location] = sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True)
+#            location_dict_with_zscores[location] = sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True)
+            location_dict_with_zscores[location] = dict_with_zscores
 
 
     print "!!Uncleared List!!"
@@ -635,12 +636,13 @@ def doZScoreText():
                             print element1[0] + " found in " + location1 + " and " + location2
                             removelist.append(element1[0])
 
+
     clean_location_dict_with_zscores =  copy.deepcopy(location_dict_with_zscores)
     for location in location_dict_with_zscores:
         for index, element in enumerate(location_dict_with_zscores[location]):
             if element[0] in removelist:
                 print element[0]
-                clean_location_dict_with_zscores[location].pop(index)
+                clean_location_dict_with_zscores[location].pop(element[0])
 
     print "!!Cleared List!!"
     for location in clean_location_dict_with_zscores:

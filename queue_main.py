@@ -622,6 +622,15 @@ def doZScoreText():
         for key, value_tuple in location_dict_with_zscores[location]:
                 print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
+    for location1 in location_dict_with_zscores:
+        for location2 in location_dict_with_zscores:
+            if location1 != location2:
+                for index1, key1, value_tuple1 in enumerate(location_dict_with_zscores[location1]):
+                    for index2, key2, value_tuple2 in enumerate(location_dict_with_zscores[location2]):
+                        if key1 == key2:
+                            location_dict_with_zscores[location1].pop(index1)
+                            location_dict_with_zscores[location2].pop(index2)
+
 
 #queue_blast()
 #get_fasta_files()

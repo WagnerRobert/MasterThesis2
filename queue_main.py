@@ -617,19 +617,24 @@ def doZScoreText():
 
             location_dict_with_zscores[location] = sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True)
 
+
+    print "!!Uncleared List!!"
     for location in location_dict_with_zscores:
         print location
         for key, value_tuple in location_dict_with_zscores[location]:
                 print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
+    removelist = []
     for location1 in location_dict_with_zscores:
         for location2 in location_dict_with_zscores:
             if location1 != location2:
                 for index1, element1 in enumerate(location_dict_with_zscores[location1]):
                     for index2, element2 in enumerate(location_dict_with_zscores[location2]):
                         if element1[0] == element2[0]:
-                            location_dict_with_zscores[location1].pop(index1)
-                            location_dict_with_zscores[location2].pop(index2)
+                            print element1[0] + "found in " + location1 + " and " + location2
+                            removelist.append(element1[0])
+
+
 
 
 #queue_blast()

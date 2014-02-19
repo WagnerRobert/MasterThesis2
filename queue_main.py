@@ -555,6 +555,72 @@ def doZPlot():
             plt.savefig(os.path.join(constants["pdf"], "zscore_outliers_" + location+".pdf"))
             #sys.exit()
 
+def doZScoreText():
+    import numpy as np
+    from  scipy import stats
+    import matplotlib.pyplot as plt
+
+    svmLocList = {}
+    for svm in sorted(kmerlist):
+        svmLocList[svm] = {}
+        for protein in kmerlist[svm]:
+            if result[protein][0] not in svmLocList[svm]:
+                svmLocList[svm][result[protein][0]] = []
+
+            # values = []
+            # for kmer,value in kmerlist[svm][protein][0]:
+            #     values.append(value)
+
+            svmLocList[svm][result[protein][0]].append( kmerlist[svm][protein][0])
+
+
+    location_dict_with_zscores = {}
+
+    for svm in sorted(svmLocList):
+        print svm
+        for location in sorted(svmLocList[svm]):
+            print "\t" + location
+            index = 0
+            x = []
+            zscores_location = np.array([])
+            kmers_location = []
+            for protein in svmLocList[svm][location]:
+                index += 1
+                values = []
+
+                for kmer,value in protein:
+                    values.append(value)
+                    kmers_location.append(kmer)
+                zscores_protein = stats.zscore(values)
+
+                x.extend([index] * len (zscores_protein))
+                zscores_location = np.append(zscores_location, zscores_protein)
+
+            kmers_count = {}
+            zscore = 2
+
+            #print zscores_location
+            #print kmers_location
+
+            zscoreLocList = zscores_location.tolist()
+
+            #print zscoreLocList
+            dict_with_zscores = {}
+            while len(dict_with_zscores) < 30:
+                max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))
+                if kmers_location[max_index] not in dict_with_zscores:
+                    dict_with_zscores[kmers_location[max_index]] = (max_value, 1)
+                else:
+                    dict_with_zscores[kmers_location[max_index]] = (dict_with_zscores[kmers_location[max_index]][0], dict_with_zscores[kmers_location[max_index]][1] +1)
+                kmers_location.pop(max_index)
+                zscoreLocList.pop(max_index)
+
+            location_dict_with_zscores[location] = sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True)
+
+    for location in location_dict_with_zscores:
+        for key, value_tuple in location:
+                print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+
 
 #queue_blast()
 #get_fasta_files()
@@ -566,4 +632,4 @@ def doZPlot():
 #calcHitWidth()
 #countNumProfProteines()
 
-doZPlot()
+doZScoreText()

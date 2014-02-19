@@ -638,10 +638,10 @@ def doZScoreText():
                             removelist.append(element1[0])
 
     print removelist
-    clean_location_dict_with_zscores =  {}
+    clean_location_dict_with_zscores =  copy.deepcopy(location_dict_with_zscores)
     for location in location_dict_with_zscores:
-        for index, element in enumerate(location_dict_with_zscores[location]):
-            #print element
+        for index, element in enumerate(sorted(location_dict_with_zscores[location].iteritems(), key=operator.itemgetter(1), reverse=True)):
+            print element
             if element[0] in removelist:
                 print element[0]
                 clean_location_dict_with_zscores[location].pop(element[0])

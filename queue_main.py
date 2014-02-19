@@ -631,8 +631,8 @@ def doZScoreText():
     for location1 in location_dict_with_zscores:
         for location2 in location_dict_with_zscores:
             if location1 != location2:
-                for index1, element1 in enumerate(location_dict_with_zscores[location1]):
-                    for index2, element2 in enumerate(location_dict_with_zscores[location2]):
+                for index1, element1 in enumerate(sorted(location_dict_with_zscores[location1].iteritems(), key=operator.itemgetter(1), reverse=True)):
+                    for index2, element2 in enumerate(sorted(location_dict_with_zscores[location2].iteritems(), key=operator.itemgetter(1), reverse=True)):
                         if element1[0] == element2[0]:
                             print element1[0] + " found in " + location1 + " and " + location2
                             removelist.append(element1[0])

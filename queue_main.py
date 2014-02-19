@@ -625,9 +625,9 @@ def doZScoreText():
     for location1 in location_dict_with_zscores:
         for location2 in location_dict_with_zscores:
             if location1 != location2:
-                for index1, key1, value_tuple1 in enumerate(location_dict_with_zscores[location1]):
-                    for index2, key2, value_tuple2 in enumerate(location_dict_with_zscores[location2]):
-                        if key1 == key2:
+                for index1, element1 in enumerate(location_dict_with_zscores[location1]):
+                    for index2, element2 in enumerate(location_dict_with_zscores[location2]):
+                        if element1[0] == element2[0]:
                             location_dict_with_zscores[location1].pop(index1)
                             location_dict_with_zscores[location2].pop(index2)
 

@@ -641,15 +641,15 @@ def doZScoreText():
     clean_location_dict_with_zscores =  {}
     for location in location_dict_with_zscores:
         for index, element in enumerate(location_dict_with_zscores[location]):
-            print element
+            #print element
             if element[0] in removelist:
-                #print element[0]
+                print element[0]
                 clean_location_dict_with_zscores[location].pop(element[0])
 
     print "!!Cleared List!!"
     for location in clean_location_dict_with_zscores:
-        print location + " " + str(len(location_dict_with_zscores[location]))
-        for key, value_tuple in sorted(location_dict_with_zscores[location].iteritems(), key=operator.itemgetter(1), reverse=True):
+        print location + " " + str(len(clean_location_dict_with_zscores[location]))
+        for key, value_tuple in sorted(clean_location_dict_with_zscores[location].iteritems(), key=operator.itemgetter(1), reverse=True):
                 print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
 

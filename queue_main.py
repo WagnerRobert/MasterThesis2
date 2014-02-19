@@ -643,7 +643,7 @@ def doZScoreText():
         for index, element in enumerate(location_dict_with_zscores[location]):
             print element
             if element[0] in removelist:
-                print element[0]
+                #print element[0]
                 clean_location_dict_with_zscores[location].pop(element[0])
 
     print "!!Cleared List!!"

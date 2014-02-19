@@ -637,8 +637,8 @@ def doZScoreText():
                             print element1[0] + " found in " + location1 + " and " + location2
                             removelist.append(element1[0])
 
-
-    clean_location_dict_with_zscores =  copy.deepcopy(location_dict_with_zscores)
+    print removelist
+    clean_location_dict_with_zscores =  {}
     for location in location_dict_with_zscores:
         for index, element in enumerate(location_dict_with_zscores[location]):
             print element

@@ -624,7 +624,7 @@ def doZScoreText():
     for location in location_dict_with_zscores:
         print location
         print location_dict_with_zscores[location]
-        for key, value_tuple in location_dict_with_zscores[location]:
+        for key, value_tuple in sorted(location_dict_with_zscores[location].iteritems(), key=operator.itemgetter(1), reverse=True):
                 print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
     removelist = []

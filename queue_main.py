@@ -618,7 +618,7 @@ def doZScoreText():
             location_dict_with_zscores[location] = sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True)
 
     for location in location_dict_with_zscores:
-        for key, value_tuple in location:
+        for key, value_tuple in location_dict_with_zscores[location]:
                 print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
 

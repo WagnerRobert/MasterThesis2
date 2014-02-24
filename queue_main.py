@@ -671,4 +671,9 @@ def doZScoreText():
 #calcHitWidth()
 #countNumProfProteines()
 
-doZScoreText()
+#doZScoreText()
+
+def create_location_mfasta():
+    for entry in result:
+        print entry
+

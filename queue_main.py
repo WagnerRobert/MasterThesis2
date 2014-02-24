@@ -682,11 +682,11 @@ def create_location_mfasta():
         location_dict[result[protein][0]].append(protein)
     for location in location_dict:
         print location
-        location_writer = open(constants["working_dir"] + location + ".fa", 'w')
+        location_writer = open(os.path.join(constants["working_dir"] , location + ".fa"), 'w')
         print ""
         for protein in location_dict[location]:
             print protein
-            fasta_file = open(os.path.join(constants["fasta"],  protein + ".fa"))
+            fasta_file = open(os.path.join(constants["fasta"],  protein + ".fa"), 'r')
             fasta_text = fasta_file.read().rstrip() + "\n"
             location_writer.write(fasta_text)
             fasta_file.close()

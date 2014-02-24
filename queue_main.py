@@ -677,3 +677,4 @@ def create_location_mfasta():
     for entry in result:
         print entry
 
+create_location_mfasta()

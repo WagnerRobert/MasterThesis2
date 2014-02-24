@@ -682,8 +682,10 @@ def create_location_mfasta():
         location_dict[result[protein][0]].append(protein)
     for location in location_dict:
         print location
+        print ""
         for protein in location_dict[location]:
-            print "\t" + protein
+            print protein
+        print ""
 
 
 create_location_mfasta()

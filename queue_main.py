@@ -674,7 +674,16 @@ def doZScoreText():
 #doZScoreText()
 
 def create_location_mfasta():
+    location_dict = {}
     for protein in result:
-        print protein + "\t" + result[protein][0]
+        #print protein + "\t" + result[protein][0]
+        if result[protein][0] not in location_dict:
+            location_dict[result[protein][0]] = []
+        location_dict[result[protein][0]].append(protein)
+    for location in location_dict:
+        print location
+        for protein in location_dict[location]:
+            print "\t" + protein
+
 
 create_location_mfasta()

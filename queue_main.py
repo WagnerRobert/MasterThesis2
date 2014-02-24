@@ -674,7 +674,7 @@ def doZScoreText():
 #doZScoreText()
 
 def create_location_mfasta():
-    for entry in result:
-        print entry
+    for protein in result:
+        print protein + "\t" + result[protein][0]
 
 create_location_mfasta()

@@ -25,7 +25,7 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.8
+quant = 0.5
 
 # sets up the directory in which all calculations will be done
 setUp(constants)

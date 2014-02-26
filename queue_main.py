@@ -789,15 +789,15 @@ def doPlotsWithProSite(prosite):
         for protein in sorted(kmerlist[svm]):
             if protein not in prosite:
                 continue
-            if svm == "SVM_0" and result[protein][0] is not "cytoplas":
+            if svm == "SVM_0" and result[protein][0] != "cytoplas":
                 continue
-            if svm == "SVM_1" and result[protein][0] is not "inner_me":
+            if svm == "SVM_1" and result[protein][0] != "inner_me":
                 continue
-            if svm == "SVM_2" and result[protein][0] is not "periplas":
+            if svm == "SVM_2" and result[protein][0] != "periplas":
                 continue
-            if svm == "SVM_3" and result[protein][0] is not "outer_me":
+            if svm == "SVM_3" and result[protein][0] != "outer_me":
                 continue
-            if svm == "SVM_4" and (result[protein][0] is not "secreted" or result[protein][0] is not "fimbrium"):
+            if svm == "SVM_4" and (result[protein][0] != "secreted" or result[protein][0] != "fimbrium"):
                 continue
             print "\t" + protein + "\t" + str(i)
             clean_name = protein.split('#')[0]

@@ -742,7 +742,7 @@ def doPlotsWithProSite(prosite):
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            create_plotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, svm, prosite[protein])
+            createPlotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, svm, prosite[protein])
             i += 1
 
 doPlotsWithProSite(prosite)

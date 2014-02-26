@@ -715,6 +715,74 @@ def readProsite():
 prosite = readProsite()
 
 def doPlotsWithProSite(prosite):
+    locationKmers = {}
+    for svm in sorted(kmerlist):
+        if svm not in locationKmers:
+            locationKmers[svm] = {}
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            if result[protein][0] not in locationKmers[svm]:
+                locationKmers[svm][result[protein][0]] = {}
+            kmerlists = kmerlist[svm][protein]
+            pro_kmerlist = []
+            con_kmerlist = []
+            if result[protein][0] in tree[svm][0]:
+                pro_kmerlist = kmerlists[1]
+                con_kmerlist = kmerlists[0]
+            elif result[protein][0] in tree[svm][1]:
+                pro_kmerlist = kmerlists[0]
+                con_kmerlist = kmerlists[1]
+            for kmer, value in pro_kmerlist:
+                if kmer not in locationKmers[svm][result[protein][0]]:
+                    locationKmers[svm][result[protein][0]][kmer] = 1
+                else :
+                    locationKmers[svm][result[protein][0]][kmer] += 1
+    cytoplasKmers   = locationKmers["SVM_0"]["cytoplas"]
+    inner_meKmers   = locationKmers["SVM_1"]["inner_me"]
+    periplas        = locationKmers["SVM_2"]["periplas"]
+    outer_meKmers   = locationKmers["SVM_3"]["outer_me"]
+    secreted_Kmers  = locationKmers["SVM_4"]["secreted"]
+    fimbrium_Kmers  = locationKmers["SVM_4"]["fimbrium"]
+
+    doublelist = []
+
+    for kmer in cytoplasKmers:
+        if kmer in inner_meKmers:
+            doublelist.append(kmer)
+        if kmer in periplas:
+            doublelist.append(kmer)
+        if kmer in outer_meKmers:
+            doublelist.append(kmer)
+        if kmer in secreted_Kmers:
+            doublelist.append(kmer)
+        if kmer in fimbrium_Kmers:
+            doublelist.append(kmer)
+    for kmer in inner_meKmers:
+        if kmer in periplas:
+            doublelist.append(kmer)
+        if kmer in outer_meKmers:
+            doublelist.append(kmer)
+        if kmer in secreted_Kmers:
+            doublelist.append(kmer)
+        if kmer in fimbrium_Kmers:
+            doublelist.append(kmer)
+    for kmer in periplas:
+        if kmer in outer_meKmers:
+            doublelist.append(kmer)
+        if kmer in secreted_Kmers:
+            doublelist.append(kmer)
+        if kmer in fimbrium_Kmers:
+            doublelist.append(kmer)
+    for kmer in outer_meKmers:
+        if kmer in secreted_Kmers:
+            doublelist.append(kmer)
+        if kmer in fimbrium_Kmers:
+            doublelist.append(kmer)
+    for kmer in secreted_Kmers:
+        if kmer in fimbrium_Kmers:
+            doublelist.append(kmer)
+
+
     i = 0
     for svm in sorted(kmerlist):
         print svm
@@ -742,10 +810,16 @@ def doPlotsWithProSite(prosite):
                 pro_kmerlist = kmerlists[0]
                 con_kmerlist = kmerlists[1]
             pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
-            print pro_kmerlist
+
+            clean_pro_kmerlist = []
+            for kmer, value in pro_kmerlist:
+                if kmer not in doublelist:
+                    clean_pro_kmerlist.append( (kmer, value))
+            print len(pro_kmerlist)
+            print len(clean_pro_kmerlist)
             sys.exit()
             con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
-            createPlotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, svm, prosite[protein])
+            createPlotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, svm, prosite[protein], clean_pro_kmerlist)
             i += 1
 
 doPlotsWithProSite(prosite)

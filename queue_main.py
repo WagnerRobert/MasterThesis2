@@ -708,6 +708,7 @@ def readProsite():
             prosite[protein] = []
         match = re.search( r"(\d+)\s\-\s(\d+)", line)
         if match:
-            print match.groups()
+            prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
+            print (int(match.group(1)), int(match.group(2)))
 
 readProsite()

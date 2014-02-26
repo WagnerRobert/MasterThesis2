@@ -75,7 +75,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
     for i in range(len(sequence)):
         pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
-        pos_clean_count_noGaps[i] = pos__clean_count_noGaps[i] * 100 / numProfileProteins
+        pos_clean_count_noGaps[i] = pos_clean_count_noGaps[i] * 100 / numProfileProteins
 
     # pos_count = [0] * len(sequence)
     # for protein in pos_matches:
@@ -143,7 +143,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     plt.cla()
     #print len(x)
     plt.plot(x,pos_count_noGaps, color='#336699')
-    plt.plot(x, neg_count_noGaps, color='#00FF00')
+    plt.plot(x, pos_clean_count_noGaps, color='#00FF00')
     plt.ylabel('Coverage')
 
     long_name = ""

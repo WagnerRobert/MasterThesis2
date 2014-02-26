@@ -3,6 +3,7 @@ import copy
 import os
 import sys
 import operator
+import re
 from masterthesis import *
 from masterthesis.writer import create_plot
 
@@ -31,7 +32,7 @@ quant = 0.5
 setUp(constants)
 result = reader.read_resultfile(constants)
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
@@ -666,7 +667,7 @@ def doZScoreText():
 #queue_uniqueprot()
 #pairwise()
 
-doPlots()
+#doPlots()
 #doQuantCountPlots()
 #calcHitWidth()
 #countNumProfProteines()
@@ -694,3 +695,19 @@ def create_location_mfasta():
 
 
 #create_location_mfasta()
+
+def readProsite():
+    prosite = {}
+    prositePath = "./ProSite.txt"
+    f = open(prositePath, 'r')
+
+    for line in f:
+        if line.startswith(">"):
+            protein = line.rstrip().split('>')[1]
+        if protein not in prosite:
+            prosite[protein] = []
+        match = re.search( r"\d\+ \+ \d\+", line)
+        if match:
+            print match.string()
+
+readProsite()

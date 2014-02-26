@@ -710,6 +710,7 @@ def readProsite():
         if match:
             prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
             print (int(match.group(1)), int(match.group(2)))
+    return prosite
 
 prosite = readProsite()
 

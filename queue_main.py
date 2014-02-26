@@ -706,7 +706,7 @@ def readProsite():
             protein = line.rstrip().split('>')[1]
         if protein not in prosite:
             prosite[protein] = []
-        match = re.search( r"\d\+ \+ \d\+", line)
+        match = re.search( r"\d+ \- \d+", line)
         if match:
             print match.string()
 

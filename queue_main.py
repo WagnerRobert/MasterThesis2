@@ -711,4 +711,38 @@ def readProsite():
             prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
             print (int(match.group(1)), int(match.group(2)))
 
-readProsite()
+prosite = readProsite()
+
+def doPlotsWithProSite(prosite):
+    i = 0
+    for svm in sorted(kmerlist):
+        print svm
+        for protein in sorted(kmerlist[svm]):
+            if protein not in prosite:
+                continue
+            print "\t" + protein + "\t" + str(i)
+            clean_name = protein.split('#')[0]
+            if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
+                pass
+            else:
+                print "no needle file for " + protein
+                continue
+            foundUniprot, entry = get_uniprot(clean_name, constants, overwrite)
+            sequence = get_fasta(clean_name, entry, constants, overwrite)
+
+            pairwise_alignments = build_pairwise_alignments(clean_name, constants, overwrite)
+            kmerlists = kmerlist[svm][protein]
+            pro_kmerlist = []
+            con_kmerlist = []
+            if result[protein][0] in tree[svm][0]:
+                pro_kmerlist = kmerlists[1]
+                con_kmerlist = kmerlists[0]
+            elif result[protein][0] in tree[svm][1]:
+                pro_kmerlist = kmerlists[0]
+                con_kmerlist = kmerlists[1]
+            pro_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, pro_kmerlist)
+            con_matches = match_kmers_pairwise(clean_name, sequence, pairwise_alignments, con_kmerlist)
+            create_plotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, svm, prosite[protein])
+            i += 1
+
+doPlotsWithProSite(prosite)

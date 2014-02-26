@@ -28,7 +28,7 @@ def getFeatures(entry):
 
     return features
 
-def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, svm, prosite):
+def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, svm, prosite, pro_clean_matches):
     name = query_protein_sequence[0]
     #print name
     sequence = query_protein_sequence[1]
@@ -36,6 +36,9 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
     pos_count = None
     pos_count_noGaps = [0] * len(sequence)
+
+    pos_clean_count = None
+    pos_clean_count_noGaps = [0] * len(sequence)
 
 
     for prot in pro_matches:
@@ -54,8 +57,25 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
                     pos_count_noGaps[x] += pos_count[i]
                     x += 1
 
+    for prot in pro_clean_matches:
+        for match_seq , start, end in pro_clean_matches[prot]:
+            neg_count = [0] * len(match_seq)
+            for j in range(start, end):
+                if j < len(match_seq):
+                    neg_count[j] += 1
+            x = 0
+            for i in range(len(match_seq)):
+                if x == len(sequence):
+                    break
+                if match_seq[i] == '-':
+                    pass
+                else:
+                    pos_clean_count_noGaps[x] += neg_count[i]
+                    x += 1
+
     for i in range(len(sequence)):
         pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
+        pos_clean_count_noGaps[i] = pos__clean_count_noGaps[i] * 100 / numProfileProteins
 
     # pos_count = [0] * len(sequence)
     # for protein in pos_matches:
@@ -123,6 +143,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     plt.cla()
     #print len(x)
     plt.plot(x,pos_count_noGaps, color='#336699')
+    plt.plot(x, neg_count_noGaps, color='#00FF00')
     plt.ylabel('Coverage')
 
     long_name = ""

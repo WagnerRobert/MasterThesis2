@@ -799,8 +799,13 @@ def doPlotsWithProSite(prosite):
                 continue
             if svm == "SVM_3" and result[protein][0] != "outer_me":
                 continue
-            if (svm == "SVM_4" and result[protein][0] != "secreted") or (svm == "SVM_4" and result[protein][0] != "fimbrium"):
-                continue
+            if svm == "SVM_4":
+                if result[protein][0] == "secreted":
+                    pass
+                elif result[protein][0] == "fimbrium":
+                    pass
+                else:
+                    continue
             print "\t" + protein + "\t" + str(i)
             clean_name = protein.split('#')[0]
             if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):

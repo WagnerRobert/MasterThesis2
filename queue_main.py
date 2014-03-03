@@ -709,7 +709,7 @@ def readProsite():
         match = re.search( r"(\d+)\s\-\s(\d+)", line)
         if match:
             prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
-            print (int(match.group(1)), int(match.group(2)))
+            #print (int(match.group(1)), int(match.group(2)))
     return prosite
 
 prosite = readProsite()
@@ -719,7 +719,7 @@ def doPlotsWithProSite(prosite):
     for svm in sorted(kmerlist):
         if svm not in locationKmers:
             locationKmers[svm] = {}
-        print svm
+        #print svm
         for protein in sorted(kmerlist[svm]):
             if result[protein][0] not in locationKmers[svm]:
                 locationKmers[svm][result[protein][0]] = {}
@@ -788,8 +788,6 @@ def doPlotsWithProSite(prosite):
         print svm
         for protein in sorted(kmerlist[svm]):
             if protein not in prosite:
-                continue
-            if svm != "SVM_4":
                 continue
             if svm == "SVM_0" and result[protein][0] != "cytoplas":
                 continue

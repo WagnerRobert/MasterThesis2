@@ -26,10 +26,10 @@ constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 quant = 0.1
 
-print "reading result file"
+
+
 result = reader.read_resultfile(constants)
-print "done"
-sys.exit()
+
 
 def kmer_file(kmer_file_path):
     kmer_list = []

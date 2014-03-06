@@ -61,7 +61,7 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/1/kmers/kmerweights/SVM_11", constants)
+svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/1/kmers/kmerweights/SVM_12", constants)
 
 def checkOrder(svm_dict, result):
 #    print svm_dict

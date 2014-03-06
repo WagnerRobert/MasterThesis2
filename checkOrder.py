@@ -8,7 +8,7 @@ import masterthesis
 __author__ = 'delur'
 
 constants = {}
-constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka/1"
+constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka/2"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")

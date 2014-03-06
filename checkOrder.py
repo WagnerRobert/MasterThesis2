@@ -4,6 +4,7 @@ import os
 import sys
 from masterthesis import reader
 import masterthesis
+from masterthesis import *
 
 __author__ = 'delur'
 
@@ -27,7 +28,7 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 quant = 0.1
 
 
-
+setUp(constants)
 result = reader.read_resultfile(constants)
 
 

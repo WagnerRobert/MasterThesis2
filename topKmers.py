@@ -47,7 +47,7 @@ def kmer_file(kmer_file_path):
     kmer_list = sorted(kmer_list, key=lambda  x:x[1])
 
     for i in range(len(kmer_list)):
-        if i < 0:
+        if kmer_list[i][1] < 0:
             print i
             sys.exit()
 

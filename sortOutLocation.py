@@ -66,3 +66,5 @@ def sortOutLocation(location, svm_dict):
     for protein in svm_dict:
         if result[protein][0] == location:
             print protein
+
+sortOutLocation("nucleus", svm_dict)

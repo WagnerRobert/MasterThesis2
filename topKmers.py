@@ -2,6 +2,7 @@
 import math
 import os
 import sys
+import operator
 from masterthesis import reader
 import masterthesis
 from masterthesis import *
@@ -48,7 +49,7 @@ def kmer_file(kmer_file_path):
 
     for i in range(len(kmer_list)):
         if kmer_list[i][1] < 0:
-            return  kmer_list[i:]
+            return  kmer_list[:i]
 
 
 def kmer_dir(kmer_svm_path, paths):
@@ -63,9 +64,33 @@ def kmer_dir(kmer_svm_path, paths):
 
 svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 
-def sortOutLocation(location, svm_dict):
-    for protein in svm_dict:
-        if result[protein][0] == location:
-            print protein +".kmerweights.txt"
 
-#sortOutLocation("nucleus", svm_dict)
+import numpy as np
+from  scipy import stats
+
+def zscore(svm_dict):
+    zscores_location = np.array([])
+    kmers_location = []
+    for protein in svm_dict:
+        kmers = []
+        values = []
+        for kmer,value in svm_dict[protein]:
+            kmers.append(kmer)
+            values.append(value)
+        zscores_protein = stats.zscore(values)
+        kmers_location += kmers
+        zscores_location = np.append(zscores_location, zscores_protein)
+
+    zscoreLocList = zscores_location.tolist()
+    #print zscoreLocList
+    dict_with_zscores = {}
+    while len(dict_with_zscores) < 30:
+        max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))
+        if kmers_location[max_index] not in dict_with_zscores:
+            dict_with_zscores[kmers_location[max_index]] = (max_value, 1)
+        else:
+            dict_with_zscores[kmers_location[max_index]] = (dict_with_zscores[kmers_location[max_index]][0], dict_with_zscores[kmers_location[max_index]][1] +1)
+        kmers_location.pop(max_index)
+        zscoreLocList.pop(max_index)
+    for key, value_tuple in sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True):
+        print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])

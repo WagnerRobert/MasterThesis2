@@ -60,7 +60,7 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/2/kmers/kmerweights/SVM_14", constants)
+svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/1/kmers/kmerweights/SVM_14", constants)
 
 def sortOutLocation(location, svm_dict):
     for protein in svm_dict:

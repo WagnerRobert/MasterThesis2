@@ -65,6 +65,8 @@ svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/5/kmers/kmerweigh
 def sortOutLocation(location, svm_dict):
     for protein in svm_dict:
         if result[protein][0] == location:
+            print svm_dict[protein]
+            sys.exit()
             print protein +".kmerweights.txt"
 
 sortOutLocation("nucleus", svm_dict)

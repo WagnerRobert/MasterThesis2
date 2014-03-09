@@ -94,3 +94,6 @@ def zscore(svm_dict):
         zscoreLocList.pop(max_index)
     for key, value_tuple in sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True):
         print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+
+print "starting zscore stuff now"
+zscore(svm_dict)

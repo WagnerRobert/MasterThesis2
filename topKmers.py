@@ -28,7 +28,7 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 quant = 0.1
 
 
-result = reader.read_resultfile(constants)
+#result = reader.read_resultfile(constants)
 
 
 def kmer_file(kmer_file_path):
@@ -71,4 +71,4 @@ def sortOutLocation(location, svm_dict):
         if result[protein][0] == location:
             print protein +".kmerweights.txt"
 
-sortOutLocation("nucleus", svm_dict)
+#sortOutLocation("nucleus", svm_dict)

@@ -49,7 +49,9 @@ def kmer_file(kmer_file_path):
 
     for i in range(len(kmer_list)):
         if kmer_list[i][1] < 0:
-            return  kmer_list[:i]
+            del kmer_list[i:]
+            break
+    return  kmer_list
 
 
 def kmer_dir(kmer_svm_path, paths):

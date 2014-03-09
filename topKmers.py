@@ -9,7 +9,7 @@ from masterthesis import *
 __author__ = 'delur'
 
 constants = {}
-constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka/5"
+constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -46,11 +46,15 @@ def kmer_file(kmer_file_path):
         kmer_list[i] = (kmer_list[i][0] , kmer_list[i][1] / factor)
     kmer_list = sorted(kmer_list, key=lambda  x:x[1])
 
+    for i in range(len(kmer_list)):
+        if i < 0:
+            print i
+            sys.exit()
+
     return  kmer_list
 
 
 def kmer_dir(kmer_svm_path, paths):
-    results = masterthesis.reader.read_resultfile(paths)
     svm_kmer_dict = {}
     for root, dirs, files in os.walk(kmer_svm_path):
         for kmer in sorted(files):
@@ -60,7 +64,7 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka/5/kmers/kmerweights/SVM_14", constants)
+svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 
 def sortOutLocation(location, svm_dict):
     for protein in svm_dict:

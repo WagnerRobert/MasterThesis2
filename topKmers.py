@@ -44,7 +44,7 @@ def kmer_file(kmer_file_path):
 
     for i in range(len(kmer_list)):
         kmer_list[i] = (kmer_list[i][0] , kmer_list[i][1] / factor)
-    kmer_list = sorted(kmer_list, key=lambda  x:x[1])
+    kmer_list = sorted(kmer_list, key=lambda  x:x[1], reverse=True)
 
     for i in range(len(kmer_list)):
         if kmer_list[i][1] < 0:

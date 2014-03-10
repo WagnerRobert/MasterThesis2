@@ -111,6 +111,7 @@ def zscore(svm_dict, posOrNeg):
     zscoreLocList = zscores_location.tolist()
     #print zscoreLocList
     dict_with_zscores = {}
+
     while len(dict_with_zscores) < 30:
         max_index, max_value = max(enumerate(zscoreLocList), key=operator.itemgetter(1))
         if kmers_location[max_index] not in dict_with_zscores:
@@ -122,39 +123,32 @@ def zscore(svm_dict, posOrNeg):
     for key, value_tuple in sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True):
         print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
+
     return dict_with_zscores
 
 
 pos = 0
 neg = 1
 
-#cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-#write_picklefile(cytopla_dict,"cytopla_dict", constants)
-#print "reading cytopla pickle file"
-#cytopla_dict = read_picklefile("cytopla_dict", constants)
+cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
+write_picklefile(cytopla_dict,"cytopla_dict", constants)
+print "reading cytopla pickle file"
+cytopla_dict = read_picklefile("cytopla_dict", constants)
 
-#print "starting cyto zscore stuff now"
-#cytopla_dict = zscore(cytopla_dict, neg)
-#write_picklefile(cytopla_dict,"cytopla_dict_z", constants)
+print "starting cyto zscore stuff now"
+cytopla_dict = zscore(cytopla_dict, neg)
+write_picklefile(cytopla_dict,"cytopla_dict_z", constants)
 cytopla_dict = read_picklefile("cytopla_dict_z", constants)
 
-#nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
-#write_picklefile(nucleus_dict,"nucleus_dict", constants)
-#print "reading nucleus pickle file"
-#nucleus_dict = read_picklefile("nucleus_dict", constants)
+nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
+write_picklefile(nucleus_dict,"nucleus_dict", constants)
+print "reading nucleus pickle file"
+nucleus_dict = read_picklefile("nucleus_dict", constants)
 
-#print "starting nucleus zscore stuff now"
-#nucleus_dict = zscore(nucleus_dict, pos)
-#write_picklefile(nucleus_dict,"nucleus_dict_z", constants)
+print "starting nucleus zscore stuff now"
+nucleus_dict = zscore(nucleus_dict, pos)
+write_picklefile(nucleus_dict,"nucleus_dict_z", constants)
 nucleus_dict = read_picklefile("nucleus_dict_z", constants)
-
-
-
-
-
-
-
-
 
 removelist = []
 for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):

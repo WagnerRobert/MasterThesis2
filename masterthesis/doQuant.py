@@ -5,6 +5,8 @@ __author__ = 'delur'
 def doQuant(kmerlist, quant):
     positive_list = []
     negative_list = []
+    if kmerlist[0][1] > 0:
+        print "Warning, order might be wrong"
 
     for kmer, value in kmerlist:
         if value < 0 :

@@ -103,7 +103,7 @@ def zscore(svm_dict, posOrNeg):
     for protein in svm_dict:
         kmers = []
         values = []
-        for kmer,value in svm_dict[protein]:
+        for kmer,value in svm_dict[protein][posOrNeg]:
             kmers.append(kmer)
             values.append(value)
         zscores_protein = stats.zscore(values)
@@ -131,9 +131,10 @@ def zscore(svm_dict, posOrNeg):
 
 
 print "starting zscore stuff now"
-
-cytopla_dict = zscore(cytopla_dict[1])
-nucleus_dict = zscore(nucleus_dict[0])
+pos = 0
+neg = 1
+cytopla_dict = zscore(cytopla_dict, neg)
+nucleus_dict = zscore(nucleus_dict, pos)
 
 removelist = []
 

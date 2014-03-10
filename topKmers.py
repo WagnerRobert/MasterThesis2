@@ -91,8 +91,10 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)[1]
-nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)[0]
+cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
+print cytopla_dict
+sys.exit()
+nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 
 import numpy as np
 from  scipy import stats

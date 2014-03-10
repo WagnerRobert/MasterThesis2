@@ -92,8 +92,6 @@ def kmer_dir(kmer_svm_path, paths):
     return svm_kmer_dict
 
 cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-print cytopla_dict
-sys.exit()
 nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 
 import numpy as np
@@ -134,8 +132,8 @@ def zscore(svm_dict, posOrNeg):
 
 print "starting zscore stuff now"
 
-cytopla_dict = zscore(cytopla_dict)
-nucleus_dict = zscore(nucleus_dict)
+cytopla_dict = zscore(cytopla_dict[1])
+nucleus_dict = zscore(nucleus_dict[0])
 
 removelist = []
 

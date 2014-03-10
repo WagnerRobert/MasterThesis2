@@ -142,7 +142,6 @@ cytopla_dict = zscore(cytopla_dict, neg)
 nucleus_dict = zscore(nucleus_dict, pos)
 
 removelist = []
-
 for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
     for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
         if element1[0] == element2[0]:

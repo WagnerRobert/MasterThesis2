@@ -130,6 +130,7 @@ neg = 1
 
 #cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
 #write_picklefile(cytopla_dict,"cytopla_dict", constants)
+print "reading cytopla pickle file"
 cytopla_dict = read_picklefile("cytopla_dict", constants)
 
 print "starting cyto zscore stuff now"
@@ -138,6 +139,7 @@ write_picklefile(cytopla_dict,"cytopla_dict_z", constants)
 
 #nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 #write_picklefile(nucleus_dict,"nucleus_dict", constants)
+print "reading nucleus pickle file"
 nucleus_dict = read_picklefile("nucleus_dict", constants)
 
 print "starting nucleus zscore stuff now"

@@ -92,7 +92,9 @@ def kmer_dir(kmer_svm_path, paths):
     return svm_kmer_dict
 
 cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
+write_picklefile("cytopla_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
 nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
+write_picklefile("nucleus_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
 
 import numpy as np
 from  scipy import stats

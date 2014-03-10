@@ -135,35 +135,35 @@ print "starting zscore stuff now"
 cytopla_dict = zscore(cytopla_dict)
 nucleus_dict = zscore(nucleus_dict)
 
-    removelist = []
+removelist = []
 
-    for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
-        for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
-            if element1[0] == element2[0]:
-                print element1[0] + " found in both"
-                removelist.append(element1[0])
+for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+    for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+        if element1[0] == element2[0]:
+            print element1[0] + " found in both"
+            removelist.append(element1[0])
 
-    #print removelist
-    clean_cytopla_dict =  copy.deepcopy(cytopla_dict)
-    for index, element in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
-        #print element
-        if element[0] in removelist:
-            #print element[0]
-            clean_cytopla_dict.pop(element[0])
+#print removelist
+clean_cytopla_dict =  copy.deepcopy(cytopla_dict)
+for index, element in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+    #print element
+    if element[0] in removelist:
+        #print element[0]
+        clean_cytopla_dict.pop(element[0])
 
-    #print removelist
-    clean_nucleus_dict =  copy.deepcopy(nucleus_dict)
-    for index, element in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
-        #print element
-        if element[0] in removelist:
-            #print element[0]
-            clean_nucleus_dict.pop(element[0])
+#print removelist
+clean_nucleus_dict =  copy.deepcopy(nucleus_dict)
+for index, element in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+    #print element
+    if element[0] in removelist:
+        #print element[0]
+        clean_nucleus_dict.pop(element[0])
 
-    print "!!Cleared List!!"
+print "!!Cleared List!!"
 
-    print "cytoplas"
-    for key, value_tuple in sorted(clean_cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
-            print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
-    print "nucleus"
-    for key, value_tuple in sorted(clean_nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
-            print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+print "cytoplas"
+for key, value_tuple in sorted(clean_cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
+        print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+print "nucleus"
+for key, value_tuple in sorted(clean_nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
+        print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])

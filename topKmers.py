@@ -92,9 +92,9 @@ def kmer_dir(kmer_svm_path, paths):
     return svm_kmer_dict
 
 cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-write_picklefile(cytopla_dict,"cytopla_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
+write_picklefile(cytopla_dict,"cytopla_dict", constants)
 nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
-write_picklefile(nucleus_dict,"nucleus_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
+write_picklefile(nucleus_dict,"nucleus_dict", constants)
 
 cytopla_dict = read_picklefile("cytopla_dict", constants)
 nucleus_dict = read_picklefile("nucleus_dict", constants)

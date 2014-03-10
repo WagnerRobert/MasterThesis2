@@ -77,7 +77,7 @@ def kmer_file(kmer_file_path):
         kmer_list[i] = (kmer_list[i][0] , kmer_list[i][1] / factor)
     kmer_list = sorted(kmer_list, key=lambda  x:x[1], reverse=True)
 
-    doQuant(kmer_list,quant)
+    kmer_list = doQuant(kmer_list,quant)
     return  kmer_list
 
 

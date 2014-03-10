@@ -160,9 +160,6 @@ removelist = []
 for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
     for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
 
-        print element1
-        print element1[0]
-        sys.exit()
         if element1[0] == element2[0]:
             print element1[0] + " found in both"
             removelist.append(element1[0])

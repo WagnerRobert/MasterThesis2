@@ -90,7 +90,7 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
+svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
 
 
 import numpy as np
@@ -124,5 +124,5 @@ def zscore(svm_dict,posOrNeg):
         print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
 print "starting zscore stuff now"
-pos = 1
-zscore(svm_dict, pos)
+neg = 1
+zscore(svm_dict, neg)

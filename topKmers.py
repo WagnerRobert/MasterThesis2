@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import copy
 import math
 import os
 import sys
@@ -90,13 +91,13 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-
+cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)[1]
+nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)[0]
 
 import numpy as np
 from  scipy import stats
 
-def zscore(svm_dict,posOrNeg):
+def zscore(svm_dict, posOrNeg):
     zscores_location = np.array([])
     kmers_location = []
     for protein in svm_dict:
@@ -108,6 +109,7 @@ def zscore(svm_dict,posOrNeg):
         zscores_protein = stats.zscore(values)
         kmers_location += kmers
         zscores_location = np.append(zscores_location, zscores_protein)
+
 
     zscoreLocList = zscores_location.tolist()
     #print zscoreLocList
@@ -123,6 +125,45 @@ def zscore(svm_dict,posOrNeg):
     for key, value_tuple in sorted(dict_with_zscores.iteritems(), key=operator.itemgetter(1), reverse=True):
         print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
+    return dict_with_zscores
+
+
+
+
 print "starting zscore stuff now"
-neg = 1
-zscore(svm_dict, neg)
+
+cytopla_dict = zscore(cytopla_dict)
+nucleus_dict = zscore(nucleus_dict)
+
+    removelist = []
+
+    for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+        for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+            if element1[0] == element2[0]:
+                print element1[0] + " found in both"
+                removelist.append(element1[0])
+
+    #print removelist
+    clean_cytopla_dict =  copy.deepcopy(cytopla_dict)
+    for index, element in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+        #print element
+        if element[0] in removelist:
+            #print element[0]
+            clean_cytopla_dict.pop(element[0])
+
+    #print removelist
+    clean_nucleus_dict =  copy.deepcopy(nucleus_dict)
+    for index, element in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+        #print element
+        if element[0] in removelist:
+            #print element[0]
+            clean_nucleus_dict.pop(element[0])
+
+    print "!!Cleared List!!"
+
+    print "cytoplas"
+    for key, value_tuple in sorted(clean_cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
+            print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
+    print "nucleus"
+    for key, value_tuple in sorted(clean_nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True):
+            print "\t" + key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])

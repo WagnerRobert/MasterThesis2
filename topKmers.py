@@ -31,6 +31,35 @@ quant = 0.1
 
 #result = reader.read_resultfile(constants)
 
+def doQuant(kmerlist, quant):
+    positive_list = []
+    negative_list = []
+
+    for kmer, value in kmerlist:
+        if value < 0 :
+            negative_list.append( (kmer, value) )
+        else:
+            positive_list.append( (kmer, value) )
+    positive_list.reverse()
+
+    total = 0.0
+    for kmer, value in positive_list :
+        total += value
+    posquant = quant * total
+
+    while total > posquant and len(positive_list) > 0:
+        total -= positive_list.pop()[1]
+
+    total = 0.0
+    for kmer, value in negative_list:
+        total += value
+    negquant = quant * total
+
+    while total < negquant and len(negative_list) > 0:
+        total -= negative_list.pop()[1]
+
+    return (positive_list, negative_list)
+
 
 def kmer_file(kmer_file_path):
     kmer_list = []
@@ -47,10 +76,7 @@ def kmer_file(kmer_file_path):
         kmer_list[i] = (kmer_list[i][0] , kmer_list[i][1] / factor)
     kmer_list = sorted(kmer_list, key=lambda  x:x[1], reverse=True)
 
-    for i in range(len(kmer_list)):
-        if kmer_list[i][1] < 0:
-            del kmer_list[i:]
-            break
+    doQuant(kmer_list,quant)
     return  kmer_list
 
 
@@ -70,7 +96,7 @@ svm_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", c
 import numpy as np
 from  scipy import stats
 
-def zscore(svm_dict):
+def zscore(svm_dict,posOrNeg):
     zscores_location = np.array([])
     kmers_location = []
     for protein in svm_dict:
@@ -98,4 +124,5 @@ def zscore(svm_dict):
         print key + "\t" + '%.2f' % value_tuple[0] + "\t" + str(value_tuple[1])
 
 print "starting zscore stuff now"
-zscore(svm_dict)
+pos = 1
+zscore(svm_dict, pos)

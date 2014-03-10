@@ -11,7 +11,7 @@ from masterthesis import *
 __author__ = 'delur'
 
 constants = {}
-constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus"
+constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -95,6 +95,9 @@ cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla
 write_picklefile("cytopla_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
 nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
 write_picklefile("nucleus_dict", "/mnt/project/locbloc-ha/studs/robert/euka_small")
+
+cytopla_dict = read_picklefile("cytopla_dict", constants)
+nucleus_dict = read_picklefile("nucleus_dict", constants)
 
 import numpy as np
 from  scipy import stats

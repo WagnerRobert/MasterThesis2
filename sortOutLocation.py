@@ -67,4 +67,4 @@ def sortOutLocation(location, svm_dict):
         if result[protein][0] == location:
             print protein +".kmerweights.txt"
 
-sortOutLocation("nucleus", svm_dict)
+sortOutLocation("cytopla", svm_dict)

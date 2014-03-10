@@ -10,7 +10,7 @@ from masterthesis.writer import create_plot
 __author__ = 'wagnerr'
 
 constants = {}
-constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka/1"
+constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -26,17 +26,17 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.1
+quant = 0.01
 
 # sets up the directory in which all calculations will be done
 setUp(constants)
 result = reader.read_resultfile(constants)
-#tree = reader.read_treefile(constants)
+tree = reader.read_treefile(constants)
 reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)
-checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfile
+#checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfile
 
 overwrite = False
 queue = True
@@ -827,7 +827,7 @@ def doPlotsWithProSite(prosite):
             i += 1
 
 
-#queue_blast()
+queue_blast()
 #get_fasta_files()
 #queue_uniqueprot()
 #pairwise()

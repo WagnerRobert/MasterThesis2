@@ -91,10 +91,10 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-write_picklefile(cytopla_dict,"cytopla_dict", constants)
-nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
-write_picklefile(nucleus_dict,"nucleus_dict", constants)
+#cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
+#write_picklefile(cytopla_dict,"cytopla_dict", constants)
+#nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
+#write_picklefile(nucleus_dict,"nucleus_dict", constants)
 
 cytopla_dict = read_picklefile("cytopla_dict", constants)
 nucleus_dict = read_picklefile("nucleus_dict", constants)
@@ -144,6 +144,10 @@ nucleus_dict = zscore(nucleus_dict, pos)
 removelist = []
 for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
     for index2, element2 in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
+
+        print element1
+        print element1[0]
+        sys.exit()
         if element1[0] == element2[0]:
             print element1[0] + " found in both"
             removelist.append(element1[0])
@@ -156,6 +160,8 @@ for index, element in enumerate(sorted(cytopla_dict.iteritems(), key=operator.it
         #print element[0]
         clean_cytopla_dict.pop(element[0])
 
+cytopla_dict = None
+
 #print removelist
 clean_nucleus_dict =  copy.deepcopy(nucleus_dict)
 for index, element in enumerate(sorted(nucleus_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):
@@ -163,6 +169,8 @@ for index, element in enumerate(sorted(nucleus_dict.iteritems(), key=operator.it
     if element[0] in removelist:
         #print element[0]
         clean_nucleus_dict.pop(element[0])
+
+nucleus_dict = None
 
 print "!!Cleared List!!"
 

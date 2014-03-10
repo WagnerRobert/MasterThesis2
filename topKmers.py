@@ -8,6 +8,9 @@ from masterthesis import reader
 import masterthesis
 from masterthesis import *
 
+import numpy as np
+from  scipy import stats
+
 __author__ = 'delur'
 
 constants = {}
@@ -91,17 +94,6 @@ def kmer_dir(kmer_svm_path, paths):
 
     return svm_kmer_dict
 
-#cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
-#write_picklefile(cytopla_dict,"cytopla_dict", constants)
-#nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
-#write_picklefile(nucleus_dict,"nucleus_dict", constants)
-
-cytopla_dict = read_picklefile("cytopla_dict", constants)
-nucleus_dict = read_picklefile("nucleus_dict", constants)
-
-import numpy as np
-from  scipy import stats
-
 def zscore(svm_dict, posOrNeg):
     zscores_location = np.array([])
     kmers_location = []
@@ -133,13 +125,39 @@ def zscore(svm_dict, posOrNeg):
     return dict_with_zscores
 
 
+pos = 0
+neg = 1
+
+#cytopla_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/cytopla", constants)
+#write_picklefile(cytopla_dict,"cytopla_dict", constants)
+cytopla_dict = read_picklefile("cytopla_dict", constants)
+
+print "starting cyto zscore stuff now"
+cytopla_dict = zscore(cytopla_dict, neg)
+write_picklefile(cytopla_dict,"cytopla_dict_z", constants)
+
+#nucleus_dict = kmer_dir("/mnt/project/locbloc-ha/studs/robert/euka_small/nucleus", constants)
+#write_picklefile(nucleus_dict,"nucleus_dict", constants)
+nucleus_dict = read_picklefile("nucleus_dict", constants)
+
+print "starting nucleus zscore stuff now"
+nucleus_dict = zscore(nucleus_dict, pos)
+write_picklefile(nucleus_dict,"nucleus_dict_z", constants)
+
+
+
+
+
+
 
 
 print "starting zscore stuff now"
 pos = 0
 neg = 1
 cytopla_dict = zscore(cytopla_dict, neg)
+write_picklefile(cytopla_dict,"cytopla_dict_z", constants)
 nucleus_dict = zscore(nucleus_dict, pos)
+write_picklefile(nucleus_dict,"nucleus_dict_z", constants)
 
 removelist = []
 for index1, element1 in enumerate(sorted(cytopla_dict.iteritems(), key=operator.itemgetter(1), reverse=True)):

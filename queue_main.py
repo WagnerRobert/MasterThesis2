@@ -33,7 +33,7 @@ setUp(constants)
 result = reader.read_resultfile(constants)
 print result
 tree = reader.read_treefile(constants)
-reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)

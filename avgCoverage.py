@@ -3,7 +3,7 @@ import math
 import re
 import sys
 from masterthesis import reader, build_pairwise_alignments, get_fasta, get_uniprot
-from masterthesis.match_kmers import match_kmers_pairwise
+from masterthesis import match_kmers_pairwise
 
 __author__ = 'delur'
 

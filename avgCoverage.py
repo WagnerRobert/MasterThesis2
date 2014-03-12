@@ -1,7 +1,8 @@
 import os
 import math
 import sys
-from masterthesis import reader
+from masterthesis import reader, build_pairwise_alignments, get_fasta, get_uniprot
+from masterthesis.match_kmers import match_kmers_pairwise
 
 __author__ = 'delur'
 
@@ -113,13 +114,15 @@ locKmerList = readKmers("SVM_14", 0.1, constants)
 for location in locKmerList:
     print location
     for protein in locKmerList[location]:
-        print "\t" + protein
-        for kmer, value in locKmerList[location][protein]:
-            print "\t\t" + kmer + "\t" + str(value)
+        print "\t" + protein + "\t" + str(len(locKmerList[location][protein]))
+        # match kmers on protein and on profile proteines
+        foundUniprot, entry = get_uniprot(protein, constants, False)
+        sequence = get_fasta(protein, entry, constants, False)
+        pairwise_alignments = build_pairwise_alignments(protein, constants, False)
+        pro_matches = match_kmers_pairwise(protein, sequence, pairwise_alignments, locKmerList[location][protein])
+
+        print pro_matches
         sys.exit()
-
-
-    # match kmers on protein and on profile proteines
     # calculate coverage for each amino acid
     # read prosite file
     # calculate which amino acids are inside prosite regions, and which are outside

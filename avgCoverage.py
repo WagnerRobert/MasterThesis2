@@ -188,7 +188,7 @@ for location in locKmerList:
                 no_prosite_coverage_list.append(pos_count_noGaps[i])
             elif prosite_regions[i] == 1:
                 prosite_coverage_list.append(pos_count_noGaps[i])
-        print "\t\t" + str( sum(prosite_coverage_list)/float(len(prosite_coverage_list))) + "\t" + str( sum(no_prosite_coverage_list)/float(len(no_prosite_coverage_list))) + "\t" + str( len(prosite_coverage_list)) + "\t" + str( len(no_prosite_coverage_list))
+        print "\t\t" +'%.2f' % sum(prosite_coverage_list)/float(len(prosite_coverage_list)) + "\t" + '%.2f' % sum(no_prosite_coverage_list)/float(len(no_prosite_coverage_list)) + "\t" + str( len(prosite_coverage_list)) + "\t" + str( len(no_prosite_coverage_list))
 
     # average the coverage over all inside and outside regions
 # plot each protein in localization as a point in a plot, using avg inside for one axis and avg outside for the other

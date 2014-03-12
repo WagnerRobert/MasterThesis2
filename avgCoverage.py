@@ -2,7 +2,7 @@ import os
 import math
 import re
 import sys
-from masterthesis import reader, build_pairwise_alignments, get_fasta, get_uniprot
+from masterthesis import write_picklefile, reader, build_pairwise_alignments, get_fasta, get_uniprot
 from masterthesis import match_kmers_pairwise
 
 __author__ = 'delur'
@@ -110,7 +110,11 @@ def readKmers(SVM, quant, constants):
 
     return locKmerList
 
-locKmerList = readKmers("SVM_14", 0.1, constants)
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList.pkl")):
+    locKmerList = reader.read_picklefile("locKmerList", constants)
+else:
+    locKmerList = readKmers("SVM_14", 0.1, constants)
+    write_picklefile(locKmerList, "locKmerList", constants)
 
 # read prosite file
 def readProsite():

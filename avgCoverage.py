@@ -145,6 +145,8 @@ for location in locKmerList:
         foundUniprot, entry = get_uniprot(protein, constants, False)
         sequence = get_fasta(protein, entry, constants, False)
         pairwise_alignments = build_pairwise_alignments(protein, constants, False)
+        if len(pairwise_alignments) == 0:
+            continue
         pro_matches = match_kmers_pairwise(protein, sequence, pairwise_alignments, locKmerList[location][protein])
 
         # calculate coverage for each amino acid position

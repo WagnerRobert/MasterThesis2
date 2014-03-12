@@ -1,5 +1,6 @@
 import os
 import math
+import sys
 from masterthesis import reader
 
 __author__ = 'delur'

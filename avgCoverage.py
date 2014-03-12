@@ -177,7 +177,7 @@ for location in locKmerList:
 
         no_prosite_coverage_list = []
         prosite_coverage_list = []
-        for i in len(pos_count_noGaps):
+        for i in range(len(pos_count_noGaps)):
             if prosite_regions[i] == 0:
                 no_prosite_coverage_list.append(pos_count_noGaps[i])
             elif prosite_regions[i] == 1:

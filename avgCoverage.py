@@ -1,5 +1,6 @@
 import os
 import math
+import re
 import sys
 from masterthesis import reader, build_pairwise_alignments, get_fasta, get_uniprot
 from masterthesis.match_kmers import match_kmers_pairwise
@@ -121,10 +122,63 @@ for location in locKmerList:
         pairwise_alignments = build_pairwise_alignments(protein, constants, False)
         pro_matches = match_kmers_pairwise(protein, sequence, pairwise_alignments, locKmerList[location][protein])
 
-        print pro_matches
-        sys.exit()
-    # calculate coverage for each amino acid
-    # read prosite file
-    # calculate which amino acids are inside prosite regions, and which are outside
+        # calculate coverage for each amino acid position
+        pos_count = None
+        pos_count_noGaps = [0] * len(sequence)
+
+        for prot in pro_matches:
+            for match_seq , start, end in pro_matches[prot]:
+                pos_count = [0] * len(match_seq)
+                for j in range(start, end):
+                    if j < len(match_seq):
+                        pos_count[j] += 1
+                x = 0
+                for i in range(len(match_seq)):
+                    if x == len(sequence):
+                        break
+                    if match_seq[i] == '-':
+                        pass
+                    else:
+                        pos_count_noGaps[x] += pos_count[i]
+                        x += 1
+
+        numProfileProteins = len(pairwise_alignments)
+        for i in range(len(sequence)):
+            pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
+
+        # read prosite file
+        def readProsite():
+            prosite = {}
+            prositePath = "./ProSite.txt"
+            f = open(prositePath, 'r')
+
+            for line in f:
+                if line.startswith(">"):
+                    protein = line.rstrip().split('>')[1]
+                if protein not in prosite:
+                    prosite[protein] = []
+                match = re.search( r"(\d+)\s\-\s(\d+)", line)
+                if match:
+                    prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
+                    #print (int(match.group(1)), int(match.group(2)))
+            return prosite
+
+        prosite = readProsite()
+
+        # calculate which amino acids are inside prosite regions, and which are outside
+        prosite_regions = [0] * len(pos_count_noGaps)
+        for start, end in prosite[protein]:
+            for i in range(start,end):
+                prosite_regions[i] = 1
+
+        no_prosite_coverage_list = []
+        prosite_coverage_list = []
+        for i in len(pos_count_noGaps):
+            if prosite_regions[i] == 0:
+                no_prosite_coverage_list.append(pos_count_noGaps[i])
+            elif prosite_regions[i] == 1:
+                prosite_coverage_list.append(pos_count_noGaps[i])
+        print "\t\t" + str( sum(prosite_coverage_list)/float(len(prosite_coverage_list))) + "\t" + + str( sum(no_prosite_coverage_list)/float(len(no_prosite_coverage_list)))
+
     # average the coverage over all inside and outside regions
 # plot each protein in localization as a point in a plot, using avg inside for one axis and avg outside for the other

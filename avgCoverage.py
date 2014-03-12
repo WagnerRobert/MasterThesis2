@@ -112,9 +112,30 @@ def readKmers(SVM, quant, constants):
 
 locKmerList = readKmers("SVM_14", 0.1, constants)
 
+# read prosite file
+def readProsite():
+    prosite = {}
+    prositePath = os.path.join(constants["working_dir"], "ProSite.txt")
+    f = open(prositePath, 'r')
+
+    for line in f:
+        if line.startswith(">"):
+            protein = line.rstrip().split('>')[1]
+        if protein not in prosite:
+            prosite[protein] = []
+        match = re.search( r"(\d+)\s\-\s(\d+)", line)
+        if match:
+            prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
+            #print (int(match.group(1)), int(match.group(2)))
+    return prosite
+
+prosite = readProsite()
+
 for location in locKmerList:
     print location
     for protein in locKmerList[location]:
+        if protein not in prosite:
+            continue
         print "\t" + protein + "\t" + str(len(locKmerList[location][protein]))
         # match kmers on protein and on profile proteines
         foundUniprot, entry = get_uniprot(protein, constants, False)
@@ -146,24 +167,7 @@ for location in locKmerList:
         for i in range(len(sequence)):
             pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
 
-        # read prosite file
-        def readProsite():
-            prosite = {}
-            prositePath = "./ProSite.txt"
-            f = open(prositePath, 'r')
 
-            for line in f:
-                if line.startswith(">"):
-                    protein = line.rstrip().split('>')[1]
-                if protein not in prosite:
-                    prosite[protein] = []
-                match = re.search( r"(\d+)\s\-\s(\d+)", line)
-                if match:
-                    prosite[protein].append( (int(match.group(1)), int(match.group(2))) )
-                    #print (int(match.group(1)), int(match.group(2)))
-            return prosite
-
-        prosite = readProsite()
 
         # calculate which amino acids are inside prosite regions, and which are outside
         prosite_regions = [0] * len(pos_count_noGaps)

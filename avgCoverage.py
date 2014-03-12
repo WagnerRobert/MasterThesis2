@@ -93,7 +93,6 @@ def readKmers(SVM, quant, constants):
             #determin quant
             total = 0.0
             for kmer, value in kmer_list :
-                print kmer + "\t" + str(value)
                 total += value
             posquant = quant * total
 
@@ -110,6 +109,14 @@ def readKmers(SVM, quant, constants):
     return locKmerList
 
 locKmerList = readKmers("SVM_14", 0.1, constants)
+
+for location in locKmerList:
+    print location
+    for protein in locKmerList[location]:
+        print "\t" + protein
+        for kmer, value in locKmerList[location][protein]:
+            print "\t\t" + kmer + "\t" + str(value)
+        sys.exit()
 
 
     # match kmers on protein and on profile proteines

@@ -207,4 +207,6 @@ for location in locAvgCoverage:
     x1,x2,n,m,b = min(locInPrositeRegion),max(locInPrositeRegion),1000,1.,0.
     x = np.r_[x1:x2:n*1j] #http://docs.scipy.org/doc/numpy/reference/generated/numpy.r_.html
     plt.plot(x,m*x + b, linestyle='--'); plt.grid();
+    plt.xlabel('average Coverage in Prosite Regions')
+    plt.ylabel('average Coverage outside Prosite Regions')
     plt.show()

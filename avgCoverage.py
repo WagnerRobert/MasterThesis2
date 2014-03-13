@@ -203,7 +203,7 @@ for location in locAvgCoverage:
     for entry in locAvgCoverage[location]:
         locInPrositeRegion.append(entry[1])
         locOutPrositeRegion.append(entry[2])
-    plt.plot(locInPrositeRegion, locOutPrositeRegion, linesytle='None', marker='.')
+    plt.plot(locInPrositeRegion, locOutPrositeRegion, linestyle='None', marker='.')
     x1,x2,n,m,b = min(locInPrositeRegion),max(locInPrositeRegion),1000,1.,0.
     x = np.r_[x1:x2:n*1j] #http://docs.scipy.org/doc/numpy/reference/generated/numpy.r_.html
     plt.plot(x,m*x + b, linestyle='--'); plt.grid();

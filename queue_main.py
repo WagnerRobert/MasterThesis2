@@ -729,7 +729,7 @@ def doPlotsWithProSite(prosite):
                 else :
                     locationKmers[svm][result[protein][0]][kmer] += 1
     cytoplasKmers   = locationKmers["SVM_14"]["cytopla"]
-    nucleusKmers         = locationKmers["SVM_1"]["nucleus"]
+    nucleusKmers         = locationKmers["SVM_14"]["nucleus"]
     doublelist = []
 
     for kmer in cytoplasKmers:

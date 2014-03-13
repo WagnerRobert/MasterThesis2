@@ -26,14 +26,14 @@ constants["pdf"] = os.path.join(constants["working_dir"], "pdf")
 constants["needle"] = "needle"
 constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
-quant = 0.01
+quant = 0.10
 
 # sets up the directory in which all calculations will be done
 setUp(constants)
 result = reader.read_resultfile(constants)
 print result
 tree = reader.read_treefile(constants)
-#reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
+reader.read_kmerfiles(constants, quant) #reads and prepares kmerweights
 #files, saves complete result (dict[svm][protein]) kmers.pkl in pickles dir
 
 kmerlist = reader.read_picklefile("kmers", constants)

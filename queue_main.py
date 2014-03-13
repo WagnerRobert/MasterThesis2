@@ -728,49 +728,12 @@ def doPlotsWithProSite(prosite):
                     locationKmers[svm][result[protein][0]][kmer] = 1
                 else :
                     locationKmers[svm][result[protein][0]][kmer] += 1
-    cytoplasKmers   = locationKmers["SVM_0"]["cytoplas"]
-    inner_meKmers   = locationKmers["SVM_1"]["inner_me"]
-    periplas        = locationKmers["SVM_2"]["periplas"]
-    outer_meKmers   = locationKmers["SVM_3"]["outer_me"]
-    secreted_Kmers  = locationKmers["SVM_4"]["secreted"]
-    fimbrium_Kmers  = locationKmers["SVM_4"]["fimbrium"]
-
+    cytoplasKmers   = locationKmers["SVM_14"]["cytoplas"]
+    nucleusKmers         = locationKmers["SVM_1"]["nucleus"]
     doublelist = []
 
     for kmer in cytoplasKmers:
-        if kmer in inner_meKmers:
-            doublelist.append(kmer)
-        if kmer in periplas:
-            doublelist.append(kmer)
-        if kmer in outer_meKmers:
-            doublelist.append(kmer)
-        if kmer in secreted_Kmers:
-            doublelist.append(kmer)
-        if kmer in fimbrium_Kmers:
-            doublelist.append(kmer)
-    for kmer in inner_meKmers:
-        if kmer in periplas:
-            doublelist.append(kmer)
-        if kmer in outer_meKmers:
-            doublelist.append(kmer)
-        if kmer in secreted_Kmers:
-            doublelist.append(kmer)
-        if kmer in fimbrium_Kmers:
-            doublelist.append(kmer)
-    for kmer in periplas:
-        if kmer in outer_meKmers:
-            doublelist.append(kmer)
-        if kmer in secreted_Kmers:
-            doublelist.append(kmer)
-        if kmer in fimbrium_Kmers:
-            doublelist.append(kmer)
-    for kmer in outer_meKmers:
-        if kmer in secreted_Kmers:
-            doublelist.append(kmer)
-        if kmer in fimbrium_Kmers:
-            doublelist.append(kmer)
-    for kmer in secreted_Kmers:
-        if kmer in fimbrium_Kmers:
+        if kmer in nucleusKmers:
             doublelist.append(kmer)
 
 
@@ -780,18 +743,11 @@ def doPlotsWithProSite(prosite):
         for protein in sorted(kmerlist[svm]):
             if protein not in prosite:
                 continue
-            if svm == "SVM_0" and result[protein][0] != "cytoplas":
-                continue
-            if svm == "SVM_1" and result[protein][0] != "inner_me":
-                continue
-            if svm == "SVM_2" and result[protein][0] != "periplas":
-                continue
-            if svm == "SVM_3" and result[protein][0] != "outer_me":
-                continue
-            if svm == "SVM_4":
-                if result[protein][0] == "secreted":
+
+            if svm == "SVM_14":
+                if result[protein][0] == "cytoplas":
                     pass
-                elif result[protein][0] == "fimbrium":
+                elif result[protein][0] == "nucleus":
                     pass
                 else:
                     continue

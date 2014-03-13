@@ -783,7 +783,7 @@ def doPlotsWithProSite(prosite):
             i += 1
 
 
-#queue_blast()
+queue_blast()
 
 #get_fasta_files()
 #queue_uniqueprot()

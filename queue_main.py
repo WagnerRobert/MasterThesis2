@@ -832,7 +832,7 @@ def doPlotsWithProSite(prosite):
 
 #get_fasta_files()
 #queue_uniqueprot()
-#pairwise()
+pairwise()
 
 #doPlots()
 #doQuantCountPlots()

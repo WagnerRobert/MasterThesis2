@@ -689,7 +689,7 @@ def create_location_mfasta():
 
 def readProsite():
     prosite = {}
-    prositePath = "./ProSite.txt"
+    prositePath = "./euka_small/ProSite.txt"
     f = open(prositePath, 'r')
 
     for line in f:

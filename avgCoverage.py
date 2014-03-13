@@ -203,5 +203,6 @@ for location in locAvgCoverage:
     for entry in locAvgCoverage[location]:
         locInPrositeRegion.append(entry[1])
         locOutPrositeRegion.append(entry[2])
-    plt.plot(locInPrositeRegion, locOutPrositeRegion)
+    plt.plot(locInPrositeRegion, locOutPrositeRegion, marker='.')
+    plt.plot([-100,-100], [100,100], 'y--')
     plt.show()

@@ -201,6 +201,8 @@ for location in locAvgCoverage:
     locInPrositeRegion = []
     locOutPrositeRegion = []
     for entry in locAvgCoverage[location]:
+        if entry[1] > 10 or entry[2] > 10:
+            print( "\t" + entry[0] + "\t" + str(entry[1]) +"\t" + str(entry[2]) )
         locInPrositeRegion.append(entry[1])
         locOutPrositeRegion.append(entry[2])
     plt.plot(locInPrositeRegion, locOutPrositeRegion, linestyle='None', marker='.')

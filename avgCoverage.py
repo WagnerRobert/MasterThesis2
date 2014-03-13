@@ -135,7 +135,9 @@ def readProsite():
 
 prosite = readProsite()
 
+locAvgCoverage = {}
 for location in locKmerList:
+    locAvgCoverage[location]= []
     print location
     for protein in locKmerList[location]:
         if protein not in prosite:
@@ -188,7 +190,18 @@ for location in locKmerList:
                 no_prosite_coverage_list.append(pos_count_noGaps[i])
             elif prosite_regions[i] == 1:
                 prosite_coverage_list.append(pos_count_noGaps[i])
+        # average the coverage over all inside and outside regions
         print "\t\t" +'%.2f' % (math.fsum(prosite_coverage_list)/float(len(prosite_coverage_list))) + "\t" + '%.2f' % (math.fsum(no_prosite_coverage_list)/float(len(no_prosite_coverage_list))) + "\t" + str( len(prosite_coverage_list)) + "\t" + str( len(no_prosite_coverage_list))
+        locAvgCoverage[location].append( (protein, math.fsum(prosite_coverage_list)/float(len(prosite_coverage_list)), math.fsum(no_prosite_coverage_list)/float(len(no_prosite_coverage_list))))
 
-    # average the coverage over all inside and outside regions
 # plot each protein in localization as a point in a plot, using avg inside for one axis and avg outside for the other
+import numpy as np
+import matplotlib.pyplot as plt
+for location in locAvgCoverage:
+    locInPrositeRegion = []
+    locOutPrositeRegion = []
+    for entry in locAvgCoverage[location]:
+        locInPrositeRegion.append(entry[1])
+        locOutPrositeRegion.append(entry[2])
+    plt.plot(locInPrositeRegion, locOutPrositeRegion)
+    plt.show()

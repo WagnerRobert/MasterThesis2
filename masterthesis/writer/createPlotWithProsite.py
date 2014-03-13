@@ -142,7 +142,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     plt.clf()
     plt.cla()
     #print len(x)
-    plt.plot(x,pos_count_noGaps, color='#336699', alpha='0.5', linestyle=':')
+    plt.plot(x,pos_count_noGaps, color='#336699', alpha='0.5', linestyle='-')
     plt.plot(x, pos_clean_count_noGaps, color='#00FF00', alpha='0.5', linestyle='--')
     plt.ylabel('Coverage')
 

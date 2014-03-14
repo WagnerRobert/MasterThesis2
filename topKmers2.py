@@ -1,4 +1,8 @@
 import os
+import operator
+import masterthesis2.loc2prot
+import masterthesis2.kmers
+import masterthesis2.zscore
 
 __author__ = 'delur'
 
@@ -22,8 +26,64 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 
 #todo
 # for each protein in localization
+loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
+
     # read appropriate kmers
+locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
+
     # calculate the zscore
-    # get the top 30 of each protein, count how often which one occurs and the highest(all?) zscore(s)
-# compare kmers across localizations list everything that appears on multiple localizations extra
-# print the reduced list
+locZscore = masterthesis2.zscore.calc_zscore(locKmerList)
+locKmerList = None
+
+    # get the kmers of each protein, count how often which one occurs and the highest(all?) zscore(s)
+locKmerDict = {}
+for location in locZscore:
+    locKmerDict[location] = {}
+    for protein in locZscore[location]:
+        for kmer, value in locZscore[location][protein]:
+            if kmer not in locKmerDict[location]:
+                locKmerDict[location][kmer] = []
+            locKmerDict[location][kmer].append(value)
+locZscore = None
+
+    # compare kmers across localizations list everything that appears on multiple localizations extra
+removeList = []
+for location1 in locKmerDict:
+    for location2 in locKmerDict:
+        if location1 != location2:
+            loc1Keys = locKmerDict[location1].keys()
+            loc2Keys = locKmerDict[location2].keys()
+            for kmer in loc1Keys:
+                if kmer in loc2Keys:
+                    removeList.append(kmer)
+for location in locKmerDict:
+    locKeyList = locKmerDict[location].keys()
+    for kmer in removeList:
+        if kmer in locKeyList:
+            print "removing " + kmer + " from " + location + " :"
+            print locKmerDict[location][kmer]
+            del locKmerDict[location][kmer]
+
+    # print the reduced list
+
+for location in locKmerDict:
+    print location
+    locKmerList = []
+    for kmer in locKmerDict[location]:
+        for value in locKmerDict[location][kmer]:
+            locKmerList.append( (kmer, value) )
+    locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+    top30_dict = {}
+    while len(top30_dict) < 30:
+        for kmer, value in locKmerList:
+            if kmer not in top30_dict:
+                top30_dict[kmer] = []
+            top30_dict[kmer].append(value)
+    for kmer in top30_dict:
+        print "\t" + kmer + "\t" + str(top30_dict[kmer])
+
+
+
+locKmerDict = None
+
+

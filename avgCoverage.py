@@ -200,7 +200,13 @@ import matplotlib.pyplot as plt
 for location in locAvgCoverage:
     locInPrositeRegion = []
     locOutPrositeRegion = []
+    numInPro = 0
+    numOutPro = 0
     for entry in locAvgCoverage[location]:
+        if entry[1] > entry[2]:
+            numInPro += 1
+        else:
+            numOutPro += 1
         if entry[1] > 8 or entry[2] > 8:
             print( "\t" + entry[0] + "\t" + str(entry[1]) +"\t" + str(entry[2]) )
         locInPrositeRegion.append(entry[1])
@@ -209,7 +215,7 @@ for location in locAvgCoverage:
     x1,x2,n,m,b = min(locInPrositeRegion),max(locInPrositeRegion),1000,1.,0.
     x = np.r_[x1:x2:n*1j] #http://docs.scipy.org/doc/numpy/reference/generated/numpy.r_.html
     plt.plot(x,m*x + b, linestyle='--'); plt.grid();
-    plt.title(location)
+    plt.title(location + "\t" + str(numInPro) + "\t" + str(numOutPro))
     plt.xlabel('average Coverage in Prosite Regions')
     plt.ylabel('average Coverage outside Prosite Regions')
     plt.show()

@@ -79,7 +79,7 @@ for location in locKmerDict:
     locKeyList = locKmerDict[location].keys()
     for kmer in Set(removeList):
         if kmer in locKeyList:
-            print "removing " + kmer + " from " + location + " :"
+            #print "removing " + kmer + " from " + location + " :"
             #print locKmerDict[location][kmer]
             del locKmerDict[location][kmer]
 

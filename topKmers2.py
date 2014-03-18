@@ -26,16 +26,20 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 
 #todo
 # for each protein in localization
+print "reading result file to get a location to protein mapping"
 loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
 
     # read appropriate kmers
+print "reading the kmers and filtering to the quantile"
 locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
 
     # calculate the zscore
+print "calculating the zscores on the kmer vaules"
 locZscore = masterthesis2.zscore.calc_zscore(locKmerList)
 locKmerList = None
 
-    # get the kmers of each protein, count how often which one occurs and the highest(all?) zscore(s)
+    # get the kmers of each location, count how often which one occurs and the highest(all?) zscore(s)
+print "counting all the kmers for each location"
 locKmerDict = {}
 for location in locZscore:
     locKmerDict[location] = {}
@@ -47,8 +51,12 @@ for location in locZscore:
 locZscore = None
 
     # compare kmers across localizations list everything that appears on multiple localizations extra
+print "building the remove list, this can take some time"
 removeList = []
+i = 0
 for location1 in locKmerDict:
+    i += 1
+    print "location1: " + str(i) + "\t" + str(len(locKmerDict))
     for location2 in locKmerDict:
         if location1 != location2:
             loc1Keys = locKmerDict[location1].keys()
@@ -65,6 +73,7 @@ for location in locKmerDict:
             del locKmerDict[location][kmer]
 
     # print the reduced list
+print "outputting the cleaned up list"
 
 for location in locKmerDict:
     print location

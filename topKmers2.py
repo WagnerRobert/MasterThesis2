@@ -1,5 +1,6 @@
 import os
 import operator
+from sets import Set
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -68,6 +69,7 @@ for location1 in locKmerDict:
             loc2Keys = locKmerDict[location2].keys()
             loc2KeySet = set(loc2Keys)
             localRemovelist = [val for val in loc1Keys if val in loc2KeySet]
+            print "Length remove list: " + str(len(localRemovelist))
             #for kmer in loc1Keys:
             #    if kmer in loc2Keys:
             #        removeList.append(kmer)
@@ -75,7 +77,7 @@ for location1 in locKmerDict:
                 removeList.append(kmer)
 for location in locKmerDict:
     locKeyList = locKmerDict[location].keys()
-    for kmer in removeList:
+    for kmer in Set(removeList):
         if kmer in locKeyList:
             print "removing " + kmer + " from " + location + " :"
             print locKmerDict[location][kmer]

@@ -94,13 +94,14 @@ for location in locKmerDict:
             locKmerList.append( (kmer, value) )
     locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
     top30_dict = {}
-    i = 0
-    while i < 30:
-        for kmer, value in locKmerList:
-            if kmer not in top30_dict:
+    for kmer, value in locKmerList:
+        if kmer not in top30_dict:
+            if len(top30_dict) < 30:
                 top30_dict[kmer] = []
-                i += 1
-            top30_dict[kmer].append(value)
+            else:
+                break
+            i += 1
+        top30_dict[kmer].append(value)
     for kmer in top30_dict:
         print "\t" + kmer + "\t" + str(top30_dict[kmer])
     print len(top30_dict)

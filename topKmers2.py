@@ -103,7 +103,7 @@ for location in locKmerDict:
             i += 1
         top30_dict[kmer].append(value)
     for kmer in top30_dict:
-        print "\t" + kmer + "\t" + str(top30_dict[kmer])
+        print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
     print len(top30_dict)
 
 

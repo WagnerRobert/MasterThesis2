@@ -80,7 +80,7 @@ for location in locKmerDict:
     for kmer in Set(removeList):
         if kmer in locKeyList:
             print "removing " + kmer + " from " + location + " :"
-            print locKmerDict[location][kmer]
+            #print locKmerDict[location][kmer]
             del locKmerDict[location][kmer]
 
     # print the reduced list
@@ -101,6 +101,8 @@ for location in locKmerDict:
             top30_dict[kmer].append(value)
     for kmer in top30_dict:
         print "\t" + kmer + "\t" + str(top30_dict[kmer])
+    print len(top30_dict)
+
 
 
 

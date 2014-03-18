@@ -61,9 +61,13 @@ for location1 in locKmerDict:
         if location1 != location2:
             loc1Keys = locKmerDict[location1].keys()
             loc2Keys = locKmerDict[location2].keys()
-            for kmer in loc1Keys:
-                if kmer in loc2Keys:
-                    removeList.append(kmer)
+            loc2KeySet = set(loc2Keys)
+            localRemovelist = [val for val in loc1Keys, if val in loc2KeySet]
+            #for kmer in loc1Keys:
+            #    if kmer in loc2Keys:
+            #        removeList.append(kmer)
+            for kmer in localRemovelist:
+                removeList.append(kmer)
 for location in locKmerDict:
     locKeyList = locKmerDict[location].keys()
     for kmer in removeList:

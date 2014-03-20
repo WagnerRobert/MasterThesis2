@@ -90,12 +90,13 @@ for location in locKmerDict:
     for loc in locSeqDict:
         if loc != locTree2Uniprot[location]:
             print "\t" + loc
+            lenLoc = len(locKmerDict[location].keys())
             for kmer in locKmerDict[location].keys():
                 for protein in locSeqDict[loc]:
                     # print locSeqDict[loc][protein]
                     if kmer in locSeqDict[loc][protein]:
                         i += 1
-                        print str(i) + "/" + str(len(locSeqDict[loc][protein]))  + ": found " + location + " kmer " + kmer + " \tin " + loc + " \tprotein " + protein + " \t- removing it from all location lists"
+                        print str(i) + "/" + str(lenLoc)  + ": found " + location + " kmer " + kmer + " \tin " + loc + " \tprotein " + protein + " \t- removing it from all location lists"
 
                         for tmplocation in locKmerDict:
                             if kmer in locKmerDict[tmplocation]:

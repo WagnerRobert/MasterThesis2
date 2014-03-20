@@ -1,6 +1,7 @@
 import os
 import operator
 from sets import Set
+import sys
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -79,5 +80,10 @@ for line in f:
         print i
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
+
+for location in locKmerDict:
+    for kmer in locKmerDict[location]:
+        print kmer
+        sys.exit()
 for loc in locSeqDict:
     print loc + "\t" + str(len(locSeqDict[loc]))

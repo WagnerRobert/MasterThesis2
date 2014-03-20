@@ -105,6 +105,8 @@ for location in locKmerDict:
             print "\t\t" + str(i) + "/" + str(lenLoc)
 
 
+for location in locKmerDict:
+    lenLoc = len(locKmerDict[location].keys())
+    print location + "\t" + str(lenLoc)
 
-for loc in locSeqDict:
-    print loc + "\t" + str(len(locSeqDict[loc]))
+masterthesis.writer.pickle_file(locKmerDict, "cleanlocKmerDict", constants)

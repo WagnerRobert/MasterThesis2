@@ -62,10 +62,13 @@ f = open("/mnt/project/locbloc-ha/sp042011/SP13_11/eukaryotes.SP13_11.expSL.50.B
 name = ""
 localisation = ""
 locSeqDict= {}
+i = 0
 for line in f:
     if line.startswith(">"):
+        i += 1
+        print i
         tmp = line.split(' ')
-        name =tmp[0][1:]
+        name = tmp[0][1:]
         localisation = tmp[1].rstrip()
         if localisation not in locSeqDict:
             locSeqDict[localisation] = {}

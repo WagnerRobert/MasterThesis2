@@ -92,6 +92,7 @@ for location in locKmerDict:
                 for protein in locSeqDict[loc]:
                     if kmer in locSeqDict[loc][protein]:
                         print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+                        sys.stdout.flush()
                         removelist.append()
 
 

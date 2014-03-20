@@ -65,8 +65,6 @@ locSeqDict= {}
 i = 0
 for line in f:
     if line.startswith(">"):
-        i += 1
-        print i
         tmp = line.split(' ')
         name = tmp[0][1:]
         localisation = tmp[1].rstrip()
@@ -75,8 +73,10 @@ for line in f:
         if name not in locSeqDict[localisation]:
             locSeqDict[localisation][name] = ""
         else:
-            print name + " is allready in " + localisation
+            print name + " is already in " + localisation
     else:
+        i += 1
+        print i
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
 for loc in locSeqDict:

@@ -72,7 +72,10 @@ for line in f:
         localisation = tmp[1].rstrip()
         if localisation not in locSeqDict:
             locSeqDict[localisation] = {}
-        locSeqDict[localisation][name] = ""
+        if name not in locSeqDict[localisation]:
+            locSeqDict[localisation][name] = ""
+        else:
+            print name + " is allready in " + localisation
     else:
         locSeqDict[localisation][name] = line.rstrip()
 f.close()

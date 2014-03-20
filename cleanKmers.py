@@ -80,4 +80,4 @@ for line in f:
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
 for loc in locSeqDict:
-    print loc + "\t" + str(len(locSeqDict[localisation].keys()))
+    print loc + "\t" + str(len(locSeqDict[loc]))

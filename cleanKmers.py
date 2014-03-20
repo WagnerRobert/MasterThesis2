@@ -82,7 +82,6 @@ f.close()
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
-locTree2Uniprot["golgi_membrane"] = "golgi_membrane"
 
 removelist = []
 for location in locKmerDict:
@@ -92,6 +91,7 @@ for location in locKmerDict:
             print "\t" + loc
             for kmer in locSeqDict[loc]:
                 for protein in locSeqDict[loc]:
+                    print locSeqDict[loc][protein]
                     if kmer in locSeqDict[loc][protein]:
                         print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
                         sys.stdout.flush()

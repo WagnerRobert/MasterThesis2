@@ -86,6 +86,7 @@ locTree2Uniprot["nucleus"] = "nucleus"
 removelist = []
 for location in locKmerDict:
     print location
+    i = 0
     for loc in locSeqDict:
         if loc != locTree2Uniprot[location]:
             print "\t" + loc
@@ -93,7 +94,9 @@ for location in locKmerDict:
                 for protein in locSeqDict[loc]:
                     # print locSeqDict[loc][protein]
                     if kmer in locSeqDict[loc][protein]:
-                        print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+                        i += 1
+                        print str(i) + ": found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+
                         for tmplocation in locKmerDict:
                             del locKmerDict[tmplocation][kmer]
                         break

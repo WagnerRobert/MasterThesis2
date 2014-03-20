@@ -82,6 +82,7 @@ f.close()
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
+locTree2Uniprot["golgi_membrane"] = "golgi_membrane"
 
 removelist = []
 for location in locKmerDict:

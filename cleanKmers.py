@@ -76,8 +76,6 @@ for line in f:
         else:
             print name + " is already in " + localisation
     else:
-        i += 1
-        print i
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
 

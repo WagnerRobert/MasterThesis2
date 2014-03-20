@@ -72,3 +72,6 @@ for line in f:
         locSeqDict[localisation][name] = ""
     else:
         locSeqDict[localisation][name] = line.rstrip()
+f.close()
+for loc in locSeqDict:
+    print loc + "\t" + len(locSeqDict[localisation])

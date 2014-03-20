@@ -95,7 +95,7 @@ for location in locKmerDict:
     top30_dict = {}
     for kmer, value in locKmerList:
             if kmer not in top30_dict:
-                if len(top30_dict) < 200:
+                if len(top30_dict) < 50:
                     top30_dict[kmer] = []
                 else:
                     break

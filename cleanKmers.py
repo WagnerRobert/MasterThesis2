@@ -102,7 +102,7 @@ for location in locKmerDict:
                             if kmer in locKmerDict[tmplocation]:
                                 del locKmerDict[tmplocation][kmer]
                         break
-            print str(i) + "/" + str(lenLoc)
+            print "\t\t" + str(i) + "/" + str(lenLoc)
 
 
 

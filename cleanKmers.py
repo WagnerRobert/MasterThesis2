@@ -82,6 +82,7 @@ for line in f:
 f.close()
 
 for location in locKmerDict:
+    print location
     for kmer in locKmerDict[location]:
         print kmer
         sys.exit()

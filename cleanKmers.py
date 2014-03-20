@@ -81,10 +81,13 @@ for line in f:
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
 
+locTree2Uniprot = {}
+locTree2Uniprot["cytopla"] = "cytoplasm"
+
 for location in locKmerDict:
     print location
-    for kmer in locKmerDict[location]:
-        print kmer
-        sys.exit()
+    # for kmer in locKmerDict[location]:
+    #     print kmer
+    #     sys.exit()
 for loc in locSeqDict:
     print loc + "\t" + str(len(locSeqDict[loc]))

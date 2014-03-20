@@ -98,7 +98,8 @@ for location in locKmerDict:
                         print str(i) + ": found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
 
                         for tmplocation in locKmerDict:
-                            del locKmerDict[tmplocation][kmer]
+                            if kmer in locKmerDict[tmplocation]:
+                                del locKmerDict[tmplocation][kmer]
                         break
 
 

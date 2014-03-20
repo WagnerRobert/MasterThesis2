@@ -95,7 +95,7 @@ for location in locKmerDict:
                     # print locSeqDict[loc][protein]
                     if kmer in locSeqDict[loc][protein]:
                         i += 1
-                        print str(i) + ": found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+                        print str(i) + "/" + str(len(locSeqDict[loc][protein]))  + ": found " + location + " kmer " + kmer + " \tin " + loc + " \tprotein " + protein + " \t- removing it from all location lists"
 
                         for tmplocation in locKmerDict:
                             if kmer in locKmerDict[tmplocation]:

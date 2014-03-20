@@ -87,15 +87,15 @@ removelist = []
 for location in locKmerDict:
     print location
     for loc in locSeqDict:
-        if loc != locTree2Uniprot[location]:
-            print "\t" + loc
-            for kmer in locSeqDict[loc]:
-                for protein in locSeqDict[loc]:
-                    print locSeqDict[loc][protein]
-                    if kmer in locSeqDict[loc][protein]:
-                        print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
-                        sys.stdout.flush()
-                        removelist.append()
+        # if loc != locTree2Uniprot[location]:
+        print "\t" + loc
+        for kmer in locSeqDict[loc]:
+            for protein in locSeqDict[loc]:
+                print locSeqDict[loc][protein]
+                if kmer in locSeqDict[loc][protein]:
+                    print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+                    sys.stdout.flush()
+                    removelist.append()
 
 
 for loc in locSeqDict:

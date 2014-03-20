@@ -101,7 +101,7 @@ for location in locKmerDict:
                     break
             top30_dict[kmer].append(value)
     for kmer in top30_dict:
-        print "\t" + kmer + "\t" + str(top30_dict[kmer])
+        print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
 
     print ""
     print "same output again for sequence logo"

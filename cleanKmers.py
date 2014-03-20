@@ -81,11 +81,19 @@ f.close()
 
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
+locTree2Uniprot["nucleus"] = "nucleus"
 
+removelist = []
 for location in locKmerDict:
     print location
-    # for kmer in locKmerDict[location]:
-    #     print kmer
-    #     sys.exit()
+    for loc in locSeqDict:
+        if loc != locTree2Uniprot[location]:
+            for kmer in locKmerDict[loc]:
+                for protein in locSeqDict[loc]:
+                    if kmer in locSeqDict[loc][protein]:
+                        print "found " + location + " kmer " + kmer + " in " + loc + " protein " + protein + " - adding it to the remove list"
+                        removelist.append()
+
+
 for loc in locSeqDict:
     print loc + "\t" + str(len(locSeqDict[loc]))

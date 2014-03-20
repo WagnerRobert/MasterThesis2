@@ -1,5 +1,6 @@
 import os
 import operator
+from sets import Set
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -75,10 +76,10 @@ for location1 in locKmerDict:
                 removeList.append(kmer)
 for location in locKmerDict:
     locKeyList = locKmerDict[location].keys()
-    for kmer in removeList:
+    for kmer in Set(removeList):
         if kmer in locKeyList:
-            print "removing " + kmer + " from " + location + " :"
-            print locKmerDict[location][kmer]
+            #print "removing " + kmer + " from " + location + " :"
+            #print locKmerDict[location][kmer]
             del locKmerDict[location][kmer]
 
     # print the reduced list

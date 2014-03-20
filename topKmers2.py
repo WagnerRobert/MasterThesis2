@@ -1,6 +1,5 @@
 import os
 import operator
-from sets import Set
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -37,7 +36,7 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.p
     locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
 else:
     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
-    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
+    masterthesis.writer.pickle_file(locKmerList, "locKmerList2", constants)
 
     # calculate the zscore
 print "calculating the zscores on the kmer vaules"
@@ -69,7 +68,6 @@ for location1 in locKmerDict:
             loc2Keys = locKmerDict[location2].keys()
             loc2KeySet = set(loc2Keys)
             localRemovelist = [val for val in loc1Keys if val in loc2KeySet]
-            print "Length remove list: " + str(len(localRemovelist))
             #for kmer in loc1Keys:
             #    if kmer in loc2Keys:
             #        removeList.append(kmer)
@@ -77,14 +75,14 @@ for location1 in locKmerDict:
                 removeList.append(kmer)
 for location in locKmerDict:
     locKeyList = locKmerDict[location].keys()
-    for kmer in Set(removeList):
+    for kmer in removeList:
         if kmer in locKeyList:
-            #print "removing " + kmer + " from " + location + " :"
-            #print locKmerDict[location][kmer]
+            print "removing " + kmer + " from " + location + " :"
+            print locKmerDict[location][kmer]
             del locKmerDict[location][kmer]
 
     # print the reduced list
-print "outputting the cleaned up list"
+print "outputting the cleaned up top30list"
 
 for location in locKmerDict:
     print location
@@ -94,19 +92,19 @@ for location in locKmerDict:
             locKmerList.append( (kmer, value) )
     locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
     top30_dict = {}
-    for kmer, value in locKmerList:
-        if kmer not in top30_dict:
-            if len(top30_dict) < 30:
+    while len(top30_dict) < 30:
+        for kmer, value in locKmerList:
+            if kmer not in top30_dict:
                 top30_dict[kmer] = []
-            else:
-                break
-            i += 1
-        top30_dict[kmer].append(value)
+            top30_dict[kmer].append(value)
     for kmer in top30_dict:
-        print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
-    print len(top30_dict)
+        print "\t" + kmer + "\t" + str(top30_dict[kmer])
 
-
+    print ""
+    print "same output again for sequence logo"
+    for kmer in top30_dict:
+        print ">" + kmer
+        print kmer
 
 
 locKmerDict = None

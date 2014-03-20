@@ -90,7 +90,7 @@ for location in locKmerDict:
     for loc in locSeqDict:
         if loc != locTree2Uniprot[location]:
             print "\t" + loc
-            for kmer in locKmerDict[location]:
+            for kmer in locKmerDict[location].keys():
                 for protein in locSeqDict[loc]:
                     # print locSeqDict[loc][protein]
                     if kmer in locSeqDict[loc][protein]:

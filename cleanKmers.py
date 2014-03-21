@@ -38,7 +38,7 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.p
     locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
 else:
     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
-    masterthesis.writer.pickle_file(locKmerList, "locKmerList2", constants)
+    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
 
     # calculate the zscore
 print "calculating the zscores on the kmer vaules"
@@ -109,4 +109,4 @@ for location in locKmerDict:
     lenLoc = len(locKmerDict[location].keys())
     print location + "\t" + str(lenLoc)
 
-masterthesis.writer.pickle_file(locKmerDict, "cleanlocKmerDict", constants)
+masterthesis.writer.write_picklefile(locKmerDict, "cleanlocKmerDict", constants)

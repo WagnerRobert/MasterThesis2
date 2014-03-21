@@ -109,4 +109,60 @@ for location in locKmerDict:
     lenLoc = len(locKmerDict[location].keys())
     print location + "\t" + str(lenLoc)
 
+    # compare kmers across localizations list everything that appears on multiple localizations extra
+print "building the remove list, this can take some time"
+removeList = []
+i = 0
+for location1 in locKmerDict:
+    i += 1
+    print "location1: " + str(i) + "\t" + str(len(locKmerDict))
+    for location2 in locKmerDict:
+        if location1 != location2:
+            loc1Keys = locKmerDict[location1].keys()
+            loc2Keys = locKmerDict[location2].keys()
+            loc2KeySet = set(loc2Keys)
+            localRemovelist = [val for val in loc1Keys if val in loc2KeySet]
+            #for kmer in loc1Keys:
+            #    if kmer in loc2Keys:
+            #        removeList.append(kmer)
+            for kmer in localRemovelist:
+                removeList.append(kmer)
+for location in locKmerDict:
+    locKeyList = locKmerDict[location].keys()
+    for kmer in Set(removeList):
+        if kmer in locKeyList:
+            #print "removing " + kmer + " from " + location + " :"
+            #print locKmerDict[location][kmer]
+            del locKmerDict[location][kmer]
+
+    # print the reduced list
+print "outputting the cleaned up top30list"
+
+for location in locKmerDict:
+    print location
+    locKmerList = []
+    for kmer in locKmerDict[location]:
+        for value in locKmerDict[location][kmer]:
+            locKmerList.append( (kmer, value) )
+    locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+    top30_dict = {}
+    for kmer, value in locKmerList:
+            if kmer not in top30_dict:
+                if len(top30_dict) < 45:
+                    top30_dict[kmer] = []
+                else:
+                    break
+            top30_dict[kmer].append(value)
+    for kmer in top30_dict:
+        print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
+
+    print ""
+    print "same output again for sequence logo"
+    for kmer in top30_dict:
+        print ">" + kmer
+        print kmer
+
+
+locKmerDict = None
+
 masterthesis.writer.write_picklefile(locKmerDict, "cleanlocKmerDict", constants)

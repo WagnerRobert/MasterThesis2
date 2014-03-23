@@ -73,6 +73,7 @@ for location in locKmerDict:
                 for protein in locSeqDict[loc]:
                     # print locSeqDict[loc][protein]
                     j = 0
+                    theindex = 0
                     while theindex != -1:
                         theindex = locSeqDict[loc][protein].find(kmer, j)
                         if theindex != -1:

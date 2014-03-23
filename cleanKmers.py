@@ -163,6 +163,5 @@ for location in locKmerDict:
         print kmer
 
 
-locKmerDict = None
-
 masterthesis.writer.write_picklefile(locKmerDict, "cleanlocKmerDict", constants)
+locKmerDict = None

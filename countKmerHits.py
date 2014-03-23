@@ -57,6 +57,7 @@ locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
 
 locCountDict = {}
+print locKmerDict
 for location in locKmerDict:
     locCountDict[location] = {}
 

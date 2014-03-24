@@ -1,6 +1,7 @@
-from collections import Set
+
 import operator
 import os
+from sets import Set
 import masterthesis.writer.pickle_file
 
 __author__ = 'wagnerr'

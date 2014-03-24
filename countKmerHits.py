@@ -32,6 +32,13 @@ __author__ = 'delur'
 
 locKmerDict = masterthesis.reader.read_picklefile("cleanlocKmerDict", constants)
 
+locKmerList = []
+for location in locKmerDict:
+    for kmer in locKmerDict[location]:
+        for value in locKmerDict[location][kmer]:
+            locKmerList.append( (kmer, value) )
+locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+locKmerList = [i[0] for i in locKmerList]
 print "reading all the annotated sequences from swissprot"
 f = open("/mnt/project/locbloc-ha/sp042011/SP13_11/eukaryotes.SP13_11.expSL.50.Before05_11.new.fa", 'r')
 name = ""
@@ -90,11 +97,11 @@ else:
 
 for location in locCountDict:
     i = 0
-    print location
+    print location + "\t" + str(len(locKmerList[location]))
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 
-        print k + "\t" + str(len(locCountDict[location][k])) + "\t" + str(len(Set(locCountDict[location][k])))
+        print k + "\t" + str(len(locCountDict[location][k])) + "\t" + str(len(Set(locCountDict[location][k]))) + "\t" + str(locKmerList.index(k))
         if i >= 45:
             break
 

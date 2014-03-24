@@ -1,3 +1,4 @@
+from collections import Set
 import operator
 import os
 import masterthesis.writer.pickle_file
@@ -55,7 +56,6 @@ for location in locKmerDict:
     loc = locTree2Uniprot[location]
     if loc not in protCountKmerDict:
         protCountKmerDict[loc] = {}
-    print location
     locKmerList = []
     for kmer in locKmerDict[location]:
         for value in locKmerDict[location][kmer]:
@@ -84,4 +84,4 @@ print "hits in sequences"
 for location in protCountKmerDict:
     print location
     for k in sorted(protCountKmerDict[location], key=lambda k: len(protCountKmerDict[location][k]), reverse=True):
-        print k + "\t" + str(len(protCountKmerDict[location][k]))
+        print k + "\t" + str(len(protCountKmerDict[location][k])) + "\t" + str(len(Set(protCountKmerDict[location][k])))

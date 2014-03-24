@@ -95,7 +95,7 @@ for location in locCountDict:
 
         print k + "\t" + str(len(locCountDict[location][k]))
         if i >= 45:
-            continue
+            break
 
 
 

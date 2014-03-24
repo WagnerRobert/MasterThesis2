@@ -39,7 +39,7 @@ for location in locKmerDict:
         for value in locKmerDict[location][kmer]:
             locKmerDictList[location].append( (kmer, value) )
     locKmerDictList[location] = sorted(locKmerDictList[location], key=operator.itemgetter(1), reverse=True)
-    locKmerList = [i[0] for i in locKmerDictList[location]]
+    locKmerDictList = [i[0] for i in locKmerDictList[location]]
 print "reading all the annotated sequences from swissprot"
 f = open("/mnt/project/locbloc-ha/sp042011/SP13_11/eukaryotes.SP13_11.expSL.50.Before05_11.new.fa", 'r')
 name = ""
@@ -99,7 +99,7 @@ else:
 
 for location in locCountDict:
     i = 0
-    print location + "\t" + str(len(locKmerList[location]))
+    print location + "\t" + str(len(locKmerDictList[location]))
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 

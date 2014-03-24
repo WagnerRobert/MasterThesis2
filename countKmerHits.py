@@ -89,13 +89,13 @@ else:
 
 i = 0
 for location in locCountDict:
-    print location
+    print location + "\t" + str(len(locSeqDict(locTree2Uniprot[location])))
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 
         print k + "\t" + str(len(locCountDict[location][k]))
         if i >= 45:
-            break
+            continue
 
 
 

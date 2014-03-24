@@ -85,4 +85,4 @@ print "hits in sequences"
 for location in protCountKmerDict:
     print location
     for k in sorted(protCountKmerDict[location], key=lambda k: len(protCountKmerDict[location][k]), reverse=True):
-        print k + "\t" + str(len(protCountKmerDict[location][k])) + "\t" + str(len(Set(protCountKmerDict[location][k])))
+        print k + "\t" + str(len(protCountKmerDict[location][k]))

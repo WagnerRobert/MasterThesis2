@@ -88,12 +88,13 @@ else:
     masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)
 
 i = 0
-for k in sorted(locCountDict, key=lambda k: len(locCountDict[k]), reverse=True):
-    i += 1
+for location in locCountDict:
+    for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
+        i += 1
 
-    print k + "\t" + str(len(k))
-    if i >= 45:
-        break
+        print k + "\t" + str(len(k))
+        if i >= 45:
+            break
 
 
 

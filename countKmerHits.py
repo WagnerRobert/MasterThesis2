@@ -94,7 +94,7 @@ for location in locCountDict:
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 
-        print k + "\t" + str(len(locCountDict[location][k]))
+        print k + "\t" + str(len(locCountDict[location][k])) + "\t" + str(len(Set(locCountDict[location][k])))
         if i >= 45:
             break
 

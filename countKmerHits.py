@@ -89,8 +89,9 @@ else:
                             theindex = locSeqDict[loc][protein].find(kmer, j)
                             if theindex != -1:
                                 j = theindex +1
+                                locCountDict[location][kmer].append(protein)
                             #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
-                            locCountDict[location][kmer].append(protein)
+
 
     masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)
 

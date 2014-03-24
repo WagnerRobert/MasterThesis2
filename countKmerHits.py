@@ -86,14 +86,7 @@ else:
                     for protein in locSeqDict[loc]:
                         # print locSeqDict[loc][protein]
                         if kmer in locSeqDict[loc][protein]:
-                            theindex = 0
-                            theindex = locSeqDict[loc][protein].find(kmer, theindex)
                             locCountDict[location][kmer].append(protein)
-                            while theindex != -1:
-                                theindex = locSeqDict[loc][protein].find(kmer, theindex +1)
-                                if theindex != -1:
-                                    j = theindex +1
-                                    locCountDict[location][kmer].append(protein)
                             #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
 
 

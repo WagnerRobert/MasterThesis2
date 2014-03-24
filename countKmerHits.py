@@ -80,7 +80,7 @@ else:
         for loc in locSeqDict:
             if loc == locTree2Uniprot[location]:
                 print "\t" + loc
-                for kmer in Set(locKmerDict[location].keys()):
+                for kmer in locKmerDict[location].keys():
                     if kmer not in locCountDict[location]:
                         locCountDict[location][kmer] = []
                     for protein in locSeqDict[loc]:
@@ -99,7 +99,7 @@ for location in locCountDict:
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 
-        print k + "\t" + str(len(locCountDict[location][k])) + "\t" + str(len(Set(locCountDict[location][k]))) + "\t" + str(locKmerDictList[location].index(k))
+        print k + "\t" + str(len(locCountDict[location][k])) + "\t" + str(len(Set(locCountDict[location][k]))) + "\t" + str(locKmerDictList[location].index(k)*100/len(locKmerDictList[location]))
         if i >= 45:
             break
 

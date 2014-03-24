@@ -69,17 +69,18 @@ for location in locKmerDict:
                 else:
                     break
             top30_dict[kmer].append(value)
+    print "Top 45 kmers in " + location
     for kmer in top30_dict:
         print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
 
-    print ""
-    print "same output again for sequence logo"
     for kmer in top30_dict:
         protCountKmerDict[loc][kmer] = []
         for sequence in locSeqDict[loc]:
             if kmer in locSeqDict[loc][sequence]:
                 protCountKmerDict[loc][kmer].append(sequence)
 
+
+print "hits in sequences"
 for location in protCountKmerDict:
     print location
     for k in sorted(protCountKmerDict[location], key=lambda k: len(protCountKmerDict[location][k]), reverse=True):

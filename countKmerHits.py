@@ -34,12 +34,14 @@ locKmerDict = masterthesis.reader.read_picklefile("cleanlocKmerDict", constants)
 
 locKmerDictList = {}
 for location in locKmerDict:
-    locKmerDictList[location] = []
+    print location
+    if location not in locKmerDictList:
+        locKmerDictList[location] = []
     for kmer in locKmerDict[location]:
         for value in locKmerDict[location][kmer]:
             locKmerDictList[location].append( (kmer, value) )
     locKmerDictList[location] = sorted(locKmerDictList[location], key=operator.itemgetter(1), reverse=True)
-    locKmerDictList = [i[0] for i in locKmerDictList[location]]
+    locKmerDictList[location] = [i[0] for i in locKmerDictList[location]]
 print "reading all the annotated sequences from swissprot"
 f = open("/mnt/project/locbloc-ha/sp042011/SP13_11/eukaryotes.SP13_11.expSL.50.Before05_11.new.fa", 'r')
 name = ""

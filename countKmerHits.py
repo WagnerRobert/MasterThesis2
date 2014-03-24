@@ -87,8 +87,9 @@ else:
 
     masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)
 
-i = 0
+
 for location in locCountDict:
+    i = 0
     print location
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1

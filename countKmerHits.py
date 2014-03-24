@@ -7,6 +7,7 @@ import masterthesis2.kmers
 import masterthesis2.zscore
 import masterthesis.writer.pickle_file
 
+
 __author__ = 'delur'
 
 constants = {}
@@ -56,34 +57,43 @@ locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
 
-locCountDict = {}
-#print locKmerDict
-for location in locKmerDict:
-    locCountDict[location] = {}
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.pkl")):
+    locCountDict = masterthesis.reader.read_picklefile("locCountDict", constants)
+else:
+    locCountDict = {}
+    #print locKmerDict
+    for location in locKmerDict:
+        locCountDict[location] = {}
 
-    print location
-    i = 0
-    lenLoc = len(locKmerDict[location].keys())
-    for loc in locSeqDict:
-        if loc == locTree2Uniprot[location]:
-            print "\t" + loc
-            for kmer in locKmerDict[location].keys():
-                if kmer not in locCountDict[location]:
-                    locCountDict[location][kmer] = []
-                for protein in locSeqDict[loc]:
-                    # print locSeqDict[loc][protein]
-                    j = 0
-                    theindex = 0
-                    while theindex != -1:
-                        theindex = locSeqDict[loc][protein].find(kmer, j)
-                        if theindex != -1:
-                            j = theindex +1
-                        #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
-                        locCountDict[location][kmer].append(protein)
+        print location
+        i = 0
+        lenLoc = len(locKmerDict[location].keys())
+        for loc in locSeqDict:
+            if loc == locTree2Uniprot[location]:
+                print "\t" + loc
+                for kmer in locKmerDict[location].keys():
+                    if kmer not in locCountDict[location]:
+                        locCountDict[location][kmer] = []
+                    for protein in locSeqDict[loc]:
+                        # print locSeqDict[loc][protein]
+                        j = 0
+                        theindex = 0
+                        while theindex != -1:
+                            theindex = locSeqDict[loc][protein].find(kmer, j)
+                            if theindex != -1:
+                                j = theindex +1
+                            #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
+                            locCountDict[location][kmer].append(protein)
 
-masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)
+    masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)
+
+i = 0
 for k in sorted(locCountDict, key=lambda locCountDict: len(locCountDict[k]), reverse=True):
-        print k + "\t" + str(len(k))
+    i += 1
+
+    print k + "\t" + str(len(k))
+    if i >= 45:
+        break
 
 
 

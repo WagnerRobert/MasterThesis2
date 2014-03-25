@@ -69,7 +69,7 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
 i = 0
 for localisation in loc2prot:
-    for protein in loc2prot[localisation].keys():
+    for protein in loc2prot[localisation]:
         if protein not in locSeqDict[locTree2Uniprot[localisation]]:
             i +=1
             print i

@@ -60,6 +60,11 @@ locTree2Uniprot["cellmemb"] = "plasma_membrane"
 locTree2Uniprot["memmitoc"] = "mitochondria_membrane"
 locTree2Uniprot["peroxis"] = "peroxisome"
 locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["er"] = "er"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
 
 #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
 for localisation in loc2prot:

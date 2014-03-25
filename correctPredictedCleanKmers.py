@@ -73,7 +73,7 @@ for localisation in loc2prot:
         if protein not in locSeqDict[locTree2Uniprot[localisation]]:
             i +=1
             print i
-            del loc2prot[localisation][protein]
+            loc2prot[localisation].pop(loc2prot[localisation].index(protein))
             foundLoc = None
             for loc in locSeqDict:
                 if protein in locSeqDict[loc]:

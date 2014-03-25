@@ -70,7 +70,15 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 for localisation in loc2prot:
     for protein in loc2prot[localisation]:
         if protein not in locSeqDict[locTree2Uniprot[localisation]]:
-            print protein + "\t" + localisation
+            foundLoc = None
+            for loc in locSeqDict:
+                if protein in locSeqDict[loc]:
+                    foundLoc = loc
+                    print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
+                    break
+            if foundLoc == None:
+                print protein + "\tpredicted localisation: " + localisation + "\tdid not find it in swissprot file!"
+
 
 #     # read appropriate kmers
 # print "reading the kmers and filtering to the quantile"

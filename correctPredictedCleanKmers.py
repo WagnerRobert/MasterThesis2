@@ -84,12 +84,13 @@ for localisation in loc2prot:
                 print protein + " predicted localisation: " + localisation + " not found!"
 
 
-#     # read appropriate kmers
-# print "reading the kmers and filtering to the quantile"
-# if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")):
-#     locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
-# else:
-#     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
-#     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
+    # read appropriate kmers
+overwrite = True
+print "reading the kmers and filtering to the quantile"
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")) and overwrite == False:
+    locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
+else:
+    locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
+    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
 
 

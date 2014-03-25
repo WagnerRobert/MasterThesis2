@@ -77,7 +77,7 @@ for localisation in loc2prot:
                     #print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
                     break
             if foundLoc == None:
-                print protein + "\tpredicted localisation: " + localisation + "\tdid not find it in swissprot file!"
+                print protein + "predicted localisation: " + localisation + "not found!"
 
 
 #     # read appropriate kmers

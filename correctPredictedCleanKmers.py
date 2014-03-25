@@ -53,10 +53,14 @@ for line in f:
         locSeqDict[localisation][name] = line.rstrip()
 f.close()
 
+locTree2Uniprot = {}
+locTree2Uniprot["cytopla"] = "cytoplasm"
+locTree2Uniprot["nucleus"] = "nucleus"
+
 #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
 for localisation in loc2prot:
     for protein in loc2prot[localisation]:
-        if protein not in locSeqDict[localisation]:
+        if protein not in locSeqDict[locTree2Uniprot[localisation]]:
             print protein
 
 #     # read appropriate kmers

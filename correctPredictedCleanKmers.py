@@ -74,7 +74,7 @@ for localisation in loc2prot:
             for loc in locSeqDict:
                 if protein in locSeqDict[loc]:
                     foundLoc = loc
-                    print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
+                    #print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
                     break
             if foundLoc == None:
                 print protein + "\tpredicted localisation: " + localisation + "\tdid not find it in swissprot file!"

@@ -34,11 +34,7 @@ loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
 
     # read appropriate kmers
 print "reading the kmers and filtering to the quantile"
-if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")):
-    locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
-else:
-    locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
-    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
+locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
 
     # calculate the zscore
 print "calculating the zscores on the kmer vaules"

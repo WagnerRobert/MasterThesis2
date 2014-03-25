@@ -62,7 +62,7 @@ locTree2Uniprot["peroxis"] = "peroxisome"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["er"] = "er"
 locTree2Uniprot["secrete"] = "secreted"
-locTree2Uniprot["chloropl"] = "chloroplasma"
+locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 

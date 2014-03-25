@@ -23,7 +23,7 @@ def readKmers(SVM, quant,loc2Prot, constants):
         print location
 
         #read appropriate kmers
-        for protein in loc2Prot[location]:
+        for protein in sorted(loc2Prot[location]):
             locKmerList[location][protein] = []
             print "\t" + protein
             svmdir = os.path.join(constants["kmer_dir"],"kmerweights/"+ SVM)

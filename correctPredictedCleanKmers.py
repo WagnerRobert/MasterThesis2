@@ -70,7 +70,7 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 for localisation in loc2prot:
     for protein in loc2prot[localisation]:
         if protein not in locSeqDict[locTree2Uniprot[localisation]]:
-            print protein
+            print protein + "\t" + localisation
 
 #     # read appropriate kmers
 # print "reading the kmers and filtering to the quantile"

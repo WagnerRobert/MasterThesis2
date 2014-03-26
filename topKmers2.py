@@ -85,27 +85,30 @@ for location in locKmerDict:
     # print the reduced list
 print "outputting the cleaned up top30list"
 
+topKmer_dict = {}
 for location in locKmerDict:
+    topKmer_dict[location] = {}
     print location
     locKmerList = []
     for kmer in locKmerDict[location]:
         for value in locKmerDict[location][kmer]:
             locKmerList.append( (kmer, value) )
     locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
-    top30_dict = {}
     for kmer, value in locKmerList:
-            if kmer not in top30_dict:
-                if len(top30_dict) < 45:
-                    top30_dict[kmer] = []
+            if kmer not in topKmer_dict[location]:
+                if len(topKmer_dict[location]) < 45:
+                    topKmer_dict[location][kmer] = []
                 else:
                     break
-            top30_dict[kmer].append(value)
-    for kmer in top30_dict:
-        print "\t" + kmer + "\t" + str(len(top30_dict[kmer]))
+            topKmer_dict[location][kmer].append(value)
+
+for location in topKmer_dict:
+    for kmer in topKmer_dict[location]:
+        print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer]))
 
     print ""
     print "same output again for sequence logo"
-    for kmer in top30_dict:
+    for kmer in topKmer_dict[location]:
         print ">" + kmer
         print kmer
 

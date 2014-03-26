@@ -29,7 +29,7 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 #todo
 # for each protein in localization
 print "reading result file to get a location to protein mapping"
-loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
+loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
 
     # read appropriate kmers
 print "reading the kmers and filtering to the quantile"

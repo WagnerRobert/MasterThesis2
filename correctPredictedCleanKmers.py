@@ -67,25 +67,30 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
 #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
+i = 0
 for localisation in loc2prot:
     for protein in loc2prot[localisation]:
         if protein not in locSeqDict[locTree2Uniprot[localisation]]:
+            i +=1
+            print i
+            loc2prot[localisation].pop(loc2prot[localisation].index(protein))
             foundLoc = None
             for loc in locSeqDict:
                 if protein in locSeqDict[loc]:
                     foundLoc = loc
-                    #print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
+                    print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
                     break
             if foundLoc == None:
                 print protein + " predicted localisation: " + localisation + " not found!"
 
 
-#     # read appropriate kmers
-# print "reading the kmers and filtering to the quantile"
-# if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")):
-#     locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
-# else:
-#     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
-#     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
+    # read appropriate kmers
+overwrite = True
+print "reading the kmers and filtering to the quantile"
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")) and overwrite == False:
+    locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
+else:
+    locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
+    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
 
 

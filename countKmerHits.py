@@ -66,7 +66,8 @@ locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
 
-if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.pkl")):
+Overwrite = True
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.pkl")) and Overwrite == False:
     locCountDict = masterthesis.reader.read_picklefile("locCountDict", constants)
 else:
     locCountDict = {}

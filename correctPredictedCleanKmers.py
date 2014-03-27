@@ -30,59 +30,8 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 #todo
 # for each protein in localization
 print "reading result file to get a location to protein mapping"
-loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
+loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
 
-print "reading all the annotated sequences from swissprot"
-f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
-name = ""
-localisation = ""
-locSeqDict= {}
-i = 0
-for line in f:
-    if line.startswith(">"):
-        tmp = line.split(' ')
-        name = tmp[0][1:]
-        localisation = tmp[1].rstrip()
-        if localisation not in locSeqDict:
-            locSeqDict[localisation] = {}
-        if name not in locSeqDict[localisation]:
-            locSeqDict[localisation][name] = ""
-        else:
-            print name + " is already in " + localisation
-    else:
-        locSeqDict[localisation][name] = line.rstrip()
-f.close()
-
-locTree2Uniprot = {}
-locTree2Uniprot["cytopla"] = "cytoplasm"
-locTree2Uniprot["nucleus"] = "nucleus"
-locTree2Uniprot["cellmemb"] = "cellmembrane"
-locTree2Uniprot["memmitoc"] = "memmitochondria"
-locTree2Uniprot["peroxis"] = "peroxisome"
-locTree2Uniprot["mitochon"] = "mitochondria"
-locTree2Uniprot["er"] = "er"
-locTree2Uniprot["secrete"] = "secreted"
-locTree2Uniprot["chloropl"] = "chloroplast"
-locTree2Uniprot["mitochon"] = "mitochondria"
-locTree2Uniprot["mitochon"] = "mitochondria"
-
-#cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
-i = 0
-for localisation in loc2prot:
-    translated_localisation = locTree2Uniprot[localisation]
-    for protein in loc2prot[localisation]:
-        if protein not in locSeqDict[translated_localisation]:
-            i +=1
-            print i
-            loc2prot[localisation].pop(loc2prot[localisation].index(protein))
-            foundLoc = None
-            for loc in locSeqDict:
-                if protein in locSeqDict[loc]:
-                    foundLoc = loc
-                    print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
-                    break
-            if foundLoc == None:
-                print protein + " predicted localisation: " + localisation + " not found!"
 
 
     # read appropriate kmers

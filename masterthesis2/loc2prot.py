@@ -55,11 +55,11 @@ def getCorrectPredictedLoc2Prot(paths):
     locTree2Uniprot["mitochon"] = "mitochondria"
     locTree2Uniprot["mitochon"] = "mitochondria"
 
-    #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
+    #cross check loc2Prot against locSeqDict, to find Proteins that are wrongfully predicted to be in a location
     i = 0
     removeList = []
     for localisation in loc2prot:
-        for protein in loc2prot[localisation]:
+        for protein in sorted(loc2prot[localisation]):
             if protein not in locSeqDict[locTree2Uniprot[localisation]]:
                 i +=1
                 print i

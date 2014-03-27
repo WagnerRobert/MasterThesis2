@@ -83,7 +83,7 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.p
 else:
     locCountDict = {}
     #print locKmerDict
-    for location in loc2prot:
+    for location in locKmerDict:
         locCountDict[location] = {}
 
         print location

@@ -117,7 +117,7 @@ else:
 
 for location in locCountDict:
     i = 0
-    print location + "\t" + str(len(locSeqDict[locTree2Uniprot[location]])) + "\t" + str(len(locKmerDictList[location]))
+    print location + "\t" + str(len(loc2prot[location])) + "\t" + str(len(locKmerDictList[location])) + "\t" + str(len(Set(locKmerDictList[location])))
     for k in sorted(locCountDict[location], key=lambda k: len(locCountDict[location][k]), reverse=True):
         i += 1
 

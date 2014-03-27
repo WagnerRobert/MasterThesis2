@@ -33,7 +33,7 @@ print "reading result file to get a location to protein mapping"
 loc2prot = masterthesis2.loc2prot.getLoc2Prot(constants)
 
 print "reading all the annotated sequences from swissprot"
-f = open("/mnt/project/loctree2/sp042011/up3/euk18/euk18.fa", 'r')
+f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
 name = ""
 localisation = ""
 locSeqDict= {}

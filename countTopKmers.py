@@ -27,7 +27,7 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 locKmerDict = masterthesis.reader.read_picklefile("cleanlocKmerDict", constants)
 
 print "reading all the annotated sequences from swissprot"
-f = open("/mnt/project/locbloc-ha/sp042011/SP13_11/eukaryotes.SP13_11.expSL.50.Before05_11.new.fa", 'r')
+f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
 name = ""
 localisation = ""
 locSeqDict= {}

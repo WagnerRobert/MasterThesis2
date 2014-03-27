@@ -57,12 +57,13 @@ def getCorrectPredictedLoc2Prot(paths):
 
     #cross check loc2Prot against locSeqDict, to find Proteines that are wrongfully predicted to be in a location
     i = 0
+    removeList = []
     for localisation in loc2prot:
         for protein in loc2prot[localisation]:
             if protein not in locSeqDict[locTree2Uniprot[localisation]]:
                 i +=1
                 print i
-                loc2prot[localisation].pop(loc2prot[localisation].index(protein))
+                removeList.append(protein)
                 foundLoc = None
                 for loc in locSeqDict:
                     if protein in locSeqDict[loc]:
@@ -71,4 +72,7 @@ def getCorrectPredictedLoc2Prot(paths):
                         break
                 if foundLoc == None:
                     print protein + " predicted localisation: " + localisation + " not found!"
+    for localisation in loc2prot:
+        for protein in removeList:
+            loc2prot[localisation] = filter(lambda a: a != protein, loc2prot[localisation])
     return  loc2prot

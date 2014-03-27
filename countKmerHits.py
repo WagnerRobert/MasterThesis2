@@ -108,8 +108,8 @@ else:
                                     locCountDict[location][kmer].append(protein)
                                     index += 1 # +2 because len('ll') ==
                                 #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
-                        else:
-                            print "protein " + protein + " was predicted incorrectly and will be ignored"
+                    else:
+                        print "protein " + protein + " was predicted incorrectly and will be ignored"
 
 
     masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)

@@ -92,11 +92,12 @@ else:
         for loc in locSeqDict:
             if loc == locTree2Uniprot[location]:
                 print "\t" + loc
-                for kmer in locKmerDict[location].keys():
-                    if kmer not in locCountDict[location]:
-                        locCountDict[location][kmer] = []
-                    for protein in loc2prot[location]:
-                        if protein in locSeqDict[loc]:
+                for protein in loc2prot[location]:
+                    if protein in locSeqDict[loc]:
+                        for kmer in locKmerDict[location].keys():
+                            if kmer not in locCountDict[location]:
+                                locCountDict[location][kmer] = []
+
                             # print locSeqDict[loc][protein]
                             if kmer in locSeqDict[loc][protein]:
                                 index = 0

@@ -65,6 +65,15 @@ f.close()
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
+locTree2Uniprot["cellmemb"] = "cellmembrane"
+locTree2Uniprot["memmitoc"] = "memmitochondria"
+locTree2Uniprot["peroxis"] = "peroxisome"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["er"] = "er"
+locTree2Uniprot["secrete"] = "secreted"
+locTree2Uniprot["chloropl"] = "chloroplast"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
 
 loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
 

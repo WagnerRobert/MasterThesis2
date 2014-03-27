@@ -66,6 +66,8 @@ locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
 locTree2Uniprot["nucleus"] = "nucleus"
 
+loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
+
 Overwrite = True
 if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.pkl")) and Overwrite == False:
     locCountDict = masterthesis.reader.read_picklefile("locCountDict", constants)
@@ -85,16 +87,19 @@ else:
                     if kmer not in locCountDict[location]:
                         locCountDict[location][kmer] = []
                     for protein in locSeqDict[loc]:
-                        # print locSeqDict[loc][protein]
-                        if kmer in locSeqDict[loc][protein]:
-                            index = 0
-                            while index < len(locSeqDict[loc][protein]):
-                                index = locSeqDict[loc][protein].find(kmer, index)
-                                if index == -1:
-                                    break
-                                locCountDict[location][kmer].append(protein)
-                                index += 1 # +2 because len('ll') ==
-                            #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
+                        if protein in loc2prot[location]:
+                            # print locSeqDict[loc][protein]
+                            if kmer in locSeqDict[loc][protein]:
+                                index = 0
+                                while index < len(locSeqDict[loc][protein]):
+                                    index = locSeqDict[loc][protein].find(kmer, index)
+                                    if index == -1:
+                                        break
+                                    locCountDict[location][kmer].append(protein)
+                                    index += 1 # +2 because len('ll') ==
+                                #print "found kmer " + kmer + " \tin " + loc + " protein " + protein
+                        else:
+                            print "protein " + protein + " was predicted incorrectly and will be ignored"
 
 
     masterthesis.writer.write_picklefile(locCountDict, "locCountDict", constants)

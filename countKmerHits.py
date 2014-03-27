@@ -74,7 +74,7 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locCountDict.p
 else:
     locCountDict = {}
     #print locKmerDict
-    for location in locKmerDict:
+    for location in loc2prot:
         locCountDict[location] = {}
 
         print location
@@ -86,8 +86,8 @@ else:
                 for kmer in locKmerDict[location].keys():
                     if kmer not in locCountDict[location]:
                         locCountDict[location][kmer] = []
-                    for protein in locSeqDict[loc]:
-                        if protein in loc2prot[location]:
+                    for protein in loc2prot[location]:
+                        if protein in locSeqDict[loc]:
                             # print locSeqDict[loc][protein]
                             if kmer in locSeqDict[loc][protein]:
                                 index = 0

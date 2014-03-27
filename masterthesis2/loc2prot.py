@@ -45,8 +45,8 @@ def getCorrectPredictedLoc2Prot(paths):
     locTree2Uniprot = {}
     locTree2Uniprot["cytopla"] = "cytoplasm"
     locTree2Uniprot["nucleus"] = "nucleus"
-    locTree2Uniprot["cellmemb"] = "plasma_membrane"
-    locTree2Uniprot["memmitoc"] = "mitochondria_membrane"
+    locTree2Uniprot["cellmemb"] = "cellmembrane"
+    locTree2Uniprot["memmitoc"] = "memmitochondria"
     locTree2Uniprot["peroxis"] = "peroxisome"
     locTree2Uniprot["mitochon"] = "mitochondria"
     locTree2Uniprot["er"] = "er"

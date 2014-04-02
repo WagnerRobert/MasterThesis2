@@ -169,9 +169,28 @@ for location in topKmer_dict:
                     kmerTupleDict[(protKmers[i], protKmers[j])] += 1
                 else:
                     kmerTupleDict[(protKmers[i], protKmers[j])] = 1
+    TLists = []
     for kmer1, kmer2 in sorted(kmerTupleDict,key=lambda x : kmerTupleDict[x], reverse=True) :
         if kmerTupleDict[(kmer1, kmer2)] >1 :
             print kmer1 + "\t" + kmer2 + "\t" + str(kmerTupleDict[(kmer1, kmer2)])
+            TList = [kmer1, kmer2]
+
+            for kx, ky in sorted(kmerTupleDict,key=lambda x : kmerTupleDict[x], reverse=True) :
+                if kmerTupleDict[(kx, ky)] >1 :
+                    if kmer1 == kx:
+                       TList.append(ky)
+                    if kmer1 == ky:
+                       TList.append(kx)
+                    if kmer2 == kx:
+                       TList.append(ky)
+                    if kmer2 == ky:
+                       TList.append(kx)
+            TList = Set(TList)
+            TLists.append(TList)
+    TLists = Set(TLists)
+    print TLists
+
+
 
 
 

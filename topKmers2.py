@@ -103,7 +103,7 @@ for location in locKmerDict:
             topKmer_dict[location][kmer].append(value)
 
 for location in topKmer_dict:
-    for kmer in sorted(topKmer_dict[location], key=lambda x : x[0], reverse=True):
+    for kmer in sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location][x][0] , reverse=True):
         print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer])) + "\t" + str(topKmer_dict[location][kmer][0])
 
     print ""

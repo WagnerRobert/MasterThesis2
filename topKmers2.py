@@ -151,7 +151,7 @@ locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
-for location in loc2prot:
+for location in topKmer_dict:
     print location
     for protein in loc2prot[location]:
         for kmer in topKmer_dict[location]:

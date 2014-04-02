@@ -116,4 +116,48 @@ for location in topKmer_dict:
 
 locKmerDict = None
 
+print "\nNow checking which of the top 45 kmers appear pairwise in the predicted proteins"
+print "reading all the annotated sequences from swissprot"
+f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
+name = ""
+localisation = ""
+locSeqDict= {}
+i = 0
+for line in f:
+    if line.startswith(">"):
+        tmp = line.split(' ')
+        name = tmp[0][1:]
+        localisation = tmp[1].rstrip()
+        if localisation not in locSeqDict:
+            locSeqDict[localisation] = {}
+        if name not in locSeqDict[localisation]:
+            locSeqDict[localisation][name] = ""
+        else:
+            print name + " is already in " + localisation
+    else:
+        locSeqDict[localisation][name] = line.rstrip()
+f.close()
+
+locTree2Uniprot = {}
+locTree2Uniprot["cytopla"] = "cytoplasm"
+locTree2Uniprot["nucleus"] = "nucleus"
+locTree2Uniprot["cellmemb"] = "cellmembrane"
+locTree2Uniprot["memmitoc"] = "memmitochondria"
+locTree2Uniprot["peroxis"] = "peroxisome"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["er"] = "er"
+locTree2Uniprot["secrete"] = "secreted"
+locTree2Uniprot["chloropl"] = "chloroplast"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
+
+for location in loc2prot:
+    print location
+    for protein in loc2prot[location]:
+        for kmer in topKmer_dict[location]:
+            if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
+                print "\t" + kmer + " found in " + protein
+
+
+
 

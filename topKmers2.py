@@ -190,12 +190,13 @@ for location in topKmer_dict:
     TLists = Set(TLists)
 
     print len(TLists)
-    for i in range(len(sorted(TLists))):
-        for j in range(i+1, (len(sorted(TLists)))):
-            if TLists[i].issubset(TLists[j]):
-                TLists[i] = TLists[i].update(TLists[j])
-            elif TLists[j].issubset(TLists[i]):
-                TLists[j] = TLists[j].update(TLists[i])
+    for i in TLists:
+        for j in TLists:
+            if i != j:
+                if i.issubset(j):
+                    TLists.discard(i)
+                elif j.issubset(i):
+                    TLists.discard(j)
     TLists = Set(TLists)
 
     print len(TLists)

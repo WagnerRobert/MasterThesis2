@@ -154,9 +154,16 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 for location in topKmer_dict:
     print location
     for protein in loc2prot[location]:
+        first = False
+        firstKmer = None
         for kmer in topKmer_dict[location]:
             if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
-                print "\t" + protein + " contains kmer\t" + kmer
+                if first == False:
+                    print "\n\t" + protein + " contains kmer\t" + kmer
+                    first = True
+                    firstKmer = kmer
+                elif first == True:
+                    print "\n\t" + protein + " contains kmer\t" + kmer + "\t and " + firstKmer
 
 
 

@@ -189,8 +189,20 @@ for location in topKmer_dict:
             TLists.append(TList)
     TLists = Set(TLists)
 
-    for tlist in TLists:
-        print tlist
+    print len(TLists)
+    for i in range(len(TLists)):
+        for j in range(i+1, (len(TLists))):
+            if TLists[i].issubset(TLists[j]):
+                TLists[i] = TLists[i].update(TLists[j])
+            elif TLists[j].issubset(TLists[i]):
+                TLists[j] = TLists[j].update(TLists[i])
+    TLists = Set(TLists)
+
+    print len(TLists)
+
+    for klist in TLists:
+        print klist
+
 
 
 

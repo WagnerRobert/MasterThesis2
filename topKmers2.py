@@ -170,7 +170,8 @@ for location in topKmer_dict:
                 else:
                     kmerTupleDict[(protKmers[i], protKmers[j])] = 1
     for kmer1, kmer2 in sorted(kmerTupleDict,key=lambda x : kmerTupleDict[x], reverse=True) :
-        print kmer1 + "\t" + kmer2 + "\t" + str(kmerTupleDict[(kmer1, kmer2)])
+        if kmerTupleDict[(kmer1, kmer2)] >1 :
+            print kmer1 + "\t" + kmer2 + "\t" + str(kmerTupleDict[(kmer1, kmer2)])
 
 
 

@@ -151,8 +151,10 @@ locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
+
 for location in topKmer_dict:
     print location
+    kmerTupleDict = {}
     for protein in loc2prot[location]:
         protKmers = []
         for kmer in topKmer_dict[location]:
@@ -160,6 +162,15 @@ for location in topKmer_dict:
                 protKmers.append(kmer)
         if len(protKmers ) > 1:
             print protein + "\t contains " + str(protKmers)
+        protKmers = protKmers.sort()
+        for i in range(len(protKmers)):
+            for j in range(i, len(protKmers)):
+                if kmerTupleDict[protKmers[i], protKmers[j]]:
+                    kmerTupleDict[(protKmers[i], protKmers[j])] += 1
+                else:
+                    kmerTupleDict[(protKmers[i], protKmers[j])] = 1
+    for kmer1, kmer2 in kmerTupleDict:
+        print kmer1 + "\t" + kmer2 + "\t" + str(kmerTupleDict[(protKmers[i], protKmers[j])])
 
 
 

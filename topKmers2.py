@@ -165,7 +165,7 @@ for location in topKmer_dict:
         protKmers.sort()
         for i in range(len(protKmers)):
             for j in range(i, len(protKmers)):
-                if kmerTupleDict[protKmers[i], protKmers[j]]:
+                if (protKmers[i], protKmers[j]) in kmerTupleDict:
                     kmerTupleDict[(protKmers[i], protKmers[j])] += 1
                 else:
                     kmerTupleDict[(protKmers[i], protKmers[j])] = 1

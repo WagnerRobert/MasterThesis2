@@ -156,7 +156,8 @@ for location in loc2prot:
     for protein in loc2prot[location]:
         for kmer in topKmer_dict[location]:
             if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
-                print "\t" + kmer + " found in " + protein
+                print "\t" + protein + " contains kmer\t" + kmer
+        print "\n"
 
 
 

@@ -164,7 +164,7 @@ for location in topKmer_dict:
             print protein + "\t contains " + str(protKmers)
         protKmers.sort()
         for i in range(len(protKmers)):
-            for j in range(i, len(protKmers)):
+            for j in range(i+1, len(protKmers)):
                 if (protKmers[i], protKmers[j]) in kmerTupleDict:
                     kmerTupleDict[(protKmers[i], protKmers[j])] += 1
                 else:

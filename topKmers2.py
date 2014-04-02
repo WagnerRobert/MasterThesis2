@@ -105,7 +105,7 @@ for location in locKmerDict:
 for location in topKmer_dict:
     print location
     for kmer in sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location][x][0] , reverse=True):
-        print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer])) + "\t" + str(topKmer_dict[location][kmer][0])
+        print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer])) + "\t" + '%.2f' % (topKmer_dict[location][kmer][0])
 
     print ""
     print "same output again for sequence logo"

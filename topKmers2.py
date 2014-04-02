@@ -188,7 +188,9 @@ for location in topKmer_dict:
             TList = Set(TList)
             TLists.append(TList)
     TLists = Set(TLists)
-    print TLists
+
+    for tlist in TLists:
+        print tlist
 
 
 

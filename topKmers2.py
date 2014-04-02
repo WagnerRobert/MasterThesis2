@@ -104,7 +104,7 @@ for location in locKmerDict:
 
 for location in topKmer_dict:
     for kmer in topKmer_dict[location]:
-        print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer]))
+        print "\t" + kmer + "\t" + str(len(topKmer_dict[location][kmer])) + "\t" + str(topKmer_dict[location][kmer][0])
 
     print ""
     print "same output again for sequence logo"

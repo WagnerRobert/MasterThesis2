@@ -36,11 +36,11 @@ def blastProtein(protein, constants, overwrite, queue):
         importantRound = []
         for line in f:
             if line.startswith("Results from round"):
-                curRound += 1
                 if inSequence:
                     RoundList[curRound][SequenceName] = SequenceEntry
                     SequenceEntry = ""
                     inSequence = False
+                curRound += 1
 
             if line.startswith(">tr") or line.startswith(">sp"):
                 if inSequence:

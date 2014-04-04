@@ -38,7 +38,7 @@ tree = reader.read_treefile(constants)
 kmerlist = reader.read_picklefile("kmers", constants)
 #checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfile
 
-overwrite = True
+overwrite = False
 queue = True
 def queue_blast():
     for svm in sorted(kmerlist):

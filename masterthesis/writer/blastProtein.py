@@ -1,5 +1,7 @@
 import os
+import re
 import subprocess
+import sys
 
 __author__ = 'delur'
 
@@ -25,15 +27,46 @@ def blastProtein(protein, constants, overwrite, queue):
         f = open (os.path.join(constants["blast_dir"], protein + ".blast"), 'r')
         run = False
 
+
+        inSequence = False
+        SequenceName = ""
+        SequenceEntry = ""
+        curRound = 0
+        RoundList = []
+        importantRound = []
         for line in f:
-            if "round 3" in line or "CONVERGED!" in line:
-                run = True
-            if run:
-                if line.startswith(">tr") or line.startswith(">sp"):
-                    ProfileProteines.append(line.split('|')[1])
-                elif line.startswith(">"):
-                    print "\t\t\tignoring entry " + line.rstrip()
+            if line.startswith("Results from round"):
+                curRound += 1
+                RoundList[curRound] = {}
+
+            if line.startswith(">tr") or line.startswith(">sp"):
+                if inSequence:
+                    RoundList[curRound][SequenceName] = SequenceEntry
+                    inSequence = False
+                if not inSequence:
+                    RoundList[curRound][line.split('|')[1]] = ""
+                    SequenceName = [line.split('|')[1]]
+                    inSequence = True
+            elif inSequence:
+                SequenceEntry += line
+
+            if "round 3" in line:
+                importantRound = RoundList[2]
+                break
+            if "CONVERGED!" in line:
+                if curRound == 3:
+                    importantRound = RoundList[2]
+                elif curRound == 2:
+                    importantRound = RoundList[1]
+                elif curRound == 1:
+                    importantRound = []
         f.close()
+        regex = re.compile(r"Expect = (\S+),")
+        for sequence in importantRound:
+            match = regex.match(importantRound[sequence])
+            print match.group(0)
+        sys.exit
+
 
     def tab_blast():
         f = open (os.path.join(constants["blast_dir"], protein + ".blast"), 'r')

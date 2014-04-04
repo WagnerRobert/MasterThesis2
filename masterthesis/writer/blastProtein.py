@@ -38,6 +38,7 @@ def blastProtein(protein, constants, overwrite, queue):
             if line.startswith("Results from round"):
                 curRound += 1
                 if SequenceName != "":
+                    print "just a test"
                     RoundList[curRound][SequenceName] = SequenceEntry
                     SequenceEntry = ""
                     inSequence = False

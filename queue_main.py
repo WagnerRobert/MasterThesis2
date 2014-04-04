@@ -38,7 +38,7 @@ tree = reader.read_treefile(constants)
 kmerlist = reader.read_picklefile("kmers", constants)
 #checkOrder(kmerlist, result) # to checkOrder you need to outcomment the doQuant call in read_kmerfile
 
-overwrite = False
+overwrite = True
 queue = True
 def queue_blast():
     for svm in sorted(kmerlist):
@@ -783,10 +783,9 @@ def doPlotsWithProSite(prosite):
             i += 1
 
 
-queue_blast()
-
+#queue_blast()
 #get_fasta_files()
-#queue_uniqueprot()
+queue_uniqueprot()
 #pairwise()
 
 #doPlots()

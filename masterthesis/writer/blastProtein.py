@@ -75,8 +75,8 @@ def blastProtein(protein, constants, overwrite, queue):
                 print importantRound[sequence]
 
 
-            #print sequence + "\t" + match.group(1)
-        sys.exit
+            if float(match.group(1)) < 1e-3:
+                ProfileProteines.append(sequence)
 
 
     def tab_blast():
@@ -93,6 +93,8 @@ def blastProtein(protein, constants, overwrite, queue):
     #tab_blast()
     text_blast()
 
+
+    # remove self hits from the blast entry
     ProfileProteines_copy = []
     for entry in ProfileProteines:
         ProfileProteines_copy.append(entry)

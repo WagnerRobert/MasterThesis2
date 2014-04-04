@@ -32,7 +32,7 @@ def blastProtein(protein, constants, overwrite, queue):
         SequenceName = ""
         SequenceEntry = ""
         curRound = 0
-        RoundList = []
+        RoundList = [None,{},{},{}]
         importantRound = []
         for line in f:
             if line.startswith("Results from round"):

@@ -795,4 +795,4 @@ queue_blast()
 #countNumProfProteines()
 
 #doZScoreText()
-doPlotsWithProSite(prosite)
+#doPlotsWithProSite(prosite)

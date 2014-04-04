@@ -74,8 +74,10 @@ def blastProtein(protein, constants, overwrite, queue):
                 print "No eval found for: " + sequence
                 print importantRound[sequence]
 
-
-            if float(match.group(1)) < float("1e-3"):
+            floatstring = match.group(1)
+            if floatstring.startswith("e"):
+                floatstring = "1" + floatstring
+            if float(floatstring) < float("1e-3"):
                 ProfileProteines.append(sequence)
 
 

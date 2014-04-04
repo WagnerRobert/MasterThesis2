@@ -41,6 +41,7 @@ def blastProtein(protein, constants, overwrite, queue):
             if line.startswith(">tr") or line.startswith(">sp"):
                 if inSequence:
                     RoundList[curRound][SequenceName] = SequenceEntry
+                    SequenceEntry = ""
                     inSequence = False
                 if not inSequence:
                     RoundList[curRound][line.split('|')[1]] = ""

@@ -62,7 +62,7 @@ def blastProtein(protein, constants, overwrite, queue):
         f.close()
         regex = re.compile(r"Expect = (\S+),")
         for sequence in importantRound:
-            print importantRound[sequence]
+            #print importantRound[sequence]
             match = re.match(regex, importantRound[sequence])
             print match.group(0)
         sys.exit

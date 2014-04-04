@@ -47,7 +47,7 @@ def blastProtein(protein, constants, overwrite, queue):
                     SequenceName = line.split('|')[1]
                     inSequence = True
             elif inSequence:
-                SequenceEntry += line
+                SequenceEntry += line.rstrip()
 
             if "round 3" in line:
                 importantRound = RoundList[2]

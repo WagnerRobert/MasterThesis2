@@ -67,7 +67,7 @@ def blastProtein(protein, constants, overwrite, queue):
             #print sequence
             match = re.search(regex, importantRound[sequence])
             if match == None:
-                print sequence
+                print "No eval found for: " + sequence
 
 
             #print sequence + "\t" + match.group(1)

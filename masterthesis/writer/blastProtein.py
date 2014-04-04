@@ -97,7 +97,8 @@ def blastProtein(protein, constants, overwrite, queue):
     # remove self hits from the blast entry
     ProfileProteines_copy = []
     for entry in ProfileProteines:
-        ProfileProteines_copy.append(entry)
+        if entry != None:
+            ProfileProteines_copy.append(entry)
 
     for i in range(len(ProfileProteines_copy)):
         if ProfileProteines_copy[i] == protein:

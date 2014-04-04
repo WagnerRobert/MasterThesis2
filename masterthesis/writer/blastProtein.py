@@ -75,7 +75,7 @@ def blastProtein(protein, constants, overwrite, queue):
                 print importantRound[sequence]
 
 
-            if float(match.group(1)) < 1e-3:
+            if float(match.group(1)) < float("1e-3"):
                 ProfileProteines.append(sequence)
 
 

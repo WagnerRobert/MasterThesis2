@@ -65,7 +65,7 @@ def blastProtein(protein, constants, overwrite, queue):
         for sequence in importantRound:
             #print importantRound[sequence]
             match = re.search(regex, importantRound[sequence])
-            print match.group(1)
+            print sequence + "\t" + match.group(1)
         sys.exit
 
 

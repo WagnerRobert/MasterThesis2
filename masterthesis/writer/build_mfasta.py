@@ -26,7 +26,6 @@ def build_mfasta(protein, sequence, profileProteins, paths, overwrite, queue):
 
         mfastafile = open(os.path.join(paths["mfasta"], protein+".mfasta"), 'a')
         for prot in profileProteins:
-            print prot
             fasta = ""
             tmp = prot[0]
             target_dir = os.path.join(paths["fasta"], tmp)

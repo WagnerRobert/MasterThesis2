@@ -104,4 +104,5 @@ def blastProtein(protein, constants, overwrite, queue):
         if ProfileProteines_copy[i] == protein:
             ProfileProteines.pop(i)
 
+    print len(ProfileProteines)
     return ProfileProteines

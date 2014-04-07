@@ -2,6 +2,7 @@ import os
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.locSeq
+import masterthesis2.cleanKmers
 
 __author__ = 'delur'
 
@@ -40,9 +41,4 @@ locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
-for location in locKmerList:
-    for protein in loc2prot[location]:
-        if protein in locSeqDict[locTree2Uniprot[location]]:
-            print protein + "found in location: " + locTree2Uniprot[location]
-        else:
-            print "\t" + protein + "not found"
+locKmerList = masterthesis2.cleanKmers.cleanKmers(locKmerList, locSeqDict)

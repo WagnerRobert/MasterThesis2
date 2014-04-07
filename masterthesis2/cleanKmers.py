@@ -13,8 +13,8 @@ def cleanKmers(locKmerList, locSeqDict):
          for protein in locKmerList[location]:
              for kmer, value in locKmerList[location][protein]:
                  if kmer not in locKmerDict[location]:
-                     locKmerDict[location][kmer] = []
-                 locKmerDict[location][kmer].append(value)
+                     locKmerDict[location][protein] = []
+                 locKmerDict[location][protein].append(kmer)
 
     locKmerList = None
 

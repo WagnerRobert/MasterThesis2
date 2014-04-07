@@ -3,6 +3,8 @@ import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.locSeq
 import masterthesis2.cleanKmers
+import masterthesis.reader.pickle_file
+import masterthesis.writer.pickle_file
 
 __author__ = 'delur'
 
@@ -25,6 +27,12 @@ constants["needle_dir"] = os.path.join(constants["working_dir"], "needle")
 constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 
 loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
+print "reading the kmers and filtering to the quantile"
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.pkl")):
+    locKmerList = masterthesis.reader.read_picklefile("locKmerList2", constants)
+else:
+    locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
+    masterthesis.writer.pickle_file(locKmerList, "locKmerList2", constants)
 locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
 locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
 

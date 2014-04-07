@@ -5,17 +5,19 @@ __author__ = 'delur'
 
 def cleanKmers(locKmerList, locSeqDict):
 
-    #     # get the kmers of each location, count how often which one occurs and the highest(all?) zscore(s)
+         # get the kmers of each location, count how often which one occurs and the highest(all?) zscore(s)
     # print "counting all the kmers for each location"
-    # locKmerDict = {}
-    # for location in locZscore:
-    #     locKmerDict[location] = {}
-    #     for protein in locZscore[location]:
-    #         for kmer, value in locZscore[location][protein]:
-    #             if kmer not in locKmerDict[location]:
-    #                 locKmerDict[location][kmer] = []
-    #             locKmerDict[location][kmer].append(value)
-    # locZscore = None
+    locKmerDict = {}
+    for location in locKmerList:
+         locKmerDict[location] = {}
+         for protein in locKmerList[location]:
+             for kmer, value in locKmerList[location][protein]:
+                 if kmer not in locKmerDict[location]:
+                     locKmerDict[location][kmer] = []
+                 locKmerDict[location][kmer].append(value)
+
+    locKmerList = None
+
 
     locTree2Uniprot = {}
     locTree2Uniprot["cytopla"] = "cytoplasm"
@@ -39,21 +41,21 @@ def cleanKmers(locKmerList, locSeqDict):
     print "building the remove list, this can take some time"
     removeList = []
     i = 0
-    for location1 in locKmerList:
+    for location1 in locKmerDict:
         i += 1
-        print "location1: " + str(i) + "\t" + str(len(locKmerList))
-        for location2 in locKmerList:
+        print "location1: " + str(i) + "\t" + str(len(locKmerDict))
+        for location2 in locKmerDict:
             if location1 != location2:
                 loc1KmerList = []
                 print "LOCATION 1 KMERLIST:"
-                for protein in locKmerList[location1]:
-                    for kmer in locKmerList[location1][protein]:
+                for protein in locKmerDict[location1]:
+                    for kmer in locKmerDict[location1][protein]:
                         print kmer
                         loc1KmerList.append(kmer)
                 loc2KmerSet = set()
                 print "LOCATION 2 KMERLIST:"
-                for protein in locKmerList[location2]:
-                    for kmer in locKmerList[location2][protein]:
+                for protein in locKmerDict[location2]:
+                    for kmer in locKmerDict[location2][protein]:
                         print kmer
                         loc2KmerSet.add(kmer)
                 localRemovelist = [val for val in loc1KmerList if val in loc2KmerSet]
@@ -70,10 +72,10 @@ def cleanKmers(locKmerList, locSeqDict):
     for kmer in removeList:
         count += 1
         print str(count) + "\t" + kmer
-        for location in locKmerList:
-            for protein in locKmerList[location]:
-                 if kmer in locKmerList[location][protein]:
-                     del locKmerList[location][protein][kmer]
+        for location in locKmerDict:
+            for protein in locKmerDict[location]:
+                 if kmer in locKmerDict[location][protein]:
+                     del locKmerDict[location][protein][kmer]
 
 
-    return locKmerList
+    return locKmerDict

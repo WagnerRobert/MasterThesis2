@@ -59,7 +59,7 @@ def cleanKmers(locKmerList, locSeqDict):
                     for kmer in locKmerDict[location2][protein].keys():
                         print kmer
                         loc2KmerSet.add(kmer)
-                localRemovelist = [val for val in locKmerDict if val in loc2KmerSet]
+                localRemovelist = [val for val in loc1KmerList if val in loc2KmerSet]
                 #for kmer in loc1Keys:
                 #    if kmer in loc2Keys:
                 #        removeList.append(kmer)

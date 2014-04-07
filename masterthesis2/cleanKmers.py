@@ -21,22 +21,49 @@ def cleanKmers(locKmerList, locSeqDict):
     locTree2Uniprot["cytopla"] = "cytoplasm"
     locTree2Uniprot["nucleus"] = "nucleus"
 
-    removelist = []
-    for location in locKmerList :
-        for protein in locKmerList[location]:
-            for kmer, value in locKmerList[location][protein]:
-                if kmer not in removelist:
-                    for loc in locSeqDict:
-                        if kmer in removelist:
-                            break
-                        elif locTree2Uniprot[location] != loc :
-                            for protein in locSeqDict[loc]:
-                                if kmer in locSeqDict[loc][protein]:
-                                    removelist.append(kmer)
-                                    break
+    # removelist = []
+    # for location in locKmerList :
+    #     for protein in locKmerList[location]:
+    #         for kmer, value in locKmerList[location][protein]:
+    #             if kmer not in removelist:
+    #                 for loc in locSeqDict:
+    #                     if kmer in removelist:
+    #                         break
+    #                     elif locTree2Uniprot[location] != loc :
+    #                         for protein in locSeqDict[loc]:
+    #                             if kmer in locSeqDict[loc][protein]:
+    #                                 removelist.append(kmer)
+    #                                 break
+
+
+    print "building the remove list, this can take some time"
+    removeList = []
+    i = 0
+    for location1 in locKmerList:
+        i += 1
+        print "location1: " + str(i) + "\t" + str(len(locKmerList))
+        for location2 in locKmerList:
+            if location1 != location2:
+                loc1KmerSet = set()
+                for protein in locKmerList[location1]:
+                    for kmer in locKmerList[location1][protein]:
+                        loc1KmerSet.add(kmer)
+
+
+                loc2KmerSet = set()
+                for protein in locKmerList[location1]:
+                    for kmer in locKmerList[location2][protein]:
+                        loc2KmerSet.add(kmer)
+                localRemovelist = [val for val in loc1KmerSet if val in loc2KmerSet]
+                #for kmer in loc1Keys:
+                #    if kmer in loc2Keys:
+                #        removeList.append(kmer)
+                for kmer in localRemovelist:
+                    removeList.append(kmer)
+
     print "\nFound the following kmers in multiple locations:"
     count = 0
-    for kmer in removelist:
+    for kmer in removeList:
         count += 1
         print str(count) + "\t" + kmer
         for location in locKmerList:

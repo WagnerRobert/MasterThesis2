@@ -26,8 +26,22 @@ constants["qsub"] = ['qsub', '-o', '/dev/null', '-e', '/dev/null', '-b', 'y']
 loc2prot = masterthesis2.loc2prot.getCorrectPredictedLoc2Prot(constants)
 locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
 locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
+
+locTree2Uniprot = {}
+locTree2Uniprot["cytopla"] = "cytoplasm"
+locTree2Uniprot["nucleus"] = "nucleus"
+locTree2Uniprot["cellmemb"] = "cellmembrane"
+locTree2Uniprot["memmitoc"] = "memmitochondria"
+locTree2Uniprot["peroxis"] = "peroxisome"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["er"] = "er"
+locTree2Uniprot["secrete"] = "secreted"
+locTree2Uniprot["chloropl"] = "chloroplast"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
+
 for location in loc2prot:
     for protein in loc2prot[location]:
-        if protein in locSeqDict[location]:
-            print protein + "found in location: " + location
+        if protein in locSeqDict[locTree2Uniprot[location]]:
+            print protein + "found in location: " + locTree2Uniprot[location]
 

@@ -786,7 +786,7 @@ def doPlotsWithProSite(prosite):
 #queue_blast()
 #get_fasta_files()
 #queue_uniqueprot()
-pairwise()
+#pairwise()
 
 #doPlots()
 #doQuantCountPlots()
@@ -794,4 +794,4 @@ pairwise()
 #countNumProfProteines()
 
 #doZScoreText()
-#doPlotsWithProSite(prosite)
+doPlotsWithProSite(prosite)

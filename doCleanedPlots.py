@@ -44,4 +44,5 @@ for location in locKmerList:
     for protein in loc2prot[location]:
         if protein in locSeqDict[locTree2Uniprot[location]]:
             print protein + "found in location: " + locTree2Uniprot[location]
-
+        else:
+            print "\t" + protein + "not found"

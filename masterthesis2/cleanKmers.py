@@ -4,9 +4,6 @@ import masterthesis2.zscore
 __author__ = 'delur'
 
 def cleanKmers(locKmerList, locSeqDict):
-        # calculate the zscore
-    print "calculating the zscores on the kmer vaules"
-    locKmerList = None
 
     #     # get the kmers of each location, count how often which one occurs and the highest(all?) zscore(s)
     # print "counting all the kmers for each location"

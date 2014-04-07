@@ -117,7 +117,7 @@ for location in topKmer_dict:
 locKmerDict = None
 
 print "\nNow checking which of the top 45 kmers appear pairwise in the predicted proteins"
-print "reading all the annotated sequences from swissprot"
+print "reading all the supplied location annotated sequences from swissprot"
 f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
 name = ""
 localisation = ""

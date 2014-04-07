@@ -40,7 +40,7 @@ locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
-for location in loc2prot:
+for location in locKmerList:
     for protein in loc2prot[location]:
         if protein in locSeqDict[locTree2Uniprot[location]]:
             print protein + "found in location: " + locTree2Uniprot[location]

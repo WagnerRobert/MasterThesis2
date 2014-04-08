@@ -1,4 +1,5 @@
 import os
+import sys
 import masterthesis2.features
 
 
@@ -56,7 +57,11 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
 
     plt.xticks(x, sequence)
-
+    #[i.set_color("red") for i in plt.gca().get_xticklabels()]
+    xticklabels = plt.gca().get_xticklabels()
+    for i in xticklabels:
+        dir(i)
+        sys.exit()
 
 
 

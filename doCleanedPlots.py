@@ -57,7 +57,11 @@ locTree2Uniprot["chloropl"] = "chloroplast"
 locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
-locKmerList = masterthesis2.cleanKmers.cleanKmers(locKmerList, locSeqDict)
+if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2Clean.pkl")):
+    locKmerList = masterthesis.reader.read_picklefile("locKmerList2Clean", constants)
+else:
+    locKmerList = masterthesis2.cleanKmers.cleanKmers(locKmerList, locSeqDict)
+    masterthesis.writer.write_picklefile(locKmerList, "locKmerList2Clean", constants)
 overwrite = False
 result = masterthesis.reader.result_file.read_resultfile(constants)
 tree = masterthesis.reader.tree_file.read_treefile(constants)
@@ -89,5 +93,5 @@ for location in locKmerList:
         else:
             prositeFeatures = []
 
-        masterthesis2.plot.createPlotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures)
+        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures)
         i += 1

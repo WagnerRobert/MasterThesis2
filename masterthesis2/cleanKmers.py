@@ -77,13 +77,13 @@ def cleanKmers(locKmerList, locSeqDict):
         for location2 in locProtKmerDict:
             if location1 != location2:
                 loc1KmerList = []
-                print "LOCATION 1 KMERLIST:"
+                #print "LOCATION 1 KMERLIST:"
                 for protein in locProtKmerDict[location1]:
                     for kmer in locProtKmerDict[location1][protein].keys():
                         #print kmer
                         loc1KmerList.append(kmer)
                 loc2KmerSet = set()
-                print "LOCATION 2 KMERLIST:"
+                #print "LOCATION 2 KMERLIST:"
                 for protein in locProtKmerDict[location2]:
                     for kmer in locProtKmerDict[location2][protein].keys():
                         #print kmer
@@ -92,7 +92,7 @@ def cleanKmers(locKmerList, locSeqDict):
                 #for kmer in loc1Keys:
                 #    if kmer in loc2Keys:
                 #        removeList.append(kmer)
-                print "REMOVE KMERLIST:"
+                #print "REMOVE KMERLIST:"
                 for kmer in localRemovelist:
                 #    print kmer
                     removeList.append(kmer)

@@ -94,7 +94,7 @@ def cleanKmers(locKmerList, locSeqDict):
                 #        removeList.append(kmer)
                 print "REMOVE KMERLIST:"
                 for kmer in localRemovelist:
-                    print kmer
+                #    print kmer
                     removeList.append(kmer)
 
     print "\nFound the following kmers in multiple locations:"

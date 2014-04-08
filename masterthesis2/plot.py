@@ -115,7 +115,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
                 rect = plt.Rectangle((start - 0.5, ypos), end-start + 1, height, facecolor=color)
             else:
                 rect = plt.Rectangle((start - 0.5, ypos), end-start + 1, height, facecolor=color, hatch='//')
-            plt.text(start, ypos, feature)
+            plt.text(start, ypos + 0.5*height, feature)
             plt.gca().add_patch(rect)
 
     for start, end in prosite:

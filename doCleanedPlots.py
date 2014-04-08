@@ -41,7 +41,6 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.p
 else:
     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
-locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
 locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
 prosite = masterthesis2.prosite.readProsite()
 

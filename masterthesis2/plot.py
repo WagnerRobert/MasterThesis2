@@ -58,7 +58,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
     plt.xticks(x, sequence)
     #[i.set_color("red") for i in plt.gca().get_xticklabels()]
-    colorCode = {"H": "blue", "K": "blue", "R": "blue", "D": "red", "D": "red", "S": "green", "T": "green", "N": "green", "Q": "green"}
+    colorCode = {"H": "blue", "K": "blue", "R": "blue", "D": "red", "D": "red", "S": "green", "T": "green", "N": "green", "Q": "green", "C" : "yellow", "F" : "#FFFF00", "Y" : "#FFFF00", "W" : "#FFFF00" }
     xticklabels = plt.gca().get_xticklabels()
     for i in xticklabels:
         aminoacid = i.get_text()

@@ -60,7 +60,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     #[i.set_color("red") for i in plt.gca().get_xticklabels()]
     xticklabels = plt.gca().get_xticklabels()
     for i in xticklabels:
-        dir(i)
+        print dir(i)
         sys.exit()
 
 

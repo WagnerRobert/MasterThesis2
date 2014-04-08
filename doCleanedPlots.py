@@ -5,6 +5,14 @@ import masterthesis2.locSeq
 import masterthesis2.cleanKmers
 import masterthesis.reader.pickle_file
 import masterthesis.writer.pickle_file
+import masterthesis.writer.getUniprot
+import masterthesis.writer.getFasta
+import masterthesis.writer.build_pairwise_alignments
+import masterthesis2.matchKmers2
+import masterthesis.reader.result_file
+import masterthesis.reader.tree_file
+import masterthesis2.plot
+import masterthesis2.prosite
 
 __author__ = 'delur'
 
@@ -35,6 +43,7 @@ else:
     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
 locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
 locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
+prosite = masterthesis2.prosite.readProsite()
 
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"
@@ -50,3 +59,36 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
 locKmerList = masterthesis2.cleanKmers.cleanKmers(locKmerList, locSeqDict)
+overwrite = False
+result = masterthesis.reader.result_file.read_resultfile(constants)
+tree = masterthesis.reader.tree_file.read_treefile(constants)
+i = 0
+for location in locKmerList:
+    print location
+    for protein in sorted(locKmerList[location]):
+        if protein not in locSeqDict[locTree2Uniprot[location]]:
+            print "protein not sound in uniprotfile " + protein
+            continue
+
+        print "\t" + protein + "\t" + str(i)
+        clean_name = protein.split('#')[0]
+        if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
+            pass
+        else:
+            print "no needle file for " + protein
+            continue
+        foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
+        sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
+
+        pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
+        kmerlist = locKmerList[location][protein].keys()
+        pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)
+
+        prositeFeatures = []
+        if protein in prosite:
+            prositeFeatures = prosite[protein]
+        else:
+            prositeFeatures = []
+
+        masterthesis2.plot.createPlotWithProsite((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures)
+        i += 1

@@ -118,7 +118,7 @@ for location in locZscore:
         #build all combinations from the found kmers
         for L in range(0, len(foundKmers)+1):
             for subset in itertools.combinations(foundKmers, L):
-                sortlist = sorted(subset)
+                sortlist = tuple(sorted(subset))
                 if sortlist in counts[location]:
                     counts[location][sortlist] += 1
                 else:

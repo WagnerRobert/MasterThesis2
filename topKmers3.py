@@ -58,7 +58,7 @@ for location in locZscore:
             if kmer not in locKmerDict[location]:
                 locKmerDict[location][kmer] = []
             locKmerDict[location][kmer].append(locZscore[location][protein][kmer])
-locZscore = None
+
 
 print "\ngetting the highest scoring Kmers"
 topKmer_dict = {}
@@ -108,11 +108,11 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 
 
 counts = {}
-for location in loc2prot:
+for location in locZscore:
     counts[location] = {}
-    for protein in loc2prot[location]:
+    for protein in locZscore[location]:
         foundKmers = []
-        for kmer in topKmer_dict[location]:
+        for kmer in locZscore[location][protein]:
             if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
                 foundKmers.append(kmer)
         #build all combinations from the found kmers

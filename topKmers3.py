@@ -129,6 +129,7 @@ for location in counts:
         for subsetB in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
             if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
                 del counts[location][subsetA]
+                break
 
 for location in counts:
     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):

@@ -1,5 +1,6 @@
 import os
 import operator
+import itertools
 import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -90,3 +91,39 @@ for location in topKmer_dict:
 
 
 locKmerDict = None
+
+
+locTree2Uniprot = {}
+locTree2Uniprot["cytopla"] = "cytoplasm"
+locTree2Uniprot["nucleus"] = "nucleus"
+locTree2Uniprot["cellmemb"] = "cellmembrane"
+locTree2Uniprot["memmitoc"] = "memmitochondria"
+locTree2Uniprot["peroxis"] = "peroxisome"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["er"] = "er"
+locTree2Uniprot["secrete"] = "secreted"
+locTree2Uniprot["chloropl"] = "chloroplast"
+locTree2Uniprot["mitochon"] = "mitochondria"
+locTree2Uniprot["mitochon"] = "mitochondria"
+
+
+counts = {}
+for location in loc2prot:
+    counts[location] = {}
+    for protein in loc2prot[location]:
+        foundKmers = []
+        for kmer in topKmer_dict[location]:
+            if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
+                foundKmers.append(kmer)
+        #build all combinations from the found kmers
+        for L in range(0, len(foundKmers)+1):
+            for subset in itertools.combinations(foundKmers, L):
+                print(subset)
+                if subset in counts[location]:
+                    counts[location][subset] += 1
+                else:
+                    counts[location][subset] = 1
+
+for location in counts:
+    for subset in counts[location]:
+        print str(subset) + "\t" + str(counts[location][subset])

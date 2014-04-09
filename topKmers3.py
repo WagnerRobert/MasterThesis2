@@ -125,5 +125,11 @@ for location in locZscore:
                     counts[location][sortlist] = 1
 
 for location in counts:
+    for subsetA in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
+        for subsetB in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
+            if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
+                del counts[location][subsetA]
+
+for location in counts:
     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
         print str(subset) + "\t" + str(counts[location][subset])

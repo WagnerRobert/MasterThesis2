@@ -4,6 +4,7 @@ import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
 import masterthesis2.loc2prot
+import masterthesis2.locSeq
 
 __author__ = 'delur'
 

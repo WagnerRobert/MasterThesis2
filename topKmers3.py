@@ -151,9 +151,7 @@ for location in counts:
         newLength = len(counts[location])
         print newLength
         if oldLength != newLength:
-            workedList.append(subsetA)
             keepGoing = True
-            break
 
 
 

@@ -118,7 +118,7 @@ for location in locZscore:
             if kmer in locSeqDict[locTree2Uniprot[location]][protein]:
                 foundKmers.append(kmer)
         #build all combinations from the found kmers
-        for L in range(0, len(foundKmers)+1):
+        for L in range(1, len(foundKmers)+1):
             for subset in itertools.combinations(sorted(foundKmers), L):
                 if subset in counts[location]:
                     counts[location][subset] += 1

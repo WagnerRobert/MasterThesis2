@@ -134,8 +134,12 @@ for location in counts:
     i = 0
     keepGoing = True
     workedList = []
-    for index, subsetA in enumerate(sorted(counts[location], key= lambda x : counts[location][x], reverse=True)):
-        print str(index) + "/" + str(len(counts[location])) + "\t" + str(subsetA)
+
+    counts[location].sort(key= lambda x : counts[location][x])
+    counts[location].sort(key=lambda x : len(x))
+
+    for index, subsetA in enumerate(counts[location]):
+        print str(index) + "/" + str(len(counts[location])) #+ "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in counts[location]:
             if subsetA != subsetB:
@@ -146,7 +150,7 @@ for location in counts:
                             totalySubSet = False
                             break
                     if totalySubSet:
-                        print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is subset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
+                        #print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is subset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
                         sys.stdout.flush()
                         del counts[location][subsetA]
                         break

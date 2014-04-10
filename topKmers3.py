@@ -136,7 +136,7 @@ for location in counts:
         print str(index) + "/" + str(len(counts[location])) + "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
-            if counts[location][subsetA] > counts[location][subsetB]:
+            if counts[location][subsetA] < counts[location][subsetB]:
                 if set(subsetA).issuperset(subsetB):
                     print str(subsetA) + " is superset of " + str(subsetB)
                     sys.stdout.flush()

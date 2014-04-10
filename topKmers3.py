@@ -2,6 +2,7 @@ import os
 import operator
 import itertools
 import sys
+import timeit
 import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -136,11 +137,28 @@ for location in counts:
         print str(index) + "/" + str(len(counts[location])) + "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
+
             if counts[location][subsetA] > counts[location][subsetB]:
+                code = '''
                 if set(subsetA).issuperset(subsetB):
                     print str(subsetA) + " is superset of " + str(subsetB)
                     sys.stdout.flush()
                     del counts[location][subsetB]
+                '''
+                print min(timeit.Timer(code).repeat(7,1000))
+                code2 = '''
+                totalySubSet = True
+                for kmer in subsetA:
+                    if kmer not in subsetB:
+                        totalySubSet = False
+                        break
+                if totalySubSet:
+                    print str(subsetA) + " is superset of " + str(subsetB)
+                    sys.stdout.flush()
+                    del counts[location][subsetB]
+                '''
+                print min(timeit.Timer(code2).repeat(7,1000))
+
     # while keepGoing:
     #     keepGoing = False
     #     oldLength = len(counts[location])

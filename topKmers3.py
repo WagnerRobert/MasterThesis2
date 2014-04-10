@@ -139,7 +139,7 @@ for location in counts:
         sys.stdout.flush()
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
 
-            if counts[location][subsetA] > counts[location][subsetB]:
+            if counts[location][subsetA] <= counts[location][subsetB]:
                 totalySubSet = True
                 for kmer in subsetA:
                     if kmer not in subsetB:

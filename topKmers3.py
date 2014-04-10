@@ -184,7 +184,7 @@ for location in counts:
 
 
 
-f = open( "top3", 'w')
+f = open( "top4", 'w')
 for location in counts:
     print location
     f.write(location + "\n")

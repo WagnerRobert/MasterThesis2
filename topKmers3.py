@@ -140,7 +140,6 @@ for location in counts:
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
 
             if counts[location][subsetA] > counts[location][subsetB]:
-                tic = time.time()
                 totalySubSet = True
                 for kmer in subsetA:
                     if kmer not in subsetB:
@@ -150,8 +149,6 @@ for location in counts:
                     print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is superset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
                     sys.stdout.flush()
                     del counts[location][subsetB]
-                toc = time.time()
-                print "Code2: " + str(toc - tic)
 
     # while keepGoing:
     #     keepGoing = False

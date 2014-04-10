@@ -1,6 +1,7 @@
 import os
 import operator
 import itertools
+import sys
 import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -143,6 +144,7 @@ for location in counts:
                 if counts[location][subsetB] < counts[location][subsetA]:
                     if set(subsetB).issubset(set(subsetA)) :
                         print "\t" + str(subsetB) + "\t" + str(subsetA)
+                        sys.stdout.flush()
                         del counts[location][subsetB]
             newLength = len(counts[location])
             print newLength

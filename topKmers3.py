@@ -149,6 +149,7 @@ for location in counts:
                         print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is subset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
                         sys.stdout.flush()
                         del counts[location][subsetA]
+                        break
 
     # while keepGoing:
     #     keepGoing = False

@@ -128,9 +128,12 @@ print "\nremoving kombinations that are subsets of larger kombinations if they d
 for location in counts:
     print location + "\t" + str(len(counts[location]))
     removelist = []
+    i = 0
     for subsetA,subsetB in itertools.permutations(counts[location],2):
         if subsetA not in removelist and subsetB not in removelist:
             if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
+                i += 1
+                print i
                 removelist.append(subsetA)
                 del counts[location][subsetA]
 

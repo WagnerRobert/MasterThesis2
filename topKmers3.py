@@ -146,9 +146,9 @@ for location in counts:
                             totalySubSet = False
                             break
                     if totalySubSet:
-                        print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is superset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
+                        print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is subset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
                         sys.stdout.flush()
-                        del counts[location][subsetB]
+                        del counts[location][subsetA]
 
     # while keepGoing:
     #     keepGoing = False

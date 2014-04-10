@@ -135,6 +135,7 @@ for location in counts:
         keepGoing = False
         oldLength = len(counts[location])
         print oldLength
+        print "Length workedlist: " + str(len(workedList))
         for subsetA in sorted(counts[location], key= lambda x : len(counts[location][x]), reverse=True):
             if subsetA in workedList:
                 continue

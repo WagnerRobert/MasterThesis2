@@ -132,8 +132,10 @@ for location in counts:
     i = 0
     keepGoing = True
     workedList = []
-    for subsetB in sorted(counts[location], key= lambda x : len(x)):
-        print str(subsetB)
+    sortedList = sorted(counts[location], key= lambda x : len(x))
+    print sortedList[0]
+    # for subsetB in sorted(counts[location], key= lambda x : len(x)):
+    #     print str(subsetB)
     # while keepGoing:
     #     keepGoing = False
     #     oldLength = len(counts[location])

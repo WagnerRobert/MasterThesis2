@@ -138,17 +138,17 @@ for location in counts:
         print str(index) + "/" + str(len(counts[location])) + "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
-
-            if counts[location][subsetA] <= counts[location][subsetB]:
-                totalySubSet = True
-                for kmer in subsetA:
-                    if kmer not in subsetB:
-                        totalySubSet = False
-                        break
-                if totalySubSet:
-                    print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is superset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
-                    sys.stdout.flush()
-                    del counts[location][subsetB]
+            if subsetA != subsetB:
+                if counts[location][subsetA] <= counts[location][subsetB]:
+                    totalySubSet = True
+                    for kmer in subsetA:
+                        if kmer not in subsetB:
+                            totalySubSet = False
+                            break
+                    if totalySubSet:
+                        print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is superset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
+                        sys.stdout.flush()
+                        del counts[location][subsetB]
 
     # while keepGoing:
     #     keepGoing = False

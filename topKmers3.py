@@ -186,6 +186,8 @@ for location in counts:
 
 f = open( "top3", 'w')
 for location in counts:
-     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
-         f.write(str(subset) + "\t" + str(counts[location][subset]) + "\n")
-         print str(subset) + "\t" + str(counts[location][subset])
+    print location
+    f.write(location + "\n")
+    for subset in sorted(sorted(counts[location], key= lambda x : counts[location][x], reverse=True), key= lambda  x : len(x)):
+        f.write(str(subset) + "\t" + str(counts[location][subset]) + "\n")
+        print str(subset) + "\t" + str(counts[location][subset])

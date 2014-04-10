@@ -140,10 +140,10 @@ for location in counts:
 
             if counts[location][subsetA] > counts[location][subsetB]:
                 code = '''
-                if set(subsetA).issuperset(subsetB):
-                    print str(subsetA) + " is superset of " + str(subsetB)
-                    sys.stdout.flush()
-                    del counts[location][subsetB]
+                                if set(subsetA).issuperset(subsetB):
+                                    print str(subsetA) + " is superset of " + str(subsetB)
+                                    sys.stdout.flush()
+                                    del counts[location][subsetB]
                 '''
                 setup = '''
                 subsetA = subsetA

@@ -125,11 +125,9 @@ for location in locZscore:
                     counts[location][sortlist] = 1
 
 for location in counts:
-    for subsetA in counts[location]:
-        for subsetB in counts[location]:
+    for subsetA,subsetB in itertools.combinations(counts[location],2):
             if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
                 del counts[location][subsetA]
-                break
 
 for location in counts:
     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):

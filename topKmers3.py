@@ -167,6 +167,6 @@ for location in counts:
 
 
 
-for location in counts:
-    for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
-        print str(subset) + "\t" + str(counts[location][subset])
+# for location in counts:
+#     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
+#         print str(subset) + "\t" + str(counts[location][subset])

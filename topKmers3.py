@@ -140,11 +140,14 @@ for location in counts:
         for subsetA in sorted(counts[location], key= lambda x : len(counts[location]), reverse=True):
             if subsetA in workedList:
                 continue
+
             for subsetB in sorted(counts[location], key= lambda x : len(counts[location])):
+                print str(subsetA) + "\t" + str(subsetB)
+                sys.stdout.flush()
                 if counts[location][subsetB] < counts[location][subsetA]:
                     if set(subsetB).issubset(set(subsetA)) :
                         print "\t" + str(subsetB) + "\t" + str(subsetA)
-                        sys.stdout.flush()
+
                         del counts[location][subsetB]
             newLength = len(counts[location])
             print newLength

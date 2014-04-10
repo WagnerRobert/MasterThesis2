@@ -151,7 +151,6 @@ for location in counts:
                             break
                     if totalySubSet:
                         #print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is subset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
-                        sys.stdout.flush()
                         del counts[location][subsetA]
                         break
 
@@ -185,7 +184,8 @@ for location in counts:
 
 
 
-
-# for location in counts:
-#     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
-#         print str(subset) + "\t" + str(counts[location][subset])
+f = open( "top3", 'w')
+for location in counts:
+     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
+         f.write(str(subset) + "\t" + str(counts[location][subset]) + "\n")
+         print str(subset) + "\t" + str(counts[location][subset])

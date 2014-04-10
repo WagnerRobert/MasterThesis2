@@ -126,10 +126,17 @@ for location in locZscore:
 
 print "\nremoving kombinations that are subsets of larger kombinations if they dont have higher counts than the larger combinations"
 for location in counts:
-    print location + str(len(counts[location]))
-    for subsetA,subsetB in itertools.combinations(counts[location],2):
+    print location + "\t" + str(len(counts[location]))
+    while True:
+        oldSize = len(counts[location])
+        for subsetA,subsetB in itertools.permutations(counts[location],2):
             if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
                 del counts[location][subsetA]
+                change = True
+                break
+        newSize = len(counts[location])
+        if oldSize == newSize:
+            break
 
 for location in counts:
     for subset in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):

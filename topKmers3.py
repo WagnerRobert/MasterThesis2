@@ -132,33 +132,35 @@ for location in counts:
     i = 0
     keepGoing = True
     workedList = []
-    while keepGoing:
-        keepGoing = False
-        oldLength = len(counts[location])
-        print oldLength
-        print "Length workedlist: " + str(len(workedList))
-        for subsetA in sorted(counts[location], key= lambda x : len(x), reverse=True):
-            if subsetA in workedList:
-                continue
-
-            for subsetB in sorted(counts[location], key= lambda x : len(x)):
-                print str(subsetA) + "\t" + str(subsetB)
-                sys.stdout.flush()
-                if counts[location][subsetB] < counts[location][subsetA]:
-                    if set(subsetB).issubset(set(subsetA)) :
-                        print "\t" + str(subsetB) + "\t" + str(subsetA)
-
-                        del counts[location][subsetB]
-            newLength = len(counts[location])
-            print newLength
-            if oldLength != newLength:
-                workedList.append(subsetA)
-                keepGoing = True
-                break
-        newLength = len(counts[location])
-        print newLength
-        if oldLength != newLength:
-            keepGoing = True
+    for subsetB in sorted(counts[location], key= lambda x : len(x)):
+        print str(subsetB)
+    # while keepGoing:
+    #     keepGoing = False
+    #     oldLength = len(counts[location])
+    #     print oldLength
+    #     print "Length workedlist: " + str(len(workedList))
+    #     for subsetA in sorted(counts[location], key= lambda x : len(x), reverse=True):
+    #         if subsetA in workedList:
+    #             continue
+    #
+    #         for subsetB in sorted(counts[location], key= lambda x : len(x)):
+    #             print str(subsetA) + "\t" + str(subsetB)
+    #             sys.stdout.flush()
+    #             if counts[location][subsetB] < counts[location][subsetA]:
+    #                 if set(subsetB).issubset(set(subsetA)) :
+    #                     print "\t" + str(subsetB) + "\t" + str(subsetA)
+    #
+    #                     del counts[location][subsetB]
+    #         newLength = len(counts[location])
+    #         print newLength
+    #         if oldLength != newLength:
+    #             workedList.append(subsetA)
+    #             keepGoing = True
+    #             break
+    #     newLength = len(counts[location])
+    #     print newLength
+    #     if oldLength != newLength:
+    #         keepGoing = True
 
 
 

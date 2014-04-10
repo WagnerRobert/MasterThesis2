@@ -134,6 +134,7 @@ for location in counts:
     workedList = []
     for index, subsetA in enumerate(sorted(counts[location], key= lambda x : len(x), reverse=True)):
         print str(index) + "/" + str(len(counts[location])) + "\t" + str(subsetA)
+        sys.stdout.flush()
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
             if counts[location][subsetA] > counts[location][subsetB]:
                 if set(subsetA).issuperset(subsetB):

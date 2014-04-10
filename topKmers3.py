@@ -138,7 +138,8 @@ for location in counts:
 
 
     for index, subsetA in enumerate(sorted(counts[location], key=lambda x: counts[location][x])):
-        print str(index) + "/" + str(len(counts[location])) #+ "\t" + str(subsetA)
+        if index % 1000 == 0:
+            print str(index) + "/" + str(len(counts[location])) #+ "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in counts[location]:
             if subsetA != subsetB:

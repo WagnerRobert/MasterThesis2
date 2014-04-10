@@ -145,7 +145,11 @@ for location in counts:
                     sys.stdout.flush()
                     del counts[location][subsetB]
                 '''
-                print min(timeit.Timer(code).repeat(7,1000))
+                setup = '''
+                subsetA = subsetA
+                subsetB = subsetB
+                '''
+                print "Code: " + str(min(timeit.Timer(code, setup=setup).repeat(7,1000)))
                 code2 = '''
                 totalySubSet = True
                 for kmer in subsetA:
@@ -157,7 +161,7 @@ for location in counts:
                     sys.stdout.flush()
                     del counts[location][subsetB]
                 '''
-                print min(timeit.Timer(code2).repeat(7,1000))
+                print "Code2: " + str(min(timeit.Timer(code2).repeat(7,1000)))
 
     # while keepGoing:
     #     keepGoing = False

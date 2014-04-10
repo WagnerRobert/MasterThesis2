@@ -141,21 +141,13 @@ for location in counts:
 
             if counts[location][subsetA] > counts[location][subsetB]:
                 tic = time.time()
-                if set(subsetA).issuperset(subsetB):
-                    print str(subsetA) + " is superset of " + str(subsetB)
-                    sys.stdout.flush()
-                    del counts[location][subsetB]
-                toc = time.time()
-
-                print "Code: " + str(toc - tic)
-                tic = time.time()
                 totalySubSet = True
                 for kmer in subsetA:
                     if kmer not in subsetB:
                         totalySubSet = False
                         break
                 if totalySubSet:
-                    print str(subsetA) + " is superset of " + str(subsetB)
+                    print str(subsetA) + "\t" + str(counts[location][subsetA]) + " is superset of " + str(subsetB)+ "\t" + str(counts[location][subsetB])
                     sys.stdout.flush()
                     del counts[location][subsetB]
                 toc = time.time()

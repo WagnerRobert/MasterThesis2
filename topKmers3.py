@@ -129,13 +129,31 @@ for location in counts:
     print location + "\t" + str(len(counts[location]))
     removelist = []
     i = 0
-    for subsetA,subsetB in itertools.permutations(counts[location],2):
-        if subsetA not in removelist and subsetB not in removelist:
-            if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
-                i += 1
-                print i
-                removelist.append(subsetA)
-                del counts[location][subsetA]
+    keepGoing = True
+    workedList = []
+    while keepGoing:
+        keepGoing = False
+        oldLength = len(counts[location])
+        print oldLength
+        for subsetA in sorted(counts[location], key= lambda x : counts[location][x], reverse=True):
+            if subsetA in workedList:
+                continue
+            for subsetB in sorted(counts[location], key= lambda x : counts[location][x]):
+                if counts[location][subsetB] < counts[location][subsetA]:
+                    if set(subsetB).issubset(set(subsetA)) :
+                        del counts[location][subsetB]
+            newLength = len(counts[location])
+            print newLength
+            if oldLength != newLength:
+                workedList.append(subsetA)
+                keepGoing = True
+                break
+        newLength = len(counts[location])
+        print newLength
+        if oldLength != newLength:
+            workedList.append(subsetA)
+            keepGoing = True
+            break
 
 
 

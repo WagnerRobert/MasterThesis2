@@ -3,6 +3,7 @@ import operator
 import itertools
 import sys
 import timeit
+import time
 import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -139,18 +140,15 @@ for location in counts:
         for subsetB in sorted(counts[location], key= lambda x : len(x)):
 
             if counts[location][subsetA] > counts[location][subsetB]:
-                code = '''
-                                if set(subsetA).issuperset(subsetB):
-                                    print str(subsetA) + " is superset of " + str(subsetB)
-                                    sys.stdout.flush()
-                                    del counts[location][subsetB]
-                '''
-                setup = '''
-                subsetA = subsetA
-                subsetB = subsetB
-                '''
-                print "Code: " + str(min(timeit.Timer(code, setup=setup).repeat(7,1000)))
-                code2 = '''
+                tic = time.clock()
+                if set(subsetA).issuperset(subsetB):
+                    print str(subsetA) + " is superset of " + str(subsetB)
+                    sys.stdout.flush()
+                    del counts[location][subsetB]
+                toc = time.clock()
+
+                print "Code: " + str(toc - tic)
+                tic = time.clock()
                 totalySubSet = True
                 for kmer in subsetA:
                     if kmer not in subsetB:
@@ -160,8 +158,8 @@ for location in counts:
                     print str(subsetA) + " is superset of " + str(subsetB)
                     sys.stdout.flush()
                     del counts[location][subsetB]
-                '''
-                print "Code2: " + str(min(timeit.Timer(code2).repeat(7,1000)))
+                toc = time.clock()
+                print "Code2: " + str(toc - tic)
 
     # while keepGoing:
     #     keepGoing = False

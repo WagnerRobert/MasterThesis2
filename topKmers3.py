@@ -132,8 +132,13 @@ for location in counts:
     i = 0
     keepGoing = True
     workedList = []
-    for subsetB in sorted(counts[location], key= lambda x : len(x)):
-         print str(subsetB)
+    for subsetA in sorted(counts[location], key= lambda x : len(x), reverse=True):
+        for subsetB in sorted(counts[location], key= lambda x : len(x)):
+            if counts[location][subsetA] > counts[location][subsetB]:
+                if set(subsetA).issuperset(subsetB):
+                    print str(subsetA) + " is superset of " + str(subsetB)
+                    sys.stdout.flush()
+                    del counts[location][subsetB]
     # while keepGoing:
     #     keepGoing = False
     #     oldLength = len(counts[location])
@@ -143,7 +148,7 @@ for location in counts:
     #         if subsetA in workedList:
     #             continue
     #
-    #         for subsetB in sorted(counts[location], key= lambda x : len(x)):
+
     #             print str(subsetA) + "\t" + str(subsetB)
     #             sys.stdout.flush()
     #             if counts[location][subsetB] < counts[location][subsetA]:

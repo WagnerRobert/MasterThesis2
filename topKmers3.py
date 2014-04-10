@@ -107,6 +107,7 @@ locTree2Uniprot["mitochon"] = "mitochondria"
 locTree2Uniprot["mitochon"] = "mitochondria"
 
 
+print "\nCounting all found kmers for eatch protein and building all kombinations of kmers found"
 counts = {}
 for location in locZscore:
     counts[location] = {}
@@ -124,7 +125,9 @@ for location in locZscore:
                 else:
                     counts[location][sortlist] = 1
 
+print "\nremoving kombinations that are subsets of larger kombinations if they dont have higher counts than the larger combinations"
 for location in counts:
+    print len(counts[location])
     for subsetA,subsetB in itertools.combinations(counts[location],2):
             if set(subsetA).issubset(set(subsetB)) and counts[location][subsetA] < counts[location][subsetB]:
                 del counts[location][subsetA]

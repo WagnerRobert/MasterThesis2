@@ -135,10 +135,9 @@ for location in counts:
     keepGoing = True
     workedList = []
 
-    counts[location].sort(key= lambda x : counts[location][x])
-    counts[location].sort(key=lambda x : len(x))
 
-    for index, subsetA in enumerate(counts[location]):
+
+    for index, subsetA in enumerate(sorted(counts[location], key=lambda x: counts[location][x])):
         print str(index) + "/" + str(len(counts[location])) #+ "\t" + str(subsetA)
         sys.stdout.flush()
         for subsetB in counts[location]:

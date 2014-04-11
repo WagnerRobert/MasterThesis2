@@ -109,6 +109,7 @@ for kmer in locZscore["nucleus"]:
             if motif in kmer:
                 print "\tmotif " + motif + " is substring of Kmer"
 
+sys.exit()
 locKmerDict = None
 
 

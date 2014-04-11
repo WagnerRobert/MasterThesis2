@@ -93,7 +93,7 @@ for location in topKmer_dict:
         print ">" + kmer
         print kmer
 
-f = open("NLS_clear_experimental.txt", 'r')
+f = open("NLSdb.txt", 'r')
 motifs = []
 for line in f:
     motifs.append(line.replace("x", ".").rstrip())

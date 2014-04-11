@@ -74,7 +74,7 @@ for location in locKmerDict:
     locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerList:
             if kmer not in topKmer_dict[location]:
-                if len(topKmer_dict[location]) < 45:
+                if len(topKmer_dict[location]) < 500:
                     topKmer_dict[location][kmer] = []
                 else:
                     break
@@ -99,9 +99,9 @@ for line in f:
 f.close()
 
 print "\nChecking top kmers against NLSdb motifs:"
-print str(len(locKmerDict["nucleus"])) + " kmers in nucleus"
+print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
 count = 0
-for kmer in locKmerDict["nucleus"]:
+for kmer in topKmer_dict["nucleus"]:
     #print kmer
     for motif in motifs:
         if len(kmer) <= len(motif):

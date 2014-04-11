@@ -105,10 +105,11 @@ for motif in motifs:
 
 pattern = pattern[0:len(pattern)-1]
 regex = re.compile(pattern)
-
+print "matching all regex against nucleus sequences"
 for protein in locSeqDict["nucleus"]:
     match = regex.findall(locSeqDict["nucleus"][protein])
     print match
+
 f = open("NLS_clear_experimental_partial.txt", 'r')
 partial_motifs = []
 for line in f:

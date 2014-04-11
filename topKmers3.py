@@ -111,7 +111,7 @@ for kmer in topKmer_dict["nucleus"]:
         if len(kmer) <= len(motif):
             if kmer in motif:
                 count += 1
-                print str(count) + "\t" + kmer + " found Kmer in " + motif
+                print str(count) + "\t found " + kmer + " Kmer in " + motif
         else:
             if motif in kmer:
                 count += 1
@@ -120,7 +120,7 @@ for kmer in topKmer_dict["nucleus"]:
         if len(kmer) <= len(motif):
             if kmer in motif:
                 count += 1
-                print str(count) + "\t\t" + kmer + " found Kmer in " + motif
+                print str(count) + "\t\t found " + kmer + " Kmer in " + motif
         else:
             if motif in kmer:
                 count += 1

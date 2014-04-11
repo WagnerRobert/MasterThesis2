@@ -92,6 +92,22 @@ for location in topKmer_dict:
         print ">" + kmer
         print kmer
 
+f = open("NLC_clear_experimantal.txt", 'r')
+motifs = []
+for line in f:
+    motifs.append(line.rstrip())
+f.close()
+
+print "\nChecking top kmers against NLSdb motifs:"
+for kmer in topKmer_dict["nucleus"]:
+    print kmer
+    for motif in motifs:
+        if len(kmer) <= len(motif):
+            if kmer in motif:
+                print "\tfound Kmer in " + motif
+        else:
+            if motif in kmer:
+                print "\tmotif " + motif + " is substring of Kmer"
 
 locKmerDict = None
 

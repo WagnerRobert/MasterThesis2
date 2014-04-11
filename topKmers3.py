@@ -106,9 +106,11 @@ for kmer in locKmerDict["nucleus"]:
     for motif in motifs:
         if len(kmer) <= len(motif):
             if kmer in motif:
+                count += 1
                 print str(count) + "\t" + kmer + " found Kmer in " + motif
         else:
             if motif in kmer:
+                count += 1
                 print str(count) + "\tmotif " + motif + " is substring of Kmer " + kmer
 
 sys.exit()

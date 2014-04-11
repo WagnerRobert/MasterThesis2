@@ -99,7 +99,11 @@ for line in f:
     motifs.append(line.replace("x", ".").rstrip())
 f.close()
 
-
+f = open("NLSdb_potential.txt", 'r')
+potential_motifs = []
+for line in f:
+    potential_motifs.append(line.rstrip())
+f.close()
 
 
 print "matching all regex against nucleus sequences"
@@ -110,11 +114,11 @@ for location in locSeqDict:
             match = re.findall(motif, locSeqDict[location][protein])
             if match:
                 print protein + "\t" + str(match) + "\t" + motif
+        for motif in potential_motifs:
+            match = re.findall(motif, locSeqDict[location][protein])
+            if match:
+                print "\t" + protein + "\t" + str(match) + "\t" + motif
 
-f = open("NLS_clear_experimental_partial.txt", 'r')
-partial_motifs = []
-for line in f:
-    partial_motifs.append(line.rstrip())
 
 print "\nChecking top kmers against NLSdb motifs:"
 print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
@@ -130,7 +134,7 @@ for kmer in topKmer_dict["nucleus"]:
             if motif in kmer:
                 count += 1
                 print str(count) + "\tmotif " + motif + " is substring of Kmer " + kmer
-    for motif in partial_motifs:
+    for motif in potential_motifs:
         if len(kmer) <= len(motif):
             if kmer in motif:
                 count += 1

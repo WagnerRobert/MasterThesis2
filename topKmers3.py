@@ -107,7 +107,7 @@ for location in locSeqDict:
     print location
     for protein in locSeqDict[location]:
         for motif in motifs:
-            match = re.findall(motif, locSeqDict["nucleus"][protein])
+            match = re.findall(motif, locSeqDict[location][protein])
             if match:
                 print protein + "\t" + str(match) + "\t" + motif
 

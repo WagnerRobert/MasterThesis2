@@ -109,15 +109,18 @@ f.close()
 print "matching all regex against nucleus sequences"
 for location in locSeqDict:
     print location
+    acount = 0
     for protein in locSeqDict[location]:
         for motif in motifs:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
-                print protein + "\t" + str(hit) + "\t" + motif
+                acount =+ 1
+                print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
         for motif in potential_motifs:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
-                print "\t" + protein + "\t" + str(hit) + "\t" + motif
+                acount =+ 1
+                print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
 
 
 print "\nChecking top kmers against NLSdb motifs:"

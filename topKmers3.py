@@ -103,11 +103,13 @@ f.close()
 
 
 print "matching all regex against nucleus sequences"
-for protein in locSeqDict["nucleus"]:
-    for motif in motifs:
-        match = re.findall(motif, locSeqDict["nucleus"][protein])
-        if match:
-            print protein + "\t" + str(match) + "\t" + motif
+for location in locSeqDict:
+    print location
+    for protein in locSeqDict[location]:
+        for motif in motifs:
+            match = re.findall(motif, locSeqDict["nucleus"][protein])
+            if match:
+                print protein + "\t" + str(match) + "\t" + motif
 
 f = open("NLS_clear_experimental_partial.txt", 'r')
 partial_motifs = []

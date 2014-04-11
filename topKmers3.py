@@ -99,7 +99,7 @@ for line in f:
 f.close()
 
 print "\nChecking top kmers against NLSdb motifs:"
-for kmer in locZscore["nucleus"]:
+for kmer in locKmerList["nucleus"]:
     print kmer
     for motif in motifs:
         if len(kmer) <= len(motif):

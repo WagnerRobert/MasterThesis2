@@ -99,16 +99,15 @@ for line in f:
     motifs.append(line.replace("x", ".").rstrip())
 f.close()
 
-pattern = ""
-for motif in motifs:
-    pattern = "("+motif + ")|"
 
-pattern = pattern[0:len(pattern)-1]
-regex = re.compile(pattern)
+
+
 print "matching all regex against nucleus sequences"
 for protein in locSeqDict["nucleus"]:
-    match = regex.findall(locSeqDict["nucleus"][protein])
-    print match
+    for motif in motifs:
+        match = re.findall(motif, locSeqDict["nucleus"][protein])
+        if match:
+            print match
 
 f = open("NLS_clear_experimental_partial.txt", 'r')
 partial_motifs = []

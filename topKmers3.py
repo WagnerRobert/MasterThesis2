@@ -74,7 +74,7 @@ for location in locKmerDict:
     locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerList:
             if kmer not in topKmer_dict[location]:
-                if len(topKmer_dict[location]) < 500:
+                if len(topKmer_dict[location]) < 15000:
                     topKmer_dict[location][kmer] = []
                 else:
                     break

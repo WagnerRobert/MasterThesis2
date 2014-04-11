@@ -114,12 +114,12 @@ for location in locSeqDict:
         for motif in motifs:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
-                acount =+ 1
+                acount += 1
                 print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
         for motif in potential_motifs:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
-                acount =+ 1
+                acount += 1
                 print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
 
 

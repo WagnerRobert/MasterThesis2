@@ -101,7 +101,7 @@ f.close()
 
 pattern = ""
 for motif in motifs:
-    pattern = motif + "|"
+    pattern = "("+motif + ")|"
 
 pattern = pattern[0:len(pattern)-1]
 regex = re.compile(pattern)

@@ -99,15 +99,16 @@ for line in f:
 f.close()
 
 print "\nChecking top kmers against NLSdb motifs:"
+print str(len(locKmerDict["nucleus"])) + " kmers in nucleus"
 for kmer in locKmerDict["nucleus"]:
-    print kmer
+    #print kmer
     for motif in motifs:
         if len(kmer) <= len(motif):
             if kmer in motif:
-                print "\tfound Kmer in " + motif
+                print kmer + " found Kmer in " + motif
         else:
             if motif in kmer:
-                print "\tmotif " + motif + " is substring of Kmer"
+                print "\tmotif " + motif + " is substring of Kmer " + kmer
 
 sys.exit()
 locKmerDict = None

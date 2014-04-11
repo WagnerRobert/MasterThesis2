@@ -102,7 +102,7 @@ f.close()
 f = open("NLSdb_potential.txt", 'r')
 potential_motifs = []
 for line in f:
-    potential_motifs.append(line.rstrip())
+    potential_motifs.append(line.replace("x", ".").rstrip())
 f.close()
 
 

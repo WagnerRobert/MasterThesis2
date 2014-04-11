@@ -112,12 +112,12 @@ for location in locSeqDict:
     for protein in locSeqDict[location]:
         for motif in motifs:
             match = re.findall(motif, locSeqDict[location][protein])
-            if match:
-                print protein + "\t" + str(match) + "\t" + motif
+            for hit in  match:
+                print protein + "\t" + str(hit) + "\t" + motif
         for motif in potential_motifs:
             match = re.findall(motif, locSeqDict[location][protein])
-            if match:
-                print "\t" + protein + "\t" + str(match) + "\t" + motif
+            for hit in  match:
+                print "\t" + protein + "\t" + str(hit) + "\t" + motif
 
 
 print "\nChecking top kmers against NLSdb motifs:"

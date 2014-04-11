@@ -97,6 +97,10 @@ motifs = []
 for line in f:
     motifs.append(line.rstrip())
 f.close()
+f = open("NLS_clear_experimental_partial.txt", 'r')
+partial_motifs = []
+for line in f:
+    partial_motifs.append(line.rstrip())
 
 print "\nChecking top kmers against NLSdb motifs:"
 print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
@@ -112,6 +116,15 @@ for kmer in topKmer_dict["nucleus"]:
             if motif in kmer:
                 count += 1
                 print str(count) + "\tmotif " + motif + " is substring of Kmer " + kmer
+    for motif in partial_motifs:
+        if len(kmer) <= len(motif):
+            if kmer in motif:
+                count += 1
+                print str(count) + "\t\t" + kmer + " found Kmer in " + motif
+        else:
+            if motif in kmer:
+                count += 1
+                print str(count) + "\t\tmotif " + motif + " is substring of Kmer " + kmer
 
 sys.exit()
 locKmerDict = None

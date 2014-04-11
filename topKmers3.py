@@ -4,6 +4,7 @@ import itertools
 import sys
 import timeit
 import time
+import re
 import masterthesis.reader.pickle_file
 import masterthesis2.kmers
 import masterthesis2.zscore
@@ -95,8 +96,19 @@ for location in topKmer_dict:
 f = open("NLS_clear_experimental.txt", 'r')
 motifs = []
 for line in f:
-    motifs.append(line.rstrip())
+    motifs.append(line.replace("x", ".").rstrip())
 f.close()
+
+pattern = ""
+for motif in motifs:
+    pattern = motif + "|"
+
+pattern = pattern[0:len(pattern)-1]
+regex = re.compile(pattern)
+
+for protein in locSeqDict["nucleus"]:
+    match = regex.findall(locSeqDict["nucleus"][protein])
+    print match
 f = open("NLS_clear_experimental_partial.txt", 'r')
 partial_motifs = []
 for line in f:

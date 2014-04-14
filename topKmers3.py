@@ -129,6 +129,7 @@ for location in locSeqDict:
 
 print "\nChecking top kmers against NLSdb motifs:"
 print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
+print str(len(nuc_hits.keys())) + " pattern matches in nucleus"
 count = 0
 for kmer in topKmer_dict["nucleus"]:
     #print kmer

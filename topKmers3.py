@@ -106,6 +106,7 @@ for line in f:
 f.close()
 
 nuc_hits = {}
+nuc_hits_potential = {}
 print "matching all regex against nucleus sequences"
 for location in locSeqDict:
     print location
@@ -123,7 +124,7 @@ for location in locSeqDict:
             for hit in  match:
                 acount += 1
                 if location == "nucleus":
-                    nuc_hits[hit] = None
+                    nuc_hits_potential[hit] = None
                 print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
 
 

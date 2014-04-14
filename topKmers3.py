@@ -105,7 +105,7 @@ for line in f:
     potential_motifs.append(line.replace("x", ".").rstrip())
 f.close()
 
-
+nuc_hits = {}
 print "matching all regex against nucleus sequences"
 for location in locSeqDict:
     print location
@@ -115,11 +115,15 @@ for location in locSeqDict:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
                 acount += 1
+                if location == "nucleus":
+                    nuc_hits[hit] = None
                 print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
         for motif in potential_motifs:
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
                 acount += 1
+                if location == "nucleus":
+                    nuc_hits[hit] = None
                 print str(acount) + "\t" + protein + "\t" + str(hit) + "\t" + motif
 
 
@@ -128,13 +132,13 @@ print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
 count = 0
 for kmer in topKmer_dict["nucleus"]:
     #print kmer
-    for motif in motifs:
+    for hit in nuc_hits:
         if len(kmer) <= len(motif):
-            if kmer in motif:
+            if kmer in hit:
                 count += 1
                 print str(count) + "\t found " + kmer + " Kmer in " + motif
         else:
-            if motif in kmer:
+            if motif in hit:
                 count += 1
                 print str(count) + "\tmotif " + motif + " is substring of Kmer " + kmer
     for motif in potential_motifs:

@@ -134,23 +134,24 @@ count = 0
 for kmer in topKmer_dict["nucleus"]:
     #print kmer
     for hit in nuc_hits:
-        if len(kmer) <= len(motif):
+        if len(kmer) <= len(hit):
             if kmer in hit:
                 count += 1
-                print str(count) + "\t found " + kmer + " Kmer in " + motif
+                print str(count) + "\t found " + kmer + " Kmer in " + hit
+
         else:
-            if motif in hit:
+            if hit in hit:
                 count += 1
-                print str(count) + "\tmotif " + motif + " is substring of Kmer " + kmer
-    for motif in potential_motifs:
-        if len(kmer) <= len(motif):
-            if kmer in motif:
-                count += 1
-                print str(count) + "\t\t found " + kmer + " Kmer in " + motif
-        else:
-            if motif in kmer:
-                count += 1
-                print str(count) + "\t\tmotif " + motif + " is substring of Kmer " + kmer
+                print str(count) + "\tmotif " + hit + " is substring of Kmer " + kmer
+#    for motif in potential_motifs:
+#        if len(kmer) <= len(motif):
+#            if kmer in motif:
+#                count += 1
+#                print str(count) + "\t\t found " + kmer + " Kmer in " + motif
+#        else:
+#            if motif in kmer:
+#                count += 1
+#                print str(count) + "\t\tmotif " + motif + " is substring of Kmer " + kmer
 
 sys.exit()
 locKmerDict = None

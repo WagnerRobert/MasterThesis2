@@ -131,8 +131,26 @@ for location in locSeqDict:
 print "\nChecking top kmers against NLSdb motifs:"
 print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
 print str(len(nuc_hits.keys())) + " pattern matches in nucleus"
+print str(len(nuc_hits_potential.keys())) + " potential pattern matches in nucleus"
+
+print "\npattern kmer matches"
 count = 0
 for hit in nuc_hits:
+    #print kmer
+    for kmer in topKmer_dict["nucleus"]:
+        if len(kmer) <= len(hit):
+            if kmer in hit:
+                count += 1
+                print str(count) + "\t found " + kmer + " Kmer in " + hit
+                break
+        else:
+            if hit in kmer:
+                count += 1
+                print str(count) + "\tmotif " + hit + " is substring of Kmer " + kmer
+                break
+print "\nPotential pattern kmer matches"
+count = 0
+for hit in nuc_hits_potential:
     #print kmer
     for kmer in topKmer_dict["nucleus"]:
         if len(kmer) <= len(hit):

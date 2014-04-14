@@ -131,19 +131,19 @@ print "\nChecking top kmers against NLSdb motifs:"
 print str(len(topKmer_dict["nucleus"])) + " kmers in nucleus"
 print str(len(nuc_hits.keys())) + " pattern matches in nucleus"
 count = 0
-for kmer in topKmer_dict["nucleus"]:
+for hit in nuc_hits:
     #print kmer
-    for hit in nuc_hits:
+    for kmer in topKmer_dict["nucleus"]:
         if len(kmer) <= len(hit):
             if kmer in hit:
                 count += 1
                 print str(count) + "\t found " + kmer + " Kmer in " + hit
-
-
+                break
         else:
             if hit in kmer:
                 count += 1
                 print str(count) + "\tmotif " + hit + " is substring of Kmer " + kmer
+                break
 #    for motif in potential_motifs:
 #        if len(kmer) <= len(motif):
 #            if kmer in motif:

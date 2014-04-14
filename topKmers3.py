@@ -139,8 +139,9 @@ for kmer in topKmer_dict["nucleus"]:
                 count += 1
                 print str(count) + "\t found " + kmer + " Kmer in " + hit
 
+
         else:
-            if hit in hit:
+            if hit in kmer:
                 count += 1
                 print str(count) + "\tmotif " + hit + " is substring of Kmer " + kmer
 #    for motif in potential_motifs:

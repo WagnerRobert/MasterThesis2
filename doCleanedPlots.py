@@ -1,4 +1,5 @@
 import os
+import re
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.locSeq
@@ -93,5 +94,48 @@ for location in locKmerList:
         else:
             prositeFeatures = []
 
-        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures)
+        patternMatches = []
+        if location == "nucleus":
+            f = open("NLSdb.txt", 'r')
+            motifs = []
+            for line in f:
+                motifs.append(line.replace("x", ".").rstrip())
+            f.close()
+
+            f = open("NLSdb_potential.txt", 'r')
+            potential_motifs = []
+            for line in f:
+                potential_motifs.append(line.replace("x", ".").rstrip())
+            f.close()
+
+            for motif in motifs:
+                regex = re.compile(motif)
+                i = 0
+                while True:
+                    match = regex.search(locSeqDict[location][protein], i)
+                    if  match:
+                        start, end = match.span()
+                        end = end -1
+
+                        patternMatches.append( (start,end) )
+                        i = match.start()+1
+                    else:
+                        break
+
+            for motif in potential_motifs:
+                regex = re.compile(motif)
+                i = 0
+                while True:
+                    match = regex.search(locSeqDict[location][protein], i)
+                    if  match:
+                        start, end = match.span()
+                        end = end -1
+
+                        patternMatches.append( (start,end) )
+                        i = match.start()+1
+                    else:
+                        break
+
+
+        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches)
         i += 1

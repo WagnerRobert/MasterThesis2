@@ -3,7 +3,7 @@ import sys
 import masterthesis2.features
 
 
-def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, prosite):
+def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, prosite, patternMatches):
     name = query_protein_sequence[0]
     #print name
     sequence = query_protein_sequence[1]
@@ -130,6 +130,11 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
     for start, end in prosite:
         rect = plt.Rectangle((start - 0.5, 0), end-start + 1, 100, facecolor="#0000FF")
+        rect.set_alpha(0.5)
+        plt.gca().add_patch(rect)
+
+    for start, end in patternMatches:
+        rect = plt.Rectangle((start - 0.5, 0), end-start + 1, 100, facecolor="#00FF00")
         rect.set_alpha(0.5)
         plt.gca().add_patch(rect)
 

@@ -113,6 +113,25 @@ for location in locSeqDict:
     acount = 0
     for protein in locSeqDict[location]:
         for motif in motifs:
+
+            # #todo
+            # regex = re.compile(motif)
+            # i = 0
+            # while True:
+            #     match = regex.search(locSeqDict[location][protein], i)
+            #     if  match:
+            #         if second in matches:
+            #             pass
+            #         else:
+            #             matches[second] = []
+            #
+            #         start, end = match.span()
+            #         end = end -1
+            #
+            #         matches[second].append( (pairwise_alignments[first,second][0], start,end) )
+            #         i = match.start()+1
+            #     else:
+            #         break
             match = re.findall(motif, locSeqDict[location][protein])
             for hit in  match:
                 acount += 1

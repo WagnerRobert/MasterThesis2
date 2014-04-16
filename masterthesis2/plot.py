@@ -132,12 +132,12 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
             plt.gca().add_patch(rect)
 
     for start, end in prosite:
-        rect = plt.Rectangle((start - 0.5, 0), end-start + 1, 100, facecolor="#0000FF")
+        rect = plt.Rectangle((start - 0.5, 10), end-start + 1, 80, facecolor="#0000FF")
         rect.set_alpha(0.5)
         plt.gca().add_patch(rect)
 
     for start, end in patternMatches:
-        rect = plt.Rectangle((start - 0.5, 0), end-start + 1, 100, facecolor="#00FF00")
+        rect = plt.Rectangle((start - 0.5, 10), end-start + 1, 80, facecolor="#00FF00")
         rect.set_alpha(0.5)
         plt.gca().add_patch(rect)
 

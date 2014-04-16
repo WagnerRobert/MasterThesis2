@@ -145,7 +145,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
 
     for i in range(len(zscore_count)):
         if zscore_count[i] > 0.5:
-            plt.plot([i, i+1], [0,0], color='red')
+            plt.plot([i, i], [-1,1], color='red')
 
 
     #for i in range (0,6):

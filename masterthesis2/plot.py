@@ -1,6 +1,8 @@
 import os
 import sys
 import masterthesis2.features
+from scipy import stats
+
 
 
 def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, prosite, patternMatches):
@@ -30,6 +32,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
                     pos_count_noGaps[x] += pos_count[i]
                     x += 1
 
+    zscore_count = stats.zscore(pos_count_noGaps)
 
 
     for i in range(len(sequence)):
@@ -137,6 +140,12 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
         rect = plt.Rectangle((start - 0.5, 0), end-start + 1, 100, facecolor="#00FF00")
         rect.set_alpha(0.5)
         plt.gca().add_patch(rect)
+
+
+
+    for i in range(len(zscore_count)):
+        if zscore_count > 1.0:
+            plt.plot([i, i+1], [0,0], color='red')
 
 
     #for i in range (0,6):

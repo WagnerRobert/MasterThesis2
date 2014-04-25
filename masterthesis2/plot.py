@@ -5,7 +5,7 @@ from scipy import stats
 
 
 
-def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, prosite, patternMatches, top_matches):
+def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, resultfile_info, paths, prosite, patternMatches, top_matches, complete_matches):
     name = query_protein_sequence[0]
     #print name
     sequence = query_protein_sequence[1]
@@ -14,6 +14,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     pos_count = None
     pos_count_noGaps = [0] * len(sequence)
     top_count_noGaps = [0] * len(sequence)
+    complete_count_noGaps = [0] * len(sequence)
 
 
 
@@ -47,6 +48,21 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
                 else:
                     top_count_noGaps[x] += top_count[i]
                     x += 1
+    for prot in complete_matches:
+        for match_seq , start, end in complete_matches[prot]:
+            complete_count = [0] * len(match_seq)
+            for j in range(start, end):
+                if j < len(match_seq):
+                    complete_count[j] += 1
+            x = 0
+            for i in range(len(match_seq)):
+                if x == len(sequence):
+                    break
+                if match_seq[i] == '-':
+                    pass
+                else:
+                    complete_count_noGaps[x] += complete_count[i]
+                    x += 1
 
     zscore_count = stats.zscore(pos_count_noGaps)
 
@@ -54,6 +70,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     for i in range(len(sequence)):
         pos_count_noGaps[i] = pos_count_noGaps[i] * 100 / numProfileProteins
         top_count_noGaps[i] = top_count_noGaps[i] * 100 / numProfileProteins
+        complete_count_noGaps[i] = complete_count_noGaps[i] * 100 / numProfileProteins
 
     import matplotlib.pyplot as plt
 
@@ -63,6 +80,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     #print len(x)
     plt.plot(x,pos_count_noGaps, color='#336699', linestyle='-')
     plt.plot(x,top_count_noGaps, color='#996633', linestyle='--')
+    plt.plot(x,complete_count_noGaps, color='#FF0000', linestyle=':')
     plt.ylabel('Coverage')
 
     long_name = ""

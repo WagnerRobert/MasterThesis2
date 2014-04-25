@@ -33,7 +33,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
                     pos_count_noGaps[x] += pos_count[i]
                     x += 1
     for prot in top_matches:
-        for match_seq , start, end in pro_matches[prot]:
+        for match_seq , start, end in top_matches[prot]:
             top_count = [0] * len(match_seq)
             for j in range(start, end):
                 if j < len(match_seq):

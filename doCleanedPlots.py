@@ -1,5 +1,6 @@
 import os
 import re
+import operator
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.locSeq
@@ -67,6 +68,38 @@ overwrite = False
 result = masterthesis.reader.result_file.read_resultfile(constants)
 tree = masterthesis.reader.tree_file.read_treefile(constants)
 i = 0
+
+##new stuff below
+locZscore = masterthesis2.zscore.calc_zscoreDict(locKmerList)
+print "\ncounting all the kmers for each location"
+locKmerDict = {}
+for location in locZscore:
+    locKmerDict[location] = {}
+    for protein in locZscore[location]:
+        for kmer in locZscore[location][protein]:
+            if kmer not in locKmerDict[location]:
+                locKmerDict[location][kmer] = []
+            locKmerDict[location][kmer].append(locZscore[location][protein][kmer])
+
+
+print "\ngetting the highest scoring Kmers"
+topKmer_dict = {}
+for location in locKmerDict:
+    topKmer_dict[location] = {}
+    locKmerList = []
+    for kmer in locKmerDict[location]:
+        for value in locKmerDict[location][kmer]:
+            locKmerList.append( (kmer, value) )
+    locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+    for kmer, value in locKmerList:
+            if kmer not in topKmer_dict[location]:
+                if len(topKmer_dict[location]) < 50 or False:
+                    topKmer_dict[location][kmer] = []
+                else:
+                    break
+            topKmer_dict[location][kmer].append(value)
+##new stuff above
+
 for location in locKmerList:
     print location
     for protein in sorted(locKmerList[location]):
@@ -86,7 +119,9 @@ for location in locKmerList:
 
         pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
         kmerlist = locKmerList[location][protein].keys()
+        top_kmerlist = topKmer_dict[location].keys()
         pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)
+        top_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, top_kmerlist)
 
         prositeFeatures = []
         if protein in prosite:
@@ -137,5 +172,5 @@ for location in locKmerList:
                         break
 
 
-        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches)
+        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, pro_matches)
         i += 1

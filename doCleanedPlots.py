@@ -108,7 +108,7 @@ for location in locKmerList:
         for kmer in kmers:
             completeKmerDict[kmer] = None
     completeKmerList = completeKmerDict.keys()
-    print "Complete Kmerlist has: " + len(completeKmerList) + " elements"
+    print "Complete Kmerlist has: " + str(len(completeKmerList)) + " elements"
     for protein in sorted(locKmerList[location]):
         if protein not in locSeqDict[locTree2Uniprot[location]]:
             print "protein not sound in uniprotfile " + protein
@@ -126,7 +126,7 @@ for location in locKmerList:
 
         pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
         kmerlist = locKmerList[location][protein].keys()
-        print "Protein Kmerlist has: " + len(kmerlist) + " elements"
+        print "Protein Kmerlist has: " + str(len(kmerlist)) + " elements"
         top_kmerlist = topKmer_dict[location].keys()
 
         pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)

@@ -86,11 +86,11 @@ print "\ngetting the highest scoring Kmers"
 topKmer_dict = {}
 for location in locKmerDict:
     topKmer_dict[location] = {}
-    locKmerList = []
+    locKmerListA = []
     for kmer in locKmerDict[location]:
         for value in locKmerDict[location][kmer]:
             locKmerList.append( (kmer, value) )
-    locKmerList = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+    locKmerListA = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerList:
             if kmer not in topKmer_dict[location]:
                 if len(topKmer_dict[location]) < 50 or False:

@@ -89,8 +89,8 @@ for location in locKmerDict:
     locKmerListA = []
     for kmer in locKmerDict[location]:
         for value in locKmerDict[location][kmer]:
-            locKmerList.append( (kmer, value) )
-    locKmerListA = sorted(locKmerList, key=operator.itemgetter(1), reverse=True)
+            locKmerListA.append( (kmer, value) )
+    locKmerListA = sorted(locKmerListA, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerList:
             if kmer not in topKmer_dict[location]:
                 if len(topKmer_dict[location]) < 50 or False:

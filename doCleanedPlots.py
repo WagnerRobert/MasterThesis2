@@ -172,5 +172,5 @@ for location in locKmerList:
                         break
 
 
-        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, pro_matches)
+        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, top_matches)
         i += 1

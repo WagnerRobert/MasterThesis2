@@ -93,7 +93,7 @@ for location in locKmerDict:
     locKmerListA = sorted(locKmerListA, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerListA:
             if kmer not in topKmer_dict[location]:
-                if len(topKmer_dict[location]) < 50 or False:
+                if len(topKmer_dict[location]) < 500 or False:
                     topKmer_dict[location][kmer] = []
                 else:
                     break
@@ -108,6 +108,7 @@ for location in locKmerList:
         for kmer in kmers:
             completeKmerDict[kmer] = None
     completeKmerList = completeKmerDict.keys()
+    completeKmerList = []
     print "Complete Kmerlist has: " + str(len(completeKmerList)) + " elements"
     for protein in sorted(locKmerList[location]):
         if protein not in locSeqDict[locTree2Uniprot[location]]:

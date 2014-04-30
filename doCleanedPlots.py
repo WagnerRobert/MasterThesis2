@@ -93,7 +93,7 @@ for location in locKmerDict:
     locKmerListA = sorted(locKmerListA, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerListA:
             if kmer not in topKmer_dict[location]:
-                if len(topKmer_dict[location]) < 500 or False:
+                if len(topKmer_dict[location]) < 10000 or False:
                     topKmer_dict[location][kmer] = []
                 else:
                     break
@@ -128,7 +128,9 @@ for location in locKmerList:
         pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
         kmerlist = locKmerList[location][protein].keys()
         print "Protein Kmerlist has: " + str(len(kmerlist)) + " elements"
-        top_kmerlist = topKmer_dict[location].keys()
+
+        top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:500]
+        completeKmerList = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:len(kmerlist)]
 
         pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)
         top_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, top_kmerlist)

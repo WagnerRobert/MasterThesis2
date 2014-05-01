@@ -19,7 +19,8 @@ import masterthesis2.prosite
 __author__ = 'delur'
 
 constants = {}
-constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
+constants["working_dir"] = "/home/delur/Desktop/euka_small"
+#constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
 constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
 constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
 constants["fasta"] = os.path.join(constants["working_dir"], "fasta")
@@ -44,7 +45,7 @@ else:
     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
 locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
-prosite = masterthesis2.prosite.readProsite()
+prosite = masterthesis2.prosite.readProsite(constants)
 
 locTree2Uniprot = {}
 locTree2Uniprot["cytopla"] = "cytoplasm"

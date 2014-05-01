@@ -1,9 +1,10 @@
+import os
 import re
 
 
-def readProsite():
+def readProsite(constants):
     prosite = {}
-    prositePath = "./euka_small/ProSite.txt"
+    prositePath = os.path.join(constants["working_dir"], "ProSite.txt")
     f = open(prositePath, 'r')
 
     for line in f:

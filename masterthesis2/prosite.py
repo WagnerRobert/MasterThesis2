@@ -18,4 +18,4 @@ def readProsite(constants):
             #print (int(match.group(1)), int(match.group(2)))
     return prosite
 
-prosite = readProsite()
+#prosite = readProsite()

@@ -1,6 +1,7 @@
 import os
 import sys
 import masterthesis2.features
+import masterthesis2.evaluation
 from scipy import stats
 
 
@@ -182,6 +183,8 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
     for i in range(len(zscore_count)):
         if zscore_count[i] > 0.5:
             plt.plot([i+0.5, i+1.5], [0,0], color='red')
+
+    masterthesis2.evaluation.doEvaluation(patternMatches, zscore_count, 0.5)
 
 
     #for i in range (0,6):

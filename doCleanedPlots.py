@@ -15,6 +15,7 @@ import masterthesis.reader.result_file
 import masterthesis.reader.tree_file
 import masterthesis2.plot
 import masterthesis2.prosite
+import numpy as np
 
 __author__ = 'delur'
 
@@ -44,7 +45,7 @@ if os.path.exists(os.path.join(constants["working_dir"], "pickles/locKmerList2.p
 else:
     locKmerList = masterthesis2.kmers.readKmers("SVM_14", 0.1, loc2prot, constants)
     masterthesis.writer.write_picklefile(locKmerList, "locKmerList2", constants)
-locSeqDict = masterthesis2.locSeq.getlocSeqDict("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa")
+locSeqDict = masterthesis2.locSeq.getlocSeqDict(os.path.join(constants["working_dir"], "eukaryota.1682.fa"))
 prosite = masterthesis2.prosite.readProsite(constants)
 
 locTree2Uniprot = {}
@@ -102,6 +103,8 @@ for location in locKmerDict:
 ##new stuff above
 
 for location in locKmerList:
+    precisionList = []
+    recallList = []
     print location
     completeKmerDict = {}
     for protein in sorted(locKmerList[location]):
@@ -132,6 +135,8 @@ for location in locKmerList:
 
         top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:500]
         completeKmerList = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:len(kmerlist)]
+        top_kmerlist = []
+        completeKmerList = []
 
         pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)
         top_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, top_kmerlist)
@@ -145,13 +150,13 @@ for location in locKmerList:
 
         patternMatches = []
         if location == "nucleus":
-            f = open("NLSdb.txt", 'r')
+            f = open(os.path.join(constants["working_dir"], "NLSdb.txt"), 'r')
             motifs = []
             for line in f:
                 motifs.append(line.replace("x", ".").rstrip())
             f.close()
 
-            f = open("NLSdb_potential.txt", 'r')
+            f = open(os.path.join(constants["working_dir"], "NLSdb_potential.txt"), 'r')
             potential_motifs = []
             for line in f:
                 potential_motifs.append(line.replace("x", ".").rstrip())
@@ -186,5 +191,10 @@ for location in locKmerList:
                         break
 
 
-        masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, top_matches, complete_matches)
+        precision, recall = masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, entry, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, top_matches, complete_matches)
         i += 1
+        precisionList.append(precision)
+        recallList.append(recall)
+
+    print "Average precision for location " + location + " is: " + str(np.average(precisionList))
+    print "Average recall for location " + location + " is: " + str(np.average(recallList))

@@ -22,7 +22,7 @@ def getCorrectPredictedLoc2Prot(paths):
     loc2prot = getLoc2Prot(paths)
 
     print "reading all the annotated sequences from swissprot"
-    f = open("/mnt/project/locbloc-ha/studs/robert/euka_small/eukaryota.1682.fa", 'r')
+    f = open(os.path.join(paths["working_dir"], "eukaryota.1682.fa"), 'r')
     name = ""
     localisation = ""
     locSeqDict= {}

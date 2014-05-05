@@ -185,6 +185,7 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
             plt.plot([i+0.5, i+1.5], [0,0], color='red')
 
     masterthesis2.evaluation.doEvaluation(patternMatches, zscore_count, 0.5)
+    precision, recall = masterthesis2.evaluation.doCombinedEvaluation(patternMatches,prosite, zscore_count, 0.5)
 
 
     #for i in range (0,6):
@@ -199,3 +200,5 @@ def create_plot(query_protein_sequence, pro_matches, entry, numProfileProteins, 
         os.makedirs(pdfpath)
     #print os.path.join(pdfpath, name + ".pdf")
     plt.savefig(os.path.join(pdfpath, name + ".pdf"))
+
+    return precision, recall

@@ -245,7 +245,7 @@ for protein in sorted(locKmerList[location]):
     patternMatches = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
 
-    answer = evaluatePerAminoacid(patternMatches, pro_matches, 1.0)
+    answer = evaluatePerAminoacid(protein, patternMatches, pro_matches, 1.0)
     #answer = evaluatePerSegment(protein, patternMatches, pro_matches, -1.0)
 
     if answer is None:

@@ -225,8 +225,9 @@ recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
     pro_matches = matchKmers(protein, constants, location, locKmerList)
-    sys.exit()
-    top_matches = matchKmers(protein, constants, location, top_kmerlist)
+
+    #todo this is bugged, needs fixing
+    #top_matches = matchKmers(protein, constants, location, top_kmerlist)
 
     #get the pattern matches
     #prositeMatches = getPrositeMatches()

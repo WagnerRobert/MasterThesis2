@@ -191,6 +191,16 @@ def evaluatePerSegment(protein, patternMatches, pro_matches, cutoff):
 
     return answer
 
+def evaluatePerAminoacid(protein, patternMatches, pro_matches, cutoff):
+    overwrite = False
+    clean_name = protein.split('#')[0]
+    foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
+    sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
+    pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
+    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
+
+    return answer
+
 location = "nucleus"
 #get constants required for work
 constants = getConstants()
@@ -235,7 +245,7 @@ for protein in sorted(locKmerList[location]):
     patternMatches = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
 
-    #evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
+    #answer = evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
     answer = evaluatePerSegment(protein, patternMatches, pro_matches, 1.0)
 
     if answer is None:

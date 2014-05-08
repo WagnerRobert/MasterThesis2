@@ -62,7 +62,7 @@ def eval_without_plot(query_protein_sequence, pro_matches, numProfileProteins, p
     if len(patternMatches) == 0:
         print "protein has no nlsDB motif matches and is therefore not considered for the evaluation"
         return None
-    precision, recall = masterthesis2.evaluation.doSegmentEvaluation(patternMatches,zscore_count, cutoff)
+    precision, recall = masterthesis2.evaluation.doSegmentEvaluation(patternMatches,zscore_count, 0.0)
 
 
     return precision, recall

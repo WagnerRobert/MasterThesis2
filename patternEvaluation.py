@@ -223,7 +223,7 @@ precisionList = []
 recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
-    pro_matches = matchKmers(protein, constants, location, locKmerDict)
+    pro_matches = matchKmers(protein, constants, location, locKmerList)
     top_matches = matchKmers(protein, constants, location, top_kmerlist)
 
     #get the pattern matches

@@ -225,7 +225,8 @@ recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
     pro_matches = matchKmers(protein, constants, location, locKmerList)
-
+    if pro_matches is None:
+        continue
     #todo this is bugged, needs fixing
     #top_matches = matchKmers(protein, constants, location, top_kmerlist)
 

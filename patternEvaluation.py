@@ -197,6 +197,21 @@ constants = getConstants()
 #get correct predicted kmers
 locKmerList = getCorrectPredictedKmers(constants)
 
+locZscore = masterthesis2.zscore.calc_zscoreDict(locKmerList)
+
+
+def getLocKmerDict(locZscore, location):
+
+    locKmerDict[location] = {}
+    for protein in locZscore[location]:
+        for kmer in locZscore[location][protein]:
+            if kmer not in locKmerDict[location]:
+                locKmerDict[location][kmer] = []
+            locKmerDict[location][kmer].append(locZscore[location][protein][kmer])
+    return locKmerDict
+
+locKmerDict = getLocKmerDict(locZscore, location)
+
 #get sequences of correct predicted kmers
 locSeqDict = getSequences(constants)
 
@@ -208,7 +223,7 @@ precisionList = []
 recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
-    pro_matches = matchKmers(protein, constants, location, locKmerList)
+    pro_matches = matchKmers(protein, constants, location, locKmerDict)
     top_matches = matchKmers(protein, constants, location, top_kmerlist)
 
     #get the pattern matches

@@ -6,7 +6,7 @@ from scipy import stats
 
 
 
-def eval_without_plot(query_protein_sequence, pro_matches, numProfileProteins, patternMatches, top_matches):
+def eval_without_plot(query_protein_sequence, pro_matches, numProfileProteins, patternMatches, top_matches, cutoff):
     name = query_protein_sequence[0]
     #print name
     sequence = query_protein_sequence[1]
@@ -62,7 +62,7 @@ def eval_without_plot(query_protein_sequence, pro_matches, numProfileProteins, p
     if len(patternMatches) == 0:
         print "protein has no nlsDB motif matches and is therefore not considered for the evaluation"
         return None
-    precision, recall = masterthesis2.evaluation.doSegmentEvaluation(patternMatches,zscore_count, 0.5)
+    precision, recall = masterthesis2.evaluation.doSegmentEvaluation(patternMatches,zscore_count, cutoff)
 
 
     return precision, recall

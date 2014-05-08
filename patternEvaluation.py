@@ -181,13 +181,13 @@ def evaulutePerAminoAcid(patternMatches, zscore_count, cutoff):
     print "True\t|" + str(TruePositives) + "\t\t\t|" + str(TrueNegatives)
     print "False\t|" + str(FalsePositives) + "\t\t\t|" + str(FalseNegatives)
 
-def evaluatePerSegment(protein, patternMatches, pro_matches):
+def evaluatePerSegment(protein, patternMatches, pro_matches, cutoff):
     overwrite = False
     clean_name = protein.split('#')[0]
     foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
     sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
     pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
-    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [])
+    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
 
     return answer
 
@@ -236,7 +236,7 @@ for protein in sorted(locKmerList[location]):
 
 
     #evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
-    answer = evaluatePerSegment(protein, patternMatches, pro_matches)
+    answer = evaluatePerSegment(protein, patternMatches, pro_matches, 1.0)
 
     if answer is None:
         continue

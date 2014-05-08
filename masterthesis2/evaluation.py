@@ -34,6 +34,15 @@ def doEvaluation(patternMatches, zscore_count, cutoff):
     print "True\t|" + str(TruePositives) + "\t\t\t|" + str(TrueNegatives)
     print "False\t|" + str(FalsePositives) + "\t\t\t|" + str(FalseNegatives)
 
+    if TruePositives == 0:
+        precision = 0.0
+        recall = 0.0
+    else:
+        precision = TruePositives / (float(TruePositives) + float(FalsePositives))
+        recall = TruePositives / (float(TruePositives) + float(FalseNegatives))
+
+    return precision, recall
+
 
 def getKmerSegments(zscore_count, cutoff):
     kmerSegments = []

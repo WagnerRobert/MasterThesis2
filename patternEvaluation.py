@@ -22,8 +22,8 @@ __author__ = 'delur'
 
 def getConstants():
     constants = {}
-    constants["working_dir"] = "/home/delur/Desktop/euka_small"
-    #constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
+    #constants["working_dir"] = "/home/delur/Desktop/euka_small"
+    constants["working_dir"] = "/mnt/project/locbloc-ha/studs/robert/euka_small/"
     constants["kmer_dir"] = os.path.join(constants["working_dir"], "kmers")
     constants["uniprot"] = os.path.join(constants["working_dir"], "uniprot")
     constants["fasta"] = os.path.join(constants["working_dir"], "fasta")

@@ -246,7 +246,7 @@ for protein in sorted(locKmerList[location]):
 
 
     #answer = evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
-    answer = evaluatePerSegment(protein, patternMatches, pro_matches, 0.0)
+    answer = evaluatePerSegment(protein, patternMatches, pro_matches, -0.5)
 
     if answer is None:
         continue

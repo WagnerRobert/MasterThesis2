@@ -201,16 +201,6 @@ def evaluatePerAminoacid(protein, patternMatches, pro_matches, cutoff):
 
     return answer
 
-location = "nucleus"
-#get constants required for work
-constants = getConstants()
-
-#get correct predicted kmers
-locKmerList = getCorrectPredictedKmers(constants)
-
-locZscore = masterthesis2.zscore.calc_zscoreDict(locKmerList)
-
-
 def getLocKmerDict(locZscore, location):
     locKmerDict = {}
     locKmerDict[location] = {}
@@ -220,6 +210,15 @@ def getLocKmerDict(locZscore, location):
                 locKmerDict[location][kmer] = []
             locKmerDict[location][kmer].append(locZscore[location][protein][kmer])
     return locKmerDict
+
+location = "nucleus"
+#get constants required for work
+constants = getConstants()
+
+#get correct predicted kmers
+locKmerList = getCorrectPredictedKmers(constants)
+
+locZscore = masterthesis2.zscore.calc_zscoreDict(locKmerList)
 
 locKmerDict = getLocKmerDict(locZscore, location)
 
@@ -245,7 +244,7 @@ for protein in sorted(locKmerList[location]):
     patternMatches = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
 
-    answer = evaluatePerAminoacid(protein, patternMatches, pro_matches, 0.0)
+    answer = evaluatePerAminoacid(protein, patternMatches, pro_matches, -0.5)
     #answer = evaluatePerSegment(protein, patternMatches, pro_matches, -1.0)
 
     if answer is None:

@@ -30,9 +30,9 @@ def doEvaluation(patternMatches, zscore_count, cutoff):
             else:
                 TrueNegatives += 1
 
-    print "\t|Positives\t\t|Negatives"
-    print "True\t|" + str(TruePositives) + "\t\t\t|" + str(TrueNegatives)
-    print "False\t|" + str(FalsePositives) + "\t\t\t|" + str(FalseNegatives)
+    print "\t|Positives\t|Negatives"
+    print "True\t|" + str(TruePositives) + "\t\t|" + str(TrueNegatives)
+    print "False\t|" + str(FalsePositives) + "\t\t|" + str(FalseNegatives)
 
     if TruePositives == 0:
         precision = 0.0

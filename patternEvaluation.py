@@ -187,7 +187,7 @@ def evaluatePerSegment(protein, patternMatches, pro_matches, cutoff):
     foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
     sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
     pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
-    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
+    answer = masterthesis2.evalNoPlot.eval_segment((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
 
     return answer
 
@@ -197,7 +197,7 @@ def evaluatePerAminoacid(protein, patternMatches, pro_matches, cutoff):
     foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
     sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
     pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
-    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
+    answer = masterthesis2.evalNoPlot.eval_aminoacid((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, [], cutoff)
 
     return answer
 

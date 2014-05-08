@@ -70,7 +70,7 @@ def getCorrectPredictedLoc2Prot(paths):
                         foundLoc = loc
                         print protein + "\tpredicted localisation: " + localisation + "\tfound localization: " + loc
                         break
-                if foundLoc == None:
+                if foundLoc is None:
                     print protein + " predicted localisation: " + localisation + " not found!"
     for localisation in loc2prot:
         for protein in removeList:

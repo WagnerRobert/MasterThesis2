@@ -70,7 +70,7 @@ def blastProtein(protein, constants, overwrite, queue):
             #print importantRound[sequence]
             #print sequence
             match = re.search(regex, importantRound[sequence])
-            if match == None:
+            if match is None:
                 print "No eval found for: " + sequence
                 print importantRound[sequence]
 
@@ -99,7 +99,7 @@ def blastProtein(protein, constants, overwrite, queue):
     # remove self hits from the blast entry
     ProfileProteines_copy = []
     for entry in ProfileProteines:
-        if entry != None:
+        if entry is not None:
             ProfileProteines_copy.append(entry)
 
     for i in range(len(ProfileProteines_copy)):

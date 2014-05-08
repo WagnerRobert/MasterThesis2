@@ -1,3 +1,5 @@
+import sys
+
 __author__ = 'delur'
 
 
@@ -31,6 +33,100 @@ def doEvaluation(patternMatches, zscore_count, cutoff):
     print "\t\t|Positives\t|Negatives"
     print "True\t|" + str(TruePositives) + "\t\t\t|" + str(TrueNegatives)
     print "False\t|" + str(FalsePositives) + "\t\t\t|" + str(FalseNegatives)
+
+
+def getKmerSegments(zscore_count, cutoff):
+    kmerSegments = []
+    start = 0
+    end = 0
+    run = False
+    for i in range(len(zscore_count)):
+        if run == False:
+            if zscore_count[i] > cutoff:
+                run = True
+                start = i
+                end = i
+        else:
+            if zscore_count[i] > cutoff:
+                end = i
+            else:
+                run = False
+                kmerSegments.append( (start, end))
+    if zscore_count[len(zscore_count)-1] > cutoff:
+        kmerSegments.append( (start, end))
+    return  kmerSegments
+
+
+def getPatternSegmentSequence(patternSegments, size):
+    patternSegmentSequence = [False] * size
+    for start, end in patternSegments:
+        for i in range(start, end):
+            patternSegmentSequence[i] = True
+    return patternSegmentSequence
+
+def prefilterPatternSegments(patternSegments, zscore_count):
+    filteredPatternSegments = []
+    for start, end in patternSegments:
+        if start - end >= 0.5* len(zscore_count):
+            continue
+        else:
+            filteredPatternSegments.append((start, end))
+    return filteredPatternSegments
+
+def doSegmentEvaluation(patternSegments, zscore_count, cutoff):
+    patternSegmentSequence = getPatternSegmentSequence(patternSegments, len(zscore_count))
+
+    kmerSegments = getKmerSegments(zscore_count, cutoff)
+
+    print patternSegments
+    print kmerSegments
+    PatternSegmentsHit = 0
+    PatternSegmentsMissed = 0
+    KmerSegmentsHit = 0
+    KmerSegmentsMissed = 0
+
+
+    #filtering out too long segments this is allready done in evalNoPlot.py
+    # patternSegments = prefilterPatternSegments(patternSegments, zscore_count)
+
+    for start, end in patternSegments:
+        if start - end >= 0.5* len(zscore_count):
+            continue
+        hits = 0
+        for i in range(start, end+1):
+            if zscore_count[i] > cutoff:
+                hits += 1
+
+        if hits >= 5 or hits >= len(range(start, end+1)) :
+            PatternSegmentsHit += 1
+        else:
+            PatternSegmentsMissed += 1
+
+    for start, end in kmerSegments:
+        hits = 0
+        for i in range(start, end):
+            if patternSegmentSequence[i]:
+                hits += 1
+
+        if hits >= 5 or hits >= len(range(start, end+1)) :
+            KmerSegmentsHit += 1
+        else:
+            KmerSegmentsMissed += 1
+
+    print "PatternSegments Hit: " + str(PatternSegmentsHit)
+    print "PatternSegments Missed: " + str(PatternSegmentsMissed)
+    print "KmerSegments Hit: " + str(KmerSegmentsHit)
+    print "KmerSegments Missed: " + str(KmerSegmentsMissed)
+
+    if PatternSegmentsHit == 0:
+        precision = 0.0
+        recall = 0.0
+    else:
+        precision = PatternSegmentsHit / (float(PatternSegmentsHit) + float(KmerSegmentsMissed))
+        recall = PatternSegmentsHit / (float(PatternSegmentsHit) + float(PatternSegmentsMissed))
+
+    return precision, recall
+
 
 def doCombinedEvaluation(patternMatches, prosite, zscore_count, cutoff):
 

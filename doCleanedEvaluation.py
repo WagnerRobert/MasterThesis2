@@ -15,6 +15,7 @@ import masterthesis.reader.result_file
 import masterthesis.reader.tree_file
 import masterthesis2.plot
 import masterthesis2.prosite
+import masterthesis2.evalNoPlot
 import numpy as np
 
 __author__ = 'delur'
@@ -95,7 +96,7 @@ for location in locKmerDict:
     locKmerListA = sorted(locKmerListA, key=operator.itemgetter(1), reverse=True)
     for kmer, value in locKmerListA:
             if kmer not in topKmer_dict[location]:
-                if len(topKmer_dict[location]) < 10000 or False:
+                if len(topKmer_dict[location]) < 50 or False:
                     topKmer_dict[location][kmer] = []
                 else:
                     break
@@ -108,17 +109,9 @@ for location in locKmerList:
     precisionList = []
     recallList = []
     print location
-    completeKmerDict = {}
-    for protein in sorted(locKmerList[location]):
-        kmers = locKmerList[location][protein].keys()
-        for kmer in kmers:
-            completeKmerDict[kmer] = None
-    completeKmerList = completeKmerDict.keys()
-    completeKmerList = []
-    print "Complete Kmerlist has: " + str(len(completeKmerList)) + " elements"
     for protein in sorted(locKmerList[location]):
         if protein not in locSeqDict[locTree2Uniprot[location]]:
-            print "protein not sound in uniprotfile " + protein
+            print "protein not in uniprotfile " + protein
             continue
 
         print "\t" + protein + "\t" + str(i)
@@ -135,14 +128,10 @@ for location in locKmerList:
         kmerlist = locKmerList[location][protein].keys()
         print "Protein Kmerlist has: " + str(len(kmerlist)) + " elements"
 
-        top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:500]
-        completeKmerList = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)[0:len(kmerlist)]
-        top_kmerlist = []
-        completeKmerList = []
+        top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)
 
         pro_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlist)
         top_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, top_kmerlist)
-        complete_matches = masterthesis2.matchKmers2.match_kmers_pairwise(clean_name, sequence, pairwise_alignments, completeKmerList)
 
         prositeFeatures = []
         if protein in prosite:
@@ -193,7 +182,11 @@ for location in locKmerList:
                         break
 
 
-        precision, recall = masterthesis2.plot.create_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), result, constants, prositeFeatures, patternMatches, top_matches, complete_matches)
+        answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, top_matches)
+        if answer is None:
+            continue
+        else:
+            precision, recall = answer
         i += 1
         precisionList.append(precision)
         recallList.append(recall)

@@ -1,6 +1,7 @@
 import os
 import re
 import operator
+import sys
 import masterthesis2.loc2prot
 import masterthesis2.kmers
 import masterthesis2.locSeq
@@ -81,6 +82,8 @@ def getTopKmers(locKmerList, location):
     return top_kmerlist
 
 def matchKmers(protein, constants, location, locKmerList):
+    print locKmerList
+    sys.exit()
     overwrite = False
     clean_name = protein.split('#')[0]
     if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):

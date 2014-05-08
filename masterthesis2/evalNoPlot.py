@@ -17,6 +17,7 @@ def eval_without_plot(query_protein_sequence, pro_matches, numProfileProteins, p
     top_count_noGaps = [0] * len(sequence)
 
 
+    print pro_matches
 
     for prot in pro_matches:
         for match_seq , start, end in pro_matches[prot]:

@@ -245,5 +245,5 @@ for protein in sorted(locKmerList[location]):
     precisionList.append(precision)
     recallList.append(recall)
 
-    print "Average precision for location " + location + " is: " + str(np.average(precisionList))
-    print "Average recall for location " + location + " is: " + str(np.average(recallList))
+print "Average precision for location " + location + " is: " + str(np.average(precisionList))
+print "Average recall for location " + location + " is: " + str(np.average(recallList))

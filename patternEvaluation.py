@@ -82,8 +82,6 @@ def getTopKmers(locKmerList, location):
     return top_kmerlist
 
 def matchKmers(protein, constants, location, locKmerList):
-    print locKmerList
-    sys.exit()
     overwrite = False
     clean_name = protein.split('#')[0]
     if os.path.exists(os.path.join(constants["needle_dir"], clean_name + ".needle")):
@@ -227,6 +225,7 @@ recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
     pro_matches = matchKmers(protein, constants, location, locKmerList)
+    sys.exit()
     top_matches = matchKmers(protein, constants, location, top_kmerlist)
 
     #get the pattern matches

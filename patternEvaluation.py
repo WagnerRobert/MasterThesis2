@@ -1,12 +1,22 @@
 import os
-import operator
 import re
-import masterthesis.reader.pickle_file
+import operator
+import masterthesis2.loc2prot
+import masterthesis2.kmers
 import masterthesis2.locSeq
-import masterthesis2.zscore
+import masterthesis2.cleanKmers
+import masterthesis.reader.pickle_file
+import masterthesis.writer.pickle_file
 import masterthesis.writer.getUniprot
 import masterthesis.writer.getFasta
 import masterthesis.writer.build_pairwise_alignments
+import masterthesis2.matchKmers2
+import masterthesis.reader.result_file
+import masterthesis.reader.tree_file
+import masterthesis2.plot
+import masterthesis2.prosite
+import masterthesis2.evalNoPlot
+import numpy as np
 
 __author__ = 'delur'
 
@@ -170,6 +180,15 @@ def evaulutePerAminoAcid(patternMatches, zscore_count, cutoff):
     print "True\t|" + str(TruePositives) + "\t\t\t|" + str(TrueNegatives)
     print "False\t|" + str(FalsePositives) + "\t\t\t|" + str(FalseNegatives)
 
+def evaluatePerSegment(protein):
+    overwrite = False
+    clean_name = protein.split('#')[0]
+    foundUniprot, entry = masterthesis.writer.getUniprot.get_uniprot(clean_name, constants, overwrite)
+    sequence = masterthesis.writer.getFasta.get_fasta(clean_name, entry, constants, overwrite)
+    pairwise_alignments = masterthesis.writer.build_pairwise_alignments.build_pairwise_alignments(clean_name, constants, overwrite)
+    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, top_matches)
+
+    return answer
 
 location = "nucleus"
 #get constants required for work
@@ -185,6 +204,8 @@ locSeqDict = getSequences(constants)
 top_kmerlist = getTopKmers(locKmerList, location)
 
 i = 0
+precisionList = []
+recallList = []
 for protein in sorted(locKmerList[location]):
     #get the kmer matches
     pro_matches = matchKmers(protein, constants, location, locKmerList)
@@ -195,9 +216,9 @@ for protein in sorted(locKmerList[location]):
     patternMatches = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
 
-    evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
-    evaluatePerSegment()
-    answer = masterthesis2.evalNoPlot.eval_without_plot((clean_name,sequence), pro_matches, len(pairwise_alignments), patternMatches, top_matches)
+    #evaluatePerAminoacid(patternMatches, pro_matches, 0.5)
+    answer = evaluatePerSegment(protein)
+
     if answer is None:
         continue
     else:

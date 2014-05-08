@@ -201,7 +201,7 @@ locZscore = masterthesis2.zscore.calc_zscoreDict(locKmerList)
 
 
 def getLocKmerDict(locZscore, location):
-
+    locKmerDict = {}
     locKmerDict[location] = {}
     for protein in locZscore[location]:
         for kmer in locZscore[location][protein]:

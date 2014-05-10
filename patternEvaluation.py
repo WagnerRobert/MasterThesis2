@@ -257,8 +257,10 @@ def theNLSdbAAEvaluation(cutoff):
         recallList.append(recall)
     return precisionList, recallList
 
-print "NLSdbAA\tprecision\trecall"
+f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )
+f.write("NLSdbAA\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theNLSdbAAEvaluation(i)
-    print "\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList))
-    print "Average recall for location " + location + " is: " + str(np.average(recallList))
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+    f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+f.close()

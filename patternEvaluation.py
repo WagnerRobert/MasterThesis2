@@ -145,6 +145,32 @@ def getNLSdbPatternMatches(constants, locSeqDict, location, protein):
 
     return patternMatches
 
+def getValidNESMatches(constants, locSeqDict, location, protein):
+    patternMatches = []
+
+    f = open(os.path.join(constants["working_dir"], "validNES_filtered.txt"), 'r')
+    motifs = []
+    for line in f:
+        motifs.append(line.replace("x", ".").rstrip())
+    f.close()
+
+
+    for motif in motifs:
+        regex = re.compile(motif)
+        i = 0
+        while True:
+            match = regex.search(locSeqDict[location][protein], i)
+            if  match:
+                start, end = match.span()
+                end = end -1
+
+                patternMatches.append( (start,end) )
+                i = match.start()+1
+            else:
+                break
+
+    return patternMatches
+
 def getPrositeMatches(protein):
     prosite = masterthesis2.prosite.readProsite(constants)
     prositeFeatures = []
@@ -256,6 +282,13 @@ def theEvaluation(type, cutoff):
             answer = evaluatePerAminoacid(protein, patterns, pro_matches, cutoff)
         if type == "PrositeSeg":
             patterns = getPrositeMatches(protein)
+            answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
+
+        if type == "ValidNESAA":
+            patterns = getValidNESMatches(constants, locSeqDict, location, protein)
+            answer = evaluatePerAminoacid(protein, patterns, pro_matches, cutoff)
+        if type == "VaildNESSeg":
+            patterns = getValidNESMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
 
         if answer is None:

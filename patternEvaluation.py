@@ -145,7 +145,8 @@ def getNLSdbPatternMatches(constants, locSeqDict, location, protein):
 
     return patternMatches
 
-def getPrositeMatches():
+def getPrositeMatches(protein):
+    prosite = masterthesis2.prosite.readProsite(constants)
     prositeFeatures = []
     if protein in prosite:
         prositeFeatures = prosite[protein]
@@ -242,11 +243,19 @@ def theEvaluation(type, cutoff):
 
         #get the pattern matches
         #prositeMatches = getPrositeMatches()
-        patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
         if type == "NLSdbAA":
+            patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerAminoacid(protein, patterns, pro_matches, cutoff)
         if type == "NLSdbSeg":
+            patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
+            answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
+
+        if type == "PrositeAA":
+            patterns = getPrositeMatches(protein)
+            answer = evaluatePerAminoacid(protein, patterns, pro_matches, cutoff)
+        if type == "PrositeSeg":
+            patterns = getPrositeMatches(protein)
             answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
 
         if answer is None:
@@ -264,10 +273,20 @@ f.write("NLSdbAA\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbAA",i)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
-    f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+    #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.write("NLSdbSeg\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbSeg",i)
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+    #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+f.write("PrositeAA\tprecision\trecall\n")
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theEvaluation("PrositeAA",i)
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+    f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+f.write("PrositeSeg\tprecision\trecall\n")
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theEvaluation("PrositeSeg",i)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
     f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.close()

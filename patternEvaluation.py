@@ -228,32 +228,37 @@ locSeqDict = getSequences(constants)
 #get top kmers for localization
 top_kmerlist = getTopKmers(locKmerList, location)
 
-i = 0
-precisionList = []
-recallList = []
-for protein in sorted(locKmerList[location]):
-    #get the kmer matches
-    pro_matches = matchKmers(protein, constants, location, locKmerList)
-    if pro_matches is None:
-        continue
-    #todo this is bugged, needs fixing
-    #top_matches = matchKmers(protein, constants, location, top_kmerlist)
+def theNLSdbAAEvaluation(cutoff):
+    i = 0
+    precisionList = []
+    recallList = []
+    for protein in sorted(locKmerList[location]):
+        #get the kmer matches
+        pro_matches = matchKmers(protein, constants, location, locKmerList)
+        if pro_matches is None:
+            continue
+        #todo this is bugged, needs fixing, top_kmerlist has the wrong format
+        #top_matches = matchKmers(protein, constants, location, top_kmerlist)
 
-    #get the pattern matches
-    #prositeMatches = getPrositeMatches()
-    patternMatches = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
+        #get the pattern matches
+        #prositeMatches = getPrositeMatches()
+        patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
 
-    answer = evaluatePerAminoacid(protein, patternMatches, pro_matches, -1.0)
-    #answer = evaluatePerSegment(protein, patternMatches, pro_matches, -1.0)
+        answer = evaluatePerAminoacid(protein, patterns, pro_matches, -1.0)
+        #answer = evaluatePerSegment(protein, patternMatches, pro_matches, -1.0)
 
-    if answer is None:
-        continue
-    else:
-        precision, recall = answer
-    i += 1
-    precisionList.append(precision)
-    recallList.append(recall)
+        if answer is None:
+            continue
+        else:
+            precision, recall = answer
+        i += 1
+        precisionList.append(precision)
+        recallList.append(recall)
+    return precisionList, recallList
 
-print "Average precision for location " + location + " is: " + str(np.average(precisionList))
-print "Average recall for location " + location + " is: " + str(np.average(recallList))
+print "NLSdbAA\tprecision\trecall"
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theNLSdbAAEvaluation(i)
+    print "\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList))
+    print "Average recall for location " + location + " is: " + str(np.average(recallList))

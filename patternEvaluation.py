@@ -228,7 +228,7 @@ locSeqDict = getSequences(constants)
 #get top kmers for localization
 top_kmerlist = getTopKmers(locKmerList, location)
 
-def theNLSdbAAEvaluation(cutoff):
+def theEvaluation(type, cutoff):
     i = 0
     precisionList = []
     recallList = []
@@ -244,9 +244,10 @@ def theNLSdbAAEvaluation(cutoff):
         #prositeMatches = getPrositeMatches()
         patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
 
-
-        answer = evaluatePerAminoacid(protein, patterns, pro_matches, -1.0)
-        #answer = evaluatePerSegment(protein, patternMatches, pro_matches, -1.0)
+        if type == "NLSdbAA":
+            answer = evaluatePerAminoacid(protein, patterns, pro_matches, cutoff)
+        if type == "NLSdbSeg":
+            answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
 
         if answer is None:
             continue
@@ -257,10 +258,16 @@ def theNLSdbAAEvaluation(cutoff):
         recallList.append(recall)
     return precisionList, recallList
 
+
 f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )
 f.write("NLSdbAA\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theNLSdbAAEvaluation(i)
+    precisionList, recallList = theEvaluation("NLSdbAA",i)
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+    f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+f.write("NLSdbSeg\tprecision\trecall\n")
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theEvaluation("NLSdbSeg",i)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
     f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.close()

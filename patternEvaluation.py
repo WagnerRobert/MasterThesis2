@@ -270,10 +270,9 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
         def dotopMatches():
             top_matches = {}
-            top_matches[location] = {}
-            top_matches[location][protein] = {}
+            top_matches[protein] = {}
             for kmer in top_kmerlist:
-                top_matches[location][protein][kmer] = True
+                top_matches[protein][kmer] = True
             top_matches = getMatches(constants, location, top_matches)
             return top_matches
         #get the pattern matches
@@ -303,9 +302,6 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         if type == "NLSdbAATop":
             top_matches = None
             top_matches = dotopMatches()
-            print pro_matches
-            print top_matches
-            sys.exit()
             patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "NLSdbSegTop":

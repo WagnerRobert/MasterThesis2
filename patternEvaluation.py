@@ -268,12 +268,14 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         if pro_matches is None:
             continue
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
-        top_matches = {}
-        top_matches[location] = {}
-        top_matches[location][protein] = {}
-        for kmer in top_kmerlist:
-            top_matches[location][protein][kmer] = True
-        top_matches = getMatches(constants, location, top_matches)
+        def dotopMatches():
+            top_matches = {}
+            top_matches[location] = {}
+            top_matches[location][protein] = {}
+            for kmer in top_kmerlist:
+                top_matches[location][protein][kmer] = True
+            top_matches = getMatches(constants, location, top_matches)
+            return top_matches
         #get the pattern matches
         #prositeMatches = getPrositeMatches()
 
@@ -306,16 +308,20 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
             answer = evaluatePerSegment(protein, patterns, top_matches, cutoff)
 
         if type == "PrositeAATop":
+            top_matches = dotopMatches()
             patterns = getPrositeMatches(protein)
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "PrositeSegTop":
+            top_matches = dotopMatches()
             patterns = getPrositeMatches(protein)
             answer = evaluatePerSegment(protein, patterns, top_matches, cutoff)
 
         if type == "ValidNESAATop":
+            top_matches = dotopMatches()
             patterns = getValidNESMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "VaildNESSegTop":
+            top_matches = dotopMatches()
             patterns = getValidNESMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerSegment(protein, patterns, top_matches, cutoff)
 
@@ -345,6 +351,7 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
             answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
 
         if type == "mergedAATop":
+            top_matches = dotopMatches()
             nldPatt = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
             proPatt = getPrositeMatches(protein)
             valPatt = getValidNESMatches(constants, locSeqDict, location, protein)
@@ -357,6 +364,7 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
             patterns = nldPatt + proPatt + valPatt
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "mergedSegTop":
+            top_matches = dotopMatches()
             nldPatt = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
             proPatt = getPrositeMatches(protein)
             valPatt = getValidNESMatches(constants, locSeqDict, location, protein)

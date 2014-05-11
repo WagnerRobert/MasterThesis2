@@ -257,7 +257,7 @@ locSeqDict = getSequences(constants)
 #get top kmers for localization
 top_kmerlist = getTopKmers(locKmerList, location)
 
-def theEvaluation(type, cutoff, proMatchesDict, topMatchesDict):
+def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
     i = 0
     precisionList = []
     recallList = []
@@ -273,6 +273,7 @@ def theEvaluation(type, cutoff, proMatchesDict, topMatchesDict):
         top_matches[location][protein] = {}
         for kmer in topMatchesDict:
             top_matches[location][protein][kmer] = True
+        top_matches = getMatches(constants, location, top_matches)
         #get the pattern matches
         #prositeMatches = getPrositeMatches()
 
@@ -375,7 +376,7 @@ def getMatches(constants, location, locKmerList):
 
 
 proMatchesDict = getMatches(constants, location, locKmerList)
-topMatchesDict = getMatches(constants, location, top_kmerlist)
+topMatchesDict = top_kmerlist
 f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )
 
 f.write("Stats for full quant:\n")

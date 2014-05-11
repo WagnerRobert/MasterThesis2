@@ -326,10 +326,28 @@ def theEvaluation(type, cutoff):
             answer = evaluatePerSegment(protein, patterns, pro_matches, cutoff)
 
         if type == "mergedAATop":
-            patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein) + getPrositeMatches(protein) + getValidNESMatches(constants, locSeqDict, location, protein)
+            nldPatt = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
+            proPatt = getPrositeMatches(protein)
+            valPatt = getValidNESMatches(constants, locSeqDict, location, protein)
+            if nldPatt is None:
+                nldPatt = []
+            if proPatt is None:
+                proPatt = []
+            if valPatt is None:
+                valPatt = []
+            patterns = nldPatt + proPatt + valPatt
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "mergedSegTop":
-            patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein) + getPrositeMatches(protein) + getValidNESMatches(constants, locSeqDict, location, protein)
+            nldPatt = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
+            proPatt = getPrositeMatches(protein)
+            valPatt = getValidNESMatches(constants, locSeqDict, location, protein)
+            if nldPatt is None:
+                nldPatt = []
+            if proPatt is None:
+                proPatt = []
+            if valPatt is None:
+                valPatt = []
+            patterns = nldPatt + proPatt + valPatt
             answer = evaluatePerSegment(protein, patterns, top_matches, cutoff)
 
         if answer is None:

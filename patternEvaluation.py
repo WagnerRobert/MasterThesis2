@@ -270,6 +270,7 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
         def dotopMatches():
             top_matches = {}
+            top_matches[protein] = {}
             for kmer in top_kmerlist:
                 top_matches[kmer] = True
             top_matches = getMatches(constants, location, top_matches)
@@ -408,7 +409,8 @@ def getMatches(constants, location, locKmerList):
         proMatchesDict[location][protein] = pro_matches
     return proMatchesDict
 
-
+print locKmerList
+sys.exit()
 proMatchesDict = getMatches(constants, location, locKmerList)
 topMatchesDict = top_kmerlist
 f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )

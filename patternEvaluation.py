@@ -254,7 +254,8 @@ locSeqDict = getSequences(constants)
 
 #get top kmers for localization
 top_kmerlist = getTopKmers(locKmerList, location)
-
+print top_kmerlist
+sys.exit()
 def theEvaluation(type, cutoff):
     i = 0
     precisionList = []

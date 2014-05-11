@@ -379,17 +379,19 @@ topMatchesDict = getMatches(constants, location, top_kmerlist)
 f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )
 
 f.write("Stats for full quant:\n")
-
+print("Stats for full quant:\n")
 f.write("NLSdbAA\tprecision\trecall\tF1\tF0.5\n")
+print("NLSdbAA\tprecision\trecall\tF1\tF0.5\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbAA",i, proMatchesDict, topMatchesDict)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
-    print("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
-f.write("NLSdbSeg\tprecision\trecall\n")
+    f.write("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+    print("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+f.write("NLSdbSeg\tprecision\trecall\tF1\tF0.5\n")
+print("NLSdbSeg\tprecision\trecall\tF1\tF0.5\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbSeg",i , proMatchesDict, topMatchesDict)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
-    print("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
+    f.write("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+    print("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
 
 # f.write("ValidNESAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
@@ -419,16 +421,19 @@ for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 f.write("Stats for top quant:\n")
-f.write("NLSdbAA\tprecision\trecall\n")
+print("Stats for top quant:\n")
+f.write("NLSdbAA\tprecision\trecall\tF1\tF0.5\n")
+print("NLSdbAA\tprecision\trecall\tF1\tF0.5\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbAATop",i, proMatchesDict, topMatchesDict)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
-    #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
-f.write("NLSdbSeg\tprecision\trecall\n")
+    f.write("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+    print("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+f.write("NLSdbSeg\tprecision\trecall\tF1\tF0.5\n")
+print("NLSdbSeg\tprecision\trecall\tF1\tF0.5\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbSegTop",i, proMatchesDict, topMatchesDict)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
-    #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
+    f.write("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
+    print("\t" + str(np.average(precisionList)) +"\t" + "%.2f" % np.average(recallList) +"\t" + "%.2f" % doFMeasure(1,np.average(precisionList), np.average(recallList) )+"\t" + "%.2f" % doFMeasure(0.5,np.average(precisionList), np.average(recallList) )+"\n")
 
 # f.write("ValidNESAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:

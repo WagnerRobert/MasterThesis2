@@ -270,9 +270,8 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
         def dotopMatches():
             top_matches = {}
-            top_matches[protein] = {}
             for kmer in top_kmerlist:
-                top_matches[protein][kmer] = True
+                top_matches[kmer] = True
             top_matches = getMatches(constants, location, top_matches)
             return top_matches
         #get the pattern matches

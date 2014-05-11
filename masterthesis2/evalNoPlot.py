@@ -50,7 +50,8 @@ def eval_segment(query_protein_sequence, pro_matches, numProfileProteins, patter
                     top_count_noGaps[x] += top_count[i]
                     x += 1
 
-
+    print len(sequence)
+    print len(zscore_count)
     zscore_count = stats.zscore(pos_count_noGaps)
 
 

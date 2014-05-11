@@ -45,7 +45,7 @@ def match_kmers_pairwise(clean_name, sequence, pairwise_alignments, kmerlisting)
                     matches[second] = []
 
                 start, end = match.span()
-                end = end -1
+                end = end
 
                 matches[second].append( (pairwise_alignments[first,second][0], start,end) )
                 i = match.start()+1

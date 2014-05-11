@@ -102,11 +102,11 @@ def doSegmentEvaluation(patternSegments, zscore_count, cutoff):
         if start - end >= 0.5* len(zscore_count):
             continue
         hits = 0
-        for i in range(start, end+1):
+        for i in range(start, end):
             if zscore_count[i] > cutoff:
                 hits += 1
 
-        if hits >= 5 or hits >= len(range(start, end+1)) :
+        if hits >= 5 or hits >= len(range(start, end)) :
             PatternSegmentsHit += 1
         else:
             PatternSegmentsMissed += 1
@@ -117,7 +117,7 @@ def doSegmentEvaluation(patternSegments, zscore_count, cutoff):
             if patternSegmentSequence[i]:
                 hits += 1
 
-        if hits >= 5 or hits >= len(range(start, end+1)) :
+        if hits >= 5 or hits >= len(range(start, end)) :
             KmerSegmentsHit += 1
         else:
             KmerSegmentsMissed += 1

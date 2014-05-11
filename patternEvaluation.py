@@ -265,7 +265,8 @@ def theEvaluation(type, cutoff):
 
         topKmerlist = {}
         topKmerlist[location] = {}
-        topKmerlist[location][protein] = top_kmerlist
+        for kmer in top_kmerlist:
+            topKmerlist[location][protein][kmer] = True
         if pro_matches is None:
             continue
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format

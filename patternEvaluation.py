@@ -303,6 +303,9 @@ def theEvaluation(type, cutoff, proMatchesDict, top_kmerlist):
         if type == "NLSdbAATop":
             top_matches = None
             top_matches = dotopMatches()
+            print pro_matches
+            print top_matches
+            sys.exit()
             patterns = getNLSdbPatternMatches(constants, locSeqDict, location, protein)
             answer = evaluatePerAminoacid(protein, patterns, top_matches, cutoff)
         if type == "NLSdbSegTop":

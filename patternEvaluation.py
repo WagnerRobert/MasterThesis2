@@ -335,6 +335,7 @@ def theEvaluation(type, cutoff):
         else:
             precision, recall = answer
         i += 1
+        print "\t" + str(i) + "\t" + protein
         precisionList.append(precision)
         recallList.append(recall)
     return precisionList, recallList

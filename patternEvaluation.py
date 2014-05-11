@@ -80,10 +80,8 @@ def getTopKmers(locKmerList, location):
                 topKmer_dict[location][kmer].append(value)
     top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)
     topKmerlist = {}
-    topKmerlist[location] = {}
-    topKmerlist[location][protein] = {}
     for kmer in top_kmerlist:
-        topKmerlist[location][protein][kmer] = True
+        topKmerlist[kmer] = True
     return topKmerlist
 
 def matchKmers(protein, constants, location, locKmerList):
@@ -271,7 +269,9 @@ def theEvaluation(type, cutoff, proMatchesDict, topMatchesDict):
         if pro_matches is None:
             continue
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
-        top_matches = topMatchesDict[location][protein]
+        top_matches = {}
+        top_matches[location] = {}
+        top_matches[location][protein] = topMatchesDict
 
         #get the pattern matches
         #prositeMatches = getPrositeMatches()

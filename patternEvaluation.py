@@ -387,74 +387,74 @@ for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     print("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 f.write("NLSdbSeg\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theEvaluation("NLSdbSeg",i)
+    precisionList, recallList = theEvaluation("NLSdbSeg",i , proMatchesDict, topMatchesDict)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
     print("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 
 # f.write("ValidNESAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("ValidNESAA",i)
+#     precisionList, recallList = theEvaluation("ValidNESAA",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("VaildNESSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("VaildNESSeg",i)
+#     precisionList, recallList = theEvaluation("VaildNESSeg",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 # f.write("PrositeAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("PrositeAA",i)
+#     precisionList, recallList = theEvaluation("PrositeAA",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("PrositeSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("PrositeSeg",i)
+#     precisionList, recallList = theEvaluation("PrositeSeg",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 # f.write("mergedAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("mergedAA",i)
+#     precisionList, recallList = theEvaluation("mergedAA",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("mergedSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("mergedSeg",i)
+#     precisionList, recallList = theEvaluation("mergedSeg",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 f.write("Stats for top quant:\n")
 f.write("NLSdbAA\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theEvaluation("NLSdbAATop",i)
+    precisionList, recallList = theEvaluation("NLSdbAATop",i, proMatchesDict, topMatchesDict)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
     #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.write("NLSdbSeg\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theEvaluation("NLSdbSegTop",i)
+    precisionList, recallList = theEvaluation("NLSdbSegTop",i, proMatchesDict, topMatchesDict)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
     #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 
 # f.write("ValidNESAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("ValidNESAATop",i)
+#     precisionList, recallList = theEvaluation("ValidNESAATop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("VaildNESSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("VaildNESSegTop",i)
+#     precisionList, recallList = theEvaluation("VaildNESSegTop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 # f.write("PrositeAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("PrositeAATop",i)
+#     precisionList, recallList = theEvaluation("PrositeAATop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("PrositeSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("PrositeSegTop",i)
+#     precisionList, recallList = theEvaluation("PrositeSegTop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 #
 # f.write("mergedAA\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("mergedAATop",i)
+#     precisionList, recallList = theEvaluation("mergedAATop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 # f.write("mergedSeg\tprecision\trecall\n")
 # for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-#     precisionList, recallList = theEvaluation("mergedSegTop",i)
+#     precisionList, recallList = theEvaluation("mergedSegTop",i, proMatchesDict, topMatchesDict)
 #     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
 
 f.close()

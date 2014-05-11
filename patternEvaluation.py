@@ -79,10 +79,9 @@ def getTopKmers(locKmerList, location):
                         break
                 topKmer_dict[location][kmer].append(value)
     top_kmerlist = sorted(topKmer_dict[location], key=lambda x: topKmer_dict[location], reverse=True)
-    topKmerlist = {}
-    for kmer in top_kmerlist:
-        topKmerlist[kmer] = True
-    return topKmerlist
+
+
+    return top_kmerlist
 
 def matchKmers(protein, constants, location, locKmerList):
     overwrite = False
@@ -271,8 +270,9 @@ def theEvaluation(type, cutoff, proMatchesDict, topMatchesDict):
         #todo this is bugged, needs fixing, top_kmerlist has the wrong format
         top_matches = {}
         top_matches[location] = {}
-        top_matches[location][protein] = topMatchesDict
-
+        top_matches[location][protein] = {}
+        for kmer in topMatchesDict:
+            top_matches[location][protein][kmer] = True
         #get the pattern matches
         #prositeMatches = getPrositeMatches()
 

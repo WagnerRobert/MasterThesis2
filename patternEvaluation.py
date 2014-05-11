@@ -301,11 +301,14 @@ def theEvaluation(type, cutoff):
     return precisionList, recallList
 
 
+def doFMeasure(index, precision, recall):
+    return (1+index)*precision*recall / (index*precision + recall)
+
 f = open(os.path.join(constants["working_dir"], "patternEval.txt"), 'w' )
 f.write("NLSdbAA\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("NLSdbAA",i)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\t" + str(doFMeasure(1,np.average(precisionList), np.average(recallList) ))+"\t" + str(doFMeasure(0.5,np.average(precisionList), np.average(recallList) ))+"\n")
     #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.write("NLSdbSeg\tprecision\trecall\n")
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:

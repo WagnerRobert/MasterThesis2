@@ -313,6 +313,15 @@ for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
     #f.write("Average recall for location " + location + " is: " + str(np.average(recallList))+"\n")
 f.write("PrositeAA\tprecision\trecall\n")
+
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theEvaluation("ValidNESAA",i)
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+f.write("VaildNESSeg\tprecision\trecall\n")
+for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
+    precisionList, recallList = theEvaluation("VaildNESSeg",i)
+    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+
 for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("PrositeAA",i)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
@@ -321,11 +330,5 @@ for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
     precisionList, recallList = theEvaluation("PrositeSeg",i)
     f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
 f.write("ValidNESAA\tprecision\trecall\n")
-for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theEvaluation("ValidNESAA",i)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
-f.write("VaildNESSeg\tprecision\trecall\n")
-for i in [1.0, 0.5, 0.0, -0.5, -1.0]:
-    precisionList, recallList = theEvaluation("VaildNESSeg",i)
-    f.write("\t" + str(np.average(precisionList)) +"\t" + str(np.average(recallList)) +"\n")
+
 f.close()
